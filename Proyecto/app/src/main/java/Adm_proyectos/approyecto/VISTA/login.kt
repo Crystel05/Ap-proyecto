@@ -14,35 +14,18 @@ class login : Fragment() {
     private var _binding: LoginBinding? = null
 
     private val binding get() = _binding!!
-    private var vista : View
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = LoginBinding.inflate(inflater, container, false)
-        vista = inflater!!.inflate(_binding, container, false)
         return binding.root
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.notshow.setOnClickListener(){
-                view->
-            binding.show.visibility = View.VISIBLE
-            binding.notshow.visibility = View.INVISIBLE
-            binding.contrasenna.transformationMethod = HideReturnsTransformationMethod.getInstance()
-        }
-
-        binding.show.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(view: View?) {
-                view?.let { esconderContrasenna(it) }
-            }
-
-        })
-
     }
 
     fun mostrarContrasenna(view: View) {
