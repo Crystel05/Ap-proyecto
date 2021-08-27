@@ -3,7 +3,6 @@ package Adm_proyectos.approyecto.VISTA
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.databinding.LoginBinding
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
@@ -11,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 
 class login : Fragment() {
 
@@ -32,9 +32,9 @@ class login : Fragment() {
 
         binding.iniciarSesion.setOnClickListener() { iniciarSesion() }
 
-        binding.show.setOnClickListener() { esconderContrasenna() }
+        binding.notshow.setOnClickListener() { mostrarContrasenna() }
 
-        binding.show.setOnClickListener() { mostrarContrasenna() }
+        binding.show.setOnClickListener() { esconderContrasenna() }
     }
 
     fun mostrarContrasenna() {
@@ -51,7 +51,7 @@ class login : Fragment() {
     }
 
     fun iniciarSesion (){
-        findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        findNavController().navigate(R.id.login_admin)
     }
 
     override fun onDestroyView() {

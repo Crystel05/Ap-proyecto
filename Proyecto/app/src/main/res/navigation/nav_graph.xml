@@ -3,26 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/login">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/login"
         android:name="Adm_proyectos.approyecto.VISTA.login"
-        android:label="@string/first_fragment_label"
         tools:layout="@layout/login">
 
-<!--        <action-->
-<!--            android:id="@+id/action_FirstFragment_to_SecondFragment"-->
-<!--            app:destination="@id/SecondFragment" />-->
+        <action
+            android:id="@+id/login_admin"
+            app:destination="@id/adminPrincipal" />
     </fragment>
-<!--    <fragment-->
-<!--        android:id="@+id/SecondFragment"-->
-<!--        android:name="Adm_proyectos.approyecto.admin_principal"-->
-<!--        android:label="@string/second_fragment_label"-->
-<!--        tools:layout="@layout/fragment_second">-->
+
+    <fragment
+        android:id="@+id/adminPrincipal"
+        android:name="Adm_proyectos.approyecto.VISTA.admin_principal"
+        tools:layout="@layout/admin_principal">
 
 <!--        <action-->
-<!--            android:id="@+id/action_SecondFragment_to_FirstFragment"-->
-<!--            app:destination="@id/FirstFragment" />-->
-<!--    </fragment>-->
+<!--            android:id="@+id/admin_crearCurso"-->
+<!--            app:destination="@id/adminPrincipal" />-->
+    </fragment>
+
+
 </navigation>

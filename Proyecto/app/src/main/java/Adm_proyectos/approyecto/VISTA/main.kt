@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import androidx.navigation.Navigation.findNavController
 
 
-class main : AppCompatActivity()  {
+class main : AppCompatActivity() {
 
     private lateinit var binding: MainBinding
 

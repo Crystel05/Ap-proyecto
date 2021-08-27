@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".VISTA.admin_principal">
 
     <TextView
         android:id="@+id/admin"
@@ -57,7 +58,7 @@
         app:layout_constraintVertical_bias="0.162">
 
         <Button
-            android:id="@+id/AdminGE"
+            android:id="@+id/adminGC"
             android:layout_width="93dp"
             android:layout_height="63dp"
             android:text="Gestión de cursos"
@@ -68,7 +69,7 @@
             app:layout_constraintVertical_bias="0.625" />
 
         <Button
-            android:id="@+id/button14"
+            android:id="@+id/adminGD"
             android:layout_width="93dp"
             android:layout_height="63dp"
             android:layout_marginStart="86dp"
@@ -80,19 +81,19 @@
             app:layout_constraintVertical_bias="0.8" />
 
         <Button
-            android:id="@+id/button15"
+            android:id="@+id/adminGE"
             android:layout_width="93dp"
             android:layout_height="63dp"
             android:layout_marginStart="172dp"
             android:text="Gestión de estudiantes"
             android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/AdminGE"
+            app:layout_constraintStart_toStartOf="@+id/adminGC"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.8" />
 
         <Button
-            android:id="@+id/button16"
+            android:id="@+id/adminAC"
             android:layout_width="93dp"
             android:layout_height="63dp"
             android:layout_marginStart="258dp"
@@ -106,476 +107,116 @@
 
     </android.support.constraint.ConstraintLayout>
 
+<!--    <android.support.constraint.ConstraintLayout-->
+<!--        android:id="@+id/admin_gc_principal"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="637dp"-->
+<!--        android:foregroundGravity="center"-->
+<!--        android:visibility="visible"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/botonesMenu"-->
+<!--        app:layout_constraintVertical_bias="1.0"-->
+<!--        tools:visibility="gone">-->
+
+<!--        <include-->
+<!--            android:id="@+id/include2"-->
+<!--            layout="@layout/admin_gc_principal"-->
+<!--            android:layout_width="433dp"-->
+<!--            android:layout_height="524dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintVertical_bias="0.212" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/agregarCurso"-->
+<!--            android:layout_width="217dp"-->
+<!--            android:layout_height="49dp"-->
+<!--            android:text="agregar nuevo Curso"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.502"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/include2"-->
+<!--            app:layout_constraintVertical_bias="0.255" />-->
+
+<!--    </android.support.constraint.ConstraintLayout>-->
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/PrincipalAdmin"
-        android:layout_width="match_parent"
-        android:layout_height="637dp"
-        android:foregroundGravity="center"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/botonesMenu"
-        tools:visibility="gone">
-
-        <Button
-            android:id="@+id/agregarCurso"
-            android:layout_width="224dp"
-            android:layout_height="40dp"
-            android:layout_marginBottom="25dp"
-            android:gravity="center"
-            android:text="AGREGAR NUEVO CURSO"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/listaCursos"
-            app:layout_constraintVertical_bias="0.731"
-            tools:ignore="TouchTargetSizeCheck" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:foregroundGravity="center"
-            app:layout_constraintBottom_toTopOf="@+id/agregarCurso"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.49"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/listaCursos"
-            app:layout_constraintVertical_bias="0.578"
-            app:srcCompat="@drawable/flechas_tabla" />
-
-        <TableLayout
-            android:id="@+id/listaCursos"
-            android:layout_width="371dp"
-            android:layout_height="409dp"
-            android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.393">
-
-            <TableRow
-                android:id="@+id/titulo"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="178dp"
-                    android:layout_height="40dp"
-                    android:gravity="center"
-                    android:text="ID curso"
-                    android:textColor="#040404"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="173dp"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="Nombre Curso"
-                    android:textColor="#090909"
-                    android:textSize="20sp" />
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/columna1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/id1"
-                    android:layout_width="167dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="15dp"
-                    android:gravity="left"
-                    android:text="ma1"
-                    android:textColor="#040404"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/nombre1"
-                    android:layout_width="171dp"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="15dp"
-                    android:width="167dp"
-                    android:gravity="right"
-                    android:text="Matemática"
-                    android:textColor="#090909"
-                    android:textSize="20sp" />
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/columna2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/id2"
-                    android:layout_width="167dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="15dp"
-                    android:gravity="left"
-                    android:text="ci1"
-                    android:textColor="#040404"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/nombre2"
-                    android:layout_width="176dp"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="15dp"
-                    android:width="167dp"
-                    android:gravity="right"
-                    android:text="Ciencias"
-                    android:textColor="#090909"
-                    android:textSize="20sp" />
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/columna3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/id3"
-                    android:layout_width="167dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="15dp"
-                    android:gravity="left"
-                    android:text="ig1"
-                    android:textColor="#040404"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/nombre3"
-                    android:layout_width="176dp"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="15dp"
-                    android:width="167dp"
-                    android:gravity="right"
-                    android:text="Inglés"
-                    android:textColor="#090909"
-                    android:textSize="20sp" />
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/columna4"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/id4"
-                    android:layout_width="167dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="15dp"
-                    android:gravity="left"
-                    android:text="esp1"
-                    android:textColor="#040404"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/nombre4"
-                    android:layout_width="177dp"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="15dp"
-                    android:width="167dp"
-                    android:gravity="right"
-                    android:text="Español"
-                    android:textColor="#090909"
-                    android:textSize="20sp" />
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/columna5"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/id5"
-                    android:layout_width="167dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="15dp"
-                    android:gravity="left"
-                    android:text="li1"
-                    android:textColor="#040404"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/nombre5"
-                    android:layout_width="177dp"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="15dp"
-                    android:width="167dp"
-                    android:gravity="right"
-                    android:text="Literatura"
-                    android:textColor="#090909"
-                    android:textSize="20sp" />
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/columna6"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/id6"
-                    android:layout_width="167dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="15dp"
-                    android:gravity="left"
-                    android:text="fi1"
-                    android:textColor="#040404"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/nombre6"
-                    android:layout_width="177dp"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="15dp"
-                    android:width="167dp"
-                    android:gravity="right"
-                    android:text="Física matemática"
-                    android:textColor="#090909"
-                    android:textSize="20sp" />
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/columna7"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/id7"
-                    android:layout_width="167dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="15dp"
-                    android:gravity="left"
-                    android:text="es1"
-                    android:textColor="#040404"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/nombre7"
-                    android:layout_width="177dp"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="15dp"
-                    android:width="167dp"
-                    android:gravity="right"
-                    android:text="Estudios sociales"
-                    android:textColor="#090909"
-                    android:textSize="20sp" />
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/columna8"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/id8"
-                    android:layout_width="167dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="15dp"
-                    android:gravity="left"
-                    android:text="qm1"
-                    android:textColor="#040404"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/nombre8"
-                    android:layout_width="177dp"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="15dp"
-                    android:width="167dp"
-                    android:gravity="right"
-                    android:text="Química"
-                    android:textColor="#090909"
-                    android:textSize="20sp" />
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/columna9"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/id9"
-                    android:layout_width="167dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="15dp"
-                    android:gravity="left"
-                    android:text="fr1"
-                    android:textColor="#040404"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/nombre9"
-                    android:layout_width="177dp"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="15dp"
-                    android:width="167dp"
-                    android:gravity="right"
-                    android:text="Francés"
-                    android:textColor="#090909"
-                    android:textSize="20sp" />
-            </TableRow>
-
-        </TableLayout>
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lista de cursos activos"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/listaCursos"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/adminGEnuevoCurso"
-        android:layout_width="match_parent"
-        android:layout_height="637dp"
-        android:layout_marginTop="3dp"
+        android:id="@+id/admin_gc_crear"
+        android:layout_width="0dp"
+        android:layout_height="638dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/botonesMenu"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:visibility="visible">
 
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="AGREGAR NUEVO CURSO"
-            android:textColor="#000000"
-            android:textSize="16sp"
+        <include
+            layout="@layout/admin_gc_crear"
+            android:layout_width="0dp"
+            android:layout_height="598dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.6" />
 
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="552dp"
-            android:text="ID"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.126"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="68dp"
-            android:layout_height="23dp"
-            android:text="Nombre"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.135"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView13"
-            app:layout_constraintVertical_bias="0.164" />
-
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Grado"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.125"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView14"
-            app:layout_constraintVertical_bias="0.205" />
-
-        <TextView
-            android:id="@+id/textView16"
-            android:layout_width="26dp"
-            android:layout_height="19dp"
-            android:text="Día"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hora de incio"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/textView18"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hora de fin"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <EditText
-            android:id="@+id/editTextTextPersonName"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/atras"
+            android:layout_width="54dp"
             android:layout_height="34dp"
-            android:layout_marginStart="44dp"
-            android:layout_marginTop="20dp"
-            android:ems="10"
-            android:hint="ma1"
-            android:inputType="textPersonName"
-            android:textSize="14sp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="Button"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView13"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName3"
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/adminGcPrincipal"
+        android:layout_width="0dp"
+        android:layout_height="670dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:visibility="gone">
+
+        <include
+            android:id="@+id/include3"
+            layout="@layout/admin_gc_principal"
+            android:layout_width="0dp"
+            android:layout_height="510dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.556" />
+
+        <Button
+            android:id="@+id/agregarCurso"
             android:layout_width="wrap_content"
-            android:layout_height="34dp"
-            android:layout_marginStart="44dp"
-            android:layout_marginTop="20dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textSize="14sp"
+            android:layout_height="wrap_content"
+            android:text="agregar nuevo curso"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView14"
-            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="164dp"
-            android:layout_height="31dp"
-            android:layout_marginStart="44dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView15"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
+            app:layout_constraintTop_toBottomOf="@+id/include3" />
     </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
