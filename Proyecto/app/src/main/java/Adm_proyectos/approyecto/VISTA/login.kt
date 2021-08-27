@@ -2,6 +2,7 @@ package Adm_proyectos.approyecto.VISTA
 
 import Adm_proyectos.approyecto.databinding.LoginBinding
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
@@ -26,6 +27,9 @@ class login : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.iniciarSesion.setOnClickListener(){
+            Snackbar.make(view, "Probando", Snackbar.LENGTH_LONG).setAction("Action", null).show()
+        }
     }
 
     fun mostrarContrasenna(view: View) {

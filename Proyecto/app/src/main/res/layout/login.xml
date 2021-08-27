@@ -85,7 +85,7 @@
         tools:visibility="visible" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/iniciarSesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="183dp"
@@ -104,7 +104,6 @@
         android:layout_height="26dp"
         android:clickable="true"
         android:focusable="true"
-        android:onClick="esconderContrasenna"
         android:src="@drawable/show_password"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/contrasenna"
@@ -121,7 +120,6 @@
         android:layout_height="26dp"
         android:clickable="true"
         android:focusable="true"
-        android:onClick="mostrarContrasenna"
         android:src="@drawable/not_show_password"
         app:layout_constraintBottom_toBottomOf="@+id/contrasenna"
         app:layout_constraintEnd_toEndOf="@+id/contrasenna"
