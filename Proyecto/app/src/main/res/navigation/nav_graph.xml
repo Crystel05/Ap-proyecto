@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="Adm_proyectos.approyecto.FirstFragment"
+        android:name="Adm_proyectos.approyecto.VISTA.login"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/login">
 
