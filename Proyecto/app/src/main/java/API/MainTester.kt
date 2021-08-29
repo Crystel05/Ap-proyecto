@@ -13,21 +13,18 @@ import retrofit2.Response
 
 class MainTester {
 
-    suspend fun buscarUsuario(query: String) {
+    fun buscarUsuario(query: String) {
 
-        val channel = Channel<Usuario?>()
         CoroutineScope(Dispatchers.IO).launch{
             val call = RetroInstance.api.getUsusarios(query)
             val miUsuario = call.body()
             if(call.isSuccessful){
                 print(miUsuario?.get(0)?.nombre)
-                channel.send(miUsuario?.get(0))
             }else{
                 print("Error! Conexion con el API Fallida")
             }
         }
-
-        print(channel.receive())
+        
     }
 
 
