@@ -15,4 +15,6 @@ open class Usuario (nombre:String, apellidos:String, correo:String, cedula:Int, 
         this.cedula = cedula
         this.contrasenna = contrasenna
     }
+
+
 }
