@@ -23,6 +23,18 @@ app.get("/usuarios", async(req, res)=>{
 
 });
 
+app.get("/usuarios/:id", async(req, res)=>{
+    const { id } = req.params
+    try{
+        const usuarios = await pool.query("SELECT * FROM usuario WHERE \"ID\" = $1", [id]);
+        res.json(usuarios.rows)
+
+    }catch(err) {
+        console.error(err.message);
+
+    }
+
+});
 
 app.listen(5000);
 console.log('API running on port 5000')
