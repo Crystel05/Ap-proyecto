@@ -32,35 +32,35 @@ class admin_gc_listaCursos : Fragment() {
             cambiarFragment(crearCurso)
         }
         view.columna1.setOnClickListener(){
-            comunicador.enviarDatos(view.id1.text.toString(), view.nombre1.text.toString())
+            comunicador.enviarDatosCurso(view.id1.text.toString(), view.nombre1.text.toString())
         }
 
         view.columna2.setOnClickListener(){
-            comunicador.enviarDatos(view.id2.text.toString(), view.nombre2.text.toString())
+            comunicador.enviarDatosCurso(view.id2.text.toString(), view.nombre2.text.toString())
         }
 
         view.columna3.setOnClickListener(){
-            comunicador.enviarDatos(view.id3.text.toString(), view.nombre3.text.toString())
+            comunicador.enviarDatosCurso(view.id3.text.toString(), view.nombre3.text.toString())
         }
 
         view.columna4.setOnClickListener(){
-            comunicador.enviarDatos(view.id4.text.toString(), view.nombre4.text.toString())
+            comunicador.enviarDatosCurso(view.id4.text.toString(), view.nombre4.text.toString())
         }
 
         view.columna5.setOnClickListener(){
-            comunicador.enviarDatos(view.id5.text.toString(), view.nombre5.text.toString())
+            comunicador.enviarDatosCurso(view.id5.text.toString(), view.nombre5.text.toString())
         }
 
         view.columna6.setOnClickListener(){
-            comunicador.enviarDatos(view.id6.text.toString(), view.nombre6.text.toString())
+            comunicador.enviarDatosCurso(view.id6.text.toString(), view.nombre6.text.toString())
         }
 
         view.columna7.setOnClickListener(){
-            comunicador.enviarDatos(view.id7.text.toString(), view.nombre7.text.toString())
+            comunicador.enviarDatosCurso(view.id7.text.toString(), view.nombre7.text.toString())
         }
 
         view.columna8.setOnClickListener(){
-            comunicador.enviarDatos(view.id8.text.toString(), view.nombre8.text.toString())
+            comunicador.enviarDatosCurso(view.id8.text.toString(), view.nombre8.text.toString())
         }
     }
 

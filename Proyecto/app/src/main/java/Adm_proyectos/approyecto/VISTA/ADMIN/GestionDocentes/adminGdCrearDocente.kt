@@ -7,14 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 
-class adminGdPListaDocentes : Fragment() {
-
+class adminGdCrearDocente : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.admin_gd_p_lista_docentes, container, false)
+
+        val view = inflater.inflate(R.layout.admin_gd_crear_docente, container, false)
+
         return view
     }
+
 }

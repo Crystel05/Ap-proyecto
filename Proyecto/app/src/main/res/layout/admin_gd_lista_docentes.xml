@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".VISTA.ADMIN.GestionDocentes.adminGdListaDocentes">
+
+    <Button
+        android:id="@+id/agregarNuevoProfesor"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="agergar nuevo curso"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/flechas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:foregroundGravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/agregarNuevoProfesor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listaCursos"
+        app:layout_constraintVertical_bias="0.022"
+        app:srcCompat="@drawable/flechas_tabla" />
+
+    <TableLayout
+        android:id="@+id/listaDocentes"
+        android:layout_width="376dp"
+        android:layout_height="370dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.241">
+
+        <TableRow
+            android:id="@+id/titulo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="178dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="Nombre"
+                android:textColor="#040404"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="173dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Cédula"
+                android:textColor="#090909"
+                android:textSize="17sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/colum1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            tools:ignore="TouchTargetSizeCheck">
+
+            <TextView
+                android:id="@+id/nombre1"
+                android:layout_width="167dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="15dp"
+                android:gravity="left"
+                android:text="Fabrizio Ferreto"
+                android:textColor="#040404"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/cedula1"
+                android:layout_width="171dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="15dp"
+                android:width="167dp"
+                android:gravity="right"
+                android:text="11111111"
+                android:textColor="#090909"
+                android:textSize="17sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/colum2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            tools:ignore="TouchTargetSizeCheck">
+
+            <TextView
+                android:id="@+id/nombre2"
+                android:layout_width="167dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="15dp"
+                android:gravity="left"
+                android:text="Crystel Montero"
+                android:textColor="#040404"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/cedula2"
+                android:layout_width="176dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="15dp"
+                android:width="167dp"
+                android:gravity="right"
+                android:text="22222222"
+                android:textColor="#090909"
+                android:textSize="17sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/colum3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck">
+
+            <TextView
+                android:id="@+id/nombre3"
+                android:layout_width="167dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="15dp"
+                android:gravity="left"
+                android:text="Edgar Melendez"
+                android:textColor="#040404"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/cedula3"
+                android:layout_width="176dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="15dp"
+                android:width="167dp"
+                android:gravity="right"
+                android:text="3333333"
+                android:textColor="#090909"
+                android:textSize="17sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/colum4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck">
+
+            <TextView
+                android:id="@+id/nombre4"
+                android:layout_width="167dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="15dp"
+                android:gravity="left"
+                android:text="Keyla Rojas"
+                android:textColor="#040404"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/cedula4"
+                android:layout_width="177dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="15dp"
+                android:width="167dp"
+                android:gravity="right"
+                android:text="44444444"
+                android:textColor="#090909"
+                android:textSize="17sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/colum5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            tools:ignore="TouchTargetSizeCheck">
+
+            <TextView
+                android:id="@+id/nombre5"
+                android:layout_width="167dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="15dp"
+                android:gravity="left"
+                android:text="Conrad Umaña"
+                android:textColor="#040404"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/cedula5"
+                android:layout_width="177dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="15dp"
+                android:width="167dp"
+                android:gravity="right"
+                android:text="55555555"
+                android:textColor="#090909"
+                android:textSize="17sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/colum6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck">
+
+            <TextView
+                android:id="@+id/nombre6"
+                android:layout_width="167dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="15dp"
+                android:gravity="left"
+                android:text="María Madrigal"
+                android:textColor="#040404"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/cedula6"
+                android:layout_width="177dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="15dp"
+                android:width="167dp"
+                android:gravity="right"
+                android:text="66666666"
+                android:textColor="#090909"
+                android:textSize="17sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/colum7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck">
+
+            <TextView
+                android:id="@+id/nombre7"
+                android:layout_width="167dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="15dp"
+                android:gravity="left"
+                android:text="Luis Perez"
+                android:textColor="#040404"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/cedula7"
+                android:layout_width="177dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="15dp"
+                android:width="167dp"
+                android:gravity="right"
+                android:text="77777777"
+                android:textColor="#090909"
+                android:textSize="17sp" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/colum8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck">
+
+            <TextView
+                android:id="@+id/nombre8"
+                android:layout_width="167dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="15dp"
+                android:gravity="left"
+                android:text="Daniela Solís"
+                android:textColor="#040404"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/cedula8"
+                android:layout_width="177dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="15dp"
+                android:width="167dp"
+                android:gravity="right"
+                android:text="88888888"
+                android:textColor="#090909"
+                android:textSize="17sp" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Lista de docentes"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/listaCursos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.607" />
+
+
+</android.support.constraint.ConstraintLayout>
