@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VISTA.ADMIN.ADMIN.admin_gc_crear">
+    tools:context=".VISTA.ADMIN.ADMIN.admin_gc_modificarCurso">
 
 
     <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="AGREGAR NUEVO CURSO"
+        android:text="MODIFICAR CURSO"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/textView13"
@@ -45,7 +45,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.131"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idCrearCurso"
+        app:layout_constraintTop_toBottomOf="@+id/idModificarCurso"
         app:layout_constraintVertical_bias="0.045" />
 
     <TextView
@@ -59,7 +59,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.121"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombreCrearCurso"
+        app:layout_constraintTop_toBottomOf="@+id/nombreModificarCurso"
         app:layout_constraintVertical_bias="0.056" />
 
     <TextView
@@ -72,10 +72,10 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gradoCrearCurso" />
+        app:layout_constraintTop_toBottomOf="@+id/gradoModificarCurso" />
 
     <EditText
-        android:id="@+id/idCrearCurso"
+        android:id="@+id/idModificarCurso"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginStart="48dp"
@@ -89,7 +89,7 @@
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/nombreCrearCurso"
+        android:id="@+id/nombreModificarCurso"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginStart="48dp"
@@ -103,7 +103,7 @@
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <Spinner
-        android:id="@+id/gradoCrearCurso"
+        android:id="@+id/gradoModificarCurso"
         android:layout_width="164dp"
         android:layout_height="40dp"
         android:layout_marginStart="48dp"
@@ -114,7 +114,7 @@
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <Spinner
-        android:id="@+id/diaCrearCurso"
+        android:id="@+id/diaModificarCurso"
         android:layout_width="172dp"
         android:layout_height="40dp"
         android:layout_marginTop="8dp"
@@ -126,7 +126,7 @@
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/horafinCrearCurso"
+        android:id="@+id/horafinModificarCurso"
         android:layout_width="110dp"
         android:layout_height="0dp"
         android:layout_marginStart="95dp"
@@ -137,7 +137,7 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/horaInicioCrearCurso"
+        app:layout_constraintStart_toEndOf="@+id/horaInicioModificarCurso"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
@@ -153,7 +153,7 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/diaCrearCurso"
+        app:layout_constraintTop_toBottomOf="@+id/diaModificarCurso"
         app:layout_constraintVertical_bias="0.137" />
 
     <TextView
@@ -169,11 +169,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.982"
         app:layout_constraintStart_toEndOf="@+id/textView18"
-        app:layout_constraintTop_toBottomOf="@+id/diaCrearCurso"
+        app:layout_constraintTop_toBottomOf="@+id/diaModificarCurso"
         app:layout_constraintVertical_bias="0.178" />
 
     <EditText
-        android:id="@+id/horaInicioCrearCurso"
+        android:id="@+id/horaInicioModificarCurso"
         android:layout_width="110dp"
         android:layout_height="40dp"
         android:layout_marginStart="40dp"
@@ -191,11 +191,11 @@
         android:layout_width="169dp"
         android:layout_height="39dp"
         android:layout_marginTop="16dp"
-        android:text="AGREGAR CURSO"
+        android:text="guardar cambios"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horaInicioCrearCurso"
+        app:layout_constraintTop_toBottomOf="@+id/horaInicioModificarCurso"
         tools:ignore="TouchTargetSizeCheck" />
 
 </android.support.constraint.ConstraintLayout>
