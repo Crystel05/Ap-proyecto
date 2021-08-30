@@ -1,5 +1,6 @@
 package Adm_proyectos.approyecto.VISTA
 
+import API.RetroInstance
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.ADMIN.ADMIN.adminPricipal
 import android.content.Intent
@@ -10,6 +11,9 @@ import android.text.method.PasswordTransformationMethod
 import android.view.View
 import kotlinx.android.synthetic.main._log_in.*
 import kotlinx.android.synthetic.main._log_in.view.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class log_in : AppCompatActivity() {
 
@@ -31,6 +35,27 @@ class log_in : AppCompatActivity() {
             val admin = adminPricipal()
             val intent = Intent(this, admin::class.java)
             startActivity(intent)
+        }
+
+        pruebaB.setOnClickListener(){
+            buscarUsuario("1")
+        }
+
+    }
+
+    fun buscarUsuario(query: String) {
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetroInstance.api.getUsusarios(query)
+            val miUsuario = call.body()
+            runOnUiThread(){
+                if (call.isSuccessful) {
+//                    print(miUsuario?.get(0)?.nombre)
+                    prueba.text = miUsuario?.get(0)?.nombre
+                } else {
+                    print("Error! Conexion con el API Fallida")
+                }
+            }
         }
 
     }
