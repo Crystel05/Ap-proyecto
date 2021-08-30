@@ -32,15 +32,26 @@ class adminGdDetalles : Fragment() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         view.verListaDocente.setOnClickListener(){
             popUp()
+        }
+
+        view.modificarDocenteP.setOnClickListener(){
+            val modificar = adminGdModificar()
+            cambiarFragment(modificar)
         }
     }
 
     fun popUp(){
-
         val dialogo = popUpCursos()
         dialogo.show(activity!!.supportFragmentManager, "Prueba")
+    }
+
+    fun cambiarFragment(fragment: Fragment){
+        val transacion = activity!!.supportFragmentManager.beginTransaction()
+        transacion.replace(R.id.contenedor, fragment)
+        transacion.commit()
     }
 
 

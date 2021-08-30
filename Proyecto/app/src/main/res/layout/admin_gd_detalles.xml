@@ -167,7 +167,7 @@
             app:layout_constraintVertical_bias="0.4" />
 
         <Button
-            android:id="@+id/modificarDocente"
+            android:id="@+id/modificarDocenteP"
             android:layout_width="165dp"
             android:layout_height="wrap_content"
             android:text="modificar docente"
