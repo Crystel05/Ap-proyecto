@@ -16,12 +16,10 @@ import kotlinx.android.synthetic.main.pop_up_lista_cursos.*
 
 class adminGdDetalles : Fragment() {
 
-//    private lateinit var popUp : Dialog
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        popUp = Dialog(activity!!)
         val view = inflater.inflate(R.layout.admin_gd_detalles, container, false)
         val array = arguments?.getStringArray("datosDocente")
         val ced = array?.get(0)
@@ -34,20 +32,16 @@ class adminGdDetalles : Fragment() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        view.verListaDocente.setOnClickListener(){
-//            popUp()
-//        }
+        view.verListaDocente.setOnClickListener(){
+            popUp()
+        }
     }
 
-//    fun popUp(){
-//
-//        popUp.setContentView(R.layout.pop_up_lista_cursos)
-////        val cerrar = popUp.findViewById<ImageView>(R.id.cerrar)
-////        cerrar.setOnClickListener(){
-////            popUp.dismiss()
-////        }
-//        popUp.show()
-//    }
+    fun popUp(){
+
+        val dialogo = popUpCursos()
+        dialogo.show(activity!!.supportFragmentManager, "Prueba")
+    }
 
 
 }

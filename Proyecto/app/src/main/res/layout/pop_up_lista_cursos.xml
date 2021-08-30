@@ -3,196 +3,199 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:drawable/screen_background_light_transparent">
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="390dp"
-        android:foregroundGravity="center"
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="331dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.485">
 
-        <TableLayout
-            android:id="@+id/tableLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.496">
+        <TableRow
+            android:id="@+id/titulo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <TableRow
-                android:id="@+id/titulo"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/textView39"
+                android:layout_width="165dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="ID curso"
+                android:textColor="#000000"
+                android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/textView39"
-                    android:layout_width="196dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="ID curso"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
+            <TextView
+                android:id="@+id/textView38"
+                android:layout_width="165dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Nombre curso"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+        </TableRow>
 
-                <TextView
-                    android:id="@+id/textView38"
-                    android:layout_width="196dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Nombre curso"
-                    android:textColor="#000000"
-                    android:textSize="20sp" />
-            </TableRow>
+        <TableRow
+            android:id="@+id/col1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <TableRow
-                android:id="@+id/col1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/idp1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="ma1"
+                android:textColor="#000000"
+                android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/idp1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="ma1"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
+            <TextView
+                android:id="@+id/nombrep1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:gravity="right"
+                android:text="Matemáticas"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+        </TableRow>
 
-                <TextView
-                    android:id="@+id/nombrep1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:gravity="right"
-                    android:text="Matemáticas"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
-            </TableRow>
+        <TableRow
+            android:id="@+id/col2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <TableRow
-                android:id="@+id/col2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/idp2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="ci1"
+                android:textColor="#000000"
+                android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/idp2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="ci1"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
+            <TextView
+                android:id="@+id/nombrep2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:gravity="right"
+                android:text="Ciencias"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+        </TableRow>
 
-                <TextView
-                    android:id="@+id/nombrep2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:gravity="right"
-                    android:text="Ciencias"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
-            </TableRow>
+        <TableRow
+            android:id="@+id/col3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <TableRow
-                android:id="@+id/col3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/idp3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="ig1"
+                android:textColor="#000000"
+                android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/idp3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="ig1"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
+            <TextView
+                android:id="@+id/nombrep3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:gravity="right"
+                android:text="Inglés"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+        </TableRow>
 
-                <TextView
-                    android:id="@+id/nombrep3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:gravity="right"
-                    android:text="Inglés"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
-            </TableRow>
+        <TableRow
+            android:id="@+id/col4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <TableRow
-                android:id="@+id/col4"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/idp4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="li1"
+                android:textColor="#000000"
+                android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/idp4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="li1"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
+            <TextView
+                android:id="@+id/nombrep4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:gravity="right"
+                android:text="Literatura"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+        </TableRow>
+    </TableLayout>
 
-                <TextView
-                    android:id="@+id/nombrep4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:gravity="right"
-                    android:text="Literatura"
-                    android:textColor="#000000"
-                    android:textSize="18sp" />
-            </TableRow>
-        </TableLayout>
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="143dp"
+        android:layout_height="31dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout"
+        app:layout_constraintVertical_bias="0.168">
 
         <ImageView
-            android:id="@+id/cerrar"
+            android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
-            app:layout_constraintBottom_toTopOf="@+id/tableLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.955"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.529"
-            app:srcCompat="@drawable/cerrar" />
-
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="143dp"
-            android:layout_height="31dp"
-            android:layout_marginTop="1dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/flecha_adelante"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tableLayout"
-            app:layout_constraintVertical_bias="0.392">
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/flecha_atras"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/flecha_adelante" />
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/flecha_atras" />
-        </android.support.constraint.ConstraintLayout>
     </android.support.constraint.ConstraintLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="391dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="44dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="391dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="36dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+
 </android.support.constraint.ConstraintLayout>
