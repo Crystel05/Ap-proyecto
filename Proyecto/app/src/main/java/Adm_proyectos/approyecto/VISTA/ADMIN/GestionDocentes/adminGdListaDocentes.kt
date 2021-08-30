@@ -37,12 +37,11 @@ class adminGdListaDocentes : Fragment() {
         return view
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         view.agregarNuevoProfesor.setOnClickListener() {
-//            cambiarFragment(crearDocente)
+            cambiarFragment(crearDocente)
 
         }
         view.colum1.setOnClickListener(){

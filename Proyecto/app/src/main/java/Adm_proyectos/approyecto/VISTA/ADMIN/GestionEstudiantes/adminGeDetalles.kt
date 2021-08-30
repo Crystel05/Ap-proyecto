@@ -1,4 +1,4 @@
-package Adm_proyectos.approyecto.VISTA.ADMIN.GestionDocentes
+package Adm_proyectos.approyecto.VISTA.ADMIN.GestionEstudiantes
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -7,34 +7,34 @@ import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.ADMIN.popUpCursos
-import kotlinx.android.synthetic.main.admin_gd_detalles.view.*
+import kotlinx.android.synthetic.main.admin_ge_detalles.view.*
 
-class adminGdDetalles : Fragment() {
+class adminGeDetalles : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.admin_gd_detalles, container, false)
-        val array = arguments?.getStringArray("datosDocente")
+        val view = inflater.inflate(R.layout.admin_ge_detalles, container, false)
+        val array = arguments?.getStringArray("datosEstudiante")
         val ced = array?.get(0)
         val nomD = array?.get(1)
-        view.cedulaD.text = ced
-        view.nombreD.text = nomD
+        view.cedulaE.text = ced
+        view.nombreE.text = nomD
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.verListaDocente.setOnClickListener(){
+        view.verListaEstdiante.setOnClickListener(){
             popUp()
         }
 
-        view.modificarDocenteP.setOnClickListener(){
-            val modificar = adminGdModificar()
-            cambiarFragment(modificar)
-        }
+//        view.modificarDocenteP.setOnClickListener(){
+//            val modificar = adminGdModificar()
+//            cambiarFragment(modificar)
+//        }
     }
 
     fun popUp(){
@@ -47,6 +47,5 @@ class adminGdDetalles : Fragment() {
         transacion.replace(R.id.contenedor, fragment)
         transacion.commit()
     }
-
 
 }

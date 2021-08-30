@@ -1,20 +1,20 @@
-package Adm_proyectos.approyecto.VISTA.ADMIN.GestionDocentes
+package Adm_proyectos.approyecto.VISTA.ADMIN.GestionEstudiantes
 
-import Adm_proyectos.approyecto.R
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
+import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import Adm_proyectos.approyecto.R
 
-class popUpCursos: DialogFragment() {
+class adminGeModificar : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.pop_up_lista_cursos, container, false)
-
+        val view = inflater.inflate(R.layout.admin_ge_modificar, container, false)
         return view
     }
+
 }
