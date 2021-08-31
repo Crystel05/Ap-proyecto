@@ -9,4 +9,5 @@ import retrofit2.http.Path
 interface API_Calls {
     @GET("usuarios/{id}")
     suspend fun getUsusarios(@Path("id") id:String): Response<ArrayList<Usuario>>
+
 }

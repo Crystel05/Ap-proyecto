@@ -24,9 +24,7 @@ class MainTester {
                 print("Error! Conexion con el API Fallida")
             }
         }
-        
     }
-
 
 }
 
