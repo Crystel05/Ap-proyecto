@@ -8,6 +8,7 @@ import Adm_proyectos.approyecto.VISTA.ADMIN.GestionDocentes.adminGdListaDocentes
 import Adm_proyectos.approyecto.VISTA.ADMIN.GestionEstudiantes.adminGeDetalles
 import Adm_proyectos.approyecto.VISTA.ADMIN.GestionEstudiantes.adminGeListaEstudiantes
 import Adm_proyectos.approyecto.VISTA.INTERFACES.Comunicador
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.graphics.RenderEffect
 import android.graphics.Shader
@@ -25,6 +26,7 @@ import kotlinx.android.synthetic.main.admin_gc_lista_cursos.*
 class adminPricipal : AppCompatActivity(), Comunicador {
 
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout._admin_pricipal)
@@ -51,6 +53,10 @@ class adminPricipal : AppCompatActivity(), Comunicador {
             val cursos = adminAcListaCursos()
             cambiarFragment(cursos)
         }
+
+        val correo = intent.getStringExtra("CORREO")
+        val contrasenna = intent.getStringExtra("CONTRASENNA")
+        nombreUsuario.text = " $correo" //cambiar esto después
     }
 
     override fun enviarDatosCurso(id: String, nombre:String) {

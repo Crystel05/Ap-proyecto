@@ -29,9 +29,18 @@ class log_in : AppCompatActivity() {
 
         iniciarSesion.setOnClickListener() {
             val admin = adminPricipal()
-            val intent = Intent(this, admin::class.java)
-            startActivity(intent)
+            val correo = correoInicioSesion.text.toString()
+            val contrasenna = contrasenna.text.toString()
+            Intent(this, admin::class.java).also{
+                it.putExtra("CORREO", correo)
+                it.putExtra("CONTRASENNA", contrasenna)
+                startActivity(it)
+            }
+
+
+
         }
+
 
     }
 }

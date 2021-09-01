@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="Adm_proyectos.approyecto">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.APproyecto">
+        <activity
+            android:name=".VISTA.DOCENTE.docentePrincipal"
+            android:exported="true" />
         <activity
             android:name=".VISTA.ADMIN.ADMIN.adminPricipal"
             android:exported="true"

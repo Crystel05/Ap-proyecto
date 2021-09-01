@@ -4,7 +4,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".VISTA.ADMIN.AsignarCursos.adminAcListaEstudiantes">
+    tools:context=".VISTA.DOCENTE.docentesListaEstudiantes">
+
+    <TextView
+        android:id="@+id/textView40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:text="CURSO"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/idCursoDocentes3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView40"
+        app:layout_constraintStart_toEndOf="@+id/textView40"
+        app:layout_constraintTop_toTopOf="@+id/textView40" />
 
     <Button
         android:id="@+id/agregarEstudiantesAc"
@@ -28,7 +50,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listaEstudiantes"
-        app:layout_constraintVertical_bias="0.022"
+        app:layout_constraintVertical_bias="0.21"
         app:srcCompat="@drawable/flechas_tabla" />
 
     <TableLayout
@@ -41,7 +63,7 @@
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.241">
+        app:layout_constraintVertical_bias="0.422">
 
         <TableRow
             android:id="@+id/titulo"
@@ -311,9 +333,9 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/listaEstudiantes"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.607" />
+        app:layout_constraintVertical_bias="0.845" />
+
 
 </android.support.constraint.ConstraintLayout>
