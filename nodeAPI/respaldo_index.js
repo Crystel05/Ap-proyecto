@@ -3,14 +3,15 @@ var app = express();
 var bodyParser = require('body-parser');
 var pg = require('pg');
 const pool = require("./db")
-let port = process.env.port || 3000;
 
 app.use(express.json())
 
+const PORT = 8080;
+const HOST = '0.0.0.0';
 
- app.get('/', function(req, res){
+/* app.get('/', function(req, res){
     res.send('Hola Putitos!');
-}); 
+}); */
 
 app.get("/usuarios", async(req, res)=>{
     try{
@@ -37,5 +38,5 @@ app.get("/usuarios/:id", async(req, res)=>{
 
 });
 
-app.listen(5000);
-console.log('API running on port 5000')
+app.listen(PORT, HOST);
+console.log('API running on port 8080')
