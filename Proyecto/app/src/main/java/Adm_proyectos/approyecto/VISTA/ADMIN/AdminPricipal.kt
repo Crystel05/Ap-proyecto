@@ -9,19 +9,10 @@ import Adm_proyectos.approyecto.VISTA.ADMIN.GestionEstudiantes.adminGeDetalles
 import Adm_proyectos.approyecto.VISTA.ADMIN.GestionEstudiantes.adminGeListaEstudiantes
 import Adm_proyectos.approyecto.VISTA.INTERFACES.Comunicador
 import android.annotation.SuppressLint
-import android.app.Dialog
-import android.graphics.RenderEffect
-import android.graphics.Shader
-import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.annotation.RequiresApi
-import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
-import android.view.View
 import kotlinx.android.synthetic.main._admin_pricipal.*
-import kotlinx.android.synthetic.main._admin_pricipal.view.*
-import kotlinx.android.synthetic.main.admin_gc_lista_cursos.*
 
 class adminPricipal : AppCompatActivity(), Comunicador {
 

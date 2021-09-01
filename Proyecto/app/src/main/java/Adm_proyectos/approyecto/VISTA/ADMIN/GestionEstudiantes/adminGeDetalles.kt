@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.ADMIN.popUpCursos
+import android.widget.Toast
 import kotlinx.android.synthetic.main.admin_ge_detalles.view.*
 
 class adminGeDetalles : Fragment() {
@@ -16,6 +17,7 @@ class adminGeDetalles : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.admin_ge_detalles, container, false)
+
         val array = arguments?.getStringArray("datosEstudiante")
         val ced = array?.get(0)
         val nomD = array?.get(1)
@@ -31,10 +33,17 @@ class adminGeDetalles : Fragment() {
             popUp()
         }
 
-//        view.modificarDocenteP.setOnClickListener(){
-//            val modificar = adminGdModificar()
-//            cambiarFragment(modificar)
-//        }
+        view.modificarEstudianteE.setOnClickListener(){
+            val modificar = adminGeModificar()
+            cambiarFragment(modificar)
+        }
+
+        view.eliminarEstudiante.setOnClickListener(){
+            //eliminar
+            Toast.makeText(activity!!, "El estudiante fue eliminado con éxito", Toast.LENGTH_LONG).show()
+            val lista = adminGeListaEstudiantes()
+            cambiarFragment(lista)
+        }
     }
 
     fun popUp(){

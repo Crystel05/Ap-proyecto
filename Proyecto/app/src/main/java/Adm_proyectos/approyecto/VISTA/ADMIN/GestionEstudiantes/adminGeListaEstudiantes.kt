@@ -41,35 +41,35 @@ class adminGeListaEstudiantes : Fragment() {
 
         }
         view.colum1.setOnClickListener(){
-            comunicador.enviarDatosDocente(view.nomE1.text.toString(), view.grado1.text.toString())
+            comunicador.enviarDatosEstudiante(view.nomE1.text.toString(), view.grado1.text.toString())
         }
 
         view.colum2.setOnClickListener(){
-            comunicador.enviarDatosDocente(view.nomE2.text.toString(), view.grado2.text.toString())
+            comunicador.enviarDatosEstudiante(view.nomE2.text.toString(), view.grado2.text.toString())
         }
 
         view.colum3.setOnClickListener(){
-            comunicador.enviarDatosDocente(view.nomE3.text.toString(), view.grado3.text.toString())
+            comunicador.enviarDatosEstudiante(view.nomE3.text.toString(), view.grado3.text.toString())
         }
 
         view.colum4.setOnClickListener(){
-            comunicador.enviarDatosDocente(view.nomE4.text.toString(), view.grado4.text.toString())
+            comunicador.enviarDatosEstudiante(view.nomE4.text.toString(), view.grado4.text.toString())
         }
 
         view.colum5.setOnClickListener(){
-            comunicador.enviarDatosDocente(view.nomE5.text.toString(), view.grado5.text.toString())
+            comunicador.enviarDatosEstudiante(view.nomE5.text.toString(), view.grado5.text.toString())
         }
 
         view.colum6.setOnClickListener(){
-            comunicador.enviarDatosDocente(view.nomE6.text.toString(), view.grado6.text.toString())
+            comunicador.enviarDatosEstudiante(view.nomE6.text.toString(), view.grado6.text.toString())
         }
 
         view.colum7.setOnClickListener(){
-            comunicador.enviarDatosDocente(view.nomE7.text.toString(), view.grado7.text.toString())
+            comunicador.enviarDatosEstudiante(view.nomE7.text.toString(), view.grado7.text.toString())
         }
 
         view.colum8.setOnClickListener(){
-            comunicador.enviarDatosDocente(view.nomE8.text.toString(), view.grado8.text.toString())
+            comunicador.enviarDatosEstudiante(view.nomE8.text.toString(), view.grado8.text.toString())
         }
     }
 

@@ -31,14 +31,14 @@ class log_in : AppCompatActivity() {
             val admin = adminPricipal()
             val correo = correoInicioSesion.text.toString()
             val contrasenna = contrasenna.text.toString()
+            //if usuario admin
             Intent(this, admin::class.java).also{
                 it.putExtra("CORREO", correo)
                 it.putExtra("CONTRASENNA", contrasenna)
                 startActivity(it)
             }
-
-
-
+            //if usuario docente
+            //if usuario estudiante
         }
 
 

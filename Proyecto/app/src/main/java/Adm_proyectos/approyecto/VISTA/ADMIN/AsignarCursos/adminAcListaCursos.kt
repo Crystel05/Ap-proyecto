@@ -25,6 +25,7 @@ class adminAcListaCursos : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.admin_ac_lista_cursos, container, false)
+        comunicador = activity as Comunicador
         return view
     }
 
@@ -32,35 +33,35 @@ class adminAcListaCursos : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         view.columna1.setOnClickListener(){
-            comunicador.enviarDatosCurso(view.idAc1.text.toString(), view.nombreAc1.text.toString())
+            comunicador.enviarDatosCursoAc(view.idAc1.text.toString(), view.nombreAc1.text.toString())
         }
 
         view.columna2.setOnClickListener(){
-            comunicador.enviarDatosCurso(view.idAc2.text.toString(), view.nombreAc2.text.toString())
+            comunicador.enviarDatosCursoAc(view.idAc2.text.toString(), view.nombreAc2.text.toString())
         }
 
         view.columna3.setOnClickListener(){
-            comunicador.enviarDatosCurso(view.idAc3.text.toString(), view.nombreAc3.text.toString())
+            comunicador.enviarDatosCursoAc(view.idAc3.text.toString(), view.nombreAc3.text.toString())
         }
 
         view.columna4.setOnClickListener(){
-            comunicador.enviarDatosCurso(view.idAc4.text.toString(), view.nombreAc4.text.toString())
+            comunicador.enviarDatosCursoAc(view.idAc4.text.toString(), view.nombreAc4.text.toString())
         }
 
         view.columna5.setOnClickListener(){
-            comunicador.enviarDatosCurso(view.idAc5.text.toString(), view.nombreAc5.text.toString())
+            comunicador.enviarDatosCursoAc(view.idAc5.text.toString(), view.nombreAc5.text.toString())
         }
 
         view.columna6.setOnClickListener(){
-            comunicador.enviarDatosCurso(view.idAc6.text.toString(), view.nombreAc6.text.toString())
+            comunicador.enviarDatosCursoAc(view.idAc6.text.toString(), view.nombreAc6.text.toString())
         }
 
         view.columna7.setOnClickListener(){
-            comunicador.enviarDatosCurso(view.idAc7.text.toString(), view.nombreAc7.text.toString())
+            comunicador.enviarDatosCursoAc(view.idAc7.text.toString(), view.nombreAc7.text.toString())
         }
 
         view.columna8.setOnClickListener(){
-            comunicador.enviarDatosCurso(view.idAc8.text.toString(), view.nombreAc8.text.toString())
+            comunicador.enviarDatosCursoAc(view.idAc8.text.toString(), view.nombreAc8.text.toString())
         }
     }
 

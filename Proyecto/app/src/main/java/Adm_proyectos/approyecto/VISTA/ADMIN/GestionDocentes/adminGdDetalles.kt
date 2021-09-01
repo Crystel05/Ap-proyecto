@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.ADMIN.popUpCursos
+import android.widget.Toast
+import kotlinx.android.synthetic.main.admin_gd_detalles.*
 import kotlinx.android.synthetic.main.admin_gd_detalles.view.*
 
 class adminGdDetalles : Fragment() {
@@ -21,6 +23,7 @@ class adminGdDetalles : Fragment() {
         val nomD = array?.get(1)
         view.cedulaD.text = ced
         view.nombreD.text = nomD
+        view.ratingD.rating = 2.5F
         return view
     }
 
@@ -35,6 +38,12 @@ class adminGdDetalles : Fragment() {
             val modificar = adminGdModificar()
             cambiarFragment(modificar)
         }
+        eliminarDocente.setOnClickListener(){
+            Toast.makeText(activity!!, "El docente fue eliminado con éxito", Toast.LENGTH_LONG).show()
+            val listaDocentes = adminGdListaDocentes()
+            cambiarFragment(listaDocentes)
+        }
+
     }
 
     fun popUp(){

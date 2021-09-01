@@ -19,7 +19,7 @@ class adminAcDetalles : Fragment() {
         val array = arguments?.getStringArray("datosCursoAc")
         val id = array?.get(0)
         val nomAc = array?.get(1)
-        view.idCursoAc.text = id
+        view.idCursoAc.text = " " + id
         view.nombreCursoAc.text = nomAc
 
         view.asignarProfesor.setOnClickListener(){

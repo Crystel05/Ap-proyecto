@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
+import android.widget.Toast
+import kotlinx.android.synthetic.main.admin_gc_detalles.*
 import kotlinx.android.synthetic.main.admin_gc_detalles.view.*
 
 class admin_gc_detalles : Fragment() {
@@ -30,6 +32,12 @@ class admin_gc_detalles : Fragment() {
         view.modificarCurso.setOnClickListener(){
             val modificar = admin_gc_modificarCurso()
             cambiarFragment(modificar)
+        }
+
+        eliminarCurso.setOnClickListener(){
+            Toast.makeText(activity!!, "El curso fue eliminado con éxito", Toast.LENGTH_LONG).show()
+            val listaCursos = admin_gc_listaCursos()
+            cambiarFragment(listaCursos)
         }
     }
 

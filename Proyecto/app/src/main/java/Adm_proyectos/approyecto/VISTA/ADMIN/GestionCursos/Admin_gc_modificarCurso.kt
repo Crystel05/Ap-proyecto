@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import android.widget.ArrayAdapter
+import android.widget.Toast
+import kotlinx.android.synthetic.main.admin_gc_detalles.*
 import kotlinx.android.synthetic.main.admin_gc_modificar_curso.*
 
 class admin_gc_modificarCurso : Fragment() {
@@ -21,13 +23,26 @@ class admin_gc_modificarCurso : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        ArrayAdapter.createFromResource(
-            activity!!, R.array.ListaGrados,
-            R.layout.admin_gc_modificar_curso
-        ).also {
-            adapter -> adapter.setDropDownViewResource(R.layout.admin_gc_modificar_curso)
+        ArrayAdapter.createFromResource(activity!!, R.array.ListaGrados, R.layout.support_simple_spinner_dropdown_item).also {
+            adapter -> adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
             gradoModificarCurso.adapter = adapter
         }
+        ArrayAdapter.createFromResource(activity!!, R.array.diasSemana, R.layout.support_simple_spinner_dropdown_item).also {
+         adapter -> adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
+         diaModificarCurso.adapter = adapter
+        }
+        guardarCursoGCM.setOnClickListener(){
+            //guardar cambios
+            Toast.makeText(activity!!, "El curso fue guardado con éxito", Toast.LENGTH_LONG).show()
+            val listaCursos = admin_gc_listaCursos()
+            cambiarFragment(listaCursos)
+        }
+    }
+
+    fun cambiarFragment(fragment: Fragment){
+        val transacion = activity!!.supportFragmentManager.beginTransaction()
+        transacion.replace(R.id.contenedor, fragment)
+        transacion.commit()
     }
 
 }
