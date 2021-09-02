@@ -55,6 +55,7 @@ class adminGdDetalles : Fragment() {
         val transacion = activity!!.supportFragmentManager.beginTransaction()
         transacion.replace(R.id.contenedor, fragment)
         transacion.commit()
+
     }
 
 

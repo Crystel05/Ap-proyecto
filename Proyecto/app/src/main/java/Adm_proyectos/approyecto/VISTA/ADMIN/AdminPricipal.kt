@@ -1,5 +1,6 @@
 package Adm_proyectos.approyecto.VISTA.ADMIN.ADMIN
 
+import Adm_proyectos.approyecto.CONTROLADOR.controladorComponentesVista
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.ADMIN.AsignarCursos.adminAcDetalles
 import Adm_proyectos.approyecto.VISTA.ADMIN.AsignarCursos.adminAcListaCursos
@@ -48,6 +49,11 @@ class adminPricipal : AppCompatActivity(), Comunicador {
         val correo = intent.getStringExtra("CORREO")
         val contrasenna = intent.getStringExtra("CONTRASENNA")
         nombreUsuario.text = " $correo" //cambiar esto después
+
+        prueba.setOnClickListener(){
+            val cont = controladorComponentesVista()
+            cont.prueba(this, "1", prueba)
+        }
     }
 
     override fun enviarDatosCurso(id: String, nombre:String) {

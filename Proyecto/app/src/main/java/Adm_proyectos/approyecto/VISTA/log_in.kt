@@ -41,6 +41,5 @@ class log_in : AppCompatActivity() {
             //if usuario estudiante
         }
 
-
     }
 }

@@ -7,7 +7,7 @@ object RetroInstance {
 
     private val retrofit by lazy{
         Retrofit.Builder()
-            .baseUrl("http://localhost:5000/")
+            .baseUrl("http://nodejsclusters-47901-0.cloudclusters.net/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
