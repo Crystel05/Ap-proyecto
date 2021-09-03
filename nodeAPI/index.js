@@ -116,7 +116,7 @@ app.get("/cursos/info/:cod/:clase", async(req, res)=>{
 //Lista de todos los profesores
 app.get("/profesores", async(req, res)=>{
     try{
-        const usuarios = await pool.query("SELECT usuario.nombre, usuario.cedula FROM profesor INNER JOIN usuario ON profesor.\"usuarioId\" = usuario.\"ID\"");
+        const usuarios = await pool.query("SELECT usuario.nombre, usuario.nombre, usuario.cedula FROM profesor INNER JOIN usuario ON profesor.\"usuarioId\" = usuario.\"ID\"");
         res.json(usuarios.rows)
 
     }catch(err) {
@@ -140,18 +140,61 @@ app.get("/gradoId/:numGrad", async(req, res)=>{
 
 });
 
-
-//NO FUNCIONA
-app.post("/nuevoCurso", async(req, res)=>{
-    const { codigo } = req.params;
-    const { nombre } = req.params;
-    const { gradoId } = req.params;
-    const { diaSemana } = req.params;
-    const { horaInicio } = req.params;
-    const { horaFin } = req.params;
+//Conseguir detalles de un docente
+app.get("/profesores/:ced", async(req, res)=>{
+    const { ced } = req.params
     try{
+        const profesor = await pool.query("SELECT nombre, cedula, apellido, correo, calificacion FROM profesor INNER JOIN usuario ON profesor.\"usuarioId\" = usuario.\"ID\" WHERE cedula = $1" , [ced]);
+        res.json(profesor.rows)
 
-        const newCurso = await pool.query("INSERT INTO curso(codigo, nombre, \"gradoId\", \"diaSemana\", \"horaInicio\", \"horaFin\") VALUES($1, $2, $3, $4, $5, $6) RETURNING *", [codigo, nombre, gradoId, diaSemana, horaInicio, horaFin]);
+    }catch(err) {
+        console.error(err.message);
+
+    }
+
+});
+
+
+//Lista de todos los alumnos
+app.get("/estudiantes", async(req, res)=>{
+    try{
+        const estudiantes = await pool.query("SELECT usuario.nombre, usuario.nombre, grado.clase FROM estudiante INNER JOIN usuario ON estudiante.\"usuarioId\" = usuario.\"ID\" INNER JOIN grado ON estudiante.\"gradoId\" = grado.\"ID\"");
+        res.json(estudiantes.rows)
+
+    }catch(err) {
+        console.error(err.message);
+
+    }
+
+});
+
+
+//Conseguir detalles de un alumno
+app.get("/estudiantes/:nom/:apel", async(req, res)=>{
+    const { nom } = req.params
+    const { apel } = req.params
+    try{
+        const estudiante = await pool.query("SELECT nombre, cedula, apellido, clase FROM estudiante INNER JOIN usuario ON estudiante.\"usuarioId\" = usuario.\"ID\" INNER JOIN grado ON estudiante.\"gradoId\" = grado.\"ID\" WHERE nombre = $1 AND apellido = $2", [nom, apel]);
+        res.json(estudiante.rows)
+
+    }catch(err) {
+        console.error(err.message);
+
+    }
+
+})
+
+//Inserta nuevo curso
+app.get("/nuevoCurso/:codigo/:nombre/:gradoId/:diaSemana/:horaInicio/:horaFin", async(req, res)=>{
+    
+    try{
+        const { codigo } = req.params;
+        const { nombre } = req.params;
+        const { gradoId } = req.params;
+        const { diaSemana } = req.params;
+        const { horaInicio } = req.params;
+        const { horaFin } = req.params;
+        const newCurso = await pool.query("SELECT * FROM insertarcurso($1, $2, $3, $4, $5, $6)", [codigo, nombre, gradoId, diaSemana, horaInicio, horaFin]);
         res.json(newCurso.rows)
 
     }catch(err) {
@@ -161,25 +204,48 @@ app.post("/nuevoCurso", async(req, res)=>{
 
 });
 
-//Lista de todos los profesores
-// app.get("/nuevoCurso", async(req, res)=>{
-//     try{
-//         const { cod } = req.params;
-//         const { nom } = req.params;
-//         const { grad } = req.params;
-//         const { dia } = req.params;
-//         const { horaIn } = req.params;
-//         const { horaFin } = req.params;
+//Inserta nuevo profesor
+app.get("/nuevoDocente/:cedula/:nombre/:correo/:contra/:apellido", async(req, res)=>{
+    
+    try{
+        const { cedula } = req.params;
+        const { nombre } = req.params;
+        const { correo } = req.params;
+        const { contra } = req.params;
+        const { apellido } = req.params;
+        const newProfe = await pool.query("SELECT * FROM insertardocente($1, $2, $3, $4, $5)", [cedula,nombre,correo,contra,apellido]);
+        res.json(newProfe.rows)
 
-//         const newCurso = await pool.query("SELECT * FROM insertarCurso($1, $2, $3, $4, $5, $6)", [cod,nom,grad,dia,horaIn,horaFin]);
-//         res.json(newCurso.rows)
+    }catch(err) {
+        console.error(err.message);
 
-//     }catch(err) {
-//         console.error(err.message);
+    }
 
-//     }
+});
 
-// });
+
+//Inserta nuevo estudiante
+app.get("/nuevoAlumno/:cedula/:nombre/:correo/:contra/:apellido/:grado", async(req, res)=>{
+    
+    try{
+        const { cedula } = req.params;
+        const { nombre } = req.params;
+        const { correo } = req.params;
+        const { contra } = req.params;
+        const { apellido } = req.params;
+        const { grado } = req.params;
+        const newAlumno = await pool.query("SELECT * FROM insertaralumno($1, $2, $3, $4, $5, $6)", [cedula,nombre,correo,contra,apellido,grado]);
+        res.json(newAlumno.rows)
+
+    }catch(err) {
+        console.error(err.message);
+
+    }
+
+});
+
+
+
 
 app.listen(PORT, HOST);
 console.log('API running on port 8080')
