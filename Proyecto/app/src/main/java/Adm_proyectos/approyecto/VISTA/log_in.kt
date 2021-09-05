@@ -46,12 +46,12 @@ class log_in : AppCompatActivity() {
     fun buscarUsuario(query: String) {
 
         CoroutineScope(Dispatchers.IO).launch {
-            val call = RetroInstance.api.getUsusarios(query)
+            val call = RetroInstance.api.getUsusario(query)
             val miUsuario = call.body()
             runOnUiThread(){
                 if (call.isSuccessful) {
 //                    print(miUsuario?.get(0)?.nombre)
-                    prueba.text = miUsuario?.get(0)?.nombre
+//                    prueba.text = miUsuario?.get(0)?.nombre
                 } else {
                     print("Error! Conexion con el API Fallida")
                 }

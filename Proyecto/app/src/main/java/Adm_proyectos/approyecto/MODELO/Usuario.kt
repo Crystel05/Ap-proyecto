@@ -1,11 +1,11 @@
 package Adm_proyectos.approyecto.MODELO
 
-open class Usuario (nombre:String, apellidos:String, correo:String, cedula:Int, contrasenna:String) {
+open class Usuario (nombre:String = "", apellidos:String = "", correo:String = "", cedula:String = "", contrasenna:String = "") {
 
     var nombre: String
     var apellidos: String
     var correo: String
-    var cedula: Int
+    var cedula: String
     var contrasenna: String
 
     init {
