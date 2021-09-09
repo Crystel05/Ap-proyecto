@@ -14,7 +14,6 @@ class popUpCursos: DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.pop_up_lista_cursos, container, false)
-
         return view
     }
 }

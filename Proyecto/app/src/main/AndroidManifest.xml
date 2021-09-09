@@ -9,10 +9,16 @@
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.APproyecto">
+        android:theme="@style/Theme.APproyecto"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".VISTA.ESTUDIANTE.estudiantesPrincipal"
+            android:exported="true"
+            android:theme="@style/Theme.APproyecto.NoActionBar" />
         <activity
             android:name=".VISTA.DOCENTE.docentePrincipal"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.APproyecto.NoActionBar" />
         <activity
             android:name=".VISTA.ADMIN.ADMIN.adminPricipal"
             android:exported="true"

@@ -13,14 +13,12 @@ import kotlinx.android.synthetic.main.admin_gc_crear.view.*
 
 class admin_gc_crear : Fragment() {
 
-    private lateinit var vista: View
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        vista = inflater.inflate(R.layout.admin_gc_crear, container, false)
-        return vista
+        val view = inflater.inflate(R.layout.admin_gc_crear, container, false)
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -32,7 +30,7 @@ class admin_gc_crear : Fragment() {
             android.R.layout.simple_spinner_item
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            vista.gradoCrearCurso.adapter = adapter
+            view.gradoCrearCurso.adapter = adapter
         }
 
         ArrayAdapter.createFromResource(
@@ -41,7 +39,7 @@ class admin_gc_crear : Fragment() {
             android.R.layout.simple_spinner_item
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            vista.diaCrearCurso.adapter = adapter
+            view.diaCrearCurso.adapter = adapter
         }
 
         agregarCursoGC.setOnClickListener() {

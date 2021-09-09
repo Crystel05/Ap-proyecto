@@ -1,5 +1,6 @@
 package Adm_proyectos.approyecto.VISTA.ADMIN.GestionDocentes
 
+import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -8,11 +9,13 @@ import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.ADMIN.popUpCursos
 import android.widget.Toast
+import kotlinx.android.synthetic.main._admin_pricipal.view.*
 import kotlinx.android.synthetic.main.admin_gd_detalles.*
 import kotlinx.android.synthetic.main.admin_gd_detalles.view.*
 
 class adminGdDetalles : Fragment() {
 
+    private val controller = ControladorComponentesVista()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,12 +39,12 @@ class adminGdDetalles : Fragment() {
 
         view.modificarDocenteP.setOnClickListener(){
             val modificar = adminGdModificar()
-            cambiarFragment(modificar)
+            controller.cambiarFragment(modificar, view.contenedor, activity!!)
         }
         eliminarDocente.setOnClickListener(){
             Toast.makeText(activity!!, "El docente fue eliminado con éxito", Toast.LENGTH_LONG).show()
             val listaDocentes = adminGdListaDocentes()
-            cambiarFragment(listaDocentes)
+            controller.cambiarFragment(listaDocentes, view.contenedor, activity!!)
         }
 
     }
@@ -50,13 +53,4 @@ class adminGdDetalles : Fragment() {
         val dialogo = popUpCursos()
         dialogo.show(activity!!.supportFragmentManager, "Prueba")
     }
-
-    fun cambiarFragment(fragment: Fragment){
-        val transacion = activity!!.supportFragmentManager.beginTransaction()
-        transacion.replace(R.id.contenedor, fragment)
-        transacion.commit()
-
-    }
-
-
 }

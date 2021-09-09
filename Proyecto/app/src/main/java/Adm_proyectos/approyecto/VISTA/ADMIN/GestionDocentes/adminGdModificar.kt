@@ -1,5 +1,6 @@
 package Adm_proyectos.approyecto.VISTA.ADMIN.GestionDocentes
 
+import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -7,10 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import android.widget.Toast
+import kotlinx.android.synthetic.main._admin_pricipal.view.*
 import kotlinx.android.synthetic.main.admin_gd_modificar.*
 
 class adminGdModificar : Fragment() {
 
+    private val controller = ControladorComponentesVista()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,14 +29,8 @@ class adminGdModificar : Fragment() {
             //guardar cambios
             Toast.makeText(activity!!, "El docente fue modificado con éxito", Toast.LENGTH_LONG).show()
             val lista = adminGdListaDocentes()
-            cambiarFragment(lista)
+            controller.cambiarFragment(lista, view.contenedor, activity!!)
         }
-    }
-
-    fun cambiarFragment(fragment: Fragment){
-        val transacion = activity!!.supportFragmentManager.beginTransaction()
-        transacion.replace(R.id.contenedor, fragment)
-        transacion.commit()
     }
 
 }

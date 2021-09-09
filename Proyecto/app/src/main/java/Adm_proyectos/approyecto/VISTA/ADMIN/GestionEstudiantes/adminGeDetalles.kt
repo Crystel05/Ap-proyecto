@@ -1,5 +1,6 @@
 package Adm_proyectos.approyecto.VISTA.ADMIN.GestionEstudiantes
 
+import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -8,10 +9,12 @@ import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.ADMIN.popUpCursos
 import android.widget.Toast
+import kotlinx.android.synthetic.main._admin_pricipal.view.*
 import kotlinx.android.synthetic.main.admin_ge_detalles.view.*
 
 class adminGeDetalles : Fragment() {
 
+    private val controller = ControladorComponentesVista()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -23,6 +26,11 @@ class adminGeDetalles : Fragment() {
         val nomD = array?.get(1)
         view.cedulaE.text = ced
         view.nombreE.text = nomD
+        if (array?.get(2) == "2"){
+            view.modificarEstudianteE.visibility = View.INVISIBLE
+            view.eliminarEstudiante.visibility = View.INVISIBLE
+
+        }
         return view
     }
 
@@ -35,26 +43,19 @@ class adminGeDetalles : Fragment() {
 
         view.modificarEstudianteE.setOnClickListener(){
             val modificar = adminGeModificar()
-            cambiarFragment(modificar)
+            controller.cambiarFragment(modificar, view.contenedor, activity!!)
         }
 
         view.eliminarEstudiante.setOnClickListener(){
             //eliminar
             Toast.makeText(activity!!, "El estudiante fue eliminado con éxito", Toast.LENGTH_LONG).show()
             val lista = adminGeListaEstudiantes()
-            cambiarFragment(lista)
+            controller.cambiarFragment(lista, view.contenedor, activity!!)
         }
     }
 
     fun popUp(){
         val dialogo = popUpCursos()
-        dialogo.show(activity!!.supportFragmentManager, "Prueba")
+        dialogo.show(activity!!.supportFragmentManager, "Cursos estudiante")
     }
-
-    fun cambiarFragment(fragment: Fragment){
-        val transacion = activity!!.supportFragmentManager.beginTransaction()
-        transacion.replace(R.id.contenedor, fragment)
-        transacion.commit()
-    }
-
 }

@@ -13,7 +13,8 @@ class docenteEnviarNoticia : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.docente_enviar_noticia, container, false)
+        val view = inflater.inflate(R.layout.docente_enviar_noticia, container, false)
+        return view
     }
 
 }

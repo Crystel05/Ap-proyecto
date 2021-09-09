@@ -1,6 +1,6 @@
 package Adm_proyectos.approyecto.VISTA.ADMIN.ADMIN
 
-import Adm_proyectos.approyecto.CONTROLADOR.controladorComponentesVista
+import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.ADMIN.AsignarCursos.adminAcDetalles
 import Adm_proyectos.approyecto.VISTA.ADMIN.AsignarCursos.adminAcListaCursos
@@ -9,51 +9,43 @@ import Adm_proyectos.approyecto.VISTA.ADMIN.GestionDocentes.adminGdListaDocentes
 import Adm_proyectos.approyecto.VISTA.ADMIN.GestionEstudiantes.adminGeDetalles
 import Adm_proyectos.approyecto.VISTA.ADMIN.GestionEstudiantes.adminGeListaEstudiantes
 import Adm_proyectos.approyecto.VISTA.INTERFACES.Comunicador
-import android.annotation.SuppressLint
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import kotlinx.android.synthetic.main._admin_pricipal.*
 
 class adminPricipal : AppCompatActivity(), Comunicador {
 
-
-    @SuppressLint("SetTextI18n")
+    val controller = ControladorComponentesVista()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout._admin_pricipal)
 
         val listaCurso = admin_gc_listaCursos()
-        cambiarFragment(listaCurso)
+        controller.cambiarFragment(listaCurso, contenedor, this)
 
 
         adminGC.setOnClickListener(){
-            cambiarFragment(listaCurso)
+            controller.cambiarFragment(listaCurso, contenedor, this)
         }
 
         adminGD.setOnClickListener(){
             val listaDocentes = adminGdListaDocentes()
-            cambiarFragment(listaDocentes)
+            controller.cambiarFragment(listaDocentes, contenedor, this)
         }
 
         adminGE.setOnClickListener(){
             val listaEstudiantes = adminGeListaEstudiantes()
-            cambiarFragment(listaEstudiantes)
+            controller.cambiarFragment(listaEstudiantes, contenedor, this)
         }
 
         adminAC.setOnClickListener(){
             val cursos = adminAcListaCursos()
-            cambiarFragment(cursos)
+            controller.cambiarFragment(cursos, contenedor, this)
         }
 
         val correo = intent.getStringExtra("CORREO")
         val contrasenna = intent.getStringExtra("CONTRASENNA")
-        nombreUsuario.text = " $correo" //cambiar esto después
-
-        prueba.setOnClickListener(){
-            val cont = controladorComponentesVista()
-            cont.prueba(this, "1", prueba)
-        }
+        nombreUsuario.text = "$correo" //cambiar esto después
     }
 
     override fun enviarDatosCurso(id: String, nombre:String) {
@@ -104,7 +96,7 @@ class adminPricipal : AppCompatActivity(), Comunicador {
         val bundle = Bundle()
         bundle.putString("datosEstudiante", ced)
 
-        val datos = arrayOf(ced, nombre)
+        val datos = arrayOf(ced, nombre, "1")
         bundle.putStringArray("datosEstudiante", datos)
 
         val transaccion = this.supportFragmentManager.beginTransaction()
@@ -116,12 +108,10 @@ class adminPricipal : AppCompatActivity(), Comunicador {
     }
 
 
-    fun cambiarFragment(fragment: Fragment){
-        val transacion = supportFragmentManager.beginTransaction()
-        transacion.replace(R.id.contenedor, fragment)
-        transacion.commit()
-    }
-
-
+//    fun cambiarFragment(fragment: Fragment){
+//        val transacion = supportFragmentManager.beginTransaction()
+//        transacion.replace(R.id.contenedor, fragment)
+//        transacion.commit()
+//    }
 }
 

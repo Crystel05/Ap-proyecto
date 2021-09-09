@@ -10,14 +10,12 @@
         android:id="@+id/flechas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="68dp"
         android:foregroundGravity="center"
-        app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/listaCursos"
-        app:layout_constraintVertical_bias="0.022"
         app:srcCompat="@drawable/flechas_tabla" />
 
     <TableLayout
@@ -30,7 +28,7 @@
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.241">
+        app:layout_constraintVertical_bias="0.337">
 
         <TableRow
             android:id="@+id/titulo"
@@ -64,7 +62,7 @@
             tools:ignore="TouchTargetSizeCheck">
 
             <TextView
-                android:id="@+id/idAc1"
+                android:id="@+id/idDc1"
                 android:layout_width="167dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
@@ -74,7 +72,7 @@
                 android:textSize="17sp" />
 
             <TextView
-                android:id="@+id/nombreAc1"
+                android:id="@+id/nombreDc1"
                 android:layout_width="171dp"
                 android:layout_height="40dp"
                 android:layout_marginEnd="15dp"
@@ -93,7 +91,7 @@
             tools:ignore="TouchTargetSizeCheck">
 
             <TextView
-                android:id="@+id/idAc2"
+                android:id="@+id/idDc2"
                 android:layout_width="167dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
@@ -103,7 +101,7 @@
                 android:textSize="17sp" />
 
             <TextView
-                android:id="@+id/nombreAc2"
+                android:id="@+id/nombreDc2"
                 android:layout_width="176dp"
                 android:layout_height="40dp"
                 android:layout_marginEnd="15dp"
@@ -122,7 +120,7 @@
             tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck">
 
             <TextView
-                android:id="@+id/idAc3"
+                android:id="@+id/idDc3"
                 android:layout_width="167dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
@@ -132,7 +130,7 @@
                 android:textSize="17sp" />
 
             <TextView
-                android:id="@+id/nombreAc3"
+                android:id="@+id/nombreDc3"
                 android:layout_width="176dp"
                 android:layout_height="40dp"
                 android:layout_marginEnd="15dp"
@@ -151,7 +149,7 @@
             tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck">
 
             <TextView
-                android:id="@+id/idAc4"
+                android:id="@+id/idDc4"
                 android:layout_width="167dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
@@ -161,7 +159,7 @@
                 android:textSize="17sp" />
 
             <TextView
-                android:id="@+id/nombreAc4"
+                android:id="@+id/nombreDc4"
                 android:layout_width="177dp"
                 android:layout_height="40dp"
                 android:layout_marginEnd="15dp"
@@ -180,7 +178,7 @@
             tools:ignore="TouchTargetSizeCheck">
 
             <TextView
-                android:id="@+id/idAc5"
+                android:id="@+id/idDc5"
                 android:layout_width="167dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
@@ -190,7 +188,7 @@
                 android:textSize="17sp" />
 
             <TextView
-                android:id="@+id/nombreAc5"
+                android:id="@+id/nombreDc5"
                 android:layout_width="177dp"
                 android:layout_height="40dp"
                 android:layout_marginEnd="15dp"
@@ -209,7 +207,7 @@
             tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck">
 
             <TextView
-                android:id="@+id/idAc6"
+                android:id="@+id/idDc6"
                 android:layout_width="167dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
@@ -219,7 +217,7 @@
                 android:textSize="17sp" />
 
             <TextView
-                android:id="@+id/nombreAc6"
+                android:id="@+id/nombreDc6"
                 android:layout_width="177dp"
                 android:layout_height="40dp"
                 android:layout_marginEnd="15dp"
@@ -238,7 +236,7 @@
             tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck">
 
             <TextView
-                android:id="@+id/idAc7"
+                android:id="@+id/idDc7"
                 android:layout_width="167dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
@@ -248,7 +246,7 @@
                 android:textSize="17sp" />
 
             <TextView
-                android:id="@+id/nombreAc7"
+                android:id="@+id/nombreDc7"
                 android:layout_width="177dp"
                 android:layout_height="40dp"
                 android:layout_marginEnd="15dp"
@@ -267,7 +265,7 @@
             tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck">
 
             <TextView
-                android:id="@+id/idAc8"
+                android:id="@+id/idDc8"
                 android:layout_width="167dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
@@ -277,7 +275,7 @@
                 android:textSize="17sp" />
 
             <TextView
-                android:id="@+id/nombreAc8"
+                android:id="@+id/nombreDc8"
                 android:layout_width="177dp"
                 android:layout_height="40dp"
                 android:layout_marginEnd="15dp"
@@ -295,7 +293,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Lista de cursos activos"
+        android:text="Lista de cursos"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/listaCursos"
@@ -303,7 +301,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.607" />
+        app:layout_constraintVertical_bias="0.571" />
 
 
 </android.support.constraint.ConstraintLayout>
