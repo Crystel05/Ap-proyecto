@@ -80,7 +80,6 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
                 android:gravity="left"
-                android:text="Fabrizio Ferreto"
                 android:textColor="#040404"
                 android:textSize="17sp" />
 
@@ -91,7 +90,6 @@
                 android:layout_marginEnd="15dp"
                 android:width="167dp"
                 android:gravity="right"
-                android:text="11111111"
                 android:textColor="#090909"
                 android:textSize="17sp" />
         </TableRow>
@@ -109,7 +107,6 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
                 android:gravity="left"
-                android:text="Crystel Montero"
                 android:textColor="#040404"
                 android:textSize="17sp" />
 
@@ -120,7 +117,6 @@
                 android:layout_marginEnd="15dp"
                 android:width="167dp"
                 android:gravity="right"
-                android:text="22222222"
                 android:textColor="#090909"
                 android:textSize="17sp" />
         </TableRow>
@@ -138,7 +134,6 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
                 android:gravity="left"
-                android:text="Edgar Melendez"
                 android:textColor="#040404"
                 android:textSize="17sp" />
 
@@ -149,7 +144,6 @@
                 android:layout_marginEnd="15dp"
                 android:width="167dp"
                 android:gravity="right"
-                android:text="3333333"
                 android:textColor="#090909"
                 android:textSize="17sp" />
         </TableRow>
@@ -167,7 +161,6 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
                 android:gravity="left"
-                android:text="Keyla Rojas"
                 android:textColor="#040404"
                 android:textSize="17sp" />
 
@@ -178,7 +171,6 @@
                 android:layout_marginEnd="15dp"
                 android:width="167dp"
                 android:gravity="right"
-                android:text="44444444"
                 android:textColor="#090909"
                 android:textSize="17sp" />
         </TableRow>
@@ -196,7 +188,6 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
                 android:gravity="left"
-                android:text="Conrad Umaña"
                 android:textColor="#040404"
                 android:textSize="17sp" />
 
@@ -207,7 +198,6 @@
                 android:layout_marginEnd="15dp"
                 android:width="167dp"
                 android:gravity="right"
-                android:text="55555555"
                 android:textColor="#090909"
                 android:textSize="17sp" />
         </TableRow>
@@ -225,7 +215,6 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
                 android:gravity="left"
-                android:text="María Madrigal"
                 android:textColor="#040404"
                 android:textSize="17sp" />
 
@@ -236,7 +225,6 @@
                 android:layout_marginEnd="15dp"
                 android:width="167dp"
                 android:gravity="right"
-                android:text="66666666"
                 android:textColor="#090909"
                 android:textSize="17sp" />
         </TableRow>
@@ -254,7 +242,6 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
                 android:gravity="left"
-                android:text="Luis Perez"
                 android:textColor="#040404"
                 android:textSize="17sp" />
 
@@ -265,7 +252,6 @@
                 android:layout_marginEnd="15dp"
                 android:width="167dp"
                 android:gravity="right"
-                android:text="77777777"
                 android:textColor="#090909"
                 android:textSize="17sp" />
         </TableRow>
@@ -283,7 +269,6 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
                 android:gravity="left"
-                android:text="Daniela Solís"
                 android:textColor="#040404"
                 android:textSize="17sp" />
 
@@ -294,7 +279,6 @@
                 android:layout_marginEnd="15dp"
                 android:width="167dp"
                 android:gravity="right"
-                android:text="88888888"
                 android:textColor="#090909"
                 android:textSize="17sp" />
         </TableRow>

@@ -1,5 +1,7 @@
 package Adm_proyectos.approyecto.VISTA.ADMIN.AsignarCursos
 
+import Adm_proyectos.approyecto.CONTROLADOR.ControladorAdmin
+import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -11,9 +13,12 @@ import android.widget.TableRow
 import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.admin_ac_lista_docentes.*
+import kotlinx.android.synthetic.main.admin_ac_lista_docentes.view.*
 
 class adminAcListaDocentes : Fragment() {
 
+    private val controller = ControladorAdmin()
+    private val cont = ControladorComponentesVista()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,18 +30,16 @@ class adminAcListaDocentes : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val listaCeds = listOf<TextView>(view.cedulaAcD1, view.cedulaAcD2, view.cedulaAcD3, view.cedulaAcD4,
+            view.cedulaAcD5, view.cedulaAcD6, view.cedulaAcD7, view.cedulaAcD8)
+        val listaNoms = listOf<TextView>(view.nombreAcD1, view.nombreAcD2, view.nombreAcD3, view.nombreAcD4,
+            view.nombreAcD5, view.nombreAcD6, view.nombreAcD7, view.nombreAcD8)
+
         var nombreSelec: TextView = nombreAcD1
         var cedulaSelec: TextView = cedulaAcD1
+        val columnas = listOf<TableRow>(view.colum1, view.colum2, view.colum3, view.colum4, view.colum5, view.colum6, view.colum7, view.colum8)
 
-        val columnas = ArrayList<TableRow>()
-        columnas.add(colum1)
-        columnas.add(colum2)
-        columnas.add(colum3)
-        columnas.add(colum4)
-        columnas.add(colum5)
-        columnas.add(colum6)
-        columnas.add(colum7)
-        columnas.add(colum8)
+        controller.llenarListaDocentes(listaCeds, listaNoms)
 
         colum1.setOnClickListener(){
             colum1.setBackgroundColor(Color.parseColor("#FF69DCCB"))
@@ -100,11 +103,12 @@ class adminAcListaDocentes : Fragment() {
             //Usar datos
             Toast.makeText(activity!!, "El docente fue seleccionado con éxito", Toast.LENGTH_LONG).show()
             columnaSeleccionada(columnas, null)
-
+            val detalles = adminAcDetalles()
+            cont.cambiarFragment(detalles, R.id.contenedor, activity!!)
         }
     }
 
-    fun columnaSeleccionada(columnas:ArrayList<TableRow>, columnaActual: TableRow?){
+    fun columnaSeleccionada(columnas:List<TableRow>, columnaActual: TableRow?){
         for (colum in columnas) {
             if (colum != columnaActual)
                 colum.setBackgroundColor(Color.parseColor("#FFFFFFFF"))

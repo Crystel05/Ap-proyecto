@@ -4,5 +4,6 @@ interface Comunicador {
     fun enviarDatosCurso (id: String, nombre: String)
     fun enviarDatosCursoAc (id: String, nombre: String)
     fun enviarDatosDocente(ced: String, nombre:String)
+    fun enviarDatosDocente(est: Boolean)
     fun enviarDatosEstudiante(ced: String, nombre: String)
 }

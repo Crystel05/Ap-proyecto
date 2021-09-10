@@ -29,7 +29,7 @@ class adminGdModificar : Fragment() {
             //guardar cambios
             Toast.makeText(activity!!, "El docente fue modificado con éxito", Toast.LENGTH_LONG).show()
             val lista = adminGdListaDocentes()
-            controller.cambiarFragment(lista, view.contenedor, activity!!)
+            controller.cambiarFragment(lista, R.id.contenedor, activity!!)
         }
     }
 

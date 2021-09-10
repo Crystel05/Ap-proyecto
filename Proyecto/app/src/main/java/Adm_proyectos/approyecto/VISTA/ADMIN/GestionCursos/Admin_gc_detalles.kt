@@ -34,13 +34,13 @@ class admin_gc_detalles : Fragment() {
 
         view.modificarCurso.setOnClickListener(){
             val modificar = admin_gc_modificarCurso()
-            controller.cambiarFragment(modificar, view.contenedor, activity!!)
+            controller.cambiarFragment(modificar, R.id.contenedor, activity!!)
         }
 
         eliminarCurso.setOnClickListener(){
             Toast.makeText(activity!!, "El curso fue eliminado con éxito", Toast.LENGTH_LONG).show()
             val listaCursos = admin_gc_listaCursos()
-            controller.cambiarFragment(listaCursos, view.contenedor, activity!!)
+            controller.cambiarFragment(listaCursos, R.id.contenedor, activity!!)
         }
     }
 

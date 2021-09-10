@@ -21,26 +21,26 @@ class adminPricipal : AppCompatActivity(), Comunicador {
         setContentView(R.layout._admin_pricipal)
 
         val listaCurso = admin_gc_listaCursos()
-        controller.cambiarFragment(listaCurso, contenedor, this)
+        controller.cambiarFragment(listaCurso, R.id.contenedor, this)
 
 
         adminGC.setOnClickListener(){
-            controller.cambiarFragment(listaCurso, contenedor, this)
+            controller.cambiarFragment(listaCurso, R.id.contenedor, this)
         }
 
         adminGD.setOnClickListener(){
             val listaDocentes = adminGdListaDocentes()
-            controller.cambiarFragment(listaDocentes, contenedor, this)
+            controller.cambiarFragment(listaDocentes, R.id.contenedor, this)
         }
 
         adminGE.setOnClickListener(){
             val listaEstudiantes = adminGeListaEstudiantes()
-            controller.cambiarFragment(listaEstudiantes, contenedor, this)
+            controller.cambiarFragment(listaEstudiantes, R.id.contenedor, this)
         }
 
         adminAC.setOnClickListener(){
             val cursos = adminAcListaCursos()
-            controller.cambiarFragment(cursos, contenedor, this)
+            controller.cambiarFragment(cursos, R.id.contenedor, this)
         }
 
         val correo = intent.getStringExtra("CORREO")
@@ -92,6 +92,10 @@ class adminPricipal : AppCompatActivity(), Comunicador {
 
     }
 
+    override fun enviarDatosDocente(est: Boolean) {
+        TODO("Not yet implemented")
+    }
+
     override fun enviarDatosEstudiante(ced: String, nombre: String) {
         val bundle = Bundle()
         bundle.putString("datosEstudiante", ced)
@@ -107,11 +111,5 @@ class adminPricipal : AppCompatActivity(), Comunicador {
         transaccion.commit()
     }
 
-
-//    fun cambiarFragment(fragment: Fragment){
-//        val transacion = supportFragmentManager.beginTransaction()
-//        transacion.replace(R.id.contenedor, fragment)
-//        transacion.commit()
-//    }
 }
 

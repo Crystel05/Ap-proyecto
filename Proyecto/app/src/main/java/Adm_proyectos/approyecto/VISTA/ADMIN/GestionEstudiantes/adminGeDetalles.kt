@@ -22,11 +22,11 @@ class adminGeDetalles : Fragment() {
         val view = inflater.inflate(R.layout.admin_ge_detalles, container, false)
 
         val array = arguments?.getStringArray("datosEstudiante")
-        val ced = array?.get(0)
-        val nomD = array?.get(1)
+        val ced = array?.get(1)
+        val nomD = array?.get(0)
         view.cedulaE.text = ced
         view.nombreE.text = nomD
-        if (array?.get(2) == "2"){
+        if (array?.get(2) == "1"){
             view.modificarEstudianteE.visibility = View.INVISIBLE
             view.eliminarEstudiante.visibility = View.INVISIBLE
 
@@ -43,14 +43,14 @@ class adminGeDetalles : Fragment() {
 
         view.modificarEstudianteE.setOnClickListener(){
             val modificar = adminGeModificar()
-            controller.cambiarFragment(modificar, view.contenedor, activity!!)
+            controller.cambiarFragment(modificar, R.id.contenedor, activity!!)
         }
 
         view.eliminarEstudiante.setOnClickListener(){
             //eliminar
             Toast.makeText(activity!!, "El estudiante fue eliminado con éxito", Toast.LENGTH_LONG).show()
             val lista = adminGeListaEstudiantes()
-            controller.cambiarFragment(lista, view.contenedor, activity!!)
+            controller.cambiarFragment(lista, R.id.contenedor, activity!!)
         }
     }
 

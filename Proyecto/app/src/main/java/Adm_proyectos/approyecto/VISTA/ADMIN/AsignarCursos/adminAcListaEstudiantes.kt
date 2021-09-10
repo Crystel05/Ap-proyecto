@@ -1,5 +1,7 @@
 package Adm_proyectos.approyecto.VISTA.ADMIN.AsignarCursos
 
+import Adm_proyectos.approyecto.CONTROLADOR.ControladorAdmin
+import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -8,16 +10,16 @@ import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import android.graphics.Color
 import android.widget.TableRow
+import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.admin_ac_lista_estudiantes.*
-import kotlinx.android.synthetic.main.admin_ac_lista_estudiantes.agregarEstudiantesAc
-import kotlinx.android.synthetic.main.admin_ac_lista_estudiantes.gradoAcE1
-import kotlinx.android.synthetic.main.admin_ac_lista_estudiantes.nomAcE1
-import kotlinx.android.synthetic.main.admin_ac_lista_estudiantes.nomAcE2
+import kotlinx.android.synthetic.main.admin_ac_lista_estudiantes.view.*
 
 
 class adminAcListaEstudiantes : Fragment() {
 
+    val controller = ControladorAdmin()
+    val cont = ControladorComponentesVista()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,24 +32,23 @@ class adminAcListaEstudiantes : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val clickeada = ArrayList<Int>()
-        clickeada.add(0)
-        clickeada.add(0)
-        clickeada.add(0)
-        clickeada.add(0)
-        clickeada.add(0)
-        clickeada.add(0)
-        clickeada.add(0)
-        clickeada.add(0)
+        val click = listOf(0, 0, 0, 0, 0, 0, 0, 0)
+        clickeada.addAll(click)
+
+        val listaGrados = listOf<TextView>(view.gradoAcE1, view.gradoAcE2, view.gradoAcE3, view.gradoAcE4,
+            view.gradoAcE5, view.gradoAcE6, view.gradoAcE7, view.gradoAcE8)
+        val listaNombres = listOf<TextView>(view.nomAcE1, view.nomAcE2, view.nomAcE3, view.nomAcE4,
+            view.nomAcE5, view.nomAcE6, view.nomAcE7, view.nomAcE8)
+
+        controller.llenarListasEstudiantes(listaNombres, listaGrados)
 
         val columnas = ArrayList<String>()
-        columnas.add(nomAcE1.text.toString()+"_"+gradoAcE1.text.toString())
-        columnas.add(nomAcE2.text.toString()+"_"+gradoAcE2.text.toString())
-        columnas.add(nomAcE3.text.toString()+"_"+gradoAcE3.text.toString())
-        columnas.add(nomAcE4.text.toString()+"_"+gradoAcE4.text.toString())
-        columnas.add(nomAcE5.text.toString()+"_"+gradoAcE5.text.toString())
-        columnas.add(nomAcE6.text.toString()+"_"+gradoAcE6.text.toString())
-        columnas.add(nomAcE7.text.toString()+"_"+gradoAcE7.text.toString())
-        columnas.add(nomAcE8.text.toString()+"_"+gradoAcE8.text.toString())
+        val cols = listOf(nomAcE1.text.toString()+"_"+gradoAcE1.text.toString(), nomAcE2.text.toString()+"_"+gradoAcE2.text.toString(), nomAcE3.text.toString()+"_"+gradoAcE3.text.toString(),
+            nomAcE4.text.toString()+"_"+gradoAcE4.text.toString(), nomAcE5.text.toString()+"_"+gradoAcE5.text.toString(), nomAcE6.text.toString()+"_"+gradoAcE6.text.toString(),
+            nomAcE7.text.toString()+"_"+gradoAcE7.text.toString(), nomAcE8.text.toString()+"_"+gradoAcE8.text.toString())
+        columnas.addAll(cols)
+
+
 
         colum1.setOnClickListener(){
             seleccionar(clickeada, 0, colum1)
@@ -92,6 +93,8 @@ class adminAcListaEstudiantes : Fragment() {
                 else
                     i+=1
             }
+            val detalles = adminAcDetalles()
+            cont.cambiarFragment(detalles, R.id.contenedor, activity!!)
             Toast.makeText(activity!!, "Los estudiantes fueron agregados al curso con éxito", Toast.LENGTH_LONG).show()
         }
     }

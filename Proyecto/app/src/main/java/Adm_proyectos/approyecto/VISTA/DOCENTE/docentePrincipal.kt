@@ -19,7 +19,7 @@ class docentePrincipal : AppCompatActivity(), Comunicador {
         setContentView(R.layout._docente_principal)
 
         val listaCursos = docenteListaCursos()
-        controller.cambiarFragment(listaCursos, contenedorDocente, this)
+        controller.cambiarFragment(listaCursos, R.id.contenedorDocente, this)
     }
 
     override fun enviarDatosCurso(id: String, nombre: String) {
@@ -36,11 +36,16 @@ class docentePrincipal : AppCompatActivity(), Comunicador {
         transaccion.commit()
     }
 
+    //tratar de cambiar después
     override fun enviarDatosCursoAc(id: String, nombre: String) {
         TODO("Not yet implemented")
     }
 
     override fun enviarDatosDocente(ced: String, nombre: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun enviarDatosDocente(est: Boolean) {
         TODO("Not yet implemented")
     }
 

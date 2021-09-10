@@ -37,7 +37,7 @@ class admin_gc_modificarCurso : Fragment() {
             //guardar cambios
             Toast.makeText(activity!!, "El curso fue guardado con éxito", Toast.LENGTH_LONG).show()
             val listaCursos = admin_gc_listaCursos()
-            controller.cambiarFragment(listaCursos, view.contenedor, activity!!)
+            controller.cambiarFragment(listaCursos, R.id.contenedor, activity!!)
         }
     }
 }

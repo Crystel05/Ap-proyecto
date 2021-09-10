@@ -1,5 +1,6 @@
 package Adm_proyectos.approyecto.VISTA.ADMIN.AsignarCursos
 
+import Adm_proyectos.approyecto.CONTROLADOR.ControladorAdmin
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -7,19 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.INTERFACES.Comunicador
+import android.widget.TableRow
+import android.widget.TextView
 import kotlinx.android.synthetic.main.admin_ac_lista_cursos.view.*
-import kotlinx.android.synthetic.main.admin_gc_lista_cursos.view.columna1
-import kotlinx.android.synthetic.main.admin_gc_lista_cursos.view.columna2
-import kotlinx.android.synthetic.main.admin_gc_lista_cursos.view.columna3
-import kotlinx.android.synthetic.main.admin_gc_lista_cursos.view.columna4
-import kotlinx.android.synthetic.main.admin_gc_lista_cursos.view.columna5
-import kotlinx.android.synthetic.main.admin_gc_lista_cursos.view.columna6
-import kotlinx.android.synthetic.main.admin_gc_lista_cursos.view.columna7
-import kotlinx.android.synthetic.main.admin_gc_lista_cursos.view.columna8
+
 class adminAcListaCursos : Fragment() {
 
     private lateinit var comunicador: Comunicador
-
+    private val controller = ControladorAdmin()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,6 +27,13 @@ class adminAcListaCursos : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val listaIds = listOf<TextView>(view.idAc1, view.idAc2, view.idAc3, view.idAc4,
+            view.idAc5, view.idAc6, view.idAc7, view.idAc8)
+        val listaNoms = listOf<TextView>(view.nombreAc1, view.nombreAc2, view.nombreAc3, view.nombreAc4,
+            view.nombreAc5, view.nombreAc6, view.nombreAc7, view.nombreAc8)
+
+        controller.llenarListasCursos(listaIds, listaNoms)
 
         view.columna1.setOnClickListener(){
             comunicador.enviarDatosCursoAc(view.idAc1.text.toString(), view.nombreAc1.text.toString())

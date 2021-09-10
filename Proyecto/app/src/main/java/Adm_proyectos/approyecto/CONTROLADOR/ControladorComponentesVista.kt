@@ -28,9 +28,9 @@ class ControladorComponentesVista {
 //        }
 //    }
 
-    fun cambiarFragment(fragment: Fragment, contenedor: FrameLayout, activity: FragmentActivity){
+    fun cambiarFragment(fragment: Fragment, id:Int, activity: FragmentActivity){
         val transacion = (activity).supportFragmentManager.beginTransaction()
-        transacion.replace(contenedor.id, fragment)
+        transacion.replace(id, fragment)
         transacion.commit()
     }
 }
