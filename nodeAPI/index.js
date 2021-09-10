@@ -345,5 +345,59 @@ app.get("/asignarAlumno/:nombre/:apellido/:codigo/:grado", async(req, res)=>{
 });
 
 
+//Conseguir detalles de un alumno, ENTRADAS: cedula SALIDA: detalles del alumno
+app.get("/estudiantesCed/:ced", async(req, res)=>{
+    const { ced } = req.params
+    try{
+        const estudiante = await pool.query("SELECT nombre, cedula, apellido, clase FROM estudiante INNER JOIN usuario ON estudiante.\"usuarioId\" = usuario.\"ID\" INNER JOIN grado ON estudiante.\"gradoId\" = grado.\"ID\" WHERE cedula = $1", [ced]);
+        res.json(estudiante.rows)
+
+    }catch(err) {
+        console.error(err.message);
+
+    }
+
+})
+
+
+//Crea una nueva tarea para un curso, ENTRADAS: Se ven abajo SALIDA: numero de resultado(0 si salio bien)
+app.get("/nuevaTarea/:codigo/:clase/:codtarea/:titulo/:contenido/:fecha", async(req, res)=>{
+    const { codigo } = req.params
+    const { clase } = req.params
+    const { codtarea } = req.params
+    const { titulo } = req.params
+    const { contenido } = req.params
+    const { fecha } = req.params
+    try{
+        const tarea = await pool.query("SELECT * FROM insertartarea($1, $2, $3, $4, $5, $6)", [codigo, clase, titulo, contenido, codtarea, fecha]);
+        res.json(tarea.rows)
+
+    }catch(err) {
+        console.error(err.message);
+
+    }
+
+})
+
+
+//Crea una nueva noticia para un curso, ENTRADAS: Se ven abajo SALIDA: numero de resultado(0 si salio bien)
+app.get("/nuevaNoticia/:codigo/:clase/:titulo/:contenido/:fecha", async(req, res)=>{
+    const { codigo } = req.params
+    const { clase } = req.params
+    const { titulo } = req.params
+    const { contenido } = req.params
+    const { fecha } = req.params
+    try{
+        const tarea = await pool.query("SELECT * FROM insertarnoticia($1, $2, $3, $4, $5)", [codigo, clase, titulo, contenido, fecha]);
+        res.json(tarea.rows)
+
+    }catch(err) {
+        console.error(err.message);
+
+    }
+
+})
+
+
 app.listen(PORT, HOST);
 console.log('API running on port 8080')
