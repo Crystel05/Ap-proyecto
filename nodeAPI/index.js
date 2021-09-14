@@ -184,6 +184,36 @@ app.get("/estudiantes/:nom/:apel", async(req, res)=>{
 
 })
 
+//Lista de estudiantes en una clase, ENTRADAS: clase y codigo del curso SALIDA: Lista de estudiantes
+app.get("/estudiantesCur/:codigo/:clase", async(req, res)=>{
+    const { codigo } = req.params
+    const { clase } = req.params
+    try{
+        const alumno = await pool.query("SELECT usuario.nombre, apellido, cedula FROM \"cursoXestudiante\" INNER JOIN estudiante ON estudiante.\"ID\" = \"estudianteId\" INNER JOIN usuario ON usuario.\"ID\"= \"usuarioId\" INNER JOIN curso ON curso.\"ID\" = \"cursoId\" INNER JOIN grado ON grado.\"ID\"= curso.\"gradoId\" WHERE curso.codigo = $1 AND grado.clase = $2", [codigo, clase]);
+        res.json(alumno.rows)
+
+    }catch(err) {
+        console.error(err.message);
+
+    }
+
+})
+
+//Lista de profesores en una clase, ENTRADAS: clase y codigo del curso SALIDA: Lista de profesores
+app.get("/profesoresCur/:codigo/:clase", async(req, res)=>{
+    const { codigo } = req.params
+    const { clase } = req.params
+    try{
+        const profesor = await pool.query("SELECT usuario.nombre, apellido, cedula, calificacion, correo FROM \"cursoXprofesor\" INNER JOIN profesor ON profesor.\"ID\" = \"profesorId\" INNER JOIN usuario ON usuario.\"ID\"= \"usuarioId\" INNER JOIN curso ON curso.\"ID\" = \"cursoId\" INNER JOIN grado ON grado.\"ID\"= curso.\"gradoId\" WHERE curso.codigo = $1 AND grado.clase = $2", [codigo, clase]);
+        res.json(profesor.rows)
+
+    }catch(err) {
+        console.error(err.message);
+
+    }
+
+})
+
 //Inserta nuevo curso, ENTRADAS: se ven abajo SALIDA: numero de resultado(0 si salio bien)
 app.get("/nuevoCurso/:codigo/:nombre/:gradoId/:diaSemana/:horaInicio/:horaFin", async(req, res)=>{
     
@@ -397,6 +427,71 @@ app.get("/nuevaNoticia/:codigo/:clase/:titulo/:contenido/:fecha", async(req, res
     }
 
 })
+
+
+//Lista de noticias de un curso, ENTRADAS: codigo y grado del curso SALIDA: Lista de noticias
+app.get("/noticias/:codigo/:clase", async(req, res)=>{
+    const { codigo } = req.params
+    const { clase } = req.params
+    try{
+        const noticia = await pool.query("SELECT * FROM noticia INNER JOIN curso ON curso.\"ID\" = \"cursoId\" INNER JOIN grado ON grado.\"ID\" = \"gradoId\" WHERE codigo = $1 AND clase = $2", [codigo, clase]);
+        res.json(noticia.rows)
+
+    }catch(err) {
+        console.error(err.message);
+
+    }
+
+})
+
+
+//Lista de tareas de un curso, ENTRADAS: codigo y grado del curso SALIDA: Lista de tareas
+app.get("/tareas/:codigo/:clase", async(req, res)=>{
+    const { codigo } = req.params
+    const { clase } = req.params
+    try{
+        const tarea = await pool.query("SELECT * FROM tarea INNER JOIN curso ON curso.\"ID\" = \"cursoId\" INNER JOIN grado ON grado.\"ID\" = \"gradoId\" WHERE codigo = $1 AND clase = $2", [codigo, clase]);
+        res.json(tarea.rows)
+
+    }catch(err) {
+        console.error(err.message);
+
+    }
+
+})
+
+//Lista de mensajes del chat de un curso, ENTRADAS: codigo y grado del curso SALIDA: Lista de mensajes
+app.get("/chat/:codigo/:clase", async(req, res)=>{
+    const { codigo } = req.params
+    const { clase } = req.params
+    try{
+        const mensajes = await pool.query("SELECT usuario.nombre, apellido, texto FROM mensaje INNER JOIN chat ON chat.\"ID\" = \"chatId\" INNER JOIN curso ON curso.\"ID\" = \"cursoId\" INNER JOIN grado ON grado.\"ID\" = curso.\"gradoId\" INNER JOIN usuario ON usuario.\"ID\" = mensaje.\"usuarioId\" WHERE codigo = $1 AND clase = $2", [codigo, clase]);
+        res.json(mensajes.rows)
+
+    }catch(err) {
+        console.error(err.message);
+
+    }
+
+})
+
+
+//Lista de mensajes del chat de un curso, ENTRADAS: ID del chat y del escritor ademas del mensaje SALIDA: numero de resultado(0 si salio bien)
+app.get("/publicaMsg/:chat/:usuario/:mensaje", async(req, res)=>{
+    const { chat } = req.params
+    const { usuario } = req.params
+    const { mensaje } = req.params
+    try{
+        const mensajes = await pool.query("SELECT * FROM insertarMensaje($1, $2, $3)", [chat, usuario, mensaje]);
+        res.json(mensajes.rows)
+
+    }catch(err) {
+        console.error(err.message);
+
+    }
+
+})
+
 
 
 app.listen(PORT, HOST);
