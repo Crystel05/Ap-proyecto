@@ -10,7 +10,6 @@ import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.ADMIN.popUpCursos
 import Adm_proyectos.approyecto.VISTA.ESTUDIANTE.estudianteCalificarDocente
 import android.widget.Toast
-import kotlinx.android.synthetic.main._admin_pricipal.view.*
 import kotlinx.android.synthetic.main.admin_gd_detalles.*
 import kotlinx.android.synthetic.main.admin_gd_detalles.view.*
 
