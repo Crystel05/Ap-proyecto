@@ -105,9 +105,10 @@ interface API_Calls {
                                  @Path("contra") contra:String,
                                  @Path("apellido") apellido:String) : Response<ArrayList<JsonObject>>
 
-    //                updateAlumno/:nombviejo/:apeviejo/:cedula/:nombre/:correo/:contra/:apellido/:grado
-    @GET("updateAlumno/{cedvieja}/{cedula}/{nombre}/{correo}/{contra}/{apellido}/{grado}")
-    suspend fun updateEstudiante(@Path("cedvieja") cedvieja : String,
+
+    @GET("updateAlumno/{nombviejo}/{apeviejo}/{cedula}/{nombre}/{correo}/{contra}/{apellido}/{grado}")
+    suspend fun updateEstudiante(@Path("nombviejo") cedvieja : String,
+                                 @Path("apeviejo") apeviejo : String,
                                  @Path("cedula") cedula : String,
                                    @Path("nombre") nombre:String,
                                    @Path("correo") correo:String,
@@ -126,14 +127,37 @@ interface API_Calls {
                                 @Path("codigo") codigo: String,
                                 @Path("grado") grado: String) : Response<ArrayList<JsonObject>>
 
+    @GET("estudiantesCed/{ced}")
+    suspend fun getBuscarEstudiante(@Path("ced") cedula:String): Response<ArrayList<JsonObject>>
 
+    @GET("nuevaTarea/{codigo}/{clase}/{codtarea}/{titulo}/{contenido}/{fecha}")
+    suspend fun insertarTarea(@Path("codigo") codigo : String,
+                              @Path("clase") clase:String,
+                              @Path("codtarea") codtarea:String,
+                              @Path("titulo") titulo:String,
+                              @Path("contenido") contenido:String,
+                              @Path("fecha") fecha:String) : Response<ArrayList<JsonObject>>
 
+    @GET("nuevaNoticia/{codigo}/{clase}/{titulo}/{contenido}/{fecha}")
+    suspend fun insertarNoticia(@Path("codigo") codigo : String,
+                              @Path("clase") clase:String,
+                              @Path("titulo") titulo:String,
+                              @Path("contenido") contenido:String,
+                              @Path("fecha") fecha:String) : Response<ArrayList<JsonObject>>
 
+    @GET("noticias/{codigo}/{clase}")
+    suspend fun getNoticias(@Path("codigo") codigo:String, @Path("clase") clase:String): Response<ArrayList<JsonObject>>
 
+    @GET("tareas/{codigo}/{clase}")
+    suspend fun getTareas(@Path("codigo") codigo:String, @Path("clase") clase:String): Response<ArrayList<JsonObject>>
 
+    @GET("tareas/{codigo}/{clase}")
+    suspend fun getChat(@Path("codigo") codigo:String, @Path("clase") clase:String): Response<ArrayList<JsonObject>>
 
-
-
+    @GET("publicaMsg/{chat}/{usuario}/{mensaje}")
+    suspend fun insertarMensaje(@Path("chat") chat : String,
+                                @Path("usuario") usuario:String,
+                                @Path("mensaje") mensaje:String) : Response<ArrayList<JsonObject>>
 
 
 

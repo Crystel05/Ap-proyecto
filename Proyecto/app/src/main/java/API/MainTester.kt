@@ -52,6 +52,8 @@ class MainTester {
 //                            user.cedula = usuario?.cedula.toString()
 //                            user.contrasenna = usuario?.contrasenna.toString()
 //                            print(user.correo + "\n")
+//
+//                            prueba.text = user.nombre
                         }
                     }
                 } else {
@@ -83,7 +85,7 @@ class MainTester {
 //    fun cursosAdmin(act: FragmentActivity){
         CoroutineScope(Dispatchers.IO).launch {
             val call = RetroInstance.api.getCursosAdmin()
-
+            print(call)
 //            act.runOnUiThread { runOnUi
             if (call.isSuccessful) {
                 val cursos = call.body()
@@ -310,6 +312,7 @@ class MainTester {
                     print(resultados)
                     val resultado = resultados?.get(0)?.get("insertardocente")
                     if (resultado.asInt == 0) {
+
                         for (resultado in resultados) {
                             print(resultado.get("insertardocente"))
                         }
@@ -414,9 +417,9 @@ class MainTester {
         }
     }
 
-    fun updateEstudiante(cedulaVieja: String ,cedula: String, nombre: String, correo: String, contra: String, apellido: String, grado: String){
+    fun updateEstudiante(nombreViejo: String, apellidoViejo:String ,cedula: String, nombre: String, correo: String, contra: String, apellido: String, grado: String){
         CoroutineScope(Dispatchers.IO).launch {
-            val call = RetroInstance.api.updateEstudiante(cedulaVieja, cedula, nombre, correo, contra, apellido, grado)
+            val call = RetroInstance.api.updateEstudiante(nombreViejo, apellidoViejo, cedula, nombre, correo, contra, apellido, grado)
 //            act.runOnUiThread { runOnUi
             print(call)
             if (call.isSuccessful) {
@@ -499,8 +502,177 @@ class MainTester {
         }
     }
 
+    fun buscarEstudiante(cedula: String){
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetroInstance.api.getBuscarEstudiante(cedula)
+
+//            act.runOnUiThread { runOnUi
+            if (call.isSuccessful) {
+                val estudiantes = call.body()
+                if (estudiantes != null) {
+                    for (estudiante in estudiantes) {
+                        print(estudiante)
+                        print("\n" + estudiante?.get("cedula").toString())
+                    }
+                }
+            } else {
+                print("Error! Conexion con el API Fallida")
+            }
+//            } end runOnUi
+        }
+    }
+
+    fun insertarTarea(codigo: String, clase: String, codigotarea:String, titulo: String, contenido: String, fecha: String){
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetroInstance.api.insertarTarea(codigo, clase, codigotarea, titulo, contenido, fecha)
+//            act.runOnUiThread { runOnUi
+//            print(call)
+            if (call.isSuccessful) {
+                val resultados = call.body()
+                if (resultados != null) {
+                    print(resultados)
+                    val resultado = resultados?.get(0)?.get("insertartarea")
+                    if (resultado.asInt == 0) {
+                        for (resultado in resultados) {
+                            print(resultado.get("insertartarea"))
+                        }
+                    }else{
+                        print("Error al insertar la tarea.")
+                    }
+                }
+                else{
+                    print("Error al insertar el elemento")
+                }
+            } else {
+                print("Error! Conexion con el API Fallida")
+            }
+//            } end runOnUi
+        }
+    }
 
 
+    fun insertarNoticia(codigo: String, clase: String, titulo:String, contenido: String, fecha: String){
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetroInstance.api.insertarNoticia(codigo, clase, titulo, contenido, fecha)
+//            act.runOnUiThread { runOnUi
+//            print(call)
+            if (call.isSuccessful) {
+                val resultados = call.body()
+                if (resultados != null) {
+                    print(resultados)
+                    val resultado = resultados?.get(0)?.get("insertarnoticia")
+                    if (resultado.asInt == 0) {
+                        for (resultado in resultados) {
+                            print(resultado.get("insertarnoticia"))
+                        }
+                    }else{
+                        print("Error al insertar la noticia.")
+                    }
+                }
+                else{
+                    print("Error al insertar el elemento")
+                }
+            } else {
+                print("Error! Conexion con el API Fallida")
+            }
+//            } end runOnUi
+        }
+    }
+
+
+    fun noticias(codigo: String, grado: String){
+//    fun noticias(act: FragmentActivity, codigo: String, grado: String){
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetroInstance.api.getNoticias(codigo, grado)
+            print(call)
+//            act.runOnUiThread { runOnUi
+            if (call.isSuccessful) {
+                val noticias = call.body()
+                print(noticias)
+                if (noticias != null) {
+                    for (noticia in noticias) {
+                        print(noticia?.get("titulo").toString() + "\n")
+                    }
+                }
+            } else {
+                print("Error! Conexion con el API Fallida")
+            }
+//            } end runOnUi
+        }
+    }
+
+    fun tareas(codigo: String, grado: String){
+//    fun noticias(act: FragmentActivity, codigo: String, grado: String){
+        CoroutineScope(Dispatchers.IO).launch {
+            print("GIULGLI")
+            val call = RetroInstance.api.getTareas(codigo, grado)
+            print("IHLHLIKBXLHKS")
+            print(call)
+//            act.runOnUiThread { runOnUi
+            if (call.isSuccessful) {
+                val tareas = call.body()
+                print(tareas)
+                if (tareas != null) {
+                    for (tarea in tareas) {
+                        print(tarea?.get("titulo").toString() + "\n")
+                    }
+                }
+            } else {
+                print("Error! Conexion con el API Fallida")
+            }
+//            } end runOnUi
+        }
+    }
+
+    fun mensajesChat(codigo: String, grado: String){
+//    fun noticias(act: FragmentActivity, codigo: String, grado: String){
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetroInstance.api.getChat(codigo, grado)
+            print(call)
+//            act.runOnUiThread { runOnUi
+            if (call.isSuccessful) {
+                val tareas = call.body()
+                print(tareas)
+                if (tareas != null) {
+                    for (tarea in tareas) {
+                        print(tarea?.get("nombre").toString() + "\n")
+                    }
+                }
+            } else {
+                print("Error! Conexion con el API Fallida")
+            }
+//            } end runOnUi
+        }
+    }
+
+
+    fun insertarMensajeChat(idChat: String, idUsuario: String, mensaje:String){
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetroInstance.api.insertarMensaje(idChat, idUsuario, mensaje)
+//            act.runOnUiThread { runOnUi
+//            print(call)
+            if (call.isSuccessful) {
+                val resultados = call.body()
+                if (resultados != null) {
+                    print(resultados)
+                    val resultado = resultados?.get(0)?.get("insertarMensaje")
+                    if (resultado.asInt == 0) {
+                        for (resultado in resultados) {
+                            print(resultado.get("insertarMensaje"))
+                        }
+                    }else{
+                        print("Error al insertar el mensaje.")
+                    }
+                }
+                else{
+                    print("Error al insertar el elemento")
+                }
+            } else {
+                print("Error! Conexion con el API Fallida")
+            }
+//            } end runOnUi
+        }
+    }
 
 
 
@@ -541,12 +713,19 @@ fun main() {
 //            tester.updateCurso("11111","4","prueba","pruebaUpdate","4","sabado","08:00:00", "10:00:00")
 //            tester.updateProfesor("12345", "54321","pruebaUpdate", "coreo@gmail.com", "prueba", "update")
 
-//            REVISAR
-//            tester.updateEstudiante("124455", "554433", "estudianteUpdate", "coreo@gmail.com", "contrasenia", "apellidoUpdate", "4")
+//            tester.updateEstudiante("000","apellidoUpdate", "4684184318", "Hector", "hector@gmail.com", "12345", "Barrantes", "4")
 
 
 //            tester.asignarProfesor("54321", "prueba", "4")
 //            tester.asignarEstudiante("prueba2", "apellidoPrueba", "prueba", "4")
+
+//            tester.buscarEstudiante("4684184318")
+//            tester.insertarTarea("mat", "prepa", "prueba", "prueba", "Tarea de prueba", "2021-09-11")
+//            tester.insertarNoticia("mat", "prepa", "noticiaPrueba", "probando insertar noticia", "2021-09-14")
+//            tester.noticias("mat", "prepa")
+//            tester.tareas("mat", "prepa") REVISAR, NO SIRVE :(
+//            tester.mensajesChat("mat", "prepa") REVISAR, TAMPOCO SIRVE :(
+//            tester.insertarMensajeChat("1","2", "Mensaje de prueba.")  REVISAR ( NO HAY CHAT PARA PROBAR).
 
             x = 1
         }
