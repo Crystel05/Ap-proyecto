@@ -1,6 +1,6 @@
 package Adm_proyectos.approyecto.MODELO
 
-class Administrador(nombre: String, apellidos: String, correo: String, cedula: Int, contrasenna: String) :
+class Administrador(nombre: String, apellidos: String, correo: String, cedula: String, contrasenna: String) :
     Usuario(nombre, apellidos, correo, cedula, contrasenna){
 
 
