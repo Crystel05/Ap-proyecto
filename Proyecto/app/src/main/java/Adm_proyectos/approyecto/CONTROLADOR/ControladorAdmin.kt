@@ -1,9 +1,6 @@
 package Adm_proyectos.approyecto.CONTROLADOR
 
-import android.support.v4.app.FragmentActivity
-import android.widget.FrameLayout
 import android.widget.TextView
-import android.widget.Toast
 
 class ControladorAdmin {
 

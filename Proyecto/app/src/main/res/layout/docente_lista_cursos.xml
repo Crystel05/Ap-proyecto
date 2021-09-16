@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -22,6 +22,7 @@
         android:id="@+id/listaCursos"
         android:layout_width="376dp"
         android:layout_height="370dp"
+        android:background="@drawable/tabla_borde"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,31 +34,35 @@
         <TableRow
             android:id="@+id/titulo"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@drawable/borde_titulo_tabla">
 
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="178dp"
                 android:layout_height="40dp"
+                android:fontFamily="@font/beba_nseue_regular"
                 android:gravity="center"
                 android:text="ID curso"
-                android:textColor="#040404"
-                android:textSize="17sp" />
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textView11"
                 android:layout_width="173dp"
                 android:layout_height="match_parent"
+                android:fontFamily="@font/beba_nseue_regular"
                 android:gravity="center"
                 android:text="Nombre Curso"
-                android:textColor="#090909"
-                android:textSize="17sp" />
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
         </TableRow>
 
         <TableRow
             android:id="@+id/columna1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/borde_col"
             android:clickable="true"
             tools:ignore="TouchTargetSizeCheck">
 
@@ -66,6 +71,8 @@
                 android:layout_width="167dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
+                android:background="@drawable/borde"
+                android:fontFamily="@font/beba_nseue_regular"
                 android:gravity="left"
                 android:textColor="#040404"
                 android:textSize="17sp" />
@@ -76,6 +83,7 @@
                 android:layout_height="40dp"
                 android:layout_marginEnd="15dp"
                 android:width="167dp"
+                android:fontFamily="@font/beba_nseue_regular"
                 android:gravity="right"
                 android:textColor="#090909"
                 android:textSize="17sp" />
@@ -85,6 +93,7 @@
             android:id="@+id/columna2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/borde_col"
             android:clickable="true"
             tools:ignore="TouchTargetSizeCheck">
 
@@ -93,6 +102,8 @@
                 android:layout_width="167dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
+                android:background="@drawable/borde"
+                android:fontFamily="@font/beba_nseue_regular"
                 android:gravity="left"
                 android:textColor="#040404"
                 android:textSize="17sp" />
@@ -103,6 +114,7 @@
                 android:layout_height="40dp"
                 android:layout_marginEnd="15dp"
                 android:width="167dp"
+                android:fontFamily="@font/beba_nseue_regular"
                 android:gravity="right"
                 android:textColor="#090909"
                 android:textSize="17sp" />
@@ -112,6 +124,7 @@
             android:id="@+id/columna3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/borde_col"
             android:clickable="true"
             tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck">
 
@@ -120,6 +133,8 @@
                 android:layout_width="167dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
+                android:background="@drawable/borde"
+                android:fontFamily="@font/beba_nseue_regular"
                 android:gravity="left"
                 android:textColor="#040404"
                 android:textSize="17sp" />
@@ -130,6 +145,7 @@
                 android:layout_height="40dp"
                 android:layout_marginEnd="15dp"
                 android:width="167dp"
+                android:fontFamily="@font/beba_nseue_regular"
                 android:gravity="right"
                 android:textColor="#090909"
                 android:textSize="17sp" />
@@ -139,6 +155,7 @@
             android:id="@+id/columna4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/borde_col"
             android:clickable="true"
             tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck">
 
@@ -147,6 +164,8 @@
                 android:layout_width="167dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
+                android:background="@drawable/borde"
+                android:fontFamily="@font/beba_nseue_regular"
                 android:gravity="left"
                 android:textColor="#040404"
                 android:textSize="17sp" />
@@ -157,6 +176,7 @@
                 android:layout_height="40dp"
                 android:layout_marginEnd="15dp"
                 android:width="167dp"
+                android:fontFamily="@font/beba_nseue_regular"
                 android:gravity="right"
                 android:textColor="#090909"
                 android:textSize="17sp" />
@@ -166,6 +186,7 @@
             android:id="@+id/columna5"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/borde_col"
             android:clickable="true"
             tools:ignore="TouchTargetSizeCheck">
 
@@ -174,6 +195,8 @@
                 android:layout_width="167dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
+                android:background="@drawable/borde"
+                android:fontFamily="@font/beba_nseue_regular"
                 android:gravity="left"
                 android:textColor="#040404"
                 android:textSize="17sp" />
@@ -184,6 +207,7 @@
                 android:layout_height="40dp"
                 android:layout_marginEnd="15dp"
                 android:width="167dp"
+                android:fontFamily="@font/beba_nseue_regular"
                 android:gravity="right"
                 android:textColor="#090909"
                 android:textSize="17sp" />
@@ -193,6 +217,7 @@
             android:id="@+id/columna6"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/borde_col"
             android:clickable="true"
             tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck">
 
@@ -201,6 +226,8 @@
                 android:layout_width="167dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
+                android:background="@drawable/borde"
+                android:fontFamily="@font/beba_nseue_regular"
                 android:gravity="left"
                 android:textColor="#040404"
                 android:textSize="17sp" />
@@ -211,6 +238,7 @@
                 android:layout_height="40dp"
                 android:layout_marginEnd="15dp"
                 android:width="167dp"
+                android:fontFamily="@font/beba_nseue_regular"
                 android:gravity="right"
                 android:textColor="#090909"
                 android:textSize="17sp" />
@@ -220,6 +248,7 @@
             android:id="@+id/columna7"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/borde_col"
             android:clickable="true"
             tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck">
 
@@ -228,6 +257,8 @@
                 android:layout_width="167dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
+                android:background="@drawable/borde"
+                android:fontFamily="@font/beba_nseue_regular"
                 android:gravity="left"
                 android:textColor="#040404"
                 android:textSize="17sp" />
@@ -238,6 +269,7 @@
                 android:layout_height="40dp"
                 android:layout_marginEnd="15dp"
                 android:width="167dp"
+                android:fontFamily="@font/beba_nseue_regular"
                 android:gravity="right"
                 android:textColor="#090909"
                 android:textSize="17sp" />
@@ -247,6 +279,7 @@
             android:id="@+id/columna8"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/borde_col"
             android:clickable="true"
             tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck">
 
@@ -255,6 +288,8 @@
                 android:layout_width="167dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
+                android:background="@drawable/borde"
+                android:fontFamily="@font/beba_nseue_regular"
                 android:gravity="left"
                 android:textColor="#040404"
                 android:textSize="17sp" />
@@ -265,6 +300,7 @@
                 android:layout_height="40dp"
                 android:layout_marginEnd="15dp"
                 android:width="167dp"
+                android:fontFamily="@font/beba_nseue_regular"
                 android:gravity="right"
                 android:textColor="#090909"
                 android:textSize="17sp" />
@@ -276,10 +312,11 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/create"
         android:gravity="center"
         android:text="Lista de cursos"
         android:textColor="#000000"
-        android:textSize="20sp"
+        android:textSize="30dp"
         app:layout_constraintBottom_toTopOf="@+id/listaCursos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -288,4 +325,4 @@
         app:layout_constraintVertical_bias="0.571" />
 
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

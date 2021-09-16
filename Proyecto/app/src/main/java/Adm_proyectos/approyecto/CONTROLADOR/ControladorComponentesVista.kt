@@ -1,14 +1,7 @@
 package Adm_proyectos.approyecto.CONTROLADOR
 
-import API.RetroInstance
-import Adm_proyectos.approyecto.R
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
-import android.widget.FrameLayout
-import android.widget.TextView
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 
 class ControladorComponentesVista {
 

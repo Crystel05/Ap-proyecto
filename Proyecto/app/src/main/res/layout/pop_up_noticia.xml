@@ -1,11 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo_noticia"
     tools:context=".VISTA.ESTUDIANTE.popUpNoticia">
 
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="264dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listaCursos">
+
+        <ImageView
+            android:id="@+id/imageView28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/flecha_atras" />
+
+        <ImageView
+            android:id="@+id/imageView29"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/flecha_adelante" />
+    </LinearLayout>
 
     <View
         android:id="@+id/divider6"
@@ -32,8 +60,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
+        android:fontFamily="@font/tareas"
         android:text="Nueva tarea"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/textView50"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,8 +74,9 @@
         android:layout_width="328dp"
         android:layout_height="114dp"
         android:layout_marginStart="16dp"
+        android:fontFamily="@font/roboto_light"
         android:text="contenido contenido contenido contenido contenido contenido contenido contenido contenido contenido contenido contenido contenido contenido contenido contenido contenido contenido"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,9 +89,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
         android:layout_marginTop="32dp"
+        android:fontFamily="@font/aldrich"
         android:text="10/08/2021"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/textView49"
         app:layout_constraintTop_toBottomOf="@+id/divider6" />
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

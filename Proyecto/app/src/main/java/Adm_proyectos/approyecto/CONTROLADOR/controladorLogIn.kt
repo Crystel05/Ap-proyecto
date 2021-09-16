@@ -11,8 +11,10 @@ class controladorLogIn {
         }
         else if(correo.equals("2"))
             return 2
-        else
+        else if(correo.equals("3"))
             return 3
+        else
+            return 0
     }
 
 }

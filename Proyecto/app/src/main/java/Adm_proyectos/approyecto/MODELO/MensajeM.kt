@@ -2,7 +2,7 @@ package Adm_proyectos.approyecto.MODELO
 
 import java.time.LocalTime
 
-class Mensaje(mensaje: String, remitente: Usuario, horaEnviado: LocalTime) {
+class MensajeM(mensaje: String, remitente: Usuario, horaEnviado: LocalTime) {
     var mensaje : String
     var remitente : Usuario
     var horaEnviado : LocalTime

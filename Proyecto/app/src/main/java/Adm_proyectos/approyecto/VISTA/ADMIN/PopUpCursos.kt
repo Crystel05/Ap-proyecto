@@ -2,10 +2,10 @@ package Adm_proyectos.approyecto.VISTA.ADMIN
 
 import Adm_proyectos.approyecto.R
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.DialogFragment
 
 class popUpCursos: DialogFragment() {
 

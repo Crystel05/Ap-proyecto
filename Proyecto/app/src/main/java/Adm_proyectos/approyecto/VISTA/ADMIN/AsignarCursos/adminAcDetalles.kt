@@ -1,13 +1,12 @@
 package Adm_proyectos.approyecto.VISTA.ADMIN.AsignarCursos
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.admin_ac_detalles.view.*
-import kotlinx.android.synthetic.main.admin_ge_detalles.view.*
 
 class adminAcDetalles : Fragment() {
 

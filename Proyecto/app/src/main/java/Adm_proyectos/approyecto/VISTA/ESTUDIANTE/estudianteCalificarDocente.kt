@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
-import android.support.v4.app.DialogFragment
+import androidx.fragment.app.DialogFragment
 
 class estudianteCalificarDocente : DialogFragment() {
 

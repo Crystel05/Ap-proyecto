@@ -3,7 +3,6 @@ package Adm_proyectos.approyecto.VISTA.ADMIN.AsignarCursos
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorAdmin
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +11,7 @@ import android.graphics.Color
 import android.widget.TableRow
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.admin_ac_lista_estudiantes.*
 import kotlinx.android.synthetic.main.admin_ac_lista_estudiantes.view.*
 
@@ -101,11 +101,11 @@ class adminAcListaEstudiantes : Fragment() {
 
     fun seleccionar(clickeada: ArrayList<Int>, posicion: Int, columnaActual: TableRow){
         if (clickeada[posicion] == 1) {
-            columnaActual.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
+            columnaActual.setBackgroundResource(R.drawable.seleccionada)
             clickeada[posicion] = 0
         }
         else {
-            columnaActual.setBackgroundColor(Color.parseColor("#FF69DCCB"))
+            columnaActual.setBackgroundColor(Color.parseColor("#5A9CE8"))
             clickeada[posicion] = 1
         }
     }

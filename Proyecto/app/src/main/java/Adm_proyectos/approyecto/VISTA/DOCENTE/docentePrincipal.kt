@@ -2,14 +2,11 @@ package Adm_proyectos.approyecto.VISTA.DOCENTE
 
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import Adm_proyectos.approyecto.R
-import Adm_proyectos.approyecto.VISTA.ADMIN.ADMIN.admin_gc_detalles
 import Adm_proyectos.approyecto.VISTA.ADMIN.GestionEstudiantes.adminGeDetalles
 import Adm_proyectos.approyecto.VISTA.INTERFACES.Comunicador
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.View
-import kotlinx.android.synthetic.main._docente_principal.*
+import androidx.appcompat.app.AppCompatActivity
 
 class docentePrincipal : AppCompatActivity(), Comunicador {
 

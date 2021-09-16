@@ -2,7 +2,6 @@ package Adm_proyectos.approyecto.VISTA.DOCENTE
 
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorAdmin
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +9,8 @@ import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.INTERFACES.Comunicador
 import android.widget.TableRow
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.docente_lista_cursos.view.*
-import org.w3c.dom.Text
 
 class docenteListaCursos : Fragment() {
 

@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".VISTA.ADMIN.GestionEstudiantes.adminGeDetalles">
 
+    <ImageView
+        android:id="@+id/imageView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:src="@drawable/tabla2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/textView23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:fontFamily="@font/create"
         android:text="Detalles del estudiante"
         android:textColor="#020202"
-        android:textSize="20sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="89dp"
         android:layout_marginTop="56dp"
+        android:fontFamily="@font/beba_nseue_regular"
         android:gravity="center_horizontal"
         android:text="Bruno Ferreto Solano"
         android:textColor="#000000"
@@ -38,8 +50,9 @@
         android:id="@+id/textView32"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/beba_nseue_regular"
         android:text="Grado"
         android:textColor="#000000"
         android:textSize="16sp"
@@ -52,6 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="184dp"
         android:layout_marginTop="44dp"
+        android:fontFamily="@font/beba_nseue_regular"
         android:text="6°"
         android:textColor="#000000"
         android:textSize="16sp"
@@ -62,8 +76,9 @@
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="56dp"
+        android:fontFamily="@font/beba_nseue_regular"
         android:text="Nombre"
         android:textColor="#000000"
         android:textSize="16sp"
@@ -74,8 +89,9 @@
         android:id="@+id/cedulaE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="76dp"
+        android:fontFamily="@font/beba_nseue_regular"
         android:text="11111111"
         android:textColor="#000000"
         android:textSize="16sp"
@@ -86,9 +102,10 @@
         android:id="@+id/verListaEstdiante"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="97dp"
-        android:layout_marginTop="51dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="28dp"
         android:clickable="true"
+        android:fontFamily="@font/beba_nseue_regular"
         android:text="ver aquí"
         android:textColor="#0021F4"
         android:textSize="16sp"
@@ -100,8 +117,9 @@
         android:id="@+id/listCursos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/beba_nseue_regular"
         android:text="Lista de cursos"
         android:textColor="#000000"
         android:textSize="16sp"
@@ -112,17 +130,18 @@
         android:id="@+id/textView24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="76dp"
         android:text="Cédula"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+        app:layout_constraintTop_toBottomOf="@+id/textView23"
+        android:fontFamily="@font/beba_nseue_regular" />
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="340dp"
-        android:layout_height="61dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="341dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:foregroundGravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -134,9 +153,13 @@
 
         <Button
             android:id="@+id/eliminarEstudiante"
-            android:layout_width="155dp"
-            android:layout_height="wrap_content"
+            android:layout_width="172dp"
+            android:layout_height="48dp"
+            android:background="@drawable/button_style"
+            android:fontFamily="@font/create"
             android:text="eliminar estudiante"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -144,15 +167,27 @@
 
         <Button
             android:id="@+id/modificarEstudianteE"
-            android:layout_width="165dp"
-            android:layout_height="wrap_content"
+            android:layout_width="167dp"
+            android:layout_height="46dp"
+            android:background="@drawable/button_style"
+            android:fontFamily="@font/create"
             android:text="modificar estudiante"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/eliminarEstudiante"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:id="@+id/imageView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/decor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

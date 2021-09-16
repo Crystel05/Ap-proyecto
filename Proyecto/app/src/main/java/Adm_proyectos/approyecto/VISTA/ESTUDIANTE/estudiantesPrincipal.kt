@@ -6,11 +6,8 @@ import Adm_proyectos.approyecto.VISTA.ADMIN.GestionDocentes.adminGdDetalles
 import Adm_proyectos.approyecto.VISTA.DOCENTE.docenteDetallesCurso
 import Adm_proyectos.approyecto.VISTA.DOCENTE.docenteListaCursos
 import Adm_proyectos.approyecto.VISTA.INTERFACES.Comunicador
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.service.controls.actions.ControlAction
-import android.support.v4.app.Fragment
-import kotlinx.android.synthetic.main._estudiantes_principal.*
+import androidx.appcompat.app.AppCompatActivity
 
 class estudiantesPrincipal : AppCompatActivity(), Comunicador {
 

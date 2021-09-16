@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/pop_calificar"
     tools:context=".VISTA.ESTUDIANTE.estudianteCalificarDocente">
 
 
@@ -32,9 +33,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="46dp"
+        android:fontFamily="@font/create"
         android:text="CALIFICAR DOCENTE"
-        android:textColor="#000000"
-        android:textSize="25sp"
+        android:textColor="#FFFFFF"
+        android:textSize="35sp"
         app:layout_constraintBottom_toTopOf="@+id/textView53"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -44,9 +46,10 @@
         android:layout_width="287dp"
         android:layout_height="59dp"
         android:layout_marginBottom="32dp"
+        android:fontFamily="@font/alegreya_sans_sc"
         android:text="Marque las estrellas según su preferencia"
         android:textAlignment="center"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/ratingBar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,11 +68,15 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="124dp"
+        android:layout_height="50dp"
         android:layout_marginTop="336dp"
+        android:background="@drawable/button_style"
+        android:fontFamily="@font/create"
         android:text="Calificar"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

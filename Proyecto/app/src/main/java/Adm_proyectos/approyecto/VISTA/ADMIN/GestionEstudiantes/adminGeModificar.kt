@@ -1,14 +1,13 @@
 package Adm_proyectos.approyecto.VISTA.ADMIN.GestionEstudiantes
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import kotlinx.android.synthetic.main.admin_gc_crear.view.*
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.admin_ge_modificar.*
 
 class adminGeModificar : Fragment() {

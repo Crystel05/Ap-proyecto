@@ -2,12 +2,12 @@ package Adm_proyectos.approyecto.VISTA.DOCENTE
 
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.docente_enviar_noticia.view.*
 
 class docenteEnviarNoticia : Fragment() {

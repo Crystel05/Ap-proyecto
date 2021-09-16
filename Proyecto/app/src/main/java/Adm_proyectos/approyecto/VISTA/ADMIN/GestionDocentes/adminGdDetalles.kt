@@ -2,7 +2,6 @@ package Adm_proyectos.approyecto.VISTA.ADMIN.GestionDocentes
 
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +9,7 @@ import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.ADMIN.popUpCursos
 import Adm_proyectos.approyecto.VISTA.ESTUDIANTE.estudianteCalificarDocente
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.admin_gd_detalles.*
 import kotlinx.android.synthetic.main.admin_gd_detalles.view.*
 

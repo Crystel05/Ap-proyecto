@@ -3,7 +3,6 @@ package Adm_proyectos.approyecto.VISTA.ADMIN.AsignarCursos
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorAdmin
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +11,7 @@ import android.graphics.Color
 import android.widget.TableRow
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.admin_ac_lista_docentes.*
 import kotlinx.android.synthetic.main.admin_ac_lista_docentes.view.*
 
@@ -42,56 +42,56 @@ class adminAcListaDocentes : Fragment() {
         controller.llenarListaDocentes(listaCeds, listaNoms)
 
         colum1.setOnClickListener(){
-            colum1.setBackgroundColor(Color.parseColor("#FF69DCCB"))
+            colum1.setBackgroundColor(Color.parseColor("#5A9CE8"))
             columnaSeleccionada(columnas, colum1)
             nombreSelec = nombreAcD1
             cedulaSelec = cedulaAcD1
         }
 
         colum2.setOnClickListener(){
-            colum2.setBackgroundColor(Color.parseColor("#FF69DCCB"))
+            colum2.setBackgroundColor(Color.parseColor("#5A9CE8"))
             columnaSeleccionada(columnas, colum2)
             nombreSelec = nombreAcD2
             cedulaSelec = cedulaAcD2
         }
 
         colum3.setOnClickListener(){
-            colum3.setBackgroundColor(Color.parseColor("#FF69DCCB"))
+            colum3.setBackgroundColor(Color.parseColor("#5A9CE8"))
             columnaSeleccionada(columnas, colum3)
             nombreSelec = nombreAcD3
             cedulaSelec = cedulaAcD3
         }
 
         colum4.setOnClickListener(){
-            colum4.setBackgroundColor(Color.parseColor("#FF69DCCB"))
+            colum4.setBackgroundColor(Color.parseColor("#5A9CE8"))
             columnaSeleccionada(columnas, colum4)
             nombreSelec = nombreAcD4
             cedulaSelec = cedulaAcD4
         }
 
         colum5.setOnClickListener(){
-            colum5.setBackgroundColor(Color.parseColor("#FF69DCCB"))
+            colum5.setBackgroundColor(Color.parseColor("#5A9CE8"))
             columnaSeleccionada(columnas, colum5)
             nombreSelec = nombreAcD5
             cedulaSelec = cedulaAcD5
         }
 
         colum6.setOnClickListener(){
-            colum6.setBackgroundColor(Color.parseColor("#FF69DCCB"))
+            colum6.setBackgroundColor(Color.parseColor("#5A9CE8"))
             columnaSeleccionada(columnas, colum6)
             nombreSelec = nombreAcD6
             cedulaSelec = cedulaAcD6
         }
 
         colum7.setOnClickListener(){
-            colum7.setBackgroundColor(Color.parseColor("#FF69DCCB"))
+            colum7.setBackgroundColor(Color.parseColor("#5A9CE8"))
             columnaSeleccionada(columnas, colum7)
             nombreSelec = nombreAcD7
             cedulaSelec = cedulaAcD7
         }
 
         colum8.setOnClickListener(){
-            colum8.setBackgroundColor(Color.parseColor("#FF69DCCB"))
+            colum8.setBackgroundColor(Color.parseColor("#5A9CE8"))
             columnaSeleccionada(columnas, colum8)
             nombreSelec = nombreAcD8
             cedulaSelec = cedulaAcD8
@@ -111,7 +111,7 @@ class adminAcListaDocentes : Fragment() {
     fun columnaSeleccionada(columnas:List<TableRow>, columnaActual: TableRow?){
         for (colum in columnas) {
             if (colum != columnaActual)
-                colum.setBackgroundColor(Color.parseColor("#FFFFFFFF"))
+                colum.setBackgroundResource(R.drawable.seleccionada)
         }
     }
 }

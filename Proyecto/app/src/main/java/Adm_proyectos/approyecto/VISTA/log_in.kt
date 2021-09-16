@@ -3,17 +3,22 @@ package Adm_proyectos.approyecto.VISTA
 import Adm_proyectos.approyecto.CONTROLADOR.controladorLogIn
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.ADMIN.ADMIN.adminPricipal
+import Adm_proyectos.approyecto.VISTA.CHAT.Chat
+import Adm_proyectos.approyecto.VISTA.Chat2.MainActivity
 import Adm_proyectos.approyecto.VISTA.DOCENTE.docentePrincipal
 import Adm_proyectos.approyecto.VISTA.ESTUDIANTE.estudiantesPrincipal
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main._log_in.*
 import kotlinx.android.synthetic.main._log_in.view.*
+import android.app.Activity
+import android.view.inputmethod.InputMethodManager
+
 
 class log_in : AppCompatActivity() {
 
@@ -63,8 +68,18 @@ class log_in : AppCompatActivity() {
                 }
             }
             else{
+                Intent(this, MainActivity::class.java).also{
+//                    it.putExtra("CORREO", correo)
+//                    it.putExtra("CONTRASENNA", contrasenna)
+                    startActivity(it)
+                }
                 Toast.makeText(this, "Usuario incorrecto", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        login.setOnClickListener{view ->
+            val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0)
         }
 
     }

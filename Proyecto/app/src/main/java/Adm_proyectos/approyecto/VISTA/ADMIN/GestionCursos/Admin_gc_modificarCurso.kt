@@ -2,14 +2,13 @@ package Adm_proyectos.approyecto.VISTA.ADMIN.ADMIN
 
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import kotlinx.android.synthetic.main._admin_pricipal.view.*
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.admin_gc_modificar_curso.*
 
 class admin_gc_modificarCurso : Fragment() {
