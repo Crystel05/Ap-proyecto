@@ -80,9 +80,8 @@ class adminPricipal : AppCompatActivity(), Comunicador {
             inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0)
         }
 
-        val correo = intent.getStringExtra("CORREO")
-        val contrasenna = intent.getStringExtra("CONTRASENNA")
-        nombreUsuario.text = "$correo" //cambiar esto después
+        val nombre = intent.getStringExtra("nombre")
+        nombreUsuario.text = "$nombre"
     }
 
     override fun enviarDatosCurso(id: String, nombre:String) {

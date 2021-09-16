@@ -19,6 +19,9 @@ interface API_Calls {
     @GET("logIn/{correo}")
     suspend fun getLogin(@Path("correo") correo:String): Response<ArrayList<JsonObject>>
 
+    @GET("tipoUsuario/{IdUsu}")
+    suspend fun getTipoUsuario(@Path("IdUsu") idUsuario:String): Response<ArrayList<JsonObject>>
+
     @GET("cursos")
     suspend fun getCursosAdmin(): Response<ArrayList<JsonObject>>
 

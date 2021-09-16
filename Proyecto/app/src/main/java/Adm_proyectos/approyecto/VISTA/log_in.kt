@@ -1,5 +1,6 @@
 package Adm_proyectos.approyecto.VISTA
 
+import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import Adm_proyectos.approyecto.CONTROLADOR.controladorLogIn
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.ADMIN.ADMIN.adminPricipal
@@ -45,42 +46,47 @@ class log_in : AppCompatActivity() {
             val contrasenna = contrasenna.text.toString()
             //if usuario admin
 
-            val respuesta = controlller.escogerUsuario(correo, contrasenna)
-            if (respuesta == 1){
-                Intent(this, admin::class.java).also{
-                    it.putExtra("CORREO", correo)
-                    it.putExtra("CONTRASENNA", contrasenna)
-                    startActivity(it)
-                }
-            }
-            else if (respuesta == 2){
-                Intent(this, docentePrincipal::class.java).also{
-                    it.putExtra("CORREO", correo)
-                    it.putExtra("CONTRASENNA", contrasenna)
-                    startActivity(it)
-                }
-            }
-            else if(respuesta == 3){
-                Intent(this, estudiantesPrincipal::class.java).also{
-                    it.putExtra("CORREO", correo)
-                    it.putExtra("CONTRASENNA", contrasenna)
-                    startActivity(it)
-                }
+            controlller.escogerUsuario(this, correo, contrasenna, tipoUsuario)
+            if (!tipoUsuario.text.equals("x")) {
+                Toast.makeText(this, tipoUsuario.text.toString(), Toast.LENGTH_SHORT).show()
+//                val datos = tipoUsuario.text.split("_")
+//                val nombre = datos[0]
+//                val tipo = datos[1]
+//
+//    //            Toast.makeText(this, respuesta.toString(), Toast.LENGTH_SHORT).show()
+//                if (tipo.equals("administrador")){
+//                    Intent(this, admin::class.java).also{
+//                        it.putExtra("nombre", nombre)
+//                        startActivity(it)
+//                    }
+//                }
+//                else if (tipo.equals("profesor")){
+//                    Intent(this, docentePrincipal::class.java).also{
+//                        it.putExtra("nombre", nombre)
+//                        startActivity(it)
+//                    }
+//                }
+//                else if(tipo.equals("estudiante")){
+//                    Intent(this, estudiantesPrincipal::class.java).also{
+//                        it.putExtra("nombre", nombre)
+//                        startActivity(it)
+//                    }
+//                }
             }
             else{
-                Intent(this, MainActivity::class.java).also{
-//                    it.putExtra("CORREO", correo)
-//                    it.putExtra("CONTRASENNA", contrasenna)
-                    startActivity(it)
-                }
+//                Intent(this, MainActivity::class.java).also{
+////                    it.putExtra("CORREO", correo)
+////                    it.putExtra("CONTRASENNA", contrasenna)
+//                    startActivity(it)
+//                }
                 Toast.makeText(this, "Usuario incorrecto", Toast.LENGTH_SHORT).show()
             }
         }
 
-        login.setOnClickListener{view ->
-            val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0)
-        }
+//        login.setOnClickListener{view ->
+//            val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+//            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0)
+//        }
 
     }
 }

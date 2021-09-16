@@ -1,20 +1,47 @@
 package Adm_proyectos.approyecto.CONTROLADOR
 
+import API.RetroInstance
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+
 class controladorLogIn {
 
-    fun escogerUsuario(correo: String, contrasenna: String):Int{
-        //función de base de datos
-        //Código que hice para poder seguir
+    fun escogerUsuario(
+        activity: AppCompatActivity,
+        correo: String,
+        contrasenna: String,
+        tipo_usuario: TextView
+    ) {
 
-        if (correo.equals("1")){
-            return 1
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetroInstance.api.getLogin(correo)
+            val usuario = call.body()?.get(0)
+            val idUsuario = usuario?.get("ID").toString()
+            val callTipoUsuario = RetroInstance.api.getTipoUsuario(idUsuario)
+            val tipoUsuario = callTipoUsuario.body()?.get(0)?.get("tipousuid").toString()
+
+            activity.runOnUiThread {
+                var datos = ""
+                if (call.isSuccessful) {
+
+                    datos = usuario?.get("nombre").toString() + "_" + tipoUsuario
+
+                    // Obtiene el primer elemento de la lista (json) y la contrasenna del Json
+                    val miContrasenna = call.body()?.get(0)?.get("contrasenna")
+                    if (contrasenna.equals(miContrasenna)) {
+                        tipo_usuario.text = datos
+                    } else {
+                        tipo_usuario.text = "x"
+                    }
+                } else {
+                    tipo_usuario.text = "x"
+                }
+            }
         }
-        else if(correo.equals("2"))
-            return 2
-        else if(correo.equals("3"))
-            return 3
-        else
-            return 0
     }
+
 
 }

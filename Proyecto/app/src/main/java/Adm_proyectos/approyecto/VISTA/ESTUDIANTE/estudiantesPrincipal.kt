@@ -8,6 +8,7 @@ import Adm_proyectos.approyecto.VISTA.DOCENTE.docenteListaCursos
 import Adm_proyectos.approyecto.VISTA.INTERFACES.Comunicador
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main._admin_pricipal.*
 
 class estudiantesPrincipal : AppCompatActivity(), Comunicador {
 
@@ -17,6 +18,9 @@ class estudiantesPrincipal : AppCompatActivity(), Comunicador {
         setContentView(R.layout._estudiantes_principal)
         val listaCursos = docenteListaCursos()
         controller.cambiarFragment(listaCursos, R.id.contenedorEstudiante, this)
+
+        val nombre = intent.getStringExtra("nombre")
+        nombreUsuario.text = "$nombre"
     }
 
     override fun enviarDatosCurso(id: String, nombre: String) {
