@@ -1,30 +1,21 @@
 package Adm_proyectos.approyecto.VISTA.ADMIN.GestionDocentes
 
+import Adm_proyectos.approyecto.CONTROLADOR.ControladorAdmin
+import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.INTERFACES.Comunicador
-import android.graphics.RenderEffect
-import android.graphics.Shader
-import android.os.Build
-import android.support.annotation.RequiresApi
-import android.support.v4.app.FragmentActivity
-import kotlinx.android.synthetic.main._admin_pricipal.view.*
+import android.widget.TextView
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.admin_gd_lista_docentes.view.*
-import kotlinx.android.synthetic.main.admin_gd_lista_docentes.view.nombre1
-import kotlinx.android.synthetic.main.admin_gd_lista_docentes.view.nombre2
-import kotlinx.android.synthetic.main.admin_gd_lista_docentes.view.nombre3
-import kotlinx.android.synthetic.main.admin_gd_lista_docentes.view.nombre4
-import kotlinx.android.synthetic.main.admin_gd_lista_docentes.view.nombre5
-import kotlinx.android.synthetic.main.admin_gd_lista_docentes.view.nombre6
-import kotlinx.android.synthetic.main.admin_gd_lista_docentes.view.nombre7
-import kotlinx.android.synthetic.main.admin_gd_lista_docentes.view.nombre8
 
 class adminGdListaDocentes : Fragment() {
 
+    private val controller = ControladorComponentesVista()
+    private val controllerAdmin = ControladorAdmin()
     private val crearDocente = adminGdCrearDocente()
     private lateinit var comunicador: Comunicador
 
@@ -37,13 +28,18 @@ class adminGdListaDocentes : Fragment() {
         return view
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.agregarNuevoProfesor.setOnClickListener() {
-//            cambiarFragment(crearDocente)
+        val listaCeds = listOf<TextView>(view.cedula1, view.cedula2, view.cedula3, view.cedula4,
+            view.cedula5, view.cedula6, view.cedula7, view.cedula8)
+        val listaNoms = listOf<TextView>(view.nombre1, view.nombre2, view.nombre3, view.nombre4,
+            view.nombre5, view.nombre6, view.nombre7, view.nombre8)
 
+        controllerAdmin.llenarListaDocentes(listaCeds, listaNoms)
+
+        view.agregarNuevoProfesor.setOnClickListener() {
+            controller.cambiarFragment(crearDocente, R.id.contenedor, activity!!)
         }
         view.colum1.setOnClickListener(){
             comunicador.enviarDatosDocente(view.cedula1.text.toString(), view.nombre1.text.toString())
@@ -78,9 +74,4 @@ class adminGdListaDocentes : Fragment() {
         }
     }
 
-    fun cambiarFragment(fragment: Fragment){
-        val transacion = (activity as FragmentActivity).supportFragmentManager.beginTransaction()
-        transacion.replace(R.id.contenedor, fragment)
-        transacion.commit()
-    }
 }

@@ -1,8 +1,8 @@
 package Adm_proyectos.approyecto.MODELO
 
-class Chat (mensajes : ArrayList<Mensaje>) {
+class Chat (mensajes : ArrayList<MensajeM>) {
 
-    var mensajes : ArrayList<Mensaje>
+    var mensajes : ArrayList<MensajeM>
 
     init {
         this.mensajes = mensajes

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,9 +11,10 @@
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/create"
         android:text="MODIFICAR CURSO"
         android:textColor="#000000"
-        android:textSize="16sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/textView13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.523"
@@ -26,11 +27,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
+        android:fontFamily="@font/roboto_light"
         android:text="ID"
         android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.134"
+        app:layout_constraintHorizontal_bias="0.113"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,39 +40,45 @@
         android:id="@+id/textView14"
         android:layout_width="68dp"
         android:layout_height="23dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/roboto_light"
         android:text="Nombre"
         android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.131"
+        app:layout_constraintHorizontal_bias="0.132"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idModificarCurso"
-        app:layout_constraintVertical_bias="0.045" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/roboto_light"
         android:text="Grado"
         android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.121"
+        app:layout_constraintHorizontal_bias="0.123"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nombreModificarCurso"
-        app:layout_constraintVertical_bias="0.056" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/roboto_light"
         android:text="Día"
         android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gradoModificarCurso" />
 
@@ -78,8 +86,9 @@
         android:id="@+id/idModificarCurso"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edit_text_style"
         android:ems="10"
         android:inputType="textPersonName"
         android:textAlignment="center"
@@ -92,8 +101,9 @@
         android:id="@+id/nombreModificarCurso"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edit_text_style"
         android:ems="10"
         android:inputType="textPersonName"
         android:textAlignment="center"
@@ -106,8 +116,9 @@
         android:id="@+id/gradoModificarCurso"
         android:layout_width="164dp"
         android:layout_height="40dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edit_text_style"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15"
@@ -118,9 +129,10 @@
         android:layout_width="172dp"
         android:layout_height="40dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/edit_text_style"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView16"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
@@ -128,16 +140,15 @@
     <EditText
         android:id="@+id/horafinModificarCurso"
         android:layout_width="110dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="95dp"
+        android:layout_height="40dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/edit_text_style"
         android:ems="10"
         android:inputType="time"
         android:textAlignment="center"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/horaInicioModificarCurso"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
@@ -145,32 +156,27 @@
         android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="164dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/roboto_light"
         android:text="Hora de inicio"
         android:textColor="#000000"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/diaModificarCurso"
-        app:layout_constraintVertical_bias="0.137" />
+        app:layout_constraintTop_toBottomOf="@+id/diaModificarCurso" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="55dp"
-        android:layout_marginBottom="164dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="60dp"
+        android:fontFamily="@font/roboto_light"
         android:text="Hora de fin"
         android:textColor="#000000"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.982"
-        app:layout_constraintStart_toEndOf="@+id/textView18"
-        app:layout_constraintTop_toBottomOf="@+id/diaModificarCurso"
-        app:layout_constraintVertical_bias="0.178" />
+        app:layout_constraintTop_toBottomOf="@+id/diaModificarCurso" />
 
     <EditText
         android:id="@+id/horaInicioModificarCurso"
@@ -178,6 +184,7 @@
         android:layout_height="40dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/edit_text_style"
         android:ems="10"
         android:inputType="time"
         android:textAlignment="center"
@@ -187,15 +194,28 @@
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <Button
-        android:id="@+id/agregarCursoGC"
-        android:layout_width="169dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="16dp"
+        android:id="@+id/guardarCursoGCM"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/create"
         android:text="guardar cambios"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:background="@drawable/button_style"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horaInicioModificarCurso"
         tools:ignore="TouchTargetSizeCheck" />
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/horario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gradoModificarCurso" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
