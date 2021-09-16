@@ -1,17 +1,7 @@
 package API
 
-import Adm_proyectos.approyecto.MODELO.Chat
-import Adm_proyectos.approyecto.MODELO.Curso
 import Adm_proyectos.approyecto.MODELO.Usuario
-import android.support.v4.app.FragmentActivity
 import kotlinx.coroutines.*
-import kotlinx.coroutines.channels.Channel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.sql.Time
-import kotlin.concurrent.thread
-import kotlin.concurrent.timer
 
 
 class MainTester {
