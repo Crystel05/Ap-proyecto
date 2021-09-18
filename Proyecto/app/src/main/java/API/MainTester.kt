@@ -53,7 +53,6 @@ class MainTester {
         }
     }
 
-
     fun login(query: String){
 //    fun login(act : FragmentActivity , query: String){
         CoroutineScope(Dispatchers.IO).launch {
@@ -69,7 +68,7 @@ class MainTester {
                 }
 //            } end runOnUi
         }
-    }
+    } //done
 
     fun cursosAdmin(){
 //    fun cursosAdmin(act: FragmentActivity){
@@ -82,7 +81,7 @@ class MainTester {
                 print(cursos)
                 if (cursos != null) {
                     for (curso in cursos) {
-                        print(curso?.get("codigo").toString() + "\n")
+                        print(curso?.get("codigo").toString() + curso?.get("clase").toString() + curso?.get("nombre").toString() + "\n")
                     }
                 }
             } else {
@@ -90,8 +89,7 @@ class MainTester {
             }
 //            } end runOnUi
         }
-    }
-
+    } //done
 
     fun cursosEstudiante(query: String){
 //    fun cursosEstudiante(act: FragmentActivity, query: String){
@@ -133,7 +131,7 @@ class MainTester {
             }
 //            } end runOnUi
         }
-    }
+    } //done
 
     fun cursoInfo(codigoCurso: String, gradoCurso: String){
         CoroutineScope(Dispatchers.IO).launch {
@@ -154,7 +152,7 @@ class MainTester {
             }
 //            } end runOnUi
         }
-    }
+    } //done
 
     //    NO VIENE CORREO EN LA BASE DE DATOS
     fun buscarProfesores(){
@@ -176,7 +174,7 @@ class MainTester {
             }
 //            } end runOnUi
         }
-    }
+    }//done
 
     fun gradoId(numeroGrado: String){
         CoroutineScope(Dispatchers.IO).launch {
@@ -216,8 +214,7 @@ class MainTester {
             }
 //            } end runOnUi
         }
-    }
-
+    } //done
 
     //NO VIENE CORREO
     fun buscarEstudiantes(){
@@ -241,7 +238,7 @@ class MainTester {
             }
 //            } end runOnUi
         }
-    }
+    } //done
 
     fun infoEstudiante(nombre: String, apellido: String){
         CoroutineScope(Dispatchers.IO).launch {
@@ -262,7 +259,6 @@ class MainTester {
 //            } end runOnUi
         }
     }
-
 
     fun insertarCurso(codigo: String, nombre: String, gradoId: String, diaSemana: String, horaInicio: String, horaFin: String){
         CoroutineScope(Dispatchers.IO).launch {
@@ -288,7 +284,7 @@ class MainTester {
             }
 //            } end runOnUi
         }
-    }
+    } //done
 
 //    VALIDAR QUE NO SE REPITA ID
     fun insertarProfesor(cedula: String, nombre: String, correo: String, contra: String, apellido: String){
@@ -317,10 +313,8 @@ class MainTester {
                 print("Error! Conexion con el API Fallida")
             }
 //            } end runOnUi
-        }
+        } // done
     }
-
-
 
     //    VALIDAR QUE NO SE REPITA ID Usuario
     fun insertarEstudiante(cedula: String, nombre: String, correo: String, contra: String, apellido: String, grado: String){
@@ -349,7 +343,7 @@ class MainTester {
             }
 //            } end runOnUi
         }
-    }
+    } // done
 
     fun updateCurso(codigoViejo: String, gradoViejo: String, codigo: String, nombre: String, gradoId: String, diaSemana: String, horaInicio: String, horaFin : String){
         CoroutineScope(Dispatchers.IO).launch {
@@ -405,7 +399,7 @@ class MainTester {
             }
 //            } end runOnUi
         }
-    }
+    }// done
 
     fun updateEstudiante(nombreViejo: String, apellidoViejo:String ,cedula: String, nombre: String, correo: String, contra: String, apellido: String, grado: String){
         CoroutineScope(Dispatchers.IO).launch {
@@ -462,7 +456,6 @@ class MainTester {
 //            } end runOnUi
         }
     }
-
 
     fun asignarEstudiante(nombre: String, apellido: String, codigo: String, grado: String){
         CoroutineScope(Dispatchers.IO).launch {
@@ -540,7 +533,6 @@ class MainTester {
         }
     }
 
-
     fun insertarNoticia(codigo: String, clase: String, titulo:String, contenido: String, fecha: String){
         CoroutineScope(Dispatchers.IO).launch {
             val call = RetroInstance.api.insertarNoticia(codigo, clase, titulo, contenido, fecha)
@@ -568,7 +560,6 @@ class MainTester {
 //            } end runOnUi
         }
     }
-
 
     fun noticias(codigo: String, grado: String){
 //    fun noticias(act: FragmentActivity, codigo: String, grado: String){
@@ -635,7 +626,6 @@ class MainTester {
         }
     }
 
-
     fun insertarMensajeChat(idChat: String, idUsuario: String, mensaje:String){
         CoroutineScope(Dispatchers.IO).launch {
             val call = RetroInstance.api.insertarMensaje(idChat, idUsuario, mensaje)
@@ -664,17 +654,7 @@ class MainTester {
         }
     }
 
-
-
-
-
-
-
-
-
 }
-
-
 
 fun main() {
     var x = 0
@@ -683,24 +663,25 @@ fun main() {
             var firstTodo = Usuario()
             println("Hola Mundo")
             val tester = MainTester()
+
 //            tester.buscarUsuario("1")
 //            tester.buscarUsuarios()
 //            tester.login("velvet@gmail.com")
 //            tester.cursosAdmin()
-//            tester.cursosEstudiante("soymartha@gmail.com")
+            tester.cursosEstudiante("soymartha@gmail.com")
 
 //            VACÍO
-//            tester.cursosProfesor("coreo@gmail.com")
+//            tester.cursosProfesor("shoebill@gmail.com")
 //            tester.cursoInfo("soc", "5")
 //            tester.buscarProfesores()
-//            tester.gradoId("5")
+           // tester.gradoId("5")
 //            tester.infoProfesor("115674562")
 //            tester.buscarEstudiantes()
 //            tester.infoEstudiante("Hector", "Barrantes")
 //            tester.insertarCurso("pru", "prueba", "4", "martes", "08:00:00", "10:00:00")
 //            tester.insertarProfesor("12345", "prueba2", "coreo@gmail.com", "contrasenia", "apellidoPrueba")
 //            tester.insertarEstudiante("124455", "prueba2", "coreo@gmail.com", "contrasenia", "apellidoPrueba", "4")
-//            tester.updateCurso("11111","4","prueba","pruebaUpdate","4","sabado","08:00:00", "10:00:00")
+            //tester.updateCurso("prueba1","4","prueba2","pruebaUpdate","4","sabado","08:00:00", "10:00:00")
 //            tester.updateProfesor("12345", "54321","pruebaUpdate", "coreo@gmail.com", "prueba", "update")
 
 //            tester.updateEstudiante("000","apellidoUpdate", "4684184318", "Hector", "hector@gmail.com", "12345", "Barrantes", "4")

@@ -22,6 +22,10 @@ class docentePrincipal : AppCompatActivity(), Comunicador {
         nombre.text = "$nombreUsu"
     }
 
+    override fun enviarDatosCurso(id: String, nombre: String, grado: String, horario: String) {
+        TODO("Not yet implemented")
+    }
+
     override fun enviarDatosCurso(id: String, nombre: String) {
         val bundle = Bundle()
         bundle.putString("datosCursoDocente", id)
@@ -36,12 +40,29 @@ class docentePrincipal : AppCompatActivity(), Comunicador {
         transaccion.commit()
     }
 
+    override fun enviarDatosCurso2(id: String, nombre: String, grado: String, horario: String) {
+        TODO("Not yet implemented")
+    }
+
     //tratar de cambiar después
     override fun enviarDatosCursoAc(id: String, nombre: String) {
         TODO("Not yet implemented")
     }
 
     override fun enviarDatosDocente(ced: String, nombre: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun enviarDatosDocente(
+        ced: String,
+        nombre: String,
+        correo: String,
+        calificacion: String
+    ) {
+        TODO("Not yet implemented")
+    }
+
+    override fun enviarDatosDocente(ced: String, nombre: String, correo: String) {
         TODO("Not yet implemented")
     }
 
@@ -62,5 +83,9 @@ class docentePrincipal : AppCompatActivity(), Comunicador {
 
         transaccion.replace(R.id.contenedorDocente, detalles)
         transaccion.commit()
+    }
+
+    override fun enviarDatosEstudiante(ced: String, nombre: String, grado: String) {
+        TODO("Not yet implemented")
     }
 }

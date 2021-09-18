@@ -19,7 +19,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TableLayout
         android:id="@+id/listaCursos"
@@ -312,9 +313,10 @@
     </TableLayout>
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/lista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:clickable="true"
         android:fontFamily="@font/create"
         android:gravity="center"
         android:text="Lista de cursos activos"
@@ -325,7 +327,8 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.607" />
+        app:layout_constraintVertical_bias="0.607"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -338,20 +341,13 @@
         app:layout_constraintTop_toBottomOf="@+id/listaCursos">
 
         <ImageView
-            android:id="@+id/flechaAtrás"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:src="@drawable/flecha_atras" />
-
-        <ImageView
             android:id="@+id/flechaAdelante"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:clickable="true"
-            android:src="@drawable/flecha_adelante" />
+            android:src="@drawable/flecha_adelante"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

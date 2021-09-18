@@ -17,7 +17,7 @@
         android:background="@drawable/edit_text_style"
         android:clickable="false"
         android:ems="10"
-        android:fontFamily="@font/beba_nseue_regular"
+        android:fontFamily="sans-serif"
         android:hint="Contraseña"
         android:inputType="textPassword"
         android:minHeight="48dp"
@@ -161,7 +161,7 @@
         android:layout_marginBottom="46dp"
         android:background="@drawable/edit_text_style"
         android:ems="10"
-        android:fontFamily="@font/beba_nseue_regular"
+        android:fontFamily="sans-serif"
         android:hint="Correo"
         android:inputType="textPersonName"
         android:minHeight="48dp"
@@ -173,16 +173,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/tipoUsuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

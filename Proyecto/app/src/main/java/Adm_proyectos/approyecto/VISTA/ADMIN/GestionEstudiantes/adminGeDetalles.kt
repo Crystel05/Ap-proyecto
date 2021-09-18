@@ -1,16 +1,18 @@
 package Adm_proyectos.approyecto.VISTA.ADMIN.GestionEstudiantes
 
+import API.RetroInstance
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
-import Adm_proyectos.approyecto.VISTA.ADMIN.popUpCursos
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main._admin_pricipal.view.*
 import kotlinx.android.synthetic.main.admin_ge_detalles.view.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class adminGeDetalles : Fragment() {
 
@@ -21,12 +23,13 @@ class adminGeDetalles : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.admin_ge_detalles, container, false)
 
-        val array = arguments?.getStringArray("datosEstudiante")
-        val ced = array?.get(1)
-        val nomD = array?.get(0)
+        val array = arguments?.getStringArray("datosEstudianteNuevo")
+        val ced = array?.get(0)
+        val nomD = array?.get(1)
         view.cedulaE.text = ced
         view.nombreE.text = nomD
-        if (array?.get(2) == "1"){
+        view.gradoE.text = array?.get(3)
+        if (array?.get(2) == "2"){
             view.modificarEstudianteE.visibility = View.INVISIBLE
             view.eliminarEstudiante.visibility = View.INVISIBLE
 
@@ -38,7 +41,7 @@ class adminGeDetalles : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         view.verListaEstdiante.setOnClickListener(){
-            popUp()
+            cursosEstudiante("")
         }
 
         view.modificarEstudianteE.setOnClickListener(){
@@ -54,8 +57,32 @@ class adminGeDetalles : Fragment() {
         }
     }
 
-    fun popUp(){
-        val dialogo = popUpCursos()
-        dialogo.show(activity!!.supportFragmentManager, "Cursos estudiante")
+    fun cursosEstudiante(correo: String){
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetroInstance.api.getCursosEstudiante(correo)
+
+            activity!!.runOnUiThread {
+                if (call.isSuccessful) {
+                    val cursos = call.body()
+                    print(cursos)
+                    if (cursos != null) {
+                        for (curso in cursos) {
+                            print(curso?.get("nombre").toString() + "\n")
+                        }
+                    }
+                } else {
+                    print("Error! Conexion con el API Fallida")
+                }
+            }
+        }
+    }
+
+//    fun popUp(){
+//        val dialogo = popUpCursos()
+//        dialogo.show(activity!!.supportFragmentManager, "Cursos estudiante")
+//    }
+
+    private fun notificacions(notificacion: String) {
+        Toast.makeText(activity!!, notificacion, Toast.LENGTH_LONG).show()
     }
 }

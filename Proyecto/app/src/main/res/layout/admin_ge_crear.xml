@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/roboto_light"
         android:text="Cédula"
         android:textColor="#000000"
@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/roboto_light"
         android:text="Segundo Apellido"
         android:textColor="#000000"
@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/roboto_light"
         android:text="Grado escolar"
         android:textColor="#000000"
@@ -60,11 +60,37 @@
         app:layout_constraintTop_toBottomOf="@+id/segundoApCrearEst" />
 
     <TextView
+        android:id="@+id/a"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto_light"
+        android:text="Correo"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gradosGeA" />
+
+    <TextView
+        android:id="@+id/con"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto_light"
+        android:text="Contraseña"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/correoCrearEst" />
+
+    <TextView
         android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/roboto_light"
         android:text="Primer Apellido"
         android:textColor="#000000"
@@ -77,7 +103,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/roboto_light"
         android:text="Nombre"
         android:textColor="#000000"
@@ -90,7 +116,7 @@
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/edit_text_style"
         android:ems="10"
         android:inputType="textPersonName"
@@ -105,7 +131,7 @@
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/edit_text_style"
         android:ems="10"
         android:inputType="textPersonName"
@@ -120,7 +146,7 @@
         android:layout_width="170dp"
         android:layout_height="30dp"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/edit_text_style"
         android:ems="10"
         android:inputType="textPersonName"
@@ -130,11 +156,39 @@
         tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <EditText
+        android:id="@+id/correoCrearEst"
+        android:layout_width="170dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/edit_text_style"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/a"
+        tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/contrEstCrear"
+        android:layout_width="170dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/edit_text_style"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/con"
+        tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <EditText
         android:id="@+id/cedulaCrearEst"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/edit_text_style"
         android:ems="10"
         android:inputType="number"
@@ -155,16 +209,17 @@
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.425"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gradosGeA" />
+        app:layout_constraintTop_toBottomOf="@+id/contrEstCrear"
+        tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
     <Spinner
         android:id="@+id/gradosGeA"
         android:layout_width="166dp"
         android:layout_height="30dp"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/edit_text_style"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"

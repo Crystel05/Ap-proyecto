@@ -1,11 +1,8 @@
 package Adm_proyectos.approyecto.VISTA
 
-import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
-import Adm_proyectos.approyecto.CONTROLADOR.controladorLogIn
+import API.RetroInstance
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.ADMIN.ADMIN.adminPricipal
-import Adm_proyectos.approyecto.VISTA.CHAT.Chat
-import Adm_proyectos.approyecto.VISTA.Chat2.MainActivity
 import Adm_proyectos.approyecto.VISTA.DOCENTE.docentePrincipal
 import Adm_proyectos.approyecto.VISTA.ESTUDIANTE.estudiantesPrincipal
 import android.content.Intent
@@ -17,13 +14,16 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main._log_in.*
 import kotlinx.android.synthetic.main._log_in.view.*
-import android.app.Activity
 import android.view.inputmethod.InputMethodManager
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.util.*
+import java.util.Locale.*
+import kotlin.collections.ArrayList
 
 
 class log_in : AppCompatActivity() {
-
-    val controlller = controladorLogIn()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,53 +40,87 @@ class log_in : AppCompatActivity() {
         }
 
         iniciarSesion.setOnClickListener() {
-            val admin = adminPricipal()
-            val docentePrincipal = docentePrincipal()
-            val correo = correoInicioSesion.text.toString()
-            val contrasenna = contrasenna.text.toString()
-            //if usuario admin
+            comprobarInicioSesion(correoInicioSesion.text.toString().lowercase().replace(" ", ""), contrasenna.text.toString())
+        }
 
-            controlller.escogerUsuario(this, correo, contrasenna, tipoUsuario)
-            if (!tipoUsuario.text.equals("x")) {
-                Toast.makeText(this, tipoUsuario.text.toString(), Toast.LENGTH_SHORT).show()
-//                val datos = tipoUsuario.text.split("_")
-//                val nombre = datos[0]
-//                val tipo = datos[1]
-//
-//    //            Toast.makeText(this, respuesta.toString(), Toast.LENGTH_SHORT).show()
-//                if (tipo.equals("administrador")){
-//                    Intent(this, admin::class.java).also{
-//                        it.putExtra("nombre", nombre)
-//                        startActivity(it)
-//                    }
-//                }
-//                else if (tipo.equals("profesor")){
-//                    Intent(this, docentePrincipal::class.java).also{
-//                        it.putExtra("nombre", nombre)
-//                        startActivity(it)
-//                    }
-//                }
-//                else if(tipo.equals("estudiante")){
-//                    Intent(this, estudiantesPrincipal::class.java).also{
-//                        it.putExtra("nombre", nombre)
-//                        startActivity(it)
-//                    }
-//                }
+        login.setOnClickListener{view ->
+            val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0)
+        }
+
+    }
+
+    private fun comprobarInicioSesion(correo: String, contrasenna: String){
+        CoroutineScope(Dispatchers.IO).launch {
+
+            val call = RetroInstance.api.getLogin(correo)
+            val usuario = call.body()?.get(0)
+            val nombre = usuario?.get("nombre").toString().replace("\"", "")
+            val idUsuario = usuario?.get("ID").toString()
+            val callTipoUsuario = RetroInstance.api.getTipoUsuario(idUsuario)
+            val tipoUsuario = callTipoUsuario.body()?.get(0)?.get("tipousuario").toString().replace("\"", "")
+            val datos = ArrayList<String>()
+
+            datos.add(nombre)
+            datos.add(tipoUsuario)
+
+            runOnUiThread {
+                if (call.isSuccessful) {
+                    val miContrasenna = call.body()?.get(0)?.get("contrasenna").toString().replace("\"", "")
+                    if(contrasenna.equals(miContrasenna)){
+                        iniciarSesion(datos)
+                    } else{
+                        errorSesion()
+                    }
+                } else {
+                    errorApi()
+                }
             }
-            else{
-//                Intent(this, MainActivity::class.java).also{
-////                    it.putExtra("CORREO", correo)
-////                    it.putExtra("CONTRASENNA", contrasenna)
-//                    startActivity(it)
-//                }
-                Toast.makeText(this, "Usuario incorrecto", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun iniciarSesion(datos: ArrayList<String>){
+        val admin = adminPricipal()
+        val docentePrincipal = docentePrincipal()
+        val tipo = datos[1]
+        val nombre = datos[0]
+
+        if (tipo.equals("administrador")){
+            Intent(this, admin::class.java).also{
+                it.putExtra("nombre", nombre)
+                startActivity(it)
             }
         }
 
-//        login.setOnClickListener{view ->
-//            val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-//            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0)
-//        }
+        else if (tipo.equals("profesor")){
+            Intent(this, docentePrincipal::class.java).also{
+                it.putExtra("nombre", nombre)
+                startActivity(it)
+            }
+        }
 
+        else if(tipo.equals("estudiante")){
+            Intent(this, estudiantesPrincipal::class.java).also{
+                it.putExtra("nombre", nombre)
+                startActivity(it)
+            }
+        }
+        else{
+            imprimir(tipo)
+        }
     }
+
+    private fun errorSesion() {
+        Toast.makeText(this, "Usuario o contraseña incorrectas, intente de nuevo", Toast.LENGTH_LONG).show()
+    }
+
+    private fun errorApi() {
+        Toast.makeText(this, "Error de conexión, intente de nuevo", Toast.LENGTH_LONG).show()
+    }
+
+    private fun imprimir(miContrasenna: String?) {
+        Toast.makeText(this, miContrasenna, Toast.LENGTH_LONG).show()
+    }
+
+
 }

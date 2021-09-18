@@ -165,7 +165,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
-        android:layout_width="143dp"
+        android:layout_width="wrap_content"
         android:layout_height="31dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -174,7 +174,7 @@
         app:layout_constraintVertical_bias="0.168">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/adelanteF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
@@ -184,17 +184,6 @@
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/flecha_adelante"
             tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/flecha_atras"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

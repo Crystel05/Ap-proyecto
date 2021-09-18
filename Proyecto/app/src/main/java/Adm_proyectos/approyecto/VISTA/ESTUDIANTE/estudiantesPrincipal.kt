@@ -10,6 +10,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main._admin_pricipal.*
 
+
 class estudiantesPrincipal : AppCompatActivity(), Comunicador {
 
     private val controller = ControladorComponentesVista()
@@ -21,6 +22,10 @@ class estudiantesPrincipal : AppCompatActivity(), Comunicador {
 
         val nombre = intent.getStringExtra("nombre")
         nombreUsuario.text = "$nombre"
+    }
+
+    override fun enviarDatosCurso(id: String, nombre: String, grado: String, horario: String) {
+        TODO("Not yet implemented")
     }
 
     override fun enviarDatosCurso(id: String, nombre: String) {
@@ -37,11 +42,28 @@ class estudiantesPrincipal : AppCompatActivity(), Comunicador {
         transaccion.commit()
     }
 
+    override fun enviarDatosCurso2(id: String, nombre: String, grado: String, horario: String) {
+        TODO("Not yet implemented")
+    }
+
     override fun enviarDatosCursoAc(id: String, nombre: String) {
         TODO("Not yet implemented")
     }
 
     override fun enviarDatosDocente(ced: String, nombre: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun enviarDatosDocente(
+        ced: String,
+        nombre: String,
+        correo: String,
+        calificacion: String
+    ) {
+        TODO("Not yet implemented")
+    }
+
+    override fun enviarDatosDocente(ced: String, nombre: String, correo: String) {
         TODO("Not yet implemented")
     }
 
@@ -58,6 +80,10 @@ class estudiantesPrincipal : AppCompatActivity(), Comunicador {
     }
 
     override fun enviarDatosEstudiante(ced: String, nombre: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun enviarDatosEstudiante(ced: String, nombre: String, grado: String) {
         TODO("Not yet implemented")
     }
 }
