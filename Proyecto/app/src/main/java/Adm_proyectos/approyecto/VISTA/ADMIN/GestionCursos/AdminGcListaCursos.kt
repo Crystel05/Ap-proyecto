@@ -1,16 +1,14 @@
 package Adm_proyectos.approyecto.VISTA.ADMIN.ADMIN
 
 import API.RetroInstance
-import Adm_proyectos.approyecto.CONTROLADOR.ControladorAdmin
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
-import Adm_proyectos.approyecto.VISTA.INTERFACES.Comunicador
+import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosAdmin
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.admin_gc_lista_cursos.*
 import kotlinx.android.synthetic.main.admin_gc_lista_cursos.view.*
@@ -18,12 +16,11 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class admin_gc_listaCursos : Fragment() {
+class AdminGcListaCursos : Fragment() {
 
     private val controller = ControladorComponentesVista()
-    private val controllerAdmin = ControladorAdmin()
-    private var crearCurso = admin_gc_crear()
-    private lateinit var comunicador: Comunicador
+    private var crearCurso = AdminGcCrear()
+    private lateinit var comunicador: DatosAdmin
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +28,7 @@ class admin_gc_listaCursos : Fragment() {
     ): View? {
 
         val view = inflater.inflate(R.layout.admin_gc_lista_cursos, container, false)
-        comunicador = activity as Comunicador
+        comunicador = activity as DatosAdmin
         return view
     }
 
@@ -107,7 +104,7 @@ class admin_gc_listaCursos : Fragment() {
                         llenarTabla(listaIdsA, listaNomsA, listaIds, listaNoms,avanzar)
                     }
                 } else {
-                    errorApi()
+                    controller.notificacion("Error al conectar con la base de datos", activity!!)
                 }
             }
         }
@@ -182,14 +179,6 @@ class admin_gc_listaCursos : Fragment() {
         }
     }
 
-    private fun errorApi() {
-        Toast.makeText(activity!!, "Error al conectar con la base de datos, intente de nuevo más tarde", Toast.LENGTH_LONG).show()
-    }
-
-    private fun imprimir(notificacion: String?) {
-        Toast.makeText(activity!!, notificacion, Toast.LENGTH_LONG).show()
-    }
-
     private fun cursoInfo(codigoCurso: String, gradoCurso: String){
         CoroutineScope(Dispatchers.IO).launch {
             val call = RetroInstance.api.getCursoInfo(codigoCurso, gradoCurso)
@@ -205,11 +194,12 @@ class admin_gc_listaCursos : Fragment() {
                             val horario = curso.get("diaSemana").toString().replace("\"", "")+
                                     " de " + curso.get("horaInicio").toString().replace("\"", "") + " a " +
                                     curso.get("horaFin").toString().replace("\"", "")
-                            comunicador.enviarDatosCurso(id, nombre, grado, horario)
+                            val detalles = AdminGcDetalles()
+                            comunicador.enviarDatosCurso(id, nombre, grado, horario, detalles)
                         }
                     }
                 } else {
-                    imprimir("Error al conectar con la base de datos")
+                   controller.notificacion("Error al conectar con la base de datos", activity!!)
                 }
             }
         }

@@ -8,17 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.admin_gc_modificar_curso.*
 import kotlinx.android.synthetic.main.admin_gc_modificar_curso.view.*
-import kotlinx.android.synthetic.main.docente_lista_cursos.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class admin_gc_modificarCurso : Fragment() {
+class AdminGcModificar : Fragment() {
 
+    private lateinit var vista: View
     private var id: String = ""
     private var grado: String = ""
     private val controller = ControladorComponentesVista()
@@ -26,8 +25,65 @@ class admin_gc_modificarCurso : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.admin_gc_modificar_curso, container, false)
-        //val id = arguments?.getString("ID")
+        vista = inflater.inflate(R.layout.admin_gc_modificar_curso, container, false)
+        llenarDatos()
+        return vista
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        ArrayAdapter.createFromResource(activity!!, R.array.ListaGrados, R.layout.support_simple_spinner_dropdown_item).also {
+            adapter -> adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
+            gradoModificarCurso.adapter = adapter
+        }
+        ArrayAdapter.createFromResource(activity!!, R.array.diasSemana, R.layout.support_simple_spinner_dropdown_item).also {
+         adapter -> adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
+         diaModificarCurso.adapter = adapter
+        }
+        guardarCursoGCM.setOnClickListener(){
+//            controller.notificacion("id viejo: $id grado viejo: $grado nuevo id: ${idModificarCurso.text} " +
+//                    "nuevo nombre: ${nombreModificarCurso.text} nuevo grado: ${gradoModificarCurso.selectedItem}" +
+//                    "nuevo dia: ${diaModificarCurso.selectedItem}  nueva hora inicio:${horaInicioModificarCurso.text}" +
+//                    " nueva hora fin: ${horafinModificarCurso.text}", activity!!)
+            updateCurso(id, grado, idModificarCurso.text.toString(), nombreModificarCurso.text.toString(), gradoModificarCurso.selectedItem.toString(),
+                diaModificarCurso.selectedItem.toString(), horaInicioModificarCurso.text.toString(), horafinModificarCurso.text.toString())
+//            controller.notificacion("*"+id+"*", activity!!)
+//            updateCurso("esp", grado,"esp", "Españole", "6",
+//                "Lunes", "11:00:00", "13:00:00")
+        }
+    }
+
+    private fun updateCurso(codigoViejo: String, gradoViejo: String, codigo: String, nombre: String, gradoId: String, diaSemana: String, horaInicio: String, horaFin : String){
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetroInstance.api.updateCurso(codigoViejo, gradoViejo, codigo, nombre, gradoId, diaSemana, horaInicio, horaFin)
+            activity!!.runOnUiThread {
+                if (call.isSuccessful) {
+                    val resultados = call.body()
+                    if (resultados != null) {
+                        val resultado = resultados[0].get("actualizarcurso")
+                        if (resultado.asInt == 0) {
+                            controller.notificacion("Curso modificado con éxito!!", activity!!)
+                            actualizarFinalizado()
+                        }else{
+                            controller.notificacion("No se pudo actualizar el curso, inten de nuevo", activity!!)
+                        }
+                    }
+                    else{
+                        controller.notificacion("No se pudo actualizar alguna de las características del curso, intente de nuevo", activity!!)
+                    }
+                } else {
+                    controller.notificacion("Error al conectar con la base de datos, intente de nuevo", activity!!)
+                }
+            }
+        }
+    }
+
+    private fun actualizarFinalizado() {
+        val listaCursos = AdminGcListaCursos()
+        controller.cambiarFragment(listaCursos, R.id.contenedor, activity!!)
+    }
+
+    private fun llenarDatos(){
         val grados = ArrayList<String>()
         grados.add("prepa")
         grados.add("1")
@@ -42,74 +98,17 @@ class admin_gc_modificarCurso : Fragment() {
         grados.add("10")
         grados.add("11")
 
-        val arrayDatos = arguments?.getStringArray("datosCursoNuevoModificar")
-        id = arrayDatos?.get(0).toString()
+        val arrayDatos = arguments?.getStringArray("datosCurso")
+        id = arrayDatos?.get(0).toString().replace(" ", "")
         val nombre = arrayDatos?.get(1)
         grado = arrayDatos?.get(2).toString()
         val horario = arrayDatos?.get(3)?.split(" ")
-        view.idModificarCurso.setText(id)
-        view.idCursoModificar.text = id
-        view.nombreModificarCurso.setText(nombre)
+        vista.idModificarCurso.setText(id)
+        vista.idCursoModificar.text = id
+        vista.nombreModificarCurso.setText(nombre)
 
-        view.horaInicioModificarCurso.setText(horario?.get(2))
-        view.horafinModificarCurso.setText(horario?.get(4))
-
-        return view
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        ArrayAdapter.createFromResource(activity!!, R.array.ListaGrados, R.layout.support_simple_spinner_dropdown_item).also {
-            adapter -> adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
-            gradoModificarCurso.adapter = adapter
-        }
-        ArrayAdapter.createFromResource(activity!!, R.array.diasSemana, R.layout.support_simple_spinner_dropdown_item).also {
-         adapter -> adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
-         diaModificarCurso.adapter = adapter
-        }
-        guardarCursoGCM.setOnClickListener(){
-            notifications("${idModificarCurso.text} ${nombreModificarCurso.text} ${gradoModificarCurso.selectedItem} " +
-                    "${diaModificarCurso.selectedItem} " +
-                    "${horaInicioModificarCurso.text} ${horafinModificarCurso.text} Id viejo: $id grado viejo: $grado")
-
-            updateCurso(id, grado, idModificarCurso.text.toString(), nombreModificarCurso.text.toString(), gradoModificarCurso.selectedItem.toString(),
-                diaModificarCurso.selectedItem.toString(), horaInicioModificarCurso.text.toString(), horafinModificarCurso.text.toString())
-        }
-    }
-
-    private fun notifications(notifiacion: String){
-        Toast.makeText(activity!!, notifiacion, Toast.LENGTH_LONG).show()
-    }
-
-    private fun updateCurso(codigoViejo: String, gradoViejo: String, codigo: String, nombre: String, gradoId: String, diaSemana: String, horaInicio: String, horaFin : String){
-        CoroutineScope(Dispatchers.IO).launch {
-            val call = RetroInstance.api.updateCurso(codigoViejo, gradoViejo, codigo, nombre, gradoId, diaSemana, horaInicio, horaFin)
-            activity!!.runOnUiThread {
-                print(call)
-                if (call.isSuccessful) {
-                    val resultados = call.body()
-                    if (resultados != null) {
-                        val resultado = resultados?.get(0)?.get("actualizarcurso")
-                        if (resultado.asInt == 0) {
-                            notifications("Curso modificado con éxito!!")
-                            actualizarFinalizado()
-                        }else{
-                            notifications("No se pudo actualizar el curso, inten de nuevo")
-                        }
-                    }
-                    else{
-                        notifications("No se pudo actualizar alguna de las características del curso, intente de nuevo")
-                    }
-                } else {
-                    notifications("Error al conectar con la base de datos, intente de nuevo")
-                }
-            }
-        }
-    }
-
-    private fun actualizarFinalizado() {
-        val listaCursos = admin_gc_listaCursos()
-        controller.cambiarFragment(listaCursos, R.id.contenedor, activity!!)
+        vista.horaInicioModificarCurso.setText(horario?.get(2))
+        vista.horafinModificarCurso.setText(horario?.get(4))
     }
 
 

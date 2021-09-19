@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.admin_gc_crear.*
 import kotlinx.android.synthetic.main.admin_gc_crear.view.*
@@ -17,9 +16,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.regex.Pattern
 
-class admin_gc_crear : Fragment() {
+class AdminGcCrear : Fragment() {
 
     private val controller = ControladorComponentesVista()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -65,18 +65,18 @@ class admin_gc_crear : Fragment() {
             val matcher2 = pattern.matcher(horafinCrearCurso.text.toString())
             if (matcher.find() && matcher2.find()) {
                 insertarCurso(
-                    idCrearCurso.text.toString(),
-                    nombreCrearCurso.text.toString(),
-                    gradoCrearCurso.selectedItem.toString(),
-                    diaCrearCurso.selectedItem.toString(),
-                    horaInicioCrearCurso.text.toString(),
-                    horafinCrearCurso.text.toString()
+                    idCrearCurso.text.toString().replace(" ", ""),
+                    nombreCrearCurso.text.toString().replace(" ", ""),
+                    gradoCrearCurso.selectedItem.toString().replace(" ", ""),
+                    diaCrearCurso.selectedItem.toString().replace(" ", ""),
+                    horaInicioCrearCurso.text.toString().replace(" ", ""),
+                    horafinCrearCurso.text.toString().replace(" ", "")
                 )
             } else {
-                notificacions("Formato de hora incorrecto, intente con: 14:00:00")
+                controller.notificacion("Formato de hora incorrecto, intente con: 14:00:00", activity!!)
             }
         } else {
-            notificacions("Existen campos sin llenar")
+            controller.notificacion("Existen campos sin llenar", activity!!)
         }
     }
 
@@ -89,17 +89,17 @@ class admin_gc_crear : Fragment() {
                     if (resultados != null) {
                         val resultado = resultados?.get(0)?.get("insertarcurso")
                         if (resultado.asInt == 0) {
-                            notificacions("Curso agregado con éxito!!")
+                            controller.notificacion("Curso agregado con éxito!!", activity!!)
                             insertadoExitoso(true)
                         }else{
-                            notificacions("Hubo un error al gurdar el curso, intente de nuevo")
+                            controller.notificacion("Hubo un error al gurdar el curso, intente de nuevo", activity!!)
                         }
                     }
                     else{
-                        notificacions("Error al insertar detalles, intente de nuevo")
+                        controller.notificacion("Error al insertar detalles, intente de nuevo", activity!!)
                     }
                 } else {
-                    notificacions("Error al conectar con la base de datos, intente de nuevo")
+                    controller.notificacion("Error al conectar con la base de datos, intente de nuevo", activity!!)
                 }
             }
         }
@@ -111,13 +111,8 @@ class admin_gc_crear : Fragment() {
         horaInicioCrearCurso.text.clear()
         horafinCrearCurso.text.clear()
         if (insertar) {
-            val listaCursos = admin_gc_listaCursos()
+            val listaCursos = AdminGcListaCursos()
             controller.cambiarFragment(listaCursos, R.id.contenedor, activity!!)
         }
     }
-
-    private fun notificacions(notificacion: String) {
-        Toast.makeText(activity!!, notificacion, Toast.LENGTH_LONG).show()
-    }
-
 }

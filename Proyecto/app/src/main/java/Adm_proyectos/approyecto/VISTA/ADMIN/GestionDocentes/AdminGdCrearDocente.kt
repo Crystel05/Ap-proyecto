@@ -9,14 +9,18 @@ import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.gson.JsonElement
+import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.admin_gd_crear_docente.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import retrofit2.Response
 
-class adminGdCrearDocente : Fragment() {
+class AdminGdCrearDocente : Fragment() {
 
     val controller = ControladorComponentesVista()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,47 +40,55 @@ class adminGdCrearDocente : Fragment() {
 
     private fun agregar() {
         if (cedulaCrearDocente.text.isNotEmpty() && nombreCrearDocente.text.isNotEmpty() &&
-            primerApellidoCrearDocente.text.isNotEmpty() && segundoApellidoCrearDocente.text.isNotEmpty() &&
-            correoCrearDocente.text.isNotEmpty() && contrasennaCrearDocente.text.isNotEmpty()) {
+            primerApellidoCrearDocente.text.isNotEmpty()&& correoCrearDocente.text.isNotEmpty() && contrasennaCrearDocente.text.isNotEmpty()) {
 
                 insertarDocente(
-                    cedulaCrearDocente.text.toString(),
-                    nombreCrearDocente.text.toString(),
-                    primerApellidoCrearDocente.text.toString(),
-                    segundoApellidoCrearDocente.text.toString(),
-                    correoCrearDocente.text.toString(),
+                    cedulaCrearDocente.text.toString().replace(" ", ""),
+                    nombreCrearDocente.text.toString().replace(" ", ""),
+                    primerApellidoCrearDocente.text.toString().replace(" ", ""),
+                    segundoApellidoCrearDocente.text.toString().replace(" ", ""),
+                    correoCrearDocente.text.toString().replace(" ", "").lowercase(),
                     contrasennaCrearDocente.text.toString()
                 )
 
         } else {
-            notificacions("Existen campos sin llenar")
+            controller.notificacion("Existen campos sin llenar", activity!!)
         }
     }
 
     fun insertarDocente(cedula: String, nombre: String, apellido1: String, apellido2: String, correo: String, contra: String){
         CoroutineScope(Dispatchers.IO).launch {
-            val call = RetroInstance.api.insertarProfesor(cedula, nombre, correo, contra,
-                "$apellido1 $apellido2"
-            )
+            val call: Response<ArrayList<JsonObject>> = if(apellido2.isNotEmpty()) {
+                RetroInstance.api.insertarProfesor(
+                    cedula, nombre, correo, contra,
+                    "$apellido1 $apellido2"
+                )
+            } else{
+                RetroInstance.api.insertarProfesor(
+                    cedula, nombre, correo, contra,
+                    apellido1
+                )
+            }
+
             activity!!.runOnUiThread {
                 print(call)
                 if (call.isSuccessful) {
                     val resultados = call.body()
                     if (resultados != null) {
                         print(resultados)
-                        val resultado = resultados?.get(0)?.get("insertardocente")
+                        val resultado = resultados[0].get("insertardocente")
                         if (resultado.asInt == 0) {
-                            notificacions("Docente insertado con éxito!!")
+                            controller.notificacion("Docente insertado con éxito!!", activity!!)
                             insertadoExitoso(true)
                         }else{
-                            notificacions("No se pudo insertar el docente, intente de nuevo")
+                            controller.notificacion("No se pudo insertar el docente, intente de nuevo", activity!!)
                         }
                     }
                     else{
-                        notificacions("No se pudo insertar el docente, intente de nuevo")
+                        controller.notificacion("No se pudo insertar el docente, intente de nuevo", activity!!)
                     }
                 } else {
-                    notificacions("Error con la base de datos, intente de nuevo")
+                    controller.notificacion("Error con la base de datos, intente de nuevo", activity!!)
                 }
             }
         }
@@ -90,14 +102,11 @@ class adminGdCrearDocente : Fragment() {
         correoCrearDocente.text.clear()
         contrasennaCrearDocente.text.clear()
         if (insertar) {
-            val listaCursos = adminGdListaDocentes()
+            val listaCursos = AdminGdListaDocentes()
             controller.cambiarFragment(listaCursos, R.id.contenedor, activity!!)
         }
     }
 
-    private fun notificacions(notificacion: String) {
-        Toast.makeText(activity!!, notificacion, Toast.LENGTH_LONG).show()
-    }
 
 
 }

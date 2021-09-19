@@ -7,36 +7,32 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
-import Adm_proyectos.approyecto.VISTA.ADMIN.popUpCursos
 import Adm_proyectos.approyecto.VISTA.ESTUDIANTE.estudianteCalificarDocente
 import Adm_proyectos.approyecto.VISTA.INTERFACES.Comunicador
 import Adm_proyectos.approyecto.VISTA.INTERFACES.Comunicador2
+import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosAdmin
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.admin_gd_detalles.*
 import kotlinx.android.synthetic.main.admin_gd_detalles.listCursos
 import kotlinx.android.synthetic.main.admin_gd_detalles.view.*
-import kotlinx.android.synthetic.main.admin_ge_detalles.*
-import kotlinx.android.synthetic.main.pop_up_lista_cursos.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.ArrayList
 
-class adminGdDetalles : Fragment() {
+class AdminGdDetalles : Fragment() {
 
     private val controller = ControladorComponentesVista()
     private lateinit var correo: String
-    private lateinit var comunicador:Comunicador2
-    private lateinit var comunicador2: Comunicador
+    private lateinit var comunicador:DatosAdmin
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.admin_gd_detalles, container, false)
-        val array = arguments?.getStringArray("datosDocenteNuevo")
-        comunicador = activity as Comunicador2
-        comunicador2 = activity as Comunicador
+        val array = arguments?.getStringArray("datosDocente")
+        comunicador = activity as DatosAdmin
         val ced = array?.get(1)
         val nomD = array?.get(0)
         correo = array?.get(2).toString()
@@ -57,12 +53,12 @@ class adminGdDetalles : Fragment() {
         }
 
         view.modificarDocenteP.setOnClickListener(){
-            comunicador2.enviarDatosDocente(cedulaD.text.toString(), nombreD.text.toString(), correoD.text.toString())
+            comunicador.enviarDatosDocente(nombreD.text.toString(), cedulaD.text.toString(), correoD.text.toString())
         }
 
         eliminarDocente.setOnClickListener(){
             Toast.makeText(activity!!, "El docente fue eliminado con éxito", Toast.LENGTH_LONG).show()
-            val listaDocentes = adminGdListaDocentes()
+            val listaDocentes = AdminGdListaDocentes()
             controller.cambiarFragment(listaDocentes, R.id.contenedor, activity!!)
         }
 
@@ -102,14 +98,6 @@ class adminGdDetalles : Fragment() {
         }
     }
 
-    private fun imprimir(notificacion: String?) {
-        Toast.makeText(activity!!, notificacion, Toast.LENGTH_LONG).show()
-    }
-
-//    fun popUp(){
-//        val dialogo = popUpCursos()
-//        dialogo.show(activity!!.supportFragmentManager, "Prueba")
-//    }
 
     fun popUp2(){
         val dialogo = estudianteCalificarDocente()

@@ -1,8 +1,6 @@
 package Adm_proyectos.approyecto.VISTA.CHAT
 
-import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import Adm_proyectos.approyecto.R
-import Adm_proyectos.approyecto.VISTA.ADMIN.ADMIN.admin_gc_listaCursos
 import Adm_proyectos.approyecto.VISTA.CHAT.Constantes.enviado
 import Adm_proyectos.approyecto.VISTA.CHAT.Constantes.recibido
 import androidx.appcompat.app.AppCompatActivity

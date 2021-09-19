@@ -6,31 +6,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
-import Adm_proyectos.approyecto.VISTA.INTERFACES.Comunicador
-import Adm_proyectos.approyecto.VISTA.INTERFACES.Comunicador2
+import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosAdmin
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.admin_gc_detalles.*
 import kotlinx.android.synthetic.main.admin_gc_detalles.view.*
 
-class admin_gc_detalles : Fragment() {
+class AdminGcDetalles : Fragment() {
 
     private val controller = ControladorComponentesVista()
-    private lateinit var comunicador: Comunicador2
-    private lateinit var comunicador2: Comunicador
+    private lateinit var comunicador: DatosAdmin
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.admin_gc_detalles, container, false)
-        comunicador = activity as Comunicador2
-        comunicador2 = activity as Comunicador
+        comunicador = activity as DatosAdmin
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    super.onViewCreated(view, savedInstanceState)
-        val array = arguments?.getStringArray("datosCursoNuevo")
+        super.onViewCreated(view, savedInstanceState)
+
+        val array = arguments?.getStringArray("datosCurso")
         val idCursoS = " " + array?.get(0)
         val nombreCurso = array?.get(1).toString()
         val grado = array?.get(2).toString()
@@ -40,13 +38,14 @@ class admin_gc_detalles : Fragment() {
         view.gradoCurso.text = grado
         view.horarioCurso.text = horario
 
-        view.modificarCurso.setOnClickListener(){
-            comunicador2.enviarDatosCurso2(idCursoS, nombreCurso, grado, horario)
+        view.modificarCurso.setOnClickListener() {
+            val modificar = AdminGcModificar()
+            comunicador.enviarDatosCurso(idCursoS, nombreCurso, grado, horario, modificar)
         }
 
-        eliminarCurso.setOnClickListener(){
+        eliminarCurso.setOnClickListener() {
             Toast.makeText(activity!!, "El curso fue eliminado con éxito", Toast.LENGTH_LONG).show()
-            val listaCursos = admin_gc_listaCursos()
+            val listaCursos = AdminGcListaCursos()
             controller.cambiarFragment(listaCursos, R.id.contenedor, activity!!)
         }
     }

@@ -1,6 +1,7 @@
 package Adm_proyectos.approyecto.CONTROLADOR
 
 
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 
@@ -10,6 +11,10 @@ class ControladorComponentesVista {
         val transacion = (activity).supportFragmentManager.beginTransaction()
         transacion.replace(id, fragment)
         transacion.commit()
+    }
+
+    fun notificacion(notificacion: String, activity: FragmentActivity){
+        Toast.makeText(activity, notificacion, Toast.LENGTH_LONG).show()
     }
 
 }

@@ -15,7 +15,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class adminGdModificar : Fragment() {
+class AdminGdModificar : Fragment() {
 
     private lateinit var vista:View
     var cedula = ""
@@ -71,30 +71,27 @@ class adminGdModificar : Fragment() {
                         print(resultados)
                         val resultado = resultados[0].get("actualizardocente")
                         if (resultado.asInt == 0) {
-                            notifications("Docente editado con éxito!!!")
+                            controller.notificacion("Docente editado con éxito!!!", activity!!)
                             guardadoExitos()
                         }else{
-                            notifications("No se pudo actualizar la información, intente de nuevo")
+                            controller.notificacion("No se pudo actualizar la información, intente de nuevo", activity!!)
                         }
                     }
                     else{
-                        notifications("No se pudo actualizar la información, intente de nuevo")
+                        controller.notificacion("No se pudo actualizar la información, intente de nuevo", activity!!)
                     }
                 } else {
-                    notifications("Error al conectar con la base de datos, intente de nuevo")
+                    controller.notificacion("Error al conectar con la base de datos, intente de nuevo", activity!!)
                 }
             }
         }
     }
 
     private fun guardadoExitos() {
-        val lista = adminGdListaDocentes()
+        val lista = AdminGdListaDocentes()
         controller.cambiarFragment(lista, R.id.contenedor, activity!!)
     }
 
 
-    private fun notifications(notifiacion: String){
-        Toast.makeText(activity!!, notifiacion, Toast.LENGTH_LONG).show()
-    }
 
 }

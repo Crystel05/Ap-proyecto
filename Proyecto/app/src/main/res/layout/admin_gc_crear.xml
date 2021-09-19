@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VISTA.ADMIN.ADMIN.admin_gc_crear">
+    tools:context=".VISTA.ADMIN.ADMIN.AdminGcCrear">
 
 
     <TextView

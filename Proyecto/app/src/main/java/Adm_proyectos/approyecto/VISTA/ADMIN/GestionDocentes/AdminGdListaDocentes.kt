@@ -9,30 +9,28 @@ import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.INTERFACES.Comunicador
+import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosAdmin
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.admin_gc_lista_cursos.*
 import kotlinx.android.synthetic.main.admin_gd_lista_docentes.*
 import kotlinx.android.synthetic.main.admin_gd_lista_docentes.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.w3c.dom.Text
 
-class adminGdListaDocentes : Fragment() {
+class AdminGdListaDocentes : Fragment() {
 
     private val controller = ControladorComponentesVista()
-    private val controllerAdmin = ControladorAdmin()
-    private val crearDocente = adminGdCrearDocente()
-    private lateinit var comunicador: Comunicador
+    private val crearDocente = AdminGdCrearDocente()
+    private lateinit var comunicador: DatosAdmin
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.admin_gd_lista_docentes, container, false)
-        comunicador = activity as Comunicador
+        comunicador = activity as DatosAdmin
         return view
     }
 
