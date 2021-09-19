@@ -9,7 +9,7 @@ interface DatosAdmin {
 //    fun enviarDatosCurso (id: String, nombre: String)
 //    fun enviarDatosCursoAc (id: String, nombre: String)
 //    fun enviarDatosDocente(ced: String, nombre:String)
-    fun enviarDatosDocente(ced: String, nombre:String, correo: String, calificacion: String, fragment: Fragment)
+    fun enviarDatosDocente(ced: String, nombre:String, correo: String, calificacion: String, contra:String, fragment: Fragment)
 //    fun enviarDatosDocente(ced: String, nombre:String, correo: String, contra:String)
 //    fun enviarDatosDocente(est: Boolean)
 //    fun enviarDatosEstudiante(ced: String, nombre: String)

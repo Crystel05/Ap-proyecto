@@ -170,9 +170,9 @@ class adminPricipal : AppCompatActivity(), DatosAdmin{ //Comunicador, Comunicado
 //
 //    }
 //
-    override fun enviarDatosDocente(ced: String, nombre: String, correo: String, calificacion_contra: String, fragment: Fragment) {
+    override fun enviarDatosDocente(ced: String, nombre: String, correo: String, calificacion: String, contra:String, fragment: Fragment) {
         val bundle = Bundle()
-        val datos = arrayOf(ced, nombre, correo, calificacion_contra)
+        val datos = arrayOf(ced, nombre, correo, calificacion, contra)
         bundle.putStringArray("datosDocente", datos)
 
         val transaccion = this.supportFragmentManager.beginTransaction()

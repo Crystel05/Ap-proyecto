@@ -759,14 +759,14 @@ fun main() {
 //            tester.cursoInfo("soc", "5")
 //            tester.buscarProfesores()
            // tester.gradoId("5")
-//            tester.infoProfesor("115674562")
+//            tester.infoProfesor("11111111")
 //            tester.buscarEstudiantes()
 //            tester.infoEstudiante("Hector", "Barrantes")
 //            tester.insertarCurso("pru", "prueba", "4", "martes", "08:00:00", "10:00:00")
 //            tester.insertarProfesor("12345", "prueba2", "coreo@gmail.com", "contrasenia", "apellidoPrueba")
 //            tester.insertarEstudiante("124455", "prueba2", "coreo@gmail.com", "contrasenia", "apellidoPrueba", "4")
             //tester.updateCurso("prueba1","4","prueba2","pruebaUpdate","4","sabado","08:00:00", "10:00:00")
-//            tester.updateProfesor("12345", "54321","pruebaUpdate", "coreo@gmail.com", "prueba", "update")
+//            tester.updateProfesor("00000000", "11111111","Josehp", "shoebill@gmail.com", "prueba", "Alvarez")
 
 //            tester.updateEstudiante("000","apellidoUpdate", "4684184318", "Hector", "hector@gmail.com", "12345", "Barrantes", "4")
 
@@ -784,7 +784,7 @@ fun main() {
 
 
 //            NUEVAS
-            tester.eliminarCurso("fisi", "6")
+//            tester.eliminarCurso("fisi", "6")
 //            tester.eliminarProfesor("1234")
 //            tester.eliminarAlumno("124455")
             x = 1

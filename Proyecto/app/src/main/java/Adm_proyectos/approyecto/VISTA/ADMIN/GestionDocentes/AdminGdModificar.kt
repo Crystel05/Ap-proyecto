@@ -56,7 +56,7 @@ class AdminGdModificar : Fragment() {
         val correo = datos?.get(2)
         val nombre = nombreCom?.get(0)
         val ap1 = nombreCom?.get(1)
-        val contra = datos?.get(3).toString()
+        val contra = datos?.get(4).toString()
         var ap2 = ""
         if(nombreCom?.size == 3 ) {
             ap2 = nombreCom[2]

@@ -15,6 +15,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.admin_gd_lista_docentes.*
 import kotlinx.android.synthetic.main.admin_gd_lista_docentes.view.*
+import kotlinx.android.synthetic.main.admin_ge_crear.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -46,48 +47,39 @@ class AdminGdListaDocentes : Fragment() {
         val lisNoms = ArrayList<TextView>()
         lisNoms.addAll(listaNoms)
 
-        //controllerAdmin.llenarListaDocentes(listaCeds, listaNoms)
         obtenerProfesores(lisNoms, lisCeds, false)
         view.agregarNuevoProfesor.setOnClickListener() {
             controller.cambiarFragment(crearDocente, R.id.contenedor, activity!!)
         }
         view.colum1.setOnClickListener(){
-           // comunicador.enviarDatosDocente(view.cedula1.text.toString(), view.nombre1.text.toString())
             enviarDatos(cedula1)
         }
 
         view.colum2.setOnClickListener(){
-           // comunicador.enviarDatosDocente(view.cedula2.text.toString(), view.nombre2.text.toString())
             enviarDatos(cedula2)
         }
 
         view.colum3.setOnClickListener(){
-          //  comunicador.enviarDatosDocente(view.cedula3.text.toString(), view.nombre3.text.toString())
             enviarDatos(cedula3)
         }
 
         view.colum4.setOnClickListener(){
-           // comunicador.enviarDatosDocente(view.cedula4.text.toString(), view.nombre4.text.toString())
             enviarDatos(cedula4)
         }
 
         view.colum5.setOnClickListener(){
-           // comunicador.enviarDatosDocente(view.cedula5.text.toString(), view.nombre5.text.toString())
             enviarDatos(cedula5)
         }
 
         view.colum6.setOnClickListener(){
-          //  comunicador.enviarDatosDocente(view.cedula6.text.toString(), view.nombre6.text.toString())
             enviarDatos(cedula6)
         }
 
         view.colum7.setOnClickListener(){
-           // comunicador.enviarDatosDocente(view.cedula7.text.toString(), view.nombre7.text.toString())
             enviarDatos(cedula7)
         }
 
         view.colum8.setOnClickListener(){
-           // comunicador.enviarDatosDocente(view.cedula8.text.toString(), view.nombre8.text.toString())
             enviarDatos(cedula8)
         }
 
@@ -206,9 +198,10 @@ class AdminGdListaDocentes : Fragment() {
                             val nombre = profe.get("nombre").toString().replace("\"", "")
                             val apellidos = profe.get("apellido").toString().replace("\"", "")
                             val correo = profe.get("correo").toString().replace("\"", "")
-                            val calificacionPromedio = profe.get("calificacion").toString()
+                            val calificacionPromedio = profe.get("calificacion").toString().replace("\"", "")
+                            val contra = profe.get("contrasenna").toString().replace("\"", "")
                             val detalles = AdminGdDetalles()
-                            comunicador.enviarDatosDocente(ced, "$nombre $apellidos", correo, calificacionPromedio, detalles)
+                            comunicador.enviarDatosDocente(ced, "$nombre $apellidos", correo, calificacionPromedio, contra, detalles)
                         }
                     }
                 } else {
