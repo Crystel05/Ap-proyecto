@@ -784,7 +784,7 @@ fun main() {
 
 
 //            NUEVAS
-//            tester.eliminarCurso("Aa", "5")
+            tester.eliminarCurso("fisi", "6")
 //            tester.eliminarProfesor("1234")
 //            tester.eliminarAlumno("124455")
             x = 1

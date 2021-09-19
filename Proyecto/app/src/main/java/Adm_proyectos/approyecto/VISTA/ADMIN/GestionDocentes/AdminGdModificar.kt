@@ -32,23 +32,31 @@ class AdminGdModificar : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         modificarDocente.setOnClickListener(){
-            updateProfesor(cedula, cedulaModificarDocente.text.toString(),
-                nombreModificarDocente.text.toString(),
-                correoModificarDocente.text.toString(),
+            val apellidos: String
+            if(segundoApellidoModificarDocente.text.isNotEmpty()){
+                apellidos = primerApellidoModificarDocente.text.toString()+" "+segundoApellidoModificarDocente.text.toString()
+            }
+            else{
+                apellidos = primerApellidoModificarDocente.text.toString()
+            }
+            updateProfesor(cedula, cedulaModificarDocente.text.toString().replace(" ", ""),
+                nombreModificarDocente.text.toString().replace(" ", ""),
+                correoModificarDocente.text.toString().replace(" ", ""),
                 contraModifaGd.text.toString(),
-                primerApellidoModificarDocente.text.toString()+" "+segundoApellidoModificarDocente.text.toString())
+                apellidos)
 
 
         }
     }
 
     private fun llenarDatos() {
-        val datos = arguments?.getStringArray("datosDocenteModificar")
+        val datos = arguments?.getStringArray("datosDocente")
         cedula = datos?.get(0).toString()
         val nombreCom = datos?.get(1)?.split(" ")
         val correo = datos?.get(2)
         val nombre = nombreCom?.get(0)
         val ap1 = nombreCom?.get(1)
+        val contra = datos?.get(3).toString()
         var ap2 = ""
         if(nombreCom?.size == 3 ) {
             ap2 = nombreCom[2]
@@ -58,6 +66,7 @@ class AdminGdModificar : Fragment() {
         vista.primerApellidoModificarDocente.setText(ap1)
         vista.segundoApellidoModificarDocente.setText(ap2)
         vista.correoModificarDocente.setText(correo)
+        vista.contraModifaGd.setText(contra)
 
     }
 

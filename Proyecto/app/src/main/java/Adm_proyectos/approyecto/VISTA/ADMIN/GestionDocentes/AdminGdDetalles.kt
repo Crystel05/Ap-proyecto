@@ -8,8 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.ESTUDIANTE.estudianteCalificarDocente
-import Adm_proyectos.approyecto.VISTA.INTERFACES.Comunicador
-import Adm_proyectos.approyecto.VISTA.INTERFACES.Comunicador2
 import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosAdmin
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -25,6 +23,7 @@ class AdminGdDetalles : Fragment() {
 
     private val controller = ControladorComponentesVista()
     private lateinit var correo: String
+    private lateinit var calificacion_contra: String
     private lateinit var comunicador:DatosAdmin
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,11 +35,12 @@ class AdminGdDetalles : Fragment() {
         val ced = array?.get(1)
         val nomD = array?.get(0)
         correo = array?.get(2).toString()
-        val calificacion = array?.get(3)
+        calificacion_contra = array?.get(3).toString()
         view.cedulaD.text = ced
         view.nombreD.text = nomD
         view.correoD.text = correo
-        view.ratingD.rating = calificacion?.toFloat() ?: 0.0F
+        view.ratingD.rating = calificacion_contra.toFloat() ?: 0.0F
+
         return view
     }
 
@@ -53,7 +53,8 @@ class AdminGdDetalles : Fragment() {
         }
 
         view.modificarDocenteP.setOnClickListener(){
-            comunicador.enviarDatosDocente(nombreD.text.toString(), cedulaD.text.toString(), correoD.text.toString())
+            val modificar = AdminGdModificar()
+            comunicador.enviarDatosDocente(nombreD.text.toString(), cedulaD.text.toString(), correoD.text.toString(), calificacion_contra, modificar)
         }
 
         eliminarDocente.setOnClickListener(){

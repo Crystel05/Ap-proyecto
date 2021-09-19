@@ -40,16 +40,12 @@ class AdminGcModificar : Fragment() {
          adapter -> adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
          diaModificarCurso.adapter = adapter
         }
-        guardarCursoGCM.setOnClickListener(){
-//            controller.notificacion("id viejo: $id grado viejo: $grado nuevo id: ${idModificarCurso.text} " +
-//                    "nuevo nombre: ${nombreModificarCurso.text} nuevo grado: ${gradoModificarCurso.selectedItem}" +
-//                    "nuevo dia: ${diaModificarCurso.selectedItem}  nueva hora inicio:${horaInicioModificarCurso.text}" +
-//                    " nueva hora fin: ${horafinModificarCurso.text}", activity!!)
-            updateCurso(id, grado, idModificarCurso.text.toString(), nombreModificarCurso.text.toString(), gradoModificarCurso.selectedItem.toString(),
-                diaModificarCurso.selectedItem.toString(), horaInicioModificarCurso.text.toString(), horafinModificarCurso.text.toString())
-//            controller.notificacion("*"+id+"*", activity!!)
-//            updateCurso("esp", grado,"esp", "Españole", "6",
-//                "Lunes", "11:00:00", "13:00:00")
+        guardarCursoGCM.setOnClickListener{
+            updateCurso(id, grado,idModificarCurso.text.toString().replace(" ", ""),
+                nombreModificarCurso.text.toString(), gradoModificarCurso.selectedItem.toString(),
+                diaModificarCurso.selectedItem.toString(),
+                horaInicioModificarCurso.text.toString().replace(" ", ""),
+                horafinModificarCurso.text.toString().replace(" ", ""))
         }
     }
 

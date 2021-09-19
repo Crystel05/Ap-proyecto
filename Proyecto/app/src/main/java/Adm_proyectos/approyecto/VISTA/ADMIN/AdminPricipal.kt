@@ -18,6 +18,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main._admin_pricipal.*
+import kotlinx.android.synthetic.main.admin_gd_modificar.*
 
 class adminPricipal : AppCompatActivity(), DatosAdmin{ //Comunicador, Comunicador2
 
@@ -169,31 +170,30 @@ class adminPricipal : AppCompatActivity(), DatosAdmin{ //Comunicador, Comunicado
 //
 //    }
 //
-    override fun enviarDatosDocente(ced: String, nombre: String, correo: String, calificacion: String) {
+    override fun enviarDatosDocente(ced: String, nombre: String, correo: String, calificacion_contra: String, fragment: Fragment) {
         val bundle = Bundle()
-        val datos = arrayOf(ced, nombre, correo, calificacion)
+        val datos = arrayOf(ced, nombre, correo, calificacion_contra)
         bundle.putStringArray("datosDocente", datos)
 
         val transaccion = this.supportFragmentManager.beginTransaction()
-        val detalles = AdminGdDetalles()
-        detalles.arguments = bundle
+        fragment.arguments = bundle
 
-        transaccion.replace(R.id.contenedor, detalles)
+        transaccion.replace(R.id.contenedor, fragment)
         transaccion.commit()
     }
 
-    override fun enviarDatosDocente(ced: String, nombre: String, correo: String) {
-        val bundle = Bundle()
-        val datos = arrayOf(ced, nombre, correo)
-        bundle.putStringArray("datosDocenteModificar", datos)
-
-        val transaccion = this.supportFragmentManager.beginTransaction()
-        val modificar = AdminGdModificar()
-        modificar.arguments = bundle
-
-        transaccion.replace(R.id.contenedor, modificar)
-        transaccion.commit()
-    }
+//    override fun enviarDatosDocente(ced: String, nombre: String, correo: String, contra: String) {
+//        val bundle = Bundle()
+//        val datos = arrayOf(ced, nombre, correo, contra)
+//        bundle.putStringArray("datosDocenteModificar", datos)
+//
+//        val transaccion = this.supportFragmentManager.beginTransaction()
+//        val modificar = AdminGdModificar()
+//        modificar.arguments = bundle
+//
+//        transaccion.replace(R.id.contenedor, modificar)
+//        transaccion.commit()
+//    }
 //
 //    override fun enviarDatosDocente(est: Boolean) {
 //        TODO("Not yet implemented")

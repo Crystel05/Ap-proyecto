@@ -1,5 +1,6 @@
 package Adm_proyectos.approyecto.VISTA.ADMIN.ADMIN
 
+import API.RetroInstance
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +12,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.admin_gc_detalles.*
 import kotlinx.android.synthetic.main.admin_gc_detalles.view.*
+import kotlinx.android.synthetic.main.estudiante_noticias.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class AdminGcDetalles : Fragment() {
 
@@ -43,11 +48,39 @@ class AdminGcDetalles : Fragment() {
             comunicador.enviarDatosCurso(idCursoS, nombreCurso, grado, horario, modificar)
         }
 
-        eliminarCurso.setOnClickListener() {
-            Toast.makeText(activity!!, "El curso fue eliminado con éxito", Toast.LENGTH_LONG).show()
-            val listaCursos = AdminGcListaCursos()
-            controller.cambiarFragment(listaCursos, R.id.contenedor, activity!!)
+        eliminarCurso.setOnClickListener{
+            eliminarCurso(idCursoS.replace(" ", ""), grado)
         }
+    }
+
+    private fun eliminarCurso(codigo: String, grado: String){
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetroInstance.api.eliminarCurso(codigo, grado)
+            activity!!.runOnUiThread {
+                if (call.isSuccessful) {
+                    val resultados = call.body()
+                    if (resultados != null) {
+                        print(resultados)
+                        val resultado = resultados[0].get("eliminarcurso")
+                        if (resultado.asInt == 0) {
+                            eliminadoExitoso()
+                        }else{
+                            controller.notificacion("Error al elminar el curso, intente de nuevo", activity!!)
+                        }
+                    }
+                    else{
+                        controller.notificacion("Error al elminar el curso, intente de nuevo", activity!!)
+                    }
+                } else {
+                    controller.notificacion("Error al conectar con la base de datos, intente de nuevo", activity!!)
+                }
+            }
+        }
+    }
+    private fun eliminadoExitoso(){
+        controller.notificacion("El curso fue eliminado con éxito", activity!!)
+        val listaCursos = AdminGcListaCursos()
+        controller.cambiarFragment(listaCursos, R.id.contenedor, activity!!)
     }
 
 }

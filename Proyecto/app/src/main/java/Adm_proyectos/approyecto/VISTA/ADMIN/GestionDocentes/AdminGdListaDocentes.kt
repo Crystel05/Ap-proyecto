@@ -197,7 +197,6 @@ class AdminGdListaDocentes : Fragment() {
     private fun infoProfesor(cedula: String){
         CoroutineScope(Dispatchers.IO).launch {
             val call = RetroInstance.api.getInfoProfesor(cedula)
-
             activity!!.runOnUiThread {
                 if (call.isSuccessful) {
                     val profes = call.body()
@@ -208,7 +207,8 @@ class AdminGdListaDocentes : Fragment() {
                             val apellidos = profe.get("apellido").toString().replace("\"", "")
                             val correo = profe.get("correo").toString().replace("\"", "")
                             val calificacionPromedio = profe.get("calificacion").toString()
-                            comunicador.enviarDatosDocente(ced, "$nombre $apellidos", correo, calificacionPromedio)
+                            val detalles = AdminGdDetalles()
+                            comunicador.enviarDatosDocente(ced, "$nombre $apellidos", correo, calificacionPromedio, detalles)
                         }
                     }
                 } else {
