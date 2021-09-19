@@ -162,7 +162,14 @@ interface API_Calls {
                                 @Path("usuario") usuario:String,
                                 @Path("mensaje") mensaje:String) : Response<ArrayList<JsonObject>>
 
+    @GET("elimCurso/{cod}/{grad}")
+    suspend fun eliminarCurso(@Path("cod") codigo:String, @Path("grad") grado:String): Response<ArrayList<JsonObject>>
 
+    @GET("elimDocente/{cedula}")
+    suspend fun eliminarProfesor(@Path("cedula") cedula:String): Response<ArrayList<JsonObject>>
+
+    @GET("elimAlumno/{cedula}")
+    suspend fun eliminarAlumno(@Path("cedula") cedula:String): Response<ArrayList<JsonObject>>
 
 
 

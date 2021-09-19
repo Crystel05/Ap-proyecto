@@ -166,7 +166,7 @@ class MainTester {
                 if (profesores != null) {
                     for (profe in profesores) {
                         print(profe)
-                        print("\n" + profe?.get("correo"))
+                        print("\n" + profe?.get("cedula"))
                     }
                 }
             } else {
@@ -654,6 +654,90 @@ class MainTester {
         }
     }
 
+    fun eliminarCurso(codigo: String, grado: String){
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetroInstance.api.eliminarCurso(codigo, grado)
+//            act.runOnUiThread { runOnUi
+            print(call)
+            if (call.isSuccessful) {
+                val resultados = call.body()
+                if (resultados != null) {
+                    print(resultados)
+                    val resultado = resultados?.get(0)?.get("eliminarcurso")
+                    if (resultado.asInt == 0) {
+                        for (resultado in resultados) {
+                            print(resultado.get("eliminarcurso"))
+                        }
+                    }else{
+                        print("Error al elminar el curso.")
+                    }
+                }
+                else{
+                    print("Error al eliminar el elemento")
+                }
+            } else {
+                print("Error! Conexion con el API Fallida")
+            }
+//            } end runOnUi
+        }
+    }
+
+    fun eliminarProfesor(cedula: String){
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetroInstance.api.eliminarProfesor(cedula)
+//            act.runOnUiThread { runOnUi
+            print(call)
+            if (call.isSuccessful) {
+                val resultados = call.body()
+                if (resultados != null) {
+                    print(resultados)
+                    val resultado = resultados?.get(0)?.get("eliminardocente")
+                    if (resultado.asInt == 0) {
+                        for (resultado in resultados) {
+                            print(resultado.get("eliminardocente"))
+                        }
+                    }else{
+                        print("Error al elminar el profesor.")
+                    }
+                }
+                else{
+                    print("Error al eliminar el elemento")
+                }
+            } else {
+                print("Error! Conexion con el API Fallida")
+            }
+//            } end runOnUi
+        }
+    }
+
+    fun eliminarAlumno(cedula: String){
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetroInstance.api.eliminarAlumno(cedula)
+//            act.runOnUiThread { runOnUi
+            print(call)
+            if (call.isSuccessful) {
+                val resultados = call.body()
+                if (resultados != null) {
+                    print(resultados)
+                    val resultado = resultados?.get(0)?.get("eliminaralumno")
+                    if (resultado.asInt == 0) {
+                        for (resultado in resultados) {
+                            print(resultado.get("eliminaralumno"))
+                        }
+                    }else{
+                        print("Error al elminar el alumno.")
+                    }
+                }
+                else{
+                    print("Error al eliminar el elemento")
+                }
+            } else {
+                print("Error! Conexion con el API Fallida")
+            }
+//            } end runOnUi
+        }
+    }
+
 }
 
 fun main() {
@@ -668,7 +752,7 @@ fun main() {
 //            tester.buscarUsuarios()
 //            tester.login("velvet@gmail.com")
 //            tester.cursosAdmin()
-            tester.cursosEstudiante("soymartha@gmail.com")
+//            tester.cursosEstudiante("soymartha@gmail.com")
 
 //            VACÍO
 //            tester.cursosProfesor("shoebill@gmail.com")
@@ -690,7 +774,7 @@ fun main() {
 //            tester.asignarProfesor("54321", "prueba", "4")
 //            tester.asignarEstudiante("prueba2", "apellidoPrueba", "prueba", "4")
 
-//            tester.buscarEstudiante("4684184318")
+//            tester.buscarEstudiante("124455")
 //            tester.insertarTarea("mat", "prepa", "prueba", "prueba", "Tarea de prueba", "2021-09-11")
 //            tester.insertarNoticia("mat", "prepa", "noticiaPrueba", "probando insertar noticia", "2021-09-14")
 //            tester.noticias("mat", "prepa")
@@ -698,7 +782,13 @@ fun main() {
 //            tester.mensajesChat("mat", "prepa") REVISAR, TAMPOCO SIRVE :(
 //            tester.insertarMensajeChat("1","2", "Mensaje de prueba.")  REVISAR ( NO HAY CHAT PARA PROBAR).
 
+
+//            NUEVAS
+//            tester.eliminarCurso("Aa", "5")
+//            tester.eliminarProfesor("1234")
+//            tester.eliminarAlumno("124455")
             x = 1
+
         }
     }
 }
