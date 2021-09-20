@@ -8,22 +8,27 @@ import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.admin_ge_crear.*
 import kotlinx.android.synthetic.main.admin_ge_modificar.*
+import kotlinx.android.synthetic.main.admin_ge_modificar.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class adminGeModificar : Fragment() {
+class AdminGeModificar : Fragment() {
 
     private val controller = ControladorComponentesVista()
+    private lateinit var vista: View
+    private lateinit var nombre: String
+    private lateinit var apellidos: String
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.admin_ge_modificar, container, false)
-        return view
+        vista = inflater.inflate(R.layout.admin_ge_modificar, container, false)
+        llenarDatos()
+        return vista
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,12 +43,15 @@ class adminGeModificar : Fragment() {
             gradosGeM.adapter = adapter
         }
 
-        guardarCambiosEstudiante.setOnClickListener(){
-            cedulaModificarEstudiante.text.clear()
-            nombreModificarEstudiante.text.clear()
-            primerApModificarEst.text.clear()
-            segundoApModificarEst.text.clear()
-//            updateEstudiante()
+        guardarCambiosEstudiante.setOnClickListener{
+            var apes:String = primerApModificarEst.text.toString()
+            if(segundoApModificarEst.text.isNotEmpty()){
+                apes = primerApModificarEst.text.toString() + " " + segundoApModificarEst.text.toString()
+            }
+
+            updateEstudiante(nombre, apellidos, cedulaModificarEstudiante.text.toString(), nombreModificarEstudiante.text.toString(), correoEstMod.text.toString(),
+                contraEstMod.text.toString(), apes, gradosGeM.selectedItem.toString())
+
         }
 
     }
@@ -56,19 +64,19 @@ class adminGeModificar : Fragment() {
                     val resultados = call.body()
                     if (resultados != null) {
                         print(resultados)
-                        val resultado = resultados?.get(0)?.get("actualizaralumno")
+                        val resultado = resultados[0].get("actualizaralumno")
                         if (resultado.asInt == 0) {
-                            notifications("Se actulizó el estudiante con éxito!!")
+                            controller.notificacion("Se actulizó el estudiante con éxito!!", activity!!)
                             guardadoExitos()
                         }else{
-                            notifications("No se pudo actualizar el estudiante, intente de nuevo")
+                            controller.notificacion("No se pudo actualizar el estudiante, intente de nuevo", activity!!)
                         }
                     }
                     else{
-                        notifications("No se pudo actualizar el estudiante, intente de nuevo")
+                        controller.notificacion("No se pudo actualizar el estudiante, intente de nuevo", activity!!)
                     }
                 } else {
-                    notifications("Error al conectar con la base de datos, intente de nuevo")
+                    controller.notificacion("Error al conectar con la base de datos, intente de nuevo", activity!!)
                 }
             }
         }
@@ -79,26 +87,33 @@ class adminGeModificar : Fragment() {
         nombreModificarEstudiante.text.clear()
         primerApModificarEst.text.clear()
         segundoApModificarEst.text.clear()
-        val lista = adminGeListaEstudiantes()
+        correoEstMod.text.clear()
+        contraEstMod.text.clear()
+        val lista = AdminGeListaEstudiantes()
         controller.cambiarFragment(lista, R.id.contenedor, activity!!)
     }
 
-    private fun notifications(notifiacion: String){
-        Toast.makeText(activity!!, notifiacion, Toast.LENGTH_LONG).show()
-    }
-
     private fun llenarDatos() {
-        val datos = arguments?.getStringArray("datosDocenteModificar")
-        val cedula = datos?.get(0).toString()
-        val nombreCom = datos?.get(1)?.split(" ")
-        val correo = datos?.get(2)
-        val nombre = nombreCom?.get(0)
-        val ap1 = nombreCom?.get(1)
-        var ap2 = ""
+        val datos = arguments?.getStringArray("datosEstudiante")
+        val cedula = datos?.get(1).toString()
+        val nombreCom = datos?.get(2)?.split(" ")
+        val correo = datos?.get(4)
+        val contrasenna = datos?.get(5)
+        nombre = nombreCom?.get(0).toString()
+
+        val ap1 = nombreCom?.get(1).toString()
+        val ap2: String
+        apellidos = ap1
         if(nombreCom?.size == 3 ) {
             ap2 = nombreCom[2]
+            apellidos = "$ap1 $ap2"
+            vista.segundoApModificarEst.setText(ap2)
         }
-
+        vista.cedulaModificarEstudiante.setText(cedula)
+        vista.nombreModificarEstudiante.setText(nombre)
+        vista.primerApModificarEst.setText(ap1)
+        vista.correoEstMod.setText(correo)
+        vista.contraEstMod.setText(contrasenna)
     }
 
 }

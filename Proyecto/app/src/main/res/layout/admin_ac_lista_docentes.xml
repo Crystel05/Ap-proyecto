@@ -4,7 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VISTA.ADMIN.AsignarCursos.adminAcListaDocentes">
+    tools:context=".VISTA.ADMIN.AsignarCursos.AdminAcListaDocentes">
+
+    <ImageView
+        android:id="@+id/avanzarDoc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:src="@drawable/flecha_adelante"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listaDocentes" />
 
     <Button
         android:id="@+id/agregarNuevoProfesor"
@@ -20,20 +31,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/flechas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:foregroundGravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/agregarNuevoProfesor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listaDocentes"
-        app:layout_constraintVertical_bias="0.022"
-        app:srcCompat="@drawable/flechas_tabla" />
 
     <TableLayout
         android:id="@+id/listaDocentes"
@@ -306,6 +303,7 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="15dp"
                 android:background="@drawable/borde"
+                android:fontFamily="@font/beba_nseue_regular"
                 android:gravity="left"
                 android:textColor="#040404"
                 android:textSize="17sp" />
@@ -316,6 +314,7 @@
                 android:layout_height="40dp"
                 android:layout_marginEnd="15dp"
                 android:width="167dp"
+                android:fontFamily="@font/beba_nseue_regular"
                 android:gravity="right"
                 android:textColor="#090909"
                 android:textSize="17sp" />

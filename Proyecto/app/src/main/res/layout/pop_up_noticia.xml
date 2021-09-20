@@ -28,7 +28,7 @@
             android:src="@drawable/flecha_atras" />
 
         <ImageView
-            android:id="@+id/imageView29"
+            android:id="@+id/avanzar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

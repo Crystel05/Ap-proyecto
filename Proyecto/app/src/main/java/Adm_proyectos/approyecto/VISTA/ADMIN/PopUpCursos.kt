@@ -38,8 +38,6 @@ class popUpCursos: DialogFragment() {
 
         val cursos = arguments?.getStringArrayList("cursos_docente")
         llenarTabla(cursos, ids, noms)
-
-
     }
 
     private fun llenarTabla(
@@ -77,10 +75,4 @@ class popUpCursos: DialogFragment() {
             noms[ind].text = ""
         }
     }
-
-    private fun imprimir(notificacion: String?) {
-        Toast.makeText(activity!!, notificacion, Toast.LENGTH_LONG).show()
-    }
-
-
 }

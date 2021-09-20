@@ -7,33 +7,44 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
+import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosAdmin
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.admin_ge_detalles.*
 import kotlinx.android.synthetic.main.admin_ge_detalles.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.ArrayList
 
-class adminGeDetalles : Fragment() {
+class AdminGeDetalles : Fragment() {
 
     private val controller = ControladorComponentesVista()
+    private lateinit var correoE: String
+    private lateinit var contraE: String
+    private lateinit var comunicador: DatosAdmin
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.admin_ge_detalles, container, false)
+        comunicador = activity as DatosAdmin
+        val array = arguments?.getStringArray("datosEstudiante")
 
-        val array = arguments?.getStringArray("datosEstudianteNuevo")
-        val ced = array?.get(0)
-        val nomD = array?.get(1)
-        view.cedulaE.text = ced
-        view.nombreE.text = nomD
-        view.gradoE.text = array?.get(3)
-        if (array?.get(2) == "2"){
+        if (array?.get(0) == "2"){
             view.modificarEstudianteE.visibility = View.INVISIBLE
             view.eliminarEstudiante.visibility = View.INVISIBLE
 
         }
+        val ced = array?.get(1)
+        val nomD = array?.get(2)
+        val gradoE = array?.get(3)
+        correoE = array?.get(4).toString()
+        contraE = array?.get(5).toString()
+        view.cedulaE.text = nomD
+        view.nombreE.text = ced
+        view.gradoE.text = gradoE
+
         return view
     }
 
@@ -41,18 +52,18 @@ class adminGeDetalles : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         view.verListaEstdiante.setOnClickListener(){
-            cursosEstudiante("")
+            cursosEstudiante(correoE)
         }
 
         view.modificarEstudianteE.setOnClickListener(){
-            val modificar = adminGeModificar()
-            controller.cambiarFragment(modificar, R.id.contenedor, activity!!)
+            val modificar = AdminGeModificar()
+            comunicador.enviarDatosEstudiante(cedulaE.text.toString(), nombreE.text.toString(), gradoE.text.toString(), correoE, contraE, modificar)
         }
 
         view.eliminarEstudiante.setOnClickListener(){
             //eliminar
             Toast.makeText(activity!!, "El estudiante fue eliminado con éxito", Toast.LENGTH_LONG).show()
-            val lista = adminGeListaEstudiantes()
+            val lista = AdminGeListaEstudiantes()
             controller.cambiarFragment(lista, R.id.contenedor, activity!!)
         }
     }
@@ -64,14 +75,16 @@ class adminGeDetalles : Fragment() {
             activity!!.runOnUiThread {
                 if (call.isSuccessful) {
                     val cursos = call.body()
-                    print(cursos)
+                    val cursosDatos = ArrayList<String>()
                     if (cursos != null) {
                         for (curso in cursos) {
-                            print(curso?.get("nombre").toString() + "\n")
+                            cursosDatos.add(curso.get("nombre").toString().replace("\"", "")+
+                                    "_"+curso.get("codigo").toString().replace("\"", ""))
                         }
                     }
+                    comunicador.cursosPopUp(cursosDatos)
                 } else {
-                    print("Error! Conexion con el API Fallida")
+                    controller.notificacion("Error! Conexion con el API Fallida", activity!!)
                 }
             }
         }

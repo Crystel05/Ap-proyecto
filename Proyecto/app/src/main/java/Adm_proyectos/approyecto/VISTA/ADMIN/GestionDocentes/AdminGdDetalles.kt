@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.admin_gd_detalles.*
 import kotlinx.android.synthetic.main.admin_gd_detalles.listCursos
 import kotlinx.android.synthetic.main.admin_gd_detalles.view.*
+import kotlinx.android.synthetic.main.admin_ge_crear.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,6 +25,7 @@ class AdminGdDetalles : Fragment() {
     private val controller = ControladorComponentesVista()
     private lateinit var correo: String
     private lateinit var calificacion: String
+    private lateinit var ced: String
     private lateinit var contra: String
     private lateinit var comunicador:DatosAdmin
     override fun onCreateView(
@@ -33,8 +35,8 @@ class AdminGdDetalles : Fragment() {
         val view = inflater.inflate(R.layout.admin_gd_detalles, container, false)
         val array = arguments?.getStringArray("datosDocente")
         comunicador = activity as DatosAdmin
-        val ced = array?.get(1)
-        val nomD = array?.get(0)
+        ced = array?.get(0).toString()
+        val nomD = array?.get(1)
         correo = array?.get(2).toString()
         calificacion = array?.get(3).toString()
         contra = array?.get(4).toString()
@@ -59,10 +61,8 @@ class AdminGdDetalles : Fragment() {
             comunicador.enviarDatosDocente(nombreD.text.toString(), cedulaD.text.toString(), correoD.text.toString(), calificacion, contra, modificar)
         }
 
-        eliminarDocente.setOnClickListener(){
-            Toast.makeText(activity!!, "El docente fue eliminado con éxito", Toast.LENGTH_LONG).show()
-            val listaDocentes = AdminGdListaDocentes()
-            controller.cambiarFragment(listaDocentes, R.id.contenedor, activity!!)
+        eliminarDocente.setOnClickListener{
+            eliminarProfesor(ced)
         }
 
         if(esEst == true){
@@ -81,7 +81,6 @@ class AdminGdDetalles : Fragment() {
     fun cursosProfesor(correo: String){
         CoroutineScope(Dispatchers.IO).launch {
             val call = RetroInstance.api.getCursosProfesor(correo)
-            print(call)
             activity!!.runOnUiThread {
                 if (call.isSuccessful) {
                     val cursos = call.body()
@@ -92,7 +91,7 @@ class AdminGdDetalles : Fragment() {
                             cursosDatos.add(curso.get("nombre").toString().replace("\"", "")+
                                     "_"+curso.get("codigo").toString().replace("\"", ""))
                         }
-                        comunicador.cursosDocente(cursosDatos)
+                        comunicador.cursosPopUp(cursosDatos)
                     }
                 } else {
                     print("Error! Conexion con el API Fallida")
@@ -101,6 +100,36 @@ class AdminGdDetalles : Fragment() {
         }
     }
 
+    private fun eliminarProfesor(cedula: String){
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetroInstance.api.eliminarProfesor(cedula)
+            activity!!.runOnUiThread {
+                if (call.isSuccessful) {
+                    val resultados = call.body()
+                    if (resultados != null) {
+                        print(resultados)
+                        val resultado = resultados[0].get("eliminardocente")
+                        if (resultado.asInt == 0) {
+                            elimarExitoso()
+                        }else{
+                            controller.notificacion("Error al elminar el profesor, intente de nuevo", activity!!)
+                        }
+                    }
+                    else{
+                        controller.notificacion("Error al elminar el profesor, intente de nuevo", activity!!)
+                    }
+                } else {
+                    controller.notificacion("Error al conectar con la base de datos, intente de nuevo", activity!!)
+                }
+            }
+        }
+    }
+
+    private fun elimarExitoso() {
+        val lista = AdminGdListaDocentes()
+        controller.cambiarFragment(lista, R.id.contenedor, activity!!)
+        controller.notificacion("Docente eliminado con éxito!!", activity!!)
+    }
 
     fun popUp2(){
         val dialogo = estudianteCalificarDocente()

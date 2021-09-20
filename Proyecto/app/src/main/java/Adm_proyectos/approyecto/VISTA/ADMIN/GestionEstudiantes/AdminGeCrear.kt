@@ -15,7 +15,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class adminGeCrear : Fragment() {
+class AdminGeCrear : Fragment() {
 
     private val controller = ControladorComponentesVista()
     override fun onCreateView(
@@ -95,7 +95,7 @@ class adminGeCrear : Fragment() {
         primerApCrearEst.text.clear()
 
         if (insertar) {
-            val listaEsts = adminGeListaEstudiantes()
+            val listaEsts = AdminGeListaEstudiantes()
             controller.cambiarFragment(listaEsts, R.id.contenedor, activity!!)
         }
     }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VISTA.ADMIN.GestionEstudiantes.adminGeDetalles">
+    tools:context=".VISTA.ADMIN.GestionEstudiantes.AdminGeDetalles">
 
     <ImageView
         android:id="@+id/imageView21"
@@ -35,14 +35,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="89dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="60dp"
         android:fontFamily="@font/beba_nseue_regular"
         android:gravity="center_horizontal"
         android:text="Bruno Ferreto Solano"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/imageView21"
-        app:layout_constraintHorizontal_bias="0.244"
+        app:layout_constraintHorizontal_bias="0.453"
         app:layout_constraintStart_toEndOf="@+id/textView25"
         app:layout_constraintTop_toBottomOf="@+id/cedulaE" />
 
@@ -64,13 +64,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="164dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="48dp"
         android:fontFamily="@font/beba_nseue_regular"
         android:text="6°"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/imageView21"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.198"
         app:layout_constraintStart_toEndOf="@+id/textView32"
         app:layout_constraintTop_toBottomOf="@+id/nombreE" />
 
@@ -107,14 +107,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="96dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="28dp"
         android:clickable="true"
         android:fontFamily="@font/beba_nseue_regular"
         android:text="ver aquí"
         android:textColor="#0021F4"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/imageView21"
-        app:layout_constraintHorizontal_bias="0.189"
+        app:layout_constraintHorizontal_bias="0.275"
         app:layout_constraintStart_toEndOf="@+id/listCursos"
         app:layout_constraintTop_toBottomOf="@+id/gradoE"
         tools:ignore="TouchTargetSizeCheck" />

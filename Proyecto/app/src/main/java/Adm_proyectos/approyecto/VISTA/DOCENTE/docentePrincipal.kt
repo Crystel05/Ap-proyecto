@@ -2,7 +2,7 @@ package Adm_proyectos.approyecto.VISTA.DOCENTE
 
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import Adm_proyectos.approyecto.R
-import Adm_proyectos.approyecto.VISTA.ADMIN.GestionEstudiantes.adminGeDetalles
+import Adm_proyectos.approyecto.VISTA.ADMIN.GestionEstudiantes.AdminGeDetalles
 import Adm_proyectos.approyecto.VISTA.INTERFACES.Comunicador
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -78,7 +78,7 @@ class docentePrincipal : AppCompatActivity(), Comunicador {
         bundle.putStringArray("datosEstudiante", datos)
 
         val transaccion = this.supportFragmentManager.beginTransaction()
-        val detalles = adminGeDetalles()
+        val detalles = AdminGeDetalles()
         detalles.arguments = bundle
 
         transaccion.replace(R.id.contenedorDocente, detalles)

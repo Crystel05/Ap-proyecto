@@ -2,12 +2,10 @@ package Adm_proyectos.approyecto.VISTA.ADMIN.ADMIN
 
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import Adm_proyectos.approyecto.R
-import Adm_proyectos.approyecto.VISTA.ADMIN.AsignarCursos.adminAcDetalles
-import Adm_proyectos.approyecto.VISTA.ADMIN.AsignarCursos.adminAcListaCursos
-import Adm_proyectos.approyecto.VISTA.ADMIN.GestionDocentes.AdminGdDetalles
+import Adm_proyectos.approyecto.VISTA.ADMIN.AsignarCursos.AdminAcListaCursos
 import Adm_proyectos.approyecto.VISTA.ADMIN.GestionDocentes.AdminGdListaDocentes
-import Adm_proyectos.approyecto.VISTA.ADMIN.GestionDocentes.AdminGdModificar
-import Adm_proyectos.approyecto.VISTA.ADMIN.GestionEstudiantes.adminGeListaEstudiantes
+import Adm_proyectos.approyecto.VISTA.ADMIN.GestionEstudiantes.AdminGeDetalles
+import Adm_proyectos.approyecto.VISTA.ADMIN.GestionEstudiantes.AdminGeListaEstudiantes
 import Adm_proyectos.approyecto.VISTA.ADMIN.popUpCursos
 import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosAdmin
 import Adm_proyectos.approyecto.VISTA.log_in
@@ -18,7 +16,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main._admin_pricipal.*
-import kotlinx.android.synthetic.main.admin_gd_modificar.*
 
 class adminPricipal : AppCompatActivity(), DatosAdmin{ //Comunicador, Comunicador2
 
@@ -59,7 +56,7 @@ class adminPricipal : AppCompatActivity(), DatosAdmin{ //Comunicador, Comunicado
         }
 
         adminGE.setOnClickListener{
-            val listaEstudiantes = adminGeListaEstudiantes()
+            val listaEstudiantes = AdminGeListaEstudiantes()
             controller.cambiarFragment(listaEstudiantes, R.id.contenedor, this)
             adminGC.setBackgroundResource(R.drawable.button_menu_admin_style)
             adminGD.setBackgroundResource(R.drawable.button_menu_admin_style)
@@ -72,7 +69,7 @@ class adminPricipal : AppCompatActivity(), DatosAdmin{ //Comunicador, Comunicado
         }
 
         adminAC.setOnClickListener{
-            val cursos = adminAcListaCursos()
+            val cursos = AdminAcListaCursos()
             controller.cambiarFragment(cursos, R.id.contenedor, this)
             adminGC.setBackgroundResource(R.drawable.button_menu_admin_style)
             adminGD.setBackgroundResource(R.drawable.button_menu_admin_style)
@@ -118,6 +115,18 @@ class adminPricipal : AppCompatActivity(), DatosAdmin{ //Comunicador, Comunicado
         val bundle = Bundle()
         bundle.putString("datosCurso", id)
         val datos = arrayOf(id, nombre, grado, horario)
+        bundle.putStringArray("datosCurso", datos)
+
+        val transaccion = this.supportFragmentManager.beginTransaction()
+        fragment.arguments = bundle
+
+        transaccion.replace(R.id.contenedor, fragment)
+        transaccion.commit()
+    }
+
+    override fun enviarDatosCurso(id: String, nombre:String, fragment: Fragment) {
+        val bundle = Bundle()
+        val datos = arrayOf(id, nombre)
         bundle.putStringArray("datosCurso", datos)
 
         val transaccion = this.supportFragmentManager.beginTransaction()
@@ -203,19 +212,18 @@ class adminPricipal : AppCompatActivity(), DatosAdmin{ //Comunicador, Comunicado
 //        TODO("Not yet implemented")
 //    }
 //
-//    override fun enviarDatosEstudiante(ced: String, nombre: String, grado: String) {
-//        val bundle = Bundle()
-//
-//        val datos = arrayOf(ced, nombre, "1", grado)
-//        bundle.putStringArray("datosEstudianteNuevo", datos)
-//
-//        val transaccion = this.supportFragmentManager.beginTransaction()
-//        val detalles = adminGeDetalles()
-//        detalles.arguments = bundle
-//
-//        transaccion.replace(R.id.contenedor, detalles)
-//        transaccion.commit()
-//    }
+    override fun enviarDatosEstudiante(ced: String, nombre: String, grado: String, correo:String, contra: String, fragment: Fragment) {
+        val bundle = Bundle()
+
+        val datos = arrayOf("1", ced, nombre, grado, correo, contra)
+        bundle.putStringArray("datosEstudiante", datos)
+
+        val transaccion = this.supportFragmentManager.beginTransaction()
+        fragment.arguments = bundle
+
+        transaccion.replace(R.id.contenedor, fragment)
+        transaccion.commit()
+    }
 
 //    override fun enviarId(id: String) {
 //        val bundle = Bundle()
@@ -229,7 +237,7 @@ class adminPricipal : AppCompatActivity(), DatosAdmin{ //Comunicador, Comunicado
 //        transaccion.commit()
 //    }
 //
-    override fun cursosDocente(cursos: ArrayList<String>) {
+    override fun cursosPopUp(cursos: ArrayList<String>) {
         val bundle = Bundle()
         bundle.putStringArrayList("cursos_docente", cursos)
         val popUp = popUpCursos()

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".VISTA.ADMIN.AsignarCursos.adminAcListaCursos">
+    tools:context=".VISTA.ADMIN.AsignarCursos.AdminAcListaCursos">
 
     <ImageView
         android:id="@+id/flechas"
@@ -337,14 +337,7 @@
         app:layout_constraintTop_toBottomOf="@+id/listaCursos">
 
         <ImageView
-            android:id="@+id/imageView28"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/flecha_atras" />
-
-        <ImageView
-            android:id="@+id/imageView29"
+            android:id="@+id/avanzar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

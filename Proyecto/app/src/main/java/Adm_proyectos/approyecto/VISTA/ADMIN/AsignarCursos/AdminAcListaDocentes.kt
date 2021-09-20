@@ -1,4 +1,4 @@
-package Adm_proyectos.approyecto.VISTA.ADMIN.GestionDocentes
+package Adm_proyectos.approyecto.VISTA.ADMIN.AsignarCursos
 
 import API.RetroInstance
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorAdmin
@@ -8,83 +8,112 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
-import Adm_proyectos.approyecto.VISTA.INTERFACES.Comunicador
-import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosAdmin
+import android.graphics.Color
+import android.widget.TableRow
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.admin_gd_lista_docentes.*
-import kotlinx.android.synthetic.main.admin_gd_lista_docentes.view.*
+import kotlinx.android.synthetic.main.admin_ac_lista_docentes.*
+import kotlinx.android.synthetic.main.admin_ac_lista_docentes.view.*
 import kotlinx.android.synthetic.main.admin_ge_crear.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.w3c.dom.Text
 
-class AdminGdListaDocentes : Fragment() {
+class AdminAcListaDocentes : Fragment() {
 
     private val controller = ControladorComponentesVista()
-    private val crearDocente = AdminGdCrearDocente()
-    private lateinit var comunicador: DatosAdmin
-
+    private lateinit var columnas: List<TableRow>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.admin_gd_lista_docentes, container, false)
-        comunicador = activity as DatosAdmin
+        val view = inflater.inflate(R.layout.admin_ac_lista_docentes, container, false)
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val listaCeds = listOf<TextView>(view.cedula1, view.cedula2, view.cedula3, view.cedula4,
-            view.cedula5, view.cedula6, view.cedula7, view.cedula8)
+        val listaCeds = listOf<TextView>(view.cedulaAcD1, view.cedulaAcD2, view.cedulaAcD3, view.cedulaAcD4,
+            view.cedulaAcD5, view.cedulaAcD6, view.cedulaAcD7, view.cedulaAcD8)
         val lisCeds = ArrayList<TextView>()
         lisCeds.addAll(listaCeds)
-        val listaNoms = listOf<TextView>(view.nombre1, view.nombre2, view.nombre3, view.nombre4,
-            view.nombre5, view.nombre6, view.nombre7, view.nombre8)
+        val listaNoms = listOf<TextView>(view.nombreAcD1, view.nombreAcD2, view.nombreAcD3, view.nombreAcD4,
+            view.nombreAcD5, view.nombreAcD6, view.nombreAcD7, view.nombreAcD8)
         val lisNoms = ArrayList<TextView>()
         lisNoms.addAll(listaNoms)
 
+        var cedulaSelec: TextView = cedulaAcD1
+        columnas = listOf<TableRow>(view.colum1, view.colum2, view.colum3, view.colum4, view.colum5, view.colum6, view.colum7, view.colum8)
+
         obtenerProfesores(lisNoms, lisCeds, false)
-        view.agregarNuevoProfesor.setOnClickListener() {
-            controller.cambiarFragment(crearDocente, R.id.contenedor, activity!!)
-        }
-        view.colum1.setOnClickListener(){
-            enviarDatos(cedula1)
-        }
-
-        view.colum2.setOnClickListener(){
-            enviarDatos(cedula2)
-        }
-
-        view.colum3.setOnClickListener(){
-            enviarDatos(cedula3)
-        }
-
-        view.colum4.setOnClickListener(){
-            enviarDatos(cedula4)
-        }
-
-        view.colum5.setOnClickListener(){
-            enviarDatos(cedula5)
-        }
-
-        view.colum6.setOnClickListener(){
-            enviarDatos(cedula6)
-        }
-
-        view.colum7.setOnClickListener(){
-            enviarDatos(cedula7)
-        }
-
-        view.colum8.setOnClickListener(){
-            enviarDatos(cedula8)
-        }
-
-        view.adelante.setOnClickListener{
+        avanzarDoc.setOnClickListener{
             obtenerProfesores(lisNoms, lisCeds, true)
+        }
+
+        colum1.setOnClickListener(){
+            colum1.setBackgroundColor(Color.parseColor("#5A9CE8"))
+            columnaSeleccionada(columnas, colum1)
+            cedulaSelec = cedulaAcD1
+        }
+
+        colum2.setOnClickListener(){
+            colum2.setBackgroundColor(Color.parseColor("#5A9CE8"))
+            columnaSeleccionada(columnas, colum2)
+            cedulaSelec = cedulaAcD2
+        }
+
+        colum3.setOnClickListener(){
+            colum3.setBackgroundColor(Color.parseColor("#5A9CE8"))
+            columnaSeleccionada(columnas, colum3)
+            cedulaSelec = cedulaAcD3
+        }
+
+        colum4.setOnClickListener(){
+            colum4.setBackgroundColor(Color.parseColor("#5A9CE8"))
+            columnaSeleccionada(columnas, colum4)
+            cedulaSelec = cedulaAcD4
+        }
+
+        colum5.setOnClickListener(){
+            colum5.setBackgroundColor(Color.parseColor("#5A9CE8"))
+            columnaSeleccionada(columnas, colum5)
+            cedulaSelec = cedulaAcD5
+        }
+
+        colum6.setOnClickListener(){
+            colum6.setBackgroundColor(Color.parseColor("#5A9CE8"))
+            columnaSeleccionada(columnas, colum6)
+            cedulaSelec = cedulaAcD6
+        }
+
+        colum7.setOnClickListener(){
+            colum7.setBackgroundColor(Color.parseColor("#5A9CE8"))
+            columnaSeleccionada(columnas, colum7)
+            cedulaSelec = cedulaAcD7
+        }
+
+        colum8.setOnClickListener(){
+            colum8.setBackgroundColor(Color.parseColor("#5A9CE8"))
+            columnaSeleccionada(columnas, colum8)
+            cedulaSelec = cedulaAcD8
+        }
+
+        agregarNuevoProfesor.setOnClickListener(){
+            val cedula = cedulaSelec.text.toString()
+            val datos = arguments?.getStringArray("datosCurso")
+            val id = datos?.get(0).toString()
+            val grado = datos?.get(1).toString()
+            asignarProfesor(cedula, id, grado)
+        }
+    }
+
+    fun columnaSeleccionada(columnas:List<TableRow>, columnaActual: TableRow?){
+        for (colum in columnas) {
+            if (colum != columnaActual)
+                colum.setBackgroundResource(R.drawable.seleccionada)
         }
     }
 
@@ -111,7 +140,7 @@ class AdminGdListaDocentes : Fragment() {
     }
 
     private fun llenarLista(listaIdsA: ArrayList<String>, listaNomsA: ArrayList<String>, listaIds: ArrayList<TextView>,
-        listaNoms: ArrayList<TextView>, avanzar: Boolean) {
+                            listaNoms: ArrayList<TextView>, avanzar: Boolean) {
         var indice = 0
         if (!avanzar){
             if(listaIdsA.size>=8) {
@@ -178,35 +207,35 @@ class AdminGdListaDocentes : Fragment() {
         return nuevoInd
     }
 
-
-    private fun enviarDatos(cedula:TextView){
-        infoProfesor(cedula.text.toString())
-    }
-
-    private fun infoProfesor(cedula: String){
+    private fun asignarProfesor(cedula: String, codigo: String, grado: String){
         CoroutineScope(Dispatchers.IO).launch {
-            val call = RetroInstance.api.getInfoProfesor(cedula)
+            val call = RetroInstance.api.asignarProfesor(cedula, codigo, grado)
             activity!!.runOnUiThread {
                 if (call.isSuccessful) {
-                    val profes = call.body()
-                    if (profes != null) {
-                        for (profe in profes) {
-                            val ced = profe.get("cedula").toString().replace("\"", "")
-                            val nombre = profe.get("nombre").toString().replace("\"", "")
-                            val apellidos = profe.get("apellido").toString().replace("\"", "")
-                            val correo = profe.get("correo").toString().replace("\"", "")
-                            val calificacionPromedio = profe.get("calificacion").toString().replace("\"", "")
-                            val contra = profe.get("contrasenna").toString().replace("\"", "")
-                            val detalles = AdminGdDetalles()
-                            comunicador.enviarDatosDocente(ced, "$nombre $apellidos", correo, calificacionPromedio, contra, detalles)
+                    val resultados = call.body()
+                    if (resultados != null) {
+                        print(resultados)
+                        val resultado = resultados[0].get("asignarprofe")
+                        if (resultado.asInt == 0) {
+                            asignacionExitosa()
+                        }else{
+                            controller.notificacion("Error al asignar el profesor, intente de nuevo", activity!!)
                         }
                     }
+                    else{
+                        controller.notificacion("Error al asignar el profesor, intente de nuevo", activity!!)
+                    }
                 } else {
-                    print("Error! Conexion con el API Fallida")
+                    controller.notificacion("Error al conectar con la base de datos, intente de nuevo", activity!!)
                 }
             }
         }
     }
 
-
+    private fun asignacionExitosa() {
+        controller.notificacion("Profesor asignado con éxito!!", activity!!)
+        val listaCursos = AdminAcListaCursos()
+        controller.cambiarFragment(listaCursos, R.id.contenedor, activity!!)
+        columnaSeleccionada(columnas, null)
+    }
 }

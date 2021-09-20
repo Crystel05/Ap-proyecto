@@ -1,35 +1,32 @@
 package Adm_proyectos.approyecto.VISTA.ADMIN.GestionEstudiantes
 
 import API.RetroInstance
-import Adm_proyectos.approyecto.CONTROLADOR.ControladorAdmin
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
-import Adm_proyectos.approyecto.VISTA.INTERFACES.Comunicador
+import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosAdmin
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.admin_ge_detalles.view.*
 import kotlinx.android.synthetic.main.admin_ge_lista_estudiantes.*
 import kotlinx.android.synthetic.main.admin_ge_lista_estudiantes.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class adminGeListaEstudiantes : Fragment() {
+class AdminGeListaEstudiantes : Fragment() {
 
-    private lateinit var comunicador: Comunicador
+    private lateinit var comunicador: DatosAdmin
     private val controller = ControladorComponentesVista()
-    private val controllerAdmin = ControladorAdmin()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.admin_ge_lista_estudiantes, container, false)
-        comunicador = activity as Comunicador
+        comunicador = activity as DatosAdmin
         return view
     }
 
@@ -43,42 +40,42 @@ class adminGeListaEstudiantes : Fragment() {
 
         obtenerListaEstudiantes(listaNombres, listaGrados, false)
         view.agregarNuevoEstudiante.setOnClickListener() {
-            val crearEstudiante = adminGeCrear()
+            val crearEstudiante = AdminGeCrear()
             controller.cambiarFragment(crearEstudiante, R.id.contenedor, activity!!)
         }
         flechaAd.setOnClickListener{
             obtenerListaEstudiantes(listaNombres, listaGrados,true)
         }
 
-        view.colum1.setOnClickListener(){
+        view.colum1.setOnClickListener{
             enviarDatos(view.grado1)
         }
 
-        view.colum2.setOnClickListener(){
+        view.colum2.setOnClickListener{
             enviarDatos(view.grado2)
         }
 
-        view.colum3.setOnClickListener(){
+        view.colum3.setOnClickListener{
             enviarDatos(view.grado3)
         }
 
-        view.colum4.setOnClickListener(){
+        view.colum4.setOnClickListener{
             enviarDatos(view.grado4)
         }
 
-        view.colum5.setOnClickListener(){
+        view.colum5.setOnClickListener{
             enviarDatos(view.grado5)
         }
 
-        view.colum6.setOnClickListener(){
+        view.colum6.setOnClickListener{
             enviarDatos(view.grado6)
         }
 
-        view.colum7.setOnClickListener(){
+        view.colum7.setOnClickListener{
             enviarDatos(view.grado7)
         }
 
-        view.colum8.setOnClickListener(){
+        view.colum8.setOnClickListener{
             enviarDatos(view.grado8)
         }
     }
@@ -101,15 +98,12 @@ class adminGeListaEstudiantes : Fragment() {
                         llenarTabla(listaClaseA, listaNomsA, listaIds, listaNoms, avanzar)
                     }
                 } else {
-                    notificaciones("Error al conectar con la base de datos")
+                    controller.notificacion("Error al conectar con la base de datos", activity!!)
                 }
             }
         }
     }
 
-    private fun notificaciones(notificacion: String?) {
-        Toast.makeText(activity!!, notificacion, Toast.LENGTH_LONG).show()
-    }
 
     private fun llenarTabla(listaIdsA: ArrayList<String>, listaNomsA: ArrayList<String>,
                             listaIds: List<TextView>, listaNoms: List<TextView>, avanzar:Boolean) {
@@ -183,7 +177,10 @@ class adminGeListaEstudiantes : Fragment() {
     private fun enviarDatos(nombre: TextView){
         val datos = nombre.text.split(" ")
         val nombre = datos[0]
-        val apellido = datos[1]
+        var apellido = datos[1]
+        if(datos.size == 3)
+            apellido = datos[1]+" "+datos[2]
+
         infoEstudiante(nombre, apellido)
     }
 
@@ -195,21 +192,23 @@ class adminGeListaEstudiantes : Fragment() {
                     val estudiantes = call.body()
                     if (estudiantes != null) {
                         for (estudiante in estudiantes) {
-                            val nomb = estudiante.get("nombre").toString().replace("\"", "")
+                            val nomb = estudiante.get("nombre").toString().replace("\"", "") + " " +
+                                    estudiante.get("apellido").toString().replace("\"", "")
                             val ced = estudiante.get("cedula").toString().replace("\"", "")
                             val grado = estudiante.get("clase").toString().replace("\"", "")
-                            comunicador.enviarDatosEstudiante(nomb, ced, grado)
+                            val correo = estudiante.get("correo").toString().replace("\"", "")
+                            val contra = estudiante.get("contrasenna").toString().replace("\"", "")
+                            val detalles = AdminGeDetalles()
+
+                            comunicador.enviarDatosEstudiante(nomb, ced, grado, correo, contra, detalles)
                         }
 
                     }
                 } else {
-                    notificaciones("Error al conectar con la base de datos")
+                    controller.notificacion("Error al conectar con la base de datos", activity!!)
                 }
             }
         }
     }
 
-    private fun notificacions(notificacion: String) {
-        Toast.makeText(activity!!, notificacion, Toast.LENGTH_LONG).show()
-    }
 }
