@@ -171,6 +171,12 @@ interface API_Calls {
     @GET("elimAlumno/{cedula}")
     suspend fun eliminarAlumno(@Path("cedula") cedula:String): Response<ArrayList<JsonObject>>
 
+    @GET("profesoresCur/{codigo}/{clase}")
+    suspend fun profesoresPorCurso(@Path("codigo") codigo:String, @Path("clase") clase:String): Response<ArrayList<JsonObject>>
+
+    @GET("estudiantesCur/{codigo}/{clase}")
+    suspend fun estudiantesPorCurso(@Path("codigo") codigo:String, @Path("clase") clase:String): Response<ArrayList<JsonObject>>
+
 
 
 

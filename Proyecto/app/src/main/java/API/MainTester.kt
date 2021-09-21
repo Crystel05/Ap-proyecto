@@ -738,6 +738,70 @@ class MainTester {
         }
     }
 
+    fun profesoresPorCurso(codigo: String, clase: String){
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetroInstance.api.profesoresPorCurso(codigo, clase)
+//            print(call)
+            if (call.isSuccessful) {
+                val profesores = call.body()
+                if (profesores != null) {
+                    var nombre = ""; var apellido = ""; var cedula = ""; var calificacion = ""; var correo = ""
+                    for (profesor in profesores) {
+                        nombre = profesor.get("nombre").toString()
+                        apellido = profesor.get("apellido").toString()
+                        cedula = profesor.get("cedula").toString()
+                        calificacion = profesor.get("calificacion").toString()
+                        correo = profesor.get("correo").toString()
+                        print(profesor)
+                        print("\n")
+                        print(nombre)
+                        print("\n")
+                        print(apellido)
+                        print("\n")
+                        print(cedula)
+                        print("\n")
+                        print(calificacion)
+                        print("\n")
+                        print(correo)
+                        print("\n")
+
+                    }
+                }
+            } else {
+                print("Error! Conexion con el API Fallida")
+            }
+        }
+    }
+
+    fun estudiantesPorCurso(codigo: String, clase: String){
+        CoroutineScope(Dispatchers.IO).launch {
+            print("IHLH")
+            val call = RetroInstance.api.estudiantesPorCurso(codigo, clase)
+            print(call)
+            if (call.isSuccessful) {
+                val estudiantes = call.body()
+                if (estudiantes != null) {
+                    var nombre = ""; var apellido = ""; var cedula = ""
+                    for (estudiante in estudiantes) {
+                        nombre = estudiante.get("nombre").toString()
+                        apellido = estudiante.get("apellido").toString()
+                        cedula = estudiante.get("cedula").toString()
+                        print(estudiante); print("\n")
+                        print(nombre)
+                        print("\n")
+                        print(apellido)
+                        print("\n")
+                        print(cedula)
+                        print("\n")
+
+                    }
+                }
+            } else {
+                print("Error! Conexion con el API Fallida")
+            }
+        }
+    }
+
 }
 
 fun main() {
@@ -771,7 +835,7 @@ fun main() {
 //            tester.updateEstudiante("Martha","Stewart", "1111010", "Martha", "soymartha@gmail.com", "mi cumpleaños", "Steward", "Prepa")
 
 
-            tester.asignarProfesor("54321", "prueba", "4")
+//            tester.asignarProfesor("54321", "prueba", "4")
 //            tester.asignarEstudiante("prueba2", "apellidoPrueba", "prueba", "4")
 
 //            tester.buscarEstudiante("124455")
@@ -786,7 +850,12 @@ fun main() {
 //            NUEVAS
 //            tester.eliminarCurso("fisi", "6")
 //            tester.eliminarProfesor("1234")
-//            tester.eliminarAlumno("124455")
+//            tester.eliminarAlumno("518079889") //ANTONIO
+//            tester.buscarEstudiantes()
+//            tester.buscarUsuarios()
+//            tester.asignarEstudiante("Manchas", "Panchas", "Matt", "1")
+//            tester.profesoresPorCurso("mate", "6")
+            tester.estudiantesPorCurso("Cal", "4")
             x = 1
 
         }
