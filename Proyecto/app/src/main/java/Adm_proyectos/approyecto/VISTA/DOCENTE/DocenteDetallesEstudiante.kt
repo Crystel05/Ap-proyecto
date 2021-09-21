@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import androidx.fragment.app.Fragment
 
-class docenteDetallesEstudiante : Fragment() {
+class DocenteDetallesEstudiante : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VISTA.DOCENTE.docenteEnviarNoticia">
+    tools:context=".VISTA.DOCENTE.DocenteEnviarNoticia">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/create"
-                android:text="CURSO"
+                android:text="CURSO "
                 android:textColor="#000000"
                 android:textSize="40sp" />
 
@@ -42,6 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/create"
+                android:textColor="#000000"
                 android:textSize="40sp" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -74,13 +75,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView33" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName5"
+        android:id="@+id/tituloNoticia"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginTop="52dp"
         android:background="@drawable/edit_text_style"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textAlignment="center"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.177"
@@ -99,10 +101,10 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
+        app:layout_constraintTop_toBottomOf="@+id/tituloNoticia" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/contenidoNoticia"
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_marginTop="28dp"
@@ -110,6 +112,7 @@
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -128,7 +131,7 @@
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine"
+        app:layout_constraintTop_toBottomOf="@+id/contenidoNoticia"
         tools:ignore="TouchTargetSizeCheck" />
 
     <ImageView

@@ -47,13 +47,19 @@ class AdminGeCrear : Fragment() {
     private fun agregar() {
         if (cedulaCrearEst.text.isNotEmpty() && nombreCrearEst.text.isNotEmpty() && correoCrearEst.text.isNotEmpty() && contrEstCrear.text.isNotEmpty()
             && primerApCrearEst.text.isNotEmpty()){
-            insertarEstudiante(
-                cedulaCrearEst.text.toString(),
-                nombreCrearEst.text.toString(),
-                correoCrearEst.text.toString(),
-                contrEstCrear.text.toString(),
-                primerApCrearEst.text.toString() + " " + segundoApCrearEst.text.toString(),
-                gradosGeA.selectedItem.toString()
+                val apellidos:String
+                if(segundoApCrearEst.text.isNotEmpty()){
+                    apellidos = primerApCrearEst.text.toString().replace(" ", "") + " " +segundoApCrearEst.text.toString().replace(" ", "")
+                }
+                else{
+                    apellidos = primerApCrearEst.text.toString().replace(" ", "")
+                }
+                insertarEstudiante(
+                    cedulaCrearEst.text.toString().replace(" ", ""),
+                    nombreCrearEst.text.toString(),
+                    correoCrearEst.text.toString().lowercase().replace(" ", ""),
+                    contrEstCrear.text.toString(),
+                    apellidos, gradosGeA.selectedItem.toString()
             )
         } else {
             notificacions("Existen campos sin llenar")

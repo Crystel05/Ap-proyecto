@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".VISTA.DOCENTE.docentesAsignarTarea">
+    tools:context=".VISTA.DOCENTE.DocentesAsignarTarea">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout4"
@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/create"
-                android:text="CURSO"
+                android:text="CURSO "
                 android:textColor="#000000"
                 android:textSize="40sp" />
 
@@ -46,6 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/create"
+                android:textColor="#000000"
                 android:textSize="40sp" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -64,7 +65,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/contenidoTarea"
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_marginTop="12dp"
@@ -72,6 +73,8 @@
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
+        android:textAlignment="center"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
@@ -90,7 +93,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" />
+        app:layout_constraintTop_toBottomOf="@+id/tituloTarea" />
 
     <Button
         android:id="@+id/asignarTarea"
@@ -104,11 +107,11 @@
         android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine"
+        app:layout_constraintTop_toBottomOf="@+id/contenidoTarea"
         tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName6"
+        android:id="@+id/idTarea"
         android:layout_width="113dp"
         android:layout_height="30dp"
         android:layout_marginStart="44dp"
@@ -116,6 +119,8 @@
         android:background="@drawable/edit_text_style"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/textView36"
         app:layout_constraintTop_toBottomOf="@+id/textView33"
@@ -148,18 +153,20 @@
         app:layout_constraintTop_toBottomOf="@+id/textView33" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName5"
+        android:id="@+id/tituloTarea"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginTop="52dp"
         android:background="@drawable/edit_text_style"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.13"
         app:layout_constraintStart_toEndOf="@+id/textView34"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName6"
+        app:layout_constraintTop_toBottomOf="@+id/idTarea"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <ImageView

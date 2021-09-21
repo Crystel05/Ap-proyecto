@@ -23,7 +23,7 @@
             android:exported="true"
             android:theme="@style/Theme.APproyecto.NoActionBar" />
         <activity
-            android:name=".VISTA.DOCENTE.docentePrincipal"
+            android:name=".VISTA.DOCENTE.DocentePrincipal"
             android:exported="true"
             android:theme="@style/Theme.APproyecto.NoActionBar" />
         <activity

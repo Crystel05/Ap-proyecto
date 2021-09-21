@@ -97,20 +97,6 @@ class adminPricipal : AppCompatActivity(), DatosAdmin{ //Comunicador, Comunicado
         nombreUsuario.text = "$nombre"
     }
 
-//    override fun enviarDatosCurso(id: String, nombre:String) {
-//        val bundle = Bundle()
-//        bundle.putString("datosCurso", id)
-//        val datos = arrayOf(id, nombre)
-//        bundle.putStringArray("datosCurso", datos)
-//
-//        val transaccion = this.supportFragmentManager.beginTransaction()
-//        val detalles = admin_gc_detalles()
-//        detalles.arguments = bundle
-//
-//        transaccion.replace(R.id.contenedor, detalles)
-//        transaccion.commit()
-//    }
-
     override fun enviarDatosCurso(id: String, nombre:String, grado:String, horario:String, fragment: Fragment) {
         val bundle = Bundle()
         bundle.putString("datosCurso", id)
@@ -136,49 +122,6 @@ class adminPricipal : AppCompatActivity(), DatosAdmin{ //Comunicador, Comunicado
         transaccion.commit()
     }
 
-//    override fun enviarDatosCurso2(id: String, nombre:String, grado:String, horario:String) {
-//        val bundle = Bundle()
-//        val datos = arrayOf(id, nombre, grado, horario)
-//        bundle.putStringArray("datosCursoNuevoModificar", datos)
-//
-//        val transaccion = this.supportFragmentManager.beginTransaction()
-//        val modificar = admin_gc_modificarCurso()
-//        modificar.arguments = bundle
-//
-//        transaccion.replace(R.id.contenedor, modificar)
-//        transaccion.commit()
-//    }
-//
-//    override fun enviarDatosCursoAc(id: String, nombre: String) {
-//        val bundle = Bundle()
-//        bundle.putString("datosCursoAc", id)
-//        val datos = arrayOf(id, nombre)
-//        bundle.putStringArray("datosCursoAc", datos)
-//
-//        val transaccion = this.supportFragmentManager.beginTransaction()
-//        val detalles = adminAcDetalles()
-//        detalles.arguments = bundle
-//
-//        transaccion.replace(R.id.contenedor, detalles)
-//        transaccion.commit()
-//    }
-//
-//    override fun enviarDatosDocente(ced: String, nombre: String) {
-//        val bundle = Bundle()
-//        bundle.putString("datosDocente", ced)
-//
-//        val datos = arrayOf(ced, nombre)
-//        bundle.putStringArray("datosDocente", datos)
-//
-//        val transaccion = this.supportFragmentManager.beginTransaction()
-//        val detalles = adminGdDetalles()
-//        detalles.arguments = bundle
-//
-//        transaccion.replace(R.id.contenedor, detalles)
-//        transaccion.commit()
-//
-//    }
-//
     override fun enviarDatosDocente(ced: String, nombre: String, correo: String, calificacion: String, contra:String, fragment: Fragment) {
         val bundle = Bundle()
         val datos = arrayOf(ced, nombre, correo, calificacion, contra)
@@ -191,27 +134,6 @@ class adminPricipal : AppCompatActivity(), DatosAdmin{ //Comunicador, Comunicado
         transaccion.commit()
     }
 
-//    override fun enviarDatosDocente(ced: String, nombre: String, correo: String, contra: String) {
-//        val bundle = Bundle()
-//        val datos = arrayOf(ced, nombre, correo, contra)
-//        bundle.putStringArray("datosDocenteModificar", datos)
-//
-//        val transaccion = this.supportFragmentManager.beginTransaction()
-//        val modificar = AdminGdModificar()
-//        modificar.arguments = bundle
-//
-//        transaccion.replace(R.id.contenedor, modificar)
-//        transaccion.commit()
-//    }
-//
-//    override fun enviarDatosDocente(est: Boolean) {
-//        TODO("Not yet implemented")
-//    }
-//
-//    override fun enviarDatosEstudiante(ced: String, nombre: String) {
-//        TODO("Not yet implemented")
-//    }
-//
     override fun enviarDatosEstudiante(ced: String, nombre: String, grado: String, correo:String, contra: String, fragment: Fragment) {
         val bundle = Bundle()
 
@@ -225,18 +147,6 @@ class adminPricipal : AppCompatActivity(), DatosAdmin{ //Comunicador, Comunicado
         transaccion.commit()
     }
 
-//    override fun enviarId(id: String) {
-//        val bundle = Bundle()
-//        bundle.putString("ID", id)
-//
-//        val transaccion = this.supportFragmentManager.beginTransaction()
-//        val modificar = admin_gc_modificarCurso()
-//        modificar.arguments = bundle
-//
-//        transaccion.replace(R.id.contenedor, modificar)
-//        transaccion.commit()
-//    }
-//
     override fun cursosPopUp(cursos: ArrayList<String>) {
         val bundle = Bundle()
         bundle.putStringArrayList("cursos_docente", cursos)
