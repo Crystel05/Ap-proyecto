@@ -1,15 +1,12 @@
 package Adm_proyectos.approyecto.VISTA.ADMIN.AsignarCursos
 
 import API.RetroInstance
-import Adm_proyectos.approyecto.CONTROLADOR.ControladorAdmin
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
-import Adm_proyectos.approyecto.VISTA.INTERFACES.Comunicador
-import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosAdmin
 import android.graphics.Color
 import android.widget.TableRow
 import android.widget.TextView
@@ -96,17 +93,17 @@ class AdminAcListaEstudiantes : Fragment() {
                     if (nombreCom.size == 3){
                         apellido = nombreCom[1] + " " + nombreCom[2]
                     }
-                    controller.notificacion(nombre + " " + apellido + " " +codigo + " " + grado, activity!!)
-                   // asignarEstudiante(nombre, apellido, codigo, grado)
+                    controller.notificacion(codigo + " " + grado, activity!!)
+//                    asignarEstudiante(nombre, apellido, codigo, grado)
                     i +=1
                 }
                 else
                     i+=1
             }
 
-            val detalles = AdminAcListaCursos()
-            controller.cambiarFragment(detalles, R.id.contenedor, activity!!)
-            Toast.makeText(activity!!, "Los estudiantes fueron agregados al curso con éxito", Toast.LENGTH_LONG).show()
+//            val detalles = AdminAcListaCursos()
+//            controller.cambiarFragment(detalles, R.id.contenedor, activity!!)
+//            Toast.makeText(activity!!, "Los estudiantes fueron agregados al curso con éxito", Toast.LENGTH_LONG).show()
         }
     }
 

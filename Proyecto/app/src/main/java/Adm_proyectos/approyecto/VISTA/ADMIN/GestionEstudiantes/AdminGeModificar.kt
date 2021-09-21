@@ -48,15 +48,17 @@ class AdminGeModificar : Fragment() {
             if(segundoApModificarEst.text.isNotEmpty()){
                 apes = primerApModificarEst.text.toString() + " " + segundoApModificarEst.text.toString()
             }
-
-            updateEstudiante(nombre, apellidos, cedulaModificarEstudiante.text.toString(), nombreModificarEstudiante.text.toString(), correoEstMod.text.toString(),
-                contraEstMod.text.toString(), apes, gradosGeM.selectedItem.toString())
+            controller.notificacion(nombre + " " + apellidos, activity!!)
+//            updateEstudiante(nombre, apellidos, cedulaModificarEstudiante.text.toString(), nombreModificarEstudiante.text.toString(), correoEstMod.text.toString(),
+//                contraEstMod.text.toString(), apes, gradosGeM.selectedItem.toString())
+//            updateEstudiante("Paola", "Turquez", "11111111", "Pao", "velvet@gmail.com",
+//                "magikChimichanga", "Turquez", "1")
 
         }
 
     }
 
-    fun updateEstudiante(nombreViejo: String, apellidoViejo:String ,cedula: String, nombre: String, correo: String, contra: String, apellido: String, grado: String){
+    fun updateEstudiante(nombreViejo: String, apellidoViejo:String, cedula: String, nombre: String, correo: String, contra: String, apellido: String, grado: String){
         CoroutineScope(Dispatchers.IO).launch {
             val call = RetroInstance.api.updateEstudiante(nombreViejo, apellidoViejo, cedula, nombre, correo, contra, apellido, grado)
             activity!!.runOnUiThread {

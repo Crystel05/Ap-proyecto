@@ -1,21 +1,17 @@
 package Adm_proyectos.approyecto.VISTA.ADMIN.GestionDocentes
 
 import API.RetroInstance
-import Adm_proyectos.approyecto.CONTROLADOR.ControladorAdmin
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
-import Adm_proyectos.approyecto.VISTA.INTERFACES.Comunicador
 import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosAdmin
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.admin_gd_lista_docentes.*
 import kotlinx.android.synthetic.main.admin_gd_lista_docentes.view.*
-import kotlinx.android.synthetic.main.admin_ge_crear.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

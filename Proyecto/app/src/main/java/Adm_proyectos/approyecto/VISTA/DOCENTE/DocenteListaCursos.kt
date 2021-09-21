@@ -1,4 +1,4 @@
-package Adm_proyectos.approyecto.VISTA.ADMIN.AsignarCursos
+package Adm_proyectos.approyecto.VISTA.DOCENTE
 
 import API.RetroInstance
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
@@ -7,98 +7,80 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
-import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosAdmin
+import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosDocente
+import android.widget.TableRow
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.admin_ac_lista_cursos.*
-import kotlinx.android.synthetic.main.admin_ac_lista_cursos.view.*
+import kotlinx.android.synthetic.main.admin_ge_modificar.*
+import kotlinx.android.synthetic.main.docente_lista_cursos.*
+import kotlinx.android.synthetic.main.docente_lista_cursos.view.*
+import kotlinx.android.synthetic.main.estudiante_noticias.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class AdminAcListaCursos : Fragment() {
+class DocenteListaCursos : Fragment() {
 
-    private lateinit var comunicador: DatosAdmin
+    private lateinit var comunicador: DatosDocente
     private val controller = ControladorComponentesVista()
+    private var correo: String = ""
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.admin_ac_lista_cursos, container, false)
-        comunicador = activity as DatosAdmin
+
+        comunicador = activity as DatosDocente
+        val view = inflater.inflate(R.layout.docente_lista_cursos, container, false)
+        val datos = arguments?.getString("correoProfesor")
+        correo = if(arguments != null && datos == null){
+            arguments!!.getString("correo").toString()
+        } else{
+            datos.toString()
+        }
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val listaIds = listOf<TextView>(view.idAc1, view.idAc2, view.idAc3, view.idAc4,
-            view.idAc5, view.idAc6, view.idAc7, view.idAc8)
-        val listaNoms = listOf<TextView>(view.nombreAc1, view.nombreAc2, view.nombreAc3, view.nombreAc4,
-            view.nombreAc5, view.nombreAc6, view.nombreAc7, view.nombreAc8)
-
-        obtenerLista(listaIds, listaNoms, false)
-
-        avanzar.setOnClickListener{
-            obtenerLista(listaIds, listaNoms, true)
+        val listaCol = listOf<TableRow>(view.columna1, view.columna2, view.columna3, view.columna4, view.columna5, view.columna6, view.columna7, view.columna8)
+        val listaIds = listOf<TextView>(view.idDc1, view.idDc2, view.idDc3, view.idDc4,
+            view.idDc5, view.idDc6, view.idDc7, view.idDc8)
+        val listaNoms = listOf<TextView>(view.nombreDc1, view.nombreDc2, view.nombreDc3, view.nombreDc4,
+            view.nombreDc5, view.nombreDc6, view.nombreDc7, view.nombreDc8)
+        cursosProfesor(correo,listaIds, listaNoms, false)
+        avanzarDocCursos.setOnClickListener{
+            cursosProfesor(correo, listaIds, listaNoms, true)
+        }
+        for (i in listaCol.indices){
+            listaCol[i].setOnClickListener{
+                if(listaIds[i].text.isNotEmpty())
+                    enviarDatos(listaIds[i])
+            }
         }
 
-        view.columna1.setOnClickListener(){
-            enviarDatos(view.idAc1)
-        }
-
-        view.columna2.setOnClickListener(){
-            enviarDatos(view.idAc2)
-        }
-
-        view.columna3.setOnClickListener(){
-            enviarDatos(view.idAc3)
-        }
-
-        view.columna4.setOnClickListener(){
-            enviarDatos(view.idAc4)
-        }
-
-        view.columna5.setOnClickListener(){
-            enviarDatos(view.idAc5)
-        }
-
-        view.columna6.setOnClickListener(){
-            enviarDatos(view.idAc6)
-        }
-
-        view.columna7.setOnClickListener(){
-            enviarDatos(view.idAc7)
-        }
-
-        view.columna8.setOnClickListener(){
-            enviarDatos(view.idAc8)
-        }
     }
 
-    private fun obtenerLista(listaIds: List<TextView>, listaNoms: List<TextView>, avanzar: Boolean) {
+    fun cursosProfesor(correo: String, listaIds: List<TextView>, listaNoms: List<TextView>, avanzar: Boolean){
         CoroutineScope(Dispatchers.IO).launch {
-            val call = RetroInstance.api.getCursosAdmin()
+            val call = RetroInstance.api.getCursosProfesor(correo)
             activity!!.runOnUiThread {
                 if (call.isSuccessful) {
                     val cursos = call.body()
-                    val listaIdsA = ArrayList<String>()
-                    val listaNomsA = ArrayList<String>()
+                    val ids = ArrayList<String>()
+                    val noms = ArrayList<String>()
                     if (cursos != null) {
                         for (curso in cursos) {
-                            listaIdsA.add(curso.get("codigo").toString().replace("\"", "") + "_" +
-                                    curso.get("clase").toString().replace("\"", ""))
-                            listaNomsA.add(curso.get("nombre").toString().replace("\"", "")) //cambiar por nombre
+                            ids.add(curso.get("codigo").toString().replace("\"", "")+
+                            "_"+curso.get("clase").toString().replace("\"", ""))
+                            noms.add(curso.get("nombre").toString().replace("\"", ""))
                         }
-                        llenarTabla(listaIdsA, listaNomsA, listaIds, listaNoms,avanzar)
+                        llenarTabla(ids, noms, listaIds, listaNoms, avanzar)
                     }
-                } else {
-                    controller.notificacion("Error al conectar con la base de datos", activity!!)
                 }
             }
         }
     }
-
     private fun llenarTabla(listaIdsA: ArrayList<String>, listaNomsA: ArrayList<String>,
                             listaIds: List<TextView>, listaNoms: List<TextView>, avanzar:Boolean) {
         var indice = 0
@@ -183,8 +165,9 @@ class AdminAcListaCursos : Fragment() {
                             val horario = curso.get("diaSemana").toString().replace("\"", "")+
                                     " de " + curso.get("horaInicio").toString().replace("\"", "") + " a " +
                                     curso.get("horaFin").toString().replace("\"", "")
-                            val detalles = AdminAcDetalles()
-                            comunicador.enviarDatosCurso(id, nombre, grado, horario, detalles)
+                            val detalles = DocenteDetallesCurso()
+                            comunicador.enviarDatosCurso(id, nombre, grado, horario, detalles, correo)
+
                         }
                     }
                 } else {
@@ -200,5 +183,4 @@ class AdminAcListaCursos : Fragment() {
         val grado = datos[1]
         cursoInfo(codigo, grado)
     }
-
 }

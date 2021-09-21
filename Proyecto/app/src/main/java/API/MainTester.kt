@@ -1,7 +1,10 @@
 package API
 
 import Adm_proyectos.approyecto.MODELO.Usuario
+import android.annotation.SuppressLint
 import kotlinx.coroutines.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class MainTester {
@@ -740,8 +743,12 @@ class MainTester {
 
 }
 
+@SuppressLint("SimpleDateFormat")
 fun main() {
     var x = 0
+    val sdf = SimpleDateFormat("yyyy/M/dd")
+    val currentDate = sdf.format(Date())
+    print(currentDate)
     while (true) {
         if (x == 0) {
             var firstTodo = Usuario()
@@ -761,24 +768,24 @@ fun main() {
            // tester.gradoId("5")
 //            tester.infoProfesor("11111111")
 //            tester.buscarEstudiantes()
-//            tester.infoEstudiante("Antonioooo", "C")
+//            tester.infoEstudiante("Paola", "Turquez")
 //            tester.insertarCurso("pru", "prueba", "4", "martes", "08:00:00", "10:00:00")
 //            tester.insertarProfesor("12345", "prueba2", "coreo@gmail.com", "contrasenia", "apellidoPrueba")
 //            tester.insertarEstudiante("124455", "prueba2", "coreo@gmail.com", "contrasenia", "apellidoPrueba", "4")
             //tester.updateCurso("prueba1","4","prueba2","pruebaUpdate","4","sabado","08:00:00", "10:00:00")
 //            tester.updateProfesor("00000000", "11111111","Josehp", "shoebill@gmail.com", "prueba", "Alvarez")
 
-//            tester.updateEstudiante("Martha","Stewart", "1111010", "Martha", "soymartha@gmail.com", "mi cumpleaños", "Steward", "Prepa")
+//            tester.updateEstudiante("Marta","Stewart Solano", "1111010", "Martha", "soymartha@gmail.com", "mi cumpleaños", "Steward", "Prepa")
 
 
-            tester.asignarProfesor("54321", "prueba", "4")
-//            tester.asignarEstudiante("prueba2", "apellidoPrueba", "prueba", "4")
+//            tester.asignarProfesor("54321", "prueba", "4")
+//            tester.asignarEstudiante("Manchas", "Panchas", "soci", "5")
 
 //            tester.buscarEstudiante("124455")
 //            tester.insertarTarea("mat", "prepa", "prueba", "prueba", "Tarea de prueba", "2021-09-11")
 //            tester.insertarNoticia("mat", "prepa", "noticiaPrueba", "probando insertar noticia", "2021-09-14")
-//            tester.noticias("mat", "prepa")
-//            tester.tareas("mat", "prepa") REVISAR, NO SIRVE :(
+//            tester.noticias("mate", "6")
+//            tester.tareas("mate", "6") //REVISAR, NO SIRVE :(
 //            tester.mensajesChat("mat", "prepa") REVISAR, TAMPOCO SIRVE :(
 //            tester.insertarMensajeChat("1","2", "Mensaje de prueba.")  REVISAR ( NO HAY CHAT PARA PROBAR).
 
@@ -786,7 +793,7 @@ fun main() {
 //            NUEVAS
 //            tester.eliminarCurso("fisi", "6")
 //            tester.eliminarProfesor("1234")
-//            tester.eliminarAlumno("124455")
+//            tester.eliminarAlumno("51807989")
             x = 1
 
         }

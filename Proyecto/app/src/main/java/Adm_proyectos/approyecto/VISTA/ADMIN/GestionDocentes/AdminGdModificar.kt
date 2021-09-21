@@ -51,8 +51,8 @@ class AdminGdModificar : Fragment() {
 
     private fun llenarDatos() {
         val datos = arguments?.getStringArray("datosDocente")
-        cedula = datos?.get(0).toString()
-        val nombreCom = datos?.get(1)?.split(" ")
+        cedula = datos?.get(1).toString()
+        val nombreCom = datos?.get(0)?.split(" ")
         val correo = datos?.get(2)
         val nombre = nombreCom?.get(0)
         val ap1 = nombreCom?.get(1)

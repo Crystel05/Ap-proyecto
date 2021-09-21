@@ -3,7 +3,7 @@ package Adm_proyectos.approyecto.VISTA
 import API.RetroInstance
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.ADMIN.ADMIN.adminPricipal
-import Adm_proyectos.approyecto.VISTA.DOCENTE.docentePrincipal
+import Adm_proyectos.approyecto.VISTA.DOCENTE.DocentePrincipal
 import Adm_proyectos.approyecto.VISTA.ESTUDIANTE.estudiantesPrincipal
 import android.content.Intent
 import android.os.Bundle
@@ -18,8 +18,6 @@ import android.view.inputmethod.InputMethodManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.util.*
-import java.util.Locale.*
 import kotlin.collections.ArrayList
 
 
@@ -81,7 +79,7 @@ class log_in : AppCompatActivity() {
 
     private fun iniciarSesion(datos: ArrayList<String>){
         val admin = adminPricipal()
-        val docentePrincipal = docentePrincipal()
+        val docentePrincipal = DocentePrincipal()
         val tipo = datos[1]
         val nombre = datos[0]
 
@@ -95,6 +93,7 @@ class log_in : AppCompatActivity() {
         else if (tipo.equals("profesor")){
             Intent(this, docentePrincipal::class.java).also{
                 it.putExtra("nombre", nombre)
+                it.putExtra("correo", correoInicioSesion.text.toString().lowercase().replace(" ", ""))
                 startActivity(it)
             }
         }

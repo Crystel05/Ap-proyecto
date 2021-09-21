@@ -7,20 +7,24 @@ import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.ESTUDIANTE.estudianteNoticias
-import Adm_proyectos.approyecto.VISTA.INTERFACES.Comunicador
+import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosDocente
+import android.annotation.SuppressLint
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.admin_ge_modificar.*
 import kotlinx.android.synthetic.main.docente_detalles_curso.*
 
-class docenteDetallesCurso : Fragment() {
+class DocenteDetallesCurso : Fragment() {
 
     private val controller = ControladorComponentesVista()
-    private lateinit var comunicador: Comunicador
+    private lateinit var comunicador: DatosDocente
+    private lateinit var grado: String
+    private lateinit var idCurso: String
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        comunicador = activity as Comunicador
+        comunicador = activity as DatosDocente
         val view = inflater.inflate(R.layout.docente_detalles_curso, container, false)
         return view
 
@@ -29,11 +33,10 @@ class docenteDetallesCurso : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val noticia = estudianteNoticias()
-        val array = arguments?.getStringArray("datosCursoEstudiante")
-        val idCurso = array?.get(0)
-        val nomCurso = array?.get(1)
-
-        if(array?.get(2) == "2"){
+        val array = arguments?.getStringArray("datosCurso")
+        llenarDatos(array)
+        val correo = array?.get(4).toString()
+        if(array?.get(5) == "2"){
             asignarNoticia.text = "VER NOTICIAS"
             enviarTarea.text = "VER TAREAS"
             verEstudiantes.text = "VER PROFESOR"
@@ -53,14 +56,13 @@ class docenteDetallesCurso : Fragment() {
             verEstudiantes.setOnClickListener(){
 //                val profesor = adminGdDetalles() // cambiar por el nuevo
 //                controller.cambiarFragment(profesor, R.id.contenedorEstudiante, activity!!)
-                comunicador.enviarDatosDocente(true)
+//                comunicador.enviarDatosDocente(true)
             }
         }
-
         else{
-            asignarNoticia.setOnClickListener(){
-                val noticia = docenteEnviarNoticia()
-                controller.cambiarFragment(noticia, R.id.contenedorDocente, activity!!)
+            asignarNoticia.setOnClickListener{
+                val noticia = DocenteEnviarNoticia()
+                comunicador.enviarDatosCurso(idCurso, grado, correo, noticia)
             }
 
             chatGrupo.setOnClickListener(){
@@ -68,8 +70,8 @@ class docenteDetallesCurso : Fragment() {
             }
 
             enviarTarea.setOnClickListener(){
-                val tarea = docentesAsignarTarea()
-                controller.cambiarFragment(tarea, R.id.contenedorDocente, activity!!)
+                val tarea = DocentesAsignarTarea()
+                comunicador.enviarDatosCurso(idCurso, grado, correo, tarea)
             }
 
             verEstudiantes.setOnClickListener(){
@@ -77,5 +79,25 @@ class docenteDetallesCurso : Fragment() {
                 controller.cambiarFragment(estudiantes, R.id.contenedorDocente, activity!!)
             }
         }
+
+
+        volverDetalles.setOnClickListener{
+            val listaCursos = DocenteListaCursos()
+            comunicador.enviarCorreo(correo, listaCursos)
+            controller.cambiarFragment(listaCursos, R.id.contenedorDocente, activity!!)
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun llenarDatos(array: Array<String>?) {
+        idCurso = array?.get(0).toString()
+        val nomCurso = array?.get(1).toString()
+        grado = array?.get(2).toString()
+        val horario = array?.get(3)
+
+        idCursoDocentes.text = " $idCurso"
+        nombreCursoDocente.text = nomCurso
+        gradoCursoDocente.text = grado
+        horarioCursoDocente.text = horario
     }
 }
