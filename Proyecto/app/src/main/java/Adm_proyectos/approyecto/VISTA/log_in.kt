@@ -101,7 +101,6 @@ class log_in : AppCompatActivity() {
         else if(tipo.equals("estudiante")){
             Intent(this, estudiantesPrincipal::class.java).also{
                 it.putExtra("nombre", nombre)
-                it.putExtra("correo", correoInicioSesion.text.toString().lowercase().replace(" ", ""))
                 startActivity(it)
             }
         }

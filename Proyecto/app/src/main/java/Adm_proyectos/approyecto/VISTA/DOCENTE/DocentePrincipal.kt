@@ -5,7 +5,6 @@ import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.ADMIN.GestionEstudiantes.AdminGeDetalles
 import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosDocente
 import Adm_proyectos.approyecto.VISTA.log_in
-import DocenteListaCursos
 import android.content.Intent
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
@@ -14,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import kotlinx.android.synthetic.main._admin_pricipal.*
 import kotlinx.android.synthetic.main._docente_principal.*
 import kotlinx.android.synthetic.main._docente_principal.nombreUsuario
 
@@ -30,7 +30,6 @@ class DocentePrincipal : AppCompatActivity(), DatosDocente {
         val correo = intent.getStringExtra("correo")
 
         irPrimeraPantalla(correo.toString())
-
         salir.setOnClickListener{
             Toast.makeText(this, "Sesión cerrada", Toast.LENGTH_LONG).show()
             Intent(this, log_in::class.java).also{

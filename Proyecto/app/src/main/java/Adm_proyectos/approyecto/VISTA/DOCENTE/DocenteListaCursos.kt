@@ -1,3 +1,4 @@
+package Adm_proyectos.approyecto.VISTA.DOCENTE
 
 import API.RetroInstance
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
@@ -6,13 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
-import Adm_proyectos.approyecto.VISTA.DOCENTE.DocenteDetallesCurso
 import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosDocente
 import android.widget.TableRow
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.admin_ge_modificar.*
 import kotlinx.android.synthetic.main.docente_lista_cursos.*
 import kotlinx.android.synthetic.main.docente_lista_cursos.view.*
+import kotlinx.android.synthetic.main.estudiante_noticias.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -22,7 +24,6 @@ class DocenteListaCursos : Fragment() {
     private lateinit var comunicador: DatosDocente
     private val controller = ControladorComponentesVista()
     private var correo: String = ""
-    private var esEst: String = ""
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,10 +32,8 @@ class DocenteListaCursos : Fragment() {
         comunicador = activity as DatosDocente
         val view = inflater.inflate(R.layout.docente_lista_cursos, container, false)
         val datos = arguments?.getString("correoProfesor")
-        esEst = arguments?.getString("esEstudiante").toString()
         correo = if(arguments != null && datos == null){
             arguments!!.getString("correo").toString()
-
         } else{
             datos.toString()
         }
@@ -49,17 +48,9 @@ class DocenteListaCursos : Fragment() {
             view.idDc5, view.idDc6, view.idDc7, view.idDc8)
         val listaNoms = listOf<TextView>(view.nombreDc1, view.nombreDc2, view.nombreDc3, view.nombreDc4,
             view.nombreDc5, view.nombreDc6, view.nombreDc7, view.nombreDc8)
-
-        if (esEst != "null"){
-            cursosEstudiante(correo, listaIds, listaNoms, false)
-            avanzarDocCursos.setOnClickListener {
-                cursosEstudiante(correo, listaIds, listaNoms, true)
-            }
-        }else {
-            cursosProfesor(correo, listaIds, listaNoms, false)
-            avanzarDocCursos.setOnClickListener {
-                cursosProfesor(correo, listaIds, listaNoms, true)
-            }
+        cursosProfesor(correo,listaIds, listaNoms, false)
+        avanzarDocCursos.setOnClickListener{
+            cursosProfesor(correo, listaIds, listaNoms, true)
         }
         for (i in listaCol.indices){
             listaCol[i].setOnClickListener{
@@ -70,7 +61,7 @@ class DocenteListaCursos : Fragment() {
 
     }
 
-    private fun cursosProfesor(correo: String, listaIds: List<TextView>, listaNoms: List<TextView>, avanzar: Boolean){
+    fun cursosProfesor(correo: String, listaIds: List<TextView>, listaNoms: List<TextView>, avanzar: Boolean){
         CoroutineScope(Dispatchers.IO).launch {
             val call = RetroInstance.api.getCursosProfesor(correo)
             activity!!.runOnUiThread {
@@ -90,31 +81,6 @@ class DocenteListaCursos : Fragment() {
             }
         }
     }
-
-    fun cursosEstudiante(correo: String, listaIds: List<TextView>, listaNoms: List<TextView>, avanzar: Boolean){
-        CoroutineScope(Dispatchers.IO).launch {
-            val call = RetroInstance.api.getCursosEstudiante(correo)
-
-            activity!!.runOnUiThread {
-                if (call.isSuccessful) {
-                    val cursos = call.body()
-                    val ids = ArrayList<String>()
-                    val noms = ArrayList<String>()
-                    if (cursos != null) {
-                        for (curso in cursos) {
-                            ids.add(curso.get("codigo").toString().replace("\"", "")+
-                                    "_"+curso.get("clase").toString().replace("\"", ""))
-                            noms.add(curso.get("nombre").toString().replace("\"", ""))
-                        }
-                    }
-                    llenarTabla(ids, noms, listaIds, listaNoms, avanzar)
-                } else {
-                    controller.notificacion("Error! Conexion con el API Fallida", activity!!)
-                }
-            }
-        }
-    }
-
     private fun llenarTabla(listaIdsA: ArrayList<String>, listaNomsA: ArrayList<String>,
                             listaIds: List<TextView>, listaNoms: List<TextView>, avanzar:Boolean) {
         var indice = 0
