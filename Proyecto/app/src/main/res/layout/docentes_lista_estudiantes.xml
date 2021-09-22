@@ -6,6 +6,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".VISTA.DOCENTE.docentesListaEstudiantes">
 
+    <ImageView
+        android:id="@+id/avanzarEstCurso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:layout_weight="1"
+        android:src="@drawable/flecha_adelante"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listaEstudiantes" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout4"
         android:layout_width="391dp"
@@ -32,36 +44,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/create"
-                android:text="CURSO"
+                android:text="CURSO "
                 android:textColor="#000000"
                 android:textSize="40sp" />
-
-            <TextView
-                android:id="@+id/idCursoDocentes2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/idCursoDocentes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/create"
+                android:textColor="#000000"
                 android:textSize="40sp" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ImageView
-        android:id="@+id/flechas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:foregroundGravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listaEstudiantes"
-        app:srcCompat="@drawable/flechas_tabla" />
 
     <TableLayout
         android:id="@+id/listaEstudiantes"
@@ -98,7 +93,7 @@
                 android:layout_height="match_parent"
                 android:fontFamily="@font/beba_nseue_regular"
                 android:gravity="center"
-                android:text="grado"
+                android:text="Cédula"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp" />
         </TableRow>
@@ -370,14 +365,6 @@
         app:layout_constraintVertical_bias="0.382" />
 
     <ImageView
-        android:id="@+id/imageView40"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/burbujas"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
         android:id="@+id/imageView41"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -393,6 +380,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
+
+    <ImageView
+        android:id="@+id/atrasDocEst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="15dp"
+        android:clickable="true"
+        android:src="@drawable/atras"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

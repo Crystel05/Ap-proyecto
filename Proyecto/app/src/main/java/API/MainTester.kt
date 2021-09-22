@@ -785,6 +785,7 @@ class MainTester {
                 val estudiantes = call.body()
                 if (estudiantes != null) {
                     var nombre = ""; var apellido = ""; var cedula = ""
+
                     for (estudiante in estudiantes) {
                         nombre = estudiante.get("nombre").toString()
                         apellido = estudiante.get("apellido").toString()
@@ -823,7 +824,7 @@ fun main() {
 //            tester.buscarUsuarios()
 //            tester.login("velvet@gmail.com")
 //            tester.cursosAdmin()
-//            tester.cursosEstudiante("soymartha@gmail.com")
+            tester.cursosEstudiante("hector@gmail.com")
 
 //            VACÍO
 //            tester.cursosProfesor("shoebill@gmail.com")
@@ -832,7 +833,7 @@ fun main() {
            // tester.gradoId("5")
 //            tester.infoProfesor("11111111")
 //            tester.buscarEstudiantes()
-//            tester.infoEstudiante("Paola", "Turquez")
+//            tester.infoEstudiante("Hector", "Barrantes")
 //            tester.insertarCurso("pru", "prueba", "4", "martes", "08:00:00", "10:00:00")
 //            tester.insertarProfesor("12345", "prueba2", "coreo@gmail.com", "contrasenia", "apellidoPrueba")
 //            tester.insertarEstudiante("124455", "prueba2", "coreo@gmail.com", "contrasenia", "apellidoPrueba", "4")
@@ -862,7 +863,7 @@ fun main() {
 //            tester.buscarUsuarios()
 //            tester.asignarEstudiante("Manchas", "Panchas", "Matt", "1")
 //            tester.profesoresPorCurso("mate", "6")
-            tester.estudiantesPorCurso("Cal", "4")
+//            tester.estudiantesPorCurso("Bio", "5")
 
             x = 1
 

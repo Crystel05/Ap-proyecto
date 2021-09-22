@@ -24,6 +24,7 @@ class AdminGeDetalles : Fragment() {
     private lateinit var contraE: String
     private lateinit var nomD: String
     private lateinit var comunicador: DatosAdmin
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

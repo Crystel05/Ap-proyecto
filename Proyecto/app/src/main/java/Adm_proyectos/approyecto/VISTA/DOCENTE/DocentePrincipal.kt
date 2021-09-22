@@ -3,6 +3,7 @@ package Adm_proyectos.approyecto.VISTA.DOCENTE
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.ADMIN.GestionEstudiantes.AdminGeDetalles
+import Adm_proyectos.approyecto.VISTA.ADMIN.popUpCursos
 import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosDocente
 import Adm_proyectos.approyecto.VISTA.log_in
 import android.content.Intent
@@ -87,16 +88,24 @@ class DocentePrincipal : AppCompatActivity(), DatosDocente {
 
 
 
-    override fun enviarDatosEstudiante(ced: String, nombre: String) {
+    override fun enviarDatosEstudiante(ced: String, nombre: String, grado: String, cursoId:String, correoProfe:String, correoEst:String) {
         val bundle = Bundle()
-        val datos = arrayOf(ced, nombre, "1")
+        val datos = arrayOf(ced, nombre, grado, cursoId, correoProfe, correoEst, "1")
         bundle.putStringArray("datosEstudiante", datos)
 
         val transaccion = this.supportFragmentManager.beginTransaction()
-        val detalles = AdminGeDetalles()
+        val detalles = DocenteDetallesEstudiante()
         detalles.arguments = bundle
 
         transaccion.replace(R.id.contenedorDocente, detalles)
         transaccion.commit()
+    }
+
+    override fun cursosPopUp(cursos: ArrayList<String>) {
+        val bundle = Bundle()
+        bundle.putStringArrayList("cursos_docente", cursos)
+        val popUp = popUpCursos()
+        popUp.arguments = bundle
+        popUp.show(this.supportFragmentManager, "CursosPopUp")
     }
 }

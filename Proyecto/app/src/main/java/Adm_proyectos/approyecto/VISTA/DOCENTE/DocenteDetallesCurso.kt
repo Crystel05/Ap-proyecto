@@ -74,9 +74,9 @@ class DocenteDetallesCurso : Fragment() {
                 comunicador.enviarDatosCurso(idCurso, grado, correo, tarea)
             }
 
-            verEstudiantes.setOnClickListener(){
+            verEstudiantes.setOnClickListener{
                 val estudiantes = docentesListaEstudiantes()
-                controller.cambiarFragment(estudiantes, R.id.contenedorDocente, activity!!)
+                comunicador.enviarDatosCurso(idCurso, grado, correo, estudiantes)
             }
         }
 

@@ -81,6 +81,7 @@ class DocenteListaCursos : Fragment() {
             }
         }
     }
+
     private fun llenarTabla(listaIdsA: ArrayList<String>, listaNomsA: ArrayList<String>,
                             listaIds: List<TextView>, listaNoms: List<TextView>, avanzar:Boolean) {
         var indice = 0
