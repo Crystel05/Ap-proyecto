@@ -3,12 +3,14 @@ package Adm_proyectos.approyecto.VISTA.ESTUDIANTE
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.DOCENTE.DocenteListaCursos
+import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosDocente
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main._admin_pricipal.*
 
 
-class estudiantesPrincipal : AppCompatActivity() {
+class estudiantesPrincipal : AppCompatActivity(), DatosDocente {
 
     private val controller = ControladorComponentesVista()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,6 +21,40 @@ class estudiantesPrincipal : AppCompatActivity() {
 
         val nombre = intent.getStringExtra("nombre")
         nombreUsuario.text = "$nombre"
+    }
+
+    override fun enviarDatosEstudiante(
+        ced: String,
+        nombre: String,
+        grado: String,
+        curso: String,
+        correoProfe: String,
+        correo: String
+    ) {
+        TODO("Not yet implemented")
+    }
+
+    override fun enviarDatosCurso(id: String, grado: String, correo: String, fragment: Fragment) {
+        TODO("Not yet implemented")
+    }
+
+    override fun enviarDatosCurso(
+        id: String,
+        nombre: String,
+        grado: String,
+        horario: String,
+        fragment: Fragment,
+        correo: String
+    ) {
+        TODO("Not yet implemented")
+    }
+
+    override fun enviarCorreo(correo: String, fragment: Fragment) {
+        TODO("Not yet implemented")
+    }
+
+    override fun cursosPopUp(cursos: ArrayList<String>) {
+        TODO("Not yet implemented")
     }
 
 //    override fun enviarDatosCurso(id: String, nombre: String, grado: String, horario: String) {
