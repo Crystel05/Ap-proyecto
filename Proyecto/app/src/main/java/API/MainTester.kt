@@ -616,7 +616,9 @@ class MainTester {
                 val chats = call.body()
                 if (chats != null) {
                     for (chat in chats) {
+                        print(chat)
                         print(chat?.get("nombre").toString() + "\n")
+                        print(chat?.get("texto").toString() + "\n")
                     }
                 }
             } else {
@@ -625,9 +627,9 @@ class MainTester {
         }
     }
 
-    fun insertarMensajeChat(idChat: String, idUsuario: String, mensaje:String){
+    fun insertarMensajeChat(codigoCurso: String, grado: String, cedula: String, mensaje:String){
         CoroutineScope(Dispatchers.IO).launch {
-            val call = RetroInstance.api.insertarMensaje(idChat, idUsuario, mensaje)
+            val call = RetroInstance.api.insertarMensaje(codigoCurso, grado, cedula, mensaje)
 //            act.runOnUiThread { runOnUi
 //            print(call)
             if (call.isSuccessful) {
@@ -847,8 +849,8 @@ fun main() {
 //            tester.insertarNoticia("mat", "prepa", "noticiaPrueba", "probando insertar noticia", "2021-09-14")
 //            tester.noticias("mate", "6")
 //            tester.tareas("mate", "6") //REVISAR, NO SIRVE :(
-            tester.mensajesChat("qui", "7")
-//            tester.insertarMensajeChat("1","2", "Mensaje de prueba.")  REVISAR ( NO HAY CHAT PARA PROBAR).
+//            tester.mensajesChat("qui", "7")
+            tester.insertarMensajeChat("qui","6", "360879654","New.")
 
 
 //            NUEVAS
@@ -862,6 +864,10 @@ fun main() {
 //            tester.profesoresPorCurso("mate", "6")
 //            tester.estudiantesPorCurso("qui", "7")
 
+
+//            tester.updateEstudiante("Hector","Barrantes", "4684184318", "Hector", "hector@gmail.com", "123456", "Barrantes", "4")
+//            tester.mensajesChat("qui", "7")
+//            tester.asignarEstudiante("Martha", "Stewart", "qui", "7")
             x = 1
 
         }

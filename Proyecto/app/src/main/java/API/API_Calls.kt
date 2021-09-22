@@ -157,9 +157,10 @@ interface API_Calls {
     @GET("chat/{codigo}/{clase}")
     suspend fun getChat(@Path("codigo") codigo:String, @Path("clase") clase:String): Response<ArrayList<JsonObject>>
 
-    @GET("publicaMsg/{chat}/{usuario}/{mensaje}")
-    suspend fun insertarMensaje(@Path("chat") chat : String,
-                                @Path("usuario") usuario:String,
+    @GET("publicaMsg/{curso}/{grado}/{cedula}/{mensaje}")
+    suspend fun insertarMensaje(@Path("curso") curso : String,
+                                @Path("grado") grado:String,
+                                @Path("cedula") cedula:String,
                                 @Path("mensaje") mensaje:String) : Response<ArrayList<JsonObject>>
 
     @GET("elimCurso/{cod}/{grad}")
