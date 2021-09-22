@@ -609,23 +609,19 @@ class MainTester {
     }
 
     fun mensajesChat(codigo: String, grado: String){
-//    fun noticias(act: FragmentActivity, codigo: String, grado: String){
         CoroutineScope(Dispatchers.IO).launch {
             val call = RetroInstance.api.getChat(codigo, grado)
             print(call)
-//            act.runOnUiThread { runOnUi
             if (call.isSuccessful) {
-                val tareas = call.body()
-                print(tareas)
-                if (tareas != null) {
-                    for (tarea in tareas) {
-                        print(tarea?.get("nombre").toString() + "\n")
+                val chats = call.body()
+                if (chats != null) {
+                    for (chat in chats) {
+                        print(chat?.get("nombre").toString() + "\n")
                     }
                 }
             } else {
                 print("Error! Conexion con el API Fallida")
             }
-//            } end runOnUi
         }
     }
 
@@ -824,7 +820,7 @@ fun main() {
 //            tester.buscarUsuarios()
 //            tester.login("velvet@gmail.com")
 //            tester.cursosAdmin()
-            tester.cursosEstudiante("hector@gmail.com")
+//            tester.cursosEstudiante("hector@gmail.com")
 
 //            VACÍO
 //            tester.cursosProfesor("shoebill@gmail.com")
@@ -840,9 +836,9 @@ fun main() {
             //tester.updateCurso("prueba1","4","prueba2","pruebaUpdate","4","sabado","08:00:00", "10:00:00")
 //            tester.updateProfesor("00000000", "11111111","Josehp", "shoebill@gmail.com", "prueba", "Alvarez")
 
-//            tester.updateEstudiante("Marta","Stewart Solano", "1111010", "Martha", "soymartha@gmail.com", "mi cumpleaños", "Steward", "Prepa")
+//            tester.updateEstudiante("Hector","Barrantes", "4684184318", "Hector", "hector@gmail.com", "123456", "Barrantes", "4")
 
-
+//            tester.infoEstudiante("Hector", "Barrantes")
 //            tester.asignarProfesor("54321", "prueba", "4")
 //            tester.asignarEstudiante("prueba2", "apellidoPrueba", "prueba", "4")
 
@@ -851,7 +847,7 @@ fun main() {
 //            tester.insertarNoticia("mat", "prepa", "noticiaPrueba", "probando insertar noticia", "2021-09-14")
 //            tester.noticias("mate", "6")
 //            tester.tareas("mate", "6") //REVISAR, NO SIRVE :(
-//            tester.mensajesChat("mat", "prepa") REVISAR, TAMPOCO SIRVE :(
+            tester.mensajesChat("qui", "7")
 //            tester.insertarMensajeChat("1","2", "Mensaje de prueba.")  REVISAR ( NO HAY CHAT PARA PROBAR).
 
 
@@ -859,11 +855,12 @@ fun main() {
 //            tester.eliminarCurso("fisi", "6")
 //            tester.eliminarProfesor("1234")
 //            tester.eliminarAlumno("518079889") //ANTONIO
+//            tester.cursosAdmin()
 //            tester.buscarEstudiantes()
 //            tester.buscarUsuarios()
-//            tester.asignarEstudiante("Manchas", "Panchas", "Matt", "1")
+//            tester.asignarEstudiante("Martha", "Stewart", "qui", "7")
 //            tester.profesoresPorCurso("mate", "6")
-//            tester.estudiantesPorCurso("Bio", "5")
+//            tester.estudiantesPorCurso("qui", "7")
 
             x = 1
 
