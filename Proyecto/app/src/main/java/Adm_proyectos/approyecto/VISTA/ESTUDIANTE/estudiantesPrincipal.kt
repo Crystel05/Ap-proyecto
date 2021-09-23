@@ -4,10 +4,19 @@ import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.DOCENTE.DocenteListaCursos
 import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosDocente
+import Adm_proyectos.approyecto.VISTA.log_in
+import android.content.Intent
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import kotlinx.android.synthetic.main._admin_pricipal.*
+import kotlinx.android.synthetic.main._admin_pricipal.nombreUsuario
+import kotlinx.android.synthetic.main._docente_principal.*
+import kotlinx.android.synthetic.main._estudiantes_principal.*
 
 
 class estudiantesPrincipal : AppCompatActivity(), DatosDocente {
@@ -16,11 +25,43 @@ class estudiantesPrincipal : AppCompatActivity(), DatosDocente {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout._estudiantes_principal)
-        val listaCursos = DocenteListaCursos()
-        controller.cambiarFragment(listaCursos, R.id.contenedorEstudiante, this)
+
+        val nombreUsu = intent.getStringExtra("nombre")
+        nombreUsuario.text = "$nombreUsu"
+        val correo = intent.getStringExtra("correo")
+        val cedula = intent.getStringExtra("cedula").toString()
+        val apellido = intent.getStringExtra("apellido").toString().replace("\"", "")
+
+        irPrimeraPantalla(correo.toString(), nombreUsu.toString(), apellido, cedula)
 
         val nombre = intent.getStringExtra("nombre")
         nombreUsuario.text = "$nombre"
+
+        contenedorEstudiante.setOnClickListener{view ->
+            val inputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0)
+        }
+
+        salirSesionEst.setOnClickListener {
+            Toast.makeText(this, "Sesión cerrada", Toast.LENGTH_LONG).show()
+            Intent(this, log_in::class.java).also{
+                startActivity(it)
+            }
+        }
+    }
+
+    private fun irPrimeraPantalla(correo: String, nombre: String, apellido: String, cedula:String){
+
+        val Lista = DocenteListaCursos()
+        val bundle = Bundle()
+        val datos = arrayOf(correo, nombre, apellido, cedula)
+        bundle.putStringArray("datosEst", datos)
+        val manager: FragmentManager = supportFragmentManager
+        val transaction: FragmentTransaction = manager.beginTransaction()
+        Lista.arguments = bundle
+        transaction.add(R.id.contenedorEstudiante, Lista, null)
+        transaction.commit()
+
     }
 
     override fun enviarDatosEstudiante(

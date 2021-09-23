@@ -33,6 +33,7 @@ class DocentePrincipal : AppCompatActivity(), DatosDocente {
         val apellido = intent.getStringExtra("apellido").toString().replace("\"", "")
 
         irPrimeraPantalla(correo.toString(), nombreUsu.toString(), apellido)
+
         salir.setOnClickListener{
             Toast.makeText(this, "Sesión cerrada", Toast.LENGTH_LONG).show()
             Intent(this, log_in::class.java).also{

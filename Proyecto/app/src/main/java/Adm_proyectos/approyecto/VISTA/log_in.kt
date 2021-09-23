@@ -56,6 +56,7 @@ class log_in : AppCompatActivity() {
             val nombre = usuario?.get("nombre").toString().replace("\"", "")
             val idUsuario = usuario?.get("ID").toString()
             val apellido = usuario?.get("apellido").toString()
+            val cedula = usuario?.get("cedula").toString().replace("\"", "")
             val callTipoUsuario = RetroInstance.api.getTipoUsuario(idUsuario)
             val tipoUsuario = callTipoUsuario.body()?.get(0)?.get("tipousuario").toString().replace("\"", "")
             val datos = ArrayList<String>()
@@ -63,6 +64,7 @@ class log_in : AppCompatActivity() {
             datos.add(nombre)
             datos.add(tipoUsuario)
             datos.add(apellido)
+            datos.add(cedula)
 
             runOnUiThread {
                 if (call.isSuccessful) {
@@ -85,6 +87,7 @@ class log_in : AppCompatActivity() {
         val tipo = datos[1]
         val nombre = datos[0]
         val apellido = datos[2]
+        val cedula = datos[3]
 
         if (tipo.equals("administrador")){
             Intent(this, admin::class.java).also{
@@ -105,6 +108,9 @@ class log_in : AppCompatActivity() {
         else if(tipo.equals("estudiante")){
             Intent(this, estudiantesPrincipal::class.java).also{
                 it.putExtra("nombre", nombre)
+                it.putExtra("correo", correoInicioSesion.text.toString().lowercase().replace(" ", ""))
+                it.putExtra("apellido", apellido)
+                it.putExtra("cedula", cedula)
                 startActivity(it)
             }
         }

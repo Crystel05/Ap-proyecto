@@ -68,7 +68,7 @@ class AdminGeDetalles : Fragment() {
         }
     }
 
-    fun cursosEstudiante(cedula: String){
+    private fun cursosEstudiante(cedula: String){
         CoroutineScope(Dispatchers.IO).launch {
             val call = RetroInstance.api.getCursosEstudiante(cedula)
 
@@ -90,7 +90,7 @@ class AdminGeDetalles : Fragment() {
         }
     }
 
-    fun eliminarAlumno(cedula: String){
+    private fun eliminarAlumno(cedula: String){
         CoroutineScope(Dispatchers.IO).launch {
             val call = RetroInstance.api.eliminarAlumno(cedula)
             activity!!.runOnUiThread {

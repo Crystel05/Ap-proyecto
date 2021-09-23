@@ -27,6 +27,7 @@ class DocenteListaCursos : Fragment() {
     private lateinit var apellidoP: String
     private val controller = ControladorComponentesVista()
     private var correo: String = ""
+    private lateinit var cedula: String
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,14 +36,23 @@ class DocenteListaCursos : Fragment() {
         comunicador = activity as DatosDocente
         val view = inflater.inflate(R.layout.docente_lista_cursos, container, false)
         val datos = arguments?.getString("correoProfesor")
+        val datosEst = arguments?.getStringArray("datosEst")
 
-        if(arguments != null && datos == null){
+        if(arguments != null && (datos == null || datosEst?.get(0) == null)){
+            controller.notificacion("aqui", activity!!)
             val datos = arguments!!.getStringArray("datosPrimer")
             correo = datos?.get(0).toString()
             nombreP = datos?.get(1).toString()
             apellidoP = datos?.get(2).toString()
         } else{
-            correo = datos.toString()
+
+            if (datos != null)
+                correo = datos.toString()
+            else{
+                if (datosEst != null){
+                    cedula = datosEst.get(3)
+                }
+            }
             //agregar el nombre y el apellido de vuelta
         }
         return view
@@ -85,6 +95,31 @@ class DocenteListaCursos : Fragment() {
                         }
                         llenarTabla(ids, noms, listaIds, listaNoms, avanzar)
                     }
+                }
+            }
+        }
+    }
+
+    private fun cursosEstudiante(cedula: String, listaIds: List<TextView>, listaNoms: List<TextView>, avanzar: Boolean){
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetroInstance.api.getCursosEstudiante(cedula)
+
+            activity!!.runOnUiThread {
+                if (call.isSuccessful) {
+                    val cursos = call.body()
+                    val cursosDatos = java.util.ArrayList<String>()
+                    if (cursos != null) {
+                        val ids = ArrayList<String>()
+                        val noms = ArrayList<String>()
+                        for (curso in cursos) {
+                            ids.add(curso.get("codigo").toString().replace("\"", "")+
+                                    "_"+curso.get("clase").toString().replace("\"", ""))
+                            noms.add(curso.get("nombre").toString().replace("\"", ""))
+                        }
+                        llenarTabla(ids, noms, listaIds, listaNoms, avanzar)
+                    }
+                } else {
+                    controller.notificacion("Error! Conexion con el API Fallida", activity!!)
                 }
             }
         }
