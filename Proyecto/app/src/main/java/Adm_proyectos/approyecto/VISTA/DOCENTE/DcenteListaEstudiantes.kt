@@ -3,7 +3,6 @@ package Adm_proyectos.approyecto.VISTA.DOCENTE
 import API.RetroInstance
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import Adm_proyectos.approyecto.R
-import Adm_proyectos.approyecto.VISTA.ADMIN.GestionEstudiantes.AdminGeDetalles
 import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosDocente
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -11,6 +11,7 @@ import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosDocente
 import android.widget.TableRow
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.admin_ge_crear.*
 import kotlinx.android.synthetic.main.admin_ge_modificar.*
 import kotlinx.android.synthetic.main.docente_lista_cursos.*
 import kotlinx.android.synthetic.main.docente_lista_cursos.view.*
@@ -22,6 +23,8 @@ import kotlinx.coroutines.launch
 class DocenteListaCursos : Fragment() {
 
     private lateinit var comunicador: DatosDocente
+    private lateinit var nombreP: String
+    private lateinit var apellidoP: String
     private val controller = ControladorComponentesVista()
     private var correo: String = ""
     override fun onCreateView(
@@ -32,10 +35,15 @@ class DocenteListaCursos : Fragment() {
         comunicador = activity as DatosDocente
         val view = inflater.inflate(R.layout.docente_lista_cursos, container, false)
         val datos = arguments?.getString("correoProfesor")
-        correo = if(arguments != null && datos == null){
-            arguments!!.getString("correo").toString()
+
+        if(arguments != null && datos == null){
+            val datos = arguments!!.getStringArray("datosPrimer")
+            correo = datos?.get(0).toString()
+            nombreP = datos?.get(1).toString()
+            apellidoP = datos?.get(2).toString()
         } else{
-            datos.toString()
+            correo = datos.toString()
+            //agregar el nombre y el apellido de vuelta
         }
         return view
     }
@@ -167,8 +175,7 @@ class DocenteListaCursos : Fragment() {
                                     " de " + curso.get("horaInicio").toString().replace("\"", "") + " a " +
                                     curso.get("horaFin").toString().replace("\"", "")
                             val detalles = DocenteDetallesCurso()
-                            comunicador.enviarDatosCurso(id, nombre, grado, horario, detalles, correo)
-
+                            comunicador.enviarDatosCurso(id, nombre, grado, horario, detalles, correo, nombreP, apellidoP)
                         }
                     }
                 } else {

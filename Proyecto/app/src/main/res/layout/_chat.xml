@@ -60,160 +60,218 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout6" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/mensajeEscrito"
         android:layout_width="281dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="76dp"
+        android:background="@drawable/enviar_mensajes"
         android:ems="10"
+        android:hint="Escriba aquí..."
         android:inputType="textPersonName"
-        android:text="Escriba aquí..."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.258"
+        app:layout_constraintHorizontal_bias="0.241"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/recibido1"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
+        android:background="@drawable/recibido"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/mensajeEscrito"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <EditText
+        android:id="@+id/recibido3"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/recibido"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/recibido2"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <EditText
+        android:id="@+id/recbido4"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/recibido"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/recibido3"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <EditText
+        android:id="@+id/recibido5"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/recibido"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/recbido4"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine9"
+        android:id="@+id/recibido6"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
+        android:background="@drawable/recibido"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/recibido5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/recibido2"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/recibido"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/recibido1"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine10"
+        android:id="@+id/enviado1"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
+        android:background="@drawable/enviado"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine9"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/mensajeEscrito"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine11"
+        android:id="@+id/enviado2"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
+        android:background="@drawable/enviado"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine10"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextTextMultiLine12"
-        android:layout_width="190dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine11"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextTextMultiLine13"
-        android:layout_width="190dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine12"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextTextMultiLine2"
-        android:layout_width="190dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/enviado1"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine3"
+        android:id="@+id/enviado3"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
+        android:background="@drawable/enviado"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine2"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextTextMultiLine4"
-        android:layout_width="190dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine3"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextTextMultiLine5"
-        android:layout_width="190dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine4"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/enviado2"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine6"
+        android:id="@+id/enviado4"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
+        android:background="@drawable/enviado"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine5"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/enviado3"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/enviado5"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/enviado"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/enviado4"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine7"
+        android:id="@+id/enviado6"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
+        android:background="@drawable/enviado"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextMultiLine6"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/enviado5"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="56dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="Button"
+    <LinearLayout
+        android:id="@+id/anteriores"
+        android:layout_width="391dp"
+        android:layout_height="208dp"
+        android:layout_marginTop="12dp"
+        android:clickable="true"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout6"
+        tools:ignore="SpeakableTextPresentCheck"></LinearLayout>
+
+    <ImageView
+        android:id="@+id/enviarMensaje"
+        android:layout_width="46dp"
+        android:layout_height="37dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="76dp"
+        android:clickable="true"
+        android:src="@drawable/send"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/mensajeEscrito"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/atrasChat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="28dp"
+        android:src="@drawable/atras"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -55,12 +55,14 @@ class log_in : AppCompatActivity() {
             val usuario = call.body()?.get(0)
             val nombre = usuario?.get("nombre").toString().replace("\"", "")
             val idUsuario = usuario?.get("ID").toString()
+            val apellido = usuario?.get("apellido").toString()
             val callTipoUsuario = RetroInstance.api.getTipoUsuario(idUsuario)
             val tipoUsuario = callTipoUsuario.body()?.get(0)?.get("tipousuario").toString().replace("\"", "")
             val datos = ArrayList<String>()
 
             datos.add(nombre)
             datos.add(tipoUsuario)
+            datos.add(apellido)
 
             runOnUiThread {
                 if (call.isSuccessful) {
@@ -82,6 +84,7 @@ class log_in : AppCompatActivity() {
         val docentePrincipal = DocentePrincipal()
         val tipo = datos[1]
         val nombre = datos[0]
+        val apellido = datos[2]
 
         if (tipo.equals("administrador")){
             Intent(this, admin::class.java).also{
@@ -94,6 +97,7 @@ class log_in : AppCompatActivity() {
             Intent(this, docentePrincipal::class.java).also{
                 it.putExtra("nombre", nombre)
                 it.putExtra("correo", correoInicioSesion.text.toString().lowercase().replace(" ", ""))
+                it.putExtra("apellido", apellido)
                 startActivity(it)
             }
         }

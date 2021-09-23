@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentTransaction
 import kotlinx.android.synthetic.main._admin_pricipal.*
 import kotlinx.android.synthetic.main._docente_principal.*
 import kotlinx.android.synthetic.main._docente_principal.nombreUsuario
+import kotlinx.android.synthetic.main.admin_ge_crear.*
 
 class DocentePrincipal : AppCompatActivity(), DatosDocente {
 
@@ -29,8 +30,9 @@ class DocentePrincipal : AppCompatActivity(), DatosDocente {
         val nombreUsu = intent.getStringExtra("nombre")
         nombreUsuario.text = "$nombreUsu"
         val correo = intent.getStringExtra("correo")
+        val apellido = intent.getStringExtra("apellido").toString().replace("\"", "")
 
-        irPrimeraPantalla(correo.toString())
+        irPrimeraPantalla(correo.toString(), nombreUsu.toString(), apellido)
         salir.setOnClickListener{
             Toast.makeText(this, "Sesión cerrada", Toast.LENGTH_LONG).show()
             Intent(this, log_in::class.java).also{
@@ -43,14 +45,14 @@ class DocentePrincipal : AppCompatActivity(), DatosDocente {
         }
     }
 
-    private fun irPrimeraPantalla(correo: String){
+    private fun irPrimeraPantalla(correo: String, nombre: String, apellido: String){
         val Lista = DocenteListaCursos()
         val bundle = Bundle()
-        bundle.putString("correo",correo)
-        Lista.arguments = bundle
-
+        val datos = arrayOf(correo, nombre, apellido)
+        bundle.putStringArray("datosPrimer", datos)
         val manager: FragmentManager = supportFragmentManager
         val transaction: FragmentTransaction = manager.beginTransaction()
+        Lista.arguments = bundle
         transaction.add(R.id.contenedorDocente, Lista, null)
         transaction.commit()
     }
@@ -59,6 +61,31 @@ class DocentePrincipal : AppCompatActivity(), DatosDocente {
         val bundle = Bundle()
         val datos = arrayOf(id,grado,correo)
         bundle.putStringArray("datosCursoPequeno", datos)
+
+        val transaccion = this.supportFragmentManager.beginTransaction()
+        fragment.arguments = bundle
+
+        transaccion.replace(R.id.contenedorDocente, fragment)
+        transaccion.commit()
+    }
+
+    override fun enviarDatosCurso(id: String, nombre: String, grado: String, horario: String, fragment: Fragment, correo: String, nombreP: String, apellido: String) {
+        val bundle = Bundle()
+        val datos = arrayOf(id, nombre, grado, horario, correo, nombreP, apellido, "1")
+        bundle.putStringArray("datosCursoGrande", datos)
+
+        val transaccion = this.supportFragmentManager.beginTransaction()
+        val detalles = DocenteDetallesCurso()
+        detalles.arguments = bundle
+
+        transaccion.replace(R.id.contenedorDocente, detalles)
+        transaccion.commit()
+    }
+
+    override fun enviarDatosCurso(id: String, grado: String, fragment: Fragment, correo: String, nombreP: String, apellido: String) {
+        val bundle = Bundle()
+        val datos = arrayOf(id, grado, correo, nombreP, apellido)
+        bundle.putStringArray("datosCursoMed", datos)
 
         val transaccion = this.supportFragmentManager.beginTransaction()
         fragment.arguments = bundle

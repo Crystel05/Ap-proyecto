@@ -44,6 +44,30 @@ class estudiantesPrincipal : AppCompatActivity(), DatosDocente {
         grado: String,
         horario: String,
         fragment: Fragment,
+        correo: String,
+        nombreP: String,
+        apellido: String
+    ) {
+        TODO("Not yet implemented")
+    }
+
+    override fun enviarDatosCurso(
+        id: String,
+        grado: String,
+        fragment: Fragment,
+        correo: String,
+        nombreP: String,
+        apellido: String
+    ) {
+        TODO("Not yet implemented")
+    }
+
+    override fun enviarDatosCurso(
+        id: String,
+        nombre: String,
+        grado: String,
+        horario: String,
+        fragment: Fragment,
         correo: String
     ) {
         TODO("Not yet implemented")
