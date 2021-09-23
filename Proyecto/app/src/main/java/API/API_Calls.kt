@@ -25,8 +25,8 @@ interface API_Calls {
     @GET("cursos")
     suspend fun getCursosAdmin(): Response<ArrayList<JsonObject>>
 
-    @GET("cursos/estudiante/{estCorreo}")
-    suspend fun getCursosEstudiante(@Path("estCorreo") correo:String): Response<ArrayList<JsonObject>>
+    @GET("cursos/estudiante/{cedula}")
+    suspend fun getCursosEstudiante(@Path("cedula") cedula:String): Response<ArrayList<JsonObject>>
 
     @GET("cursos/profesor/{profCorreo}")
     suspend fun getCursosProfesor(@Path("profCorreo") correo:String): Response<ArrayList<JsonObject>>

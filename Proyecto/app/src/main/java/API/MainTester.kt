@@ -849,8 +849,8 @@ fun main() {
 //            tester.insertarNoticia("mat", "prepa", "noticiaPrueba", "probando insertar noticia", "2021-09-14")
 //            tester.noticias("mate", "6")
 //            tester.tareas("mate", "6") //REVISAR, NO SIRVE :(
-//            tester.mensajesChat("qui", "7")
-            tester.insertarMensajeChat("qui","6", "360879654","New.")
+//            tester.mensajesChat("bio", "5") //REVISAR, TAMPOCO SIRVE :(
+//            tester.insertarMensajeChat("1","2", "Mensaje de prueba.")  REVISAR ( NO HAY CHAT PARA PROBAR).
 
 
 //            NUEVAS

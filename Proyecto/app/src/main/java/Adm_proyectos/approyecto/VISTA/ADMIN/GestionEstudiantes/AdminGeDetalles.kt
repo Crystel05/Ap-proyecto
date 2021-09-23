@@ -23,6 +23,7 @@ class AdminGeDetalles : Fragment() {
     private lateinit var correoE: String
     private lateinit var contraE: String
     private lateinit var nomD: String
+    private lateinit var ced: String
     private lateinit var comunicador: DatosAdmin
 
     override fun onCreateView(
@@ -38,7 +39,7 @@ class AdminGeDetalles : Fragment() {
             view.eliminarEstudiante.visibility = View.INVISIBLE
 
         }
-        val ced = array?.get(1).toString()
+        ced = array?.get(1).toString()
         nomD = array?.get(2).toString()
         val gradoE = array?.get(3)
         correoE = array?.get(4).toString()
@@ -54,7 +55,7 @@ class AdminGeDetalles : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         view.verListaEstdiante.setOnClickListener{
-            cursosEstudiante(correoE)
+            cursosEstudiante(nomD)
         }
 
         view.modificarEstudianteE.setOnClickListener{
@@ -67,9 +68,9 @@ class AdminGeDetalles : Fragment() {
         }
     }
 
-    fun cursosEstudiante(correo: String){
+    fun cursosEstudiante(cedula: String){
         CoroutineScope(Dispatchers.IO).launch {
-            val call = RetroInstance.api.getCursosEstudiante(correo)
+            val call = RetroInstance.api.getCursosEstudiante(cedula)
 
             activity!!.runOnUiThread {
                 if (call.isSuccessful) {

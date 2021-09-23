@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
+import Adm_proyectos.approyecto.VISTA.CHAT.Chat
 import Adm_proyectos.approyecto.VISTA.ESTUDIANTE.estudianteNoticias
 import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosDocente
 import android.annotation.SuppressLint
@@ -65,8 +66,9 @@ class DocenteDetallesCurso : Fragment() {
                 comunicador.enviarDatosCurso(idCurso, grado, correo, noticia)
             }
 
-            chatGrupo.setOnClickListener(){
-                Toast.makeText(activity!!, "Aun no", Toast.LENGTH_LONG).show();
+            chatGrupo.setOnClickListener{
+                val chat = Chat()
+                controller.cambiarFragment(chat, R.id.contenedorDocente, activity!!)
             }
 
             enviarTarea.setOnClickListener(){
