@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentActivity
 class ControladorComponentesVista {
     var codigoCurso: String = ""
     var gradoCurso: String = ""
+    var correo = ""
     fun cambiarFragment(fragment: Fragment, id:Int, activity: FragmentActivity){
         val transacion = (activity).supportFragmentManager.beginTransaction()
         transacion.replace(id, fragment)

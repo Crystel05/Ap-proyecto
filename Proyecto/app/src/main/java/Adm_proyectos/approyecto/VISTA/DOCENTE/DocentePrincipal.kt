@@ -70,6 +70,7 @@ class DocentePrincipal : AppCompatActivity(), DatosDocente {
         transaccion.commit()
     }
 
+
     override fun enviarDatosCurso(id: String, nombre: String, grado: String, horario: String, fragment: Fragment, correo: String, nombreP: String, apellido: String) {
         val bundle = Bundle()
         val datos = arrayOf(id, nombre, grado, horario, correo, nombreP, apellido, "1")
@@ -81,6 +82,20 @@ class DocentePrincipal : AppCompatActivity(), DatosDocente {
 
         transaccion.replace(R.id.contenedorDocente, detalles)
         transaccion.commit()
+    }
+
+    override fun enviarDatosCurso(
+        id: String,
+        nombre: String,
+        grado: String,
+        horario: String,
+        fragment: Fragment,
+        cedula: String,
+        nombreP: String,
+        apellido: String,
+        correo: String
+    ) {
+        TODO("Not yet implemented")
     }
 
     override fun enviarDatosCurso(id: String, grado: String, fragment: Fragment, correo: String, nombreP: String, apellido: String) {
@@ -135,5 +150,9 @@ class DocentePrincipal : AppCompatActivity(), DatosDocente {
         val popUp = popUpCursos()
         popUp.arguments = bundle
         popUp.show(this.supportFragmentManager, "CursosPopUp")
+    }
+
+    override fun cosas(string: String) {
+        TODO("Not yet implemented")
     }
 }

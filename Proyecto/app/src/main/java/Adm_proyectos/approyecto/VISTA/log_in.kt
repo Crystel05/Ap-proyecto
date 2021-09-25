@@ -1,6 +1,7 @@
 package Adm_proyectos.approyecto.VISTA
 
 import API.RetroInstance
+import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.ADMIN.ADMIN.adminPricipal
 import Adm_proyectos.approyecto.VISTA.DOCENTE.DocentePrincipal

@@ -22,7 +22,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlin.collections.ArrayList
 
-class estudianteNoticias : Fragment() {
+class estudianteTareas : Fragment() {
 
     private var controller = ControladorComponentesVista()
     private lateinit var idCurso: String
@@ -43,6 +43,7 @@ class estudianteNoticias : Fragment() {
         val correo = datos?.get(2).toString()
         cedula = correo
         view.idCursoEstudiantes.text = idCurso
+        view.etiqueta.setText("Tareas del curso")
         return view
     }
 
@@ -50,25 +51,23 @@ class estudianteNoticias : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val tits = listOf<TextView>(titulo1, titulo2, titulo3)
         val fecs = listOf<TextView>(fecha1, fecha2, fecha3)
-
-        noticias(idCurso, grado, tits, fecs, false, 0)
+        tareas(idCurso, grado, tits, fecs, false, 0)
 
         siguientesNots.setOnClickListener {
-            noticias(idCurso, grado, tits, fecs, true, 0)
-
-
+            tareas(idCurso, grado, tits, fecs, true, 0)
         }
 
         noticia1.setOnClickListener{
-            noticias(idCurso, grado, tits, fecs, false, 1)
+            tareas(idCurso, grado, tits, fecs, false, 1)
         }
 
         noticia2.setOnClickListener{
-            noticias(idCurso, grado, tits, fecs, false, 2)
+            tareas(idCurso, grado, tits, fecs, false, 2)
+
         }
 
         noticia3.setOnClickListener{
-            noticias(idCurso, grado, tits, fecs, false, 3)
+            tareas(idCurso, grado, tits, fecs, false, 3)
         }
 
         atrasNoticias.setOnClickListener {
@@ -104,33 +103,32 @@ class estudianteNoticias : Fragment() {
         }
     }
 
-    @SuppressLint("SimpleDateFormat")
-    private fun noticias(codigo: String, grado: String, titulos: List<TextView>, fechas: List<TextView>, avanzar: Boolean, buscar:Int){
+    private fun tareas(codigo: String, grado: String, titulos: List<TextView>, fechas: List<TextView>, avanzar: Boolean, buscar:Int){
         CoroutineScope(Dispatchers.IO).launch {
-            val call = RetroInstance.api.getNoticias(codigo, grado)
-            print(call)
+            val call = RetroInstance.api.getTareas(codigo, grado)
             activity!!.runOnUiThread {
                 if (call.isSuccessful) {
-                    val noticias = call.body()
-                    val noticiasCont = ArrayList<Noticia>()
-                    if (noticias != null) {
-                        for (noticia in noticias) {
-                            val titulo = noticia.get("titulo").toString().replace("\"", "")
-                            val contenido = noticia.get("descripcion").toString().replace("\"", "")
-                            var fecha = noticia.get("fecha").toString().replace("\"", "")
+                    controller.notificacion("aqui", activity!!)
+                    val tareas = call.body()
+                    val tareasCont = ArrayList<Noticia>()
+                    if (tareas != null) {
+                        for (tarea in tareas) {
+                            val titulo = tarea.get("titulo").toString().replace("\"", "")
+                            val contenido = tarea.get("descripcion").toString().replace("\"", "")
+                            var fecha = tarea.get("fecha").toString().replace("\"", "")
                             fecha = fecha.split("T")[0]
                             val noticia = Noticia(titulo, contenido, fecha)
-                            noticiasCont.add(noticia)
+                            tareasCont.add(noticia)
                         }
                         when (buscar) {
-                            0 -> llenarTablaAux(noticiasCont, titulos, fechas, avanzar)
-                            1 -> comunicador.enviarDatosNoticias(noticiasCont[0])
-                            2 -> comunicador.enviarDatosNoticias(noticiasCont[2])
-                            3 -> comunicador.enviarDatosNoticias(noticiasCont[2])
+                            0 -> llenarTablaAux(tareasCont, titulos, fechas, avanzar)
+                            1 -> comunicador.enviarDatosNoticias(tareasCont[0])
+                            2 -> comunicador.enviarDatosNoticias(tareasCont[2])
+                            3 -> comunicador.enviarDatosNoticias(tareasCont[2])
                         }
                     }
                 } else {
-                    controller.notificacion("Error al conectar con la base de datos", activity!!)
+                    controller.notificacion("Error al conectarse con  la base de datos", activity!!)
                 }
             }
         }

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosDocente
+import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosEstudiante
 import android.widget.TableRow
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -23,34 +24,40 @@ import kotlinx.coroutines.launch
 class DocenteListaCursos : Fragment() {
 
     private lateinit var comunicador: DatosDocente
+    private lateinit var comunicador2: DatosEstudiante
     private lateinit var nombreP: String
     private lateinit var apellidoP: String
+    private var estudiante = false
     private val controller = ControladorComponentesVista()
     private var correo: String = ""
-    private lateinit var cedula: String
+    private var cedula: String = ""
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
         comunicador = activity as DatosDocente
+        comunicador2 = activity as DatosEstudiante
         val view = inflater.inflate(R.layout.docente_lista_cursos, container, false)
         val datos = arguments?.getString("correoProfesor")
         val datosEst = arguments?.getStringArray("datosEst")
-
-        if(arguments != null && (datos == null || datosEst?.get(0) == null)){
-            controller.notificacion("aqui", activity!!)
+        if(arguments != null && datos == null && datosEst?.get(0) == null){
             val datos = arguments!!.getStringArray("datosPrimer")
             correo = datos?.get(0).toString()
             nombreP = datos?.get(1).toString()
             apellidoP = datos?.get(2).toString()
         } else{
-
-            if (datos != null)
+            if (datos != null) {
                 correo = datos.toString()
+                cedula = correo
+            }
             else{
                 if (datosEst != null){
-                    cedula = datosEst.get(3)
+                    estudiante = true
+                    correo = datosEst[0]
+                    nombreP = datosEst[1]
+                    apellidoP = datosEst[2]
+                    cedula = datosEst[3]
                 }
             }
             //agregar el nombre y el apellido de vuelta
@@ -66,10 +73,18 @@ class DocenteListaCursos : Fragment() {
             view.idDc5, view.idDc6, view.idDc7, view.idDc8)
         val listaNoms = listOf<TextView>(view.nombreDc1, view.nombreDc2, view.nombreDc3, view.nombreDc4,
             view.nombreDc5, view.nombreDc6, view.nombreDc7, view.nombreDc8)
-        cursosProfesor(correo,listaIds, listaNoms, false)
-        avanzarDocCursos.setOnClickListener{
-            cursosProfesor(correo, listaIds, listaNoms, true)
+        if (cedula != ""){
+            cursosEstudiante(cedula, listaIds, listaNoms, false)
+        }else {
+            cursosProfesor(correo, listaIds, listaNoms, false)
         }
+        avanzarDocCursos.setOnClickListener{
+            if (cedula != "")
+                cursosProfesor(correo, listaIds, listaNoms, true)
+            else
+                cursosEstudiante(cedula, listaIds, listaNoms, true)
+        }
+
         for (i in listaCol.indices){
             listaCol[i].setOnClickListener{
                 if(listaIds[i].text.isNotEmpty())
@@ -107,7 +122,6 @@ class DocenteListaCursos : Fragment() {
             activity!!.runOnUiThread {
                 if (call.isSuccessful) {
                     val cursos = call.body()
-                    val cursosDatos = java.util.ArrayList<String>()
                     if (cursos != null) {
                         val ids = ArrayList<String>()
                         val noms = ArrayList<String>()
@@ -210,7 +224,12 @@ class DocenteListaCursos : Fragment() {
                                     " de " + curso.get("horaInicio").toString().replace("\"", "") + " a " +
                                     curso.get("horaFin").toString().replace("\"", "")
                             val detalles = DocenteDetallesCurso()
-                            comunicador.enviarDatosCurso(id, nombre, grado, horario, detalles, correo, nombreP, apellidoP)
+                            if (estudiante) {
+                                comunicador.enviarDatosCurso(id, nombre, grado, horario, detalles, cedula, nombreP, apellidoP, correo)
+                            }
+                            else{
+                                comunicador.enviarDatosCurso(id, nombre, grado, horario, detalles, correo, nombreP, apellidoP)
+                            }
                         }
                     }
                 } else {

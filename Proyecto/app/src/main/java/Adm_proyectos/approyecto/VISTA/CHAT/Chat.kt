@@ -29,7 +29,6 @@ class Chat : Fragment() {
     private lateinit var comunicador: DatosDocente
     private val controller = ControladorComponentesVista()
     private var mensajesEnviados = ArrayList<String>()
-    private var mensajesRecbidos = ArrayList<String>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,7 +56,6 @@ class Chat : Fragment() {
             recibidos[edit].visibility = View.INVISIBLE
             enviados[edit].visibility = View.INVISIBLE
         }
-
 
         mensajesChat(idCurso, grado, recibidos, enviados, false)
 
@@ -160,11 +158,6 @@ class Chat : Fragment() {
                     if (resultados != null) {
                         val resultado = resultados[0].get("insertarMensaje")
                         mensajeInsertado(recibidos, enviados)
-//                        if (resultado.asInt == 0) {
-//
-//                        }else{
-//                            controller.notificacion("Error al insertar el mensaje", activity!!)
-//                        }
                     }
                     else{
                         controller.notificacion("Error al insertar el mensaje", activity!!)                    }

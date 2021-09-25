@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.CHAT.Chat
 import Adm_proyectos.approyecto.VISTA.ESTUDIANTE.estudianteNoticias
+import Adm_proyectos.approyecto.VISTA.ESTUDIANTE.estudianteTareas
 import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosDocente
+import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosEstudiante
 import android.annotation.SuppressLint
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -20,16 +22,19 @@ class DocenteDetallesCurso : Fragment() {
 
     private val controller = ControladorComponentesVista()
     private lateinit var comunicador: DatosDocente
+    private lateinit var comunicador2: DatosEstudiante
     private lateinit var grado: String
     private lateinit var idCurso: String
     private lateinit var nombreP: String
     private lateinit var apellidoP: String
+    private lateinit var cedula: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         comunicador = activity as DatosDocente
+        comunicador2 = activity as DatosEstudiante
         val view = inflater.inflate(R.layout.docente_detalles_curso, container, false)
         return view
 
@@ -37,42 +42,52 @@ class DocenteDetallesCurso : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val noticia = estudianteNoticias()
-
         val array = arguments?.getStringArray("datosCursoGrande")
         val array2 = arguments?.getStringArray("datosCurso")
         var usar = array
         var grande = true
-        var variable = usar?.get(7)
+        var cambio = usar?.get(8)
         var correo = array?.get(4).toString()
+        val cor = array?.get(7).toString()
+
         if(array?.get(0) == null) {
             usar = array2
-            variable = array2?.get(5)
+            cambio = array2?.get(5)
             grande = false
             correo = array2?.get(4).toString()
         }
         llenarDatos(usar, grande)
-        if(variable == "2"){
+        if(cambio == "2"){
             asignarNoticia.text = "VER NOTICIAS"
             enviarTarea.text = "VER TAREAS"
             verEstudiantes.text = "VER PROFESOR"
 
-            asignarNoticia.setOnClickListener(){
-                controller.cambiarFragment(noticia, R.id.contenedorEstudiante, activity!!)
+            val noticia = estudianteNoticias()
+
+            asignarNoticia.setOnClickListener{
+                comunicador.enviarDatosCurso(idCurso, grado, correo, noticia)
             }
 
-            chatGrupo.setOnClickListener(){
-                Toast.makeText(activity!!, "Aun no", Toast.LENGTH_LONG).show();
+            chatGrupo.setOnClickListener{
+                val chat = Chat()
+                comunicador.enviarDatosCurso(idCurso, grado, chat, cor, nombreP, apellidoP)
             }
 
-            enviarTarea.setOnClickListener(){
-                controller.cambiarFragment(noticia, R.id.contenedorEstudiante, activity!!)
+            enviarTarea.setOnClickListener{
+                val tarea = estudianteTareas()
+                comunicador.enviarDatosCurso(idCurso, grado, correo, tarea)
             }
 
-            verEstudiantes.setOnClickListener(){
+            verEstudiantes.setOnClickListener{
 //                val profesor = adminGdDetalles() // cambiar por el nuevo
 //                controller.cambiarFragment(profesor, R.id.contenedorEstudiante, activity!!)
 //                comunicador.enviarDatosDocente(true)
+            }
+
+            volverDetalles.setOnClickListener {
+                val listaCursos = DocenteListaCursos()
+                comunicador.enviarCorreo(correo, listaCursos)
+                controller.cambiarFragment(listaCursos, R.id.contenedorEstudiante, activity!!)
             }
         }
         else{
@@ -95,14 +110,15 @@ class DocenteDetallesCurso : Fragment() {
                 val estudiantes = docentesListaEstudiantes()
                 comunicador.enviarDatosCurso(idCurso, grado, correo, estudiantes)
             }
+
+            volverDetalles.setOnClickListener{
+                val listaCursos = DocenteListaCursos()
+                comunicador.enviarCorreo(correo, listaCursos)
+                controller.cambiarFragment(listaCursos, R.id.contenedorDocente, activity!!)
+            }
         }
 
 
-        volverDetalles.setOnClickListener{
-            val listaCursos = DocenteListaCursos()
-            comunicador.enviarCorreo(correo, listaCursos)
-            controller.cambiarFragment(listaCursos, R.id.contenedorDocente, activity!!)
-        }
     }
 
     @SuppressLint("SetTextI18n")
