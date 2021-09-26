@@ -1,10 +1,12 @@
 package Adm_proyectos.approyecto.VISTA.DOCENTE
 
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
+import Adm_proyectos.approyecto.MODELO.Noticia
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.ADMIN.GestionEstudiantes.AdminGeDetalles
 import Adm_proyectos.approyecto.VISTA.ADMIN.popUpCursos
 import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosDocente
+import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosEstudiante
 import Adm_proyectos.approyecto.VISTA.log_in
 import android.content.Intent
 import android.os.Bundle
@@ -19,7 +21,7 @@ import kotlinx.android.synthetic.main._docente_principal.*
 import kotlinx.android.synthetic.main._docente_principal.nombreUsuario
 import kotlinx.android.synthetic.main.admin_ge_crear.*
 
-class DocentePrincipal : AppCompatActivity(), DatosDocente {
+class DocentePrincipal : AppCompatActivity(), DatosDocente, DatosEstudiante {
 
     private val controller = ControladorComponentesVista()
 
@@ -153,6 +155,18 @@ class DocentePrincipal : AppCompatActivity(), DatosDocente {
     }
 
     override fun cosas(string: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun enviarDatosNoticias(noticia: Noticia) {
+        TODO("Not yet implemented")
+    }
+
+    override fun enviarCedula(cedula: String, fragment: Fragment) {
+        TODO("Not yet implemented")
+    }
+
+    override fun tareaNoticia(esTarea: Boolean) {
         TODO("Not yet implemented")
     }
 }
