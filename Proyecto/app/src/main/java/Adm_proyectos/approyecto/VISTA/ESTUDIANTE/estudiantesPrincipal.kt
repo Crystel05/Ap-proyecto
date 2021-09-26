@@ -67,9 +67,10 @@ class estudiantesPrincipal : AppCompatActivity(), DatosDocente, DatosEstudiante 
         transaction.commit()
     }
 
-    override fun enviarDatosDocente(ced: String, nombre: String, correo: String, calificacion: String, contra:String, fragment: Fragment) {
+    override fun enviarDatosDocente(ced: String, nombre: String, correo: String, calificacion: String, contra:String,
+                                    fragment: Fragment, nombreP: String, apellido: String, cedula: String, id: String, grado: String) {
         val bundle = Bundle()
-        val datos = arrayOf(ced, nombre, correo, calificacion, contra)
+        val datos = arrayOf(ced, nombre, correo, calificacion, contra, nombreP, apellido, cedula, id, grado)
         bundle.putStringArray("datosDocente", datos)
 
         val transaccion = this.supportFragmentManager.beginTransaction()
@@ -77,6 +78,14 @@ class estudiantesPrincipal : AppCompatActivity(), DatosDocente, DatosEstudiante 
 
         transaccion.replace(R.id.contenedorEstudiante, fragment)
         transaccion.commit()
+    }
+
+    override fun enviarCal(cedula: String) {
+        val bundle = Bundle()
+        val cal = estudianteCalificarDocente()
+        bundle.putString("ced", cedula)
+        cal.arguments = bundle
+        cal.show(this.supportFragmentManager, "cal")
     }
 
     override fun enviarDatosEstudiante(

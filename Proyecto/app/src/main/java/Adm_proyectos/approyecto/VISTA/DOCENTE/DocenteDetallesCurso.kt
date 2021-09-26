@@ -91,7 +91,7 @@ class DocenteDetallesCurso : Fragment() {
             }
 
             verEstudiantes.setOnClickListener{
-                infoProfesor("")
+                cedulaProfesorPorCurso(idCurso, grado)
             }
 
             volverDetalles.setOnClickListener {
@@ -163,13 +163,28 @@ class DocenteDetallesCurso : Fragment() {
                             val correo = profe.get("correo").toString().replace("\"", "")
                             val calificacionPromedio = profe.get("calificacion").toString().replace("\"", "")
                             val contra = profe.get("contrasenna").toString().replace("\"", "")
-                            val detalles = AdminGdDetalles()
-                            comunicador2.enviarDatosDocente(ced, "$nombre $apellidos", correo, calificacionPromedio, contra, detalles)
+                            val detalles = estudianteDetallesDocente()
+                            comunicador2.enviarDatosDocente(ced, "$nombre $apellidos", correo, calificacionPromedio, contra, detalles, nombreP, apellidoP, cedula, idCurso, grado)
                         }
                     }
                 } else {
-                    print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
+                    controller.notificacion("Error! Conexion con el Adm_proyectos.approyecto.API Fallida", activity!!)
                 }
+            }
+        }
+    }
+
+    private fun cedulaProfesorPorCurso(codigo: String, grado: String){
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetroInstance.api.cedulaProfesorPorCurso(codigo, grado)
+            if (call.isSuccessful) {
+                val cedulaProfesor = call.body()
+                if (cedulaProfesor != null) {
+                    val cedula = cedulaProfesor?.get(0).get("obtenercedprof")
+                    infoProfesor(cedula.toString().replace("\"", ""))
+                }
+            } else {
+                controller.notificacion("Error! Conexion con el Adm_proyectos.approyecto.API Fallida", activity!!)
             }
         }
     }

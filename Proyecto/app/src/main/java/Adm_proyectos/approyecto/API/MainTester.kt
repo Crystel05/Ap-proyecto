@@ -913,7 +913,7 @@ fun main() {
 
 
 //            Actualizar nota del profesor.
-//            tester.actualizarNotaProfesor("115674562", "5")
+            tester.actualizarNotaProfesor("115674562", "5")
 
 //            Cedula profesor por curso
             tester.cedulaProfesorPorCurso("bio", "5")

@@ -173,10 +173,20 @@ class DocentePrincipal : AppCompatActivity(), DatosDocente, DatosEstudiante {
         correo: String,
         calificacion: String,
         contra: String,
-        fragment: Fragment
+        fragment: Fragment,
+        nombreE: String,
+        apellido: String,
+        cedula: String,
+        id: String,
+        grado: String
     ) {
         TODO("Not yet implemented")
     }
+
+    override fun enviarCal(cedula: String) {
+        TODO("Not yet implemented")
+    }
+
 
     override fun enviarDatosCurso(id: String, nombre: String, grado: String, horario: String, fragment: Fragment, cedula: String, nombreP: String, apellido: String, correo: String) {
         TODO("Not yet implemented")

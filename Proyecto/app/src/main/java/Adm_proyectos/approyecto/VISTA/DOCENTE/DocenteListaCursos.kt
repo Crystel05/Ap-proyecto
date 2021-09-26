@@ -57,7 +57,6 @@ class DocenteListaCursos : Fragment() {
                     cedula = datosEst[3]
                 }
             }
-            //agregar el nombre y el apellido de vuelta
         }
         return view
     }
@@ -70,11 +69,10 @@ class DocenteListaCursos : Fragment() {
             view.idDc5, view.idDc6, view.idDc7, view.idDc8)
         val listaNoms = listOf<TextView>(view.nombreDc1, view.nombreDc2, view.nombreDc3, view.nombreDc4,
             view.nombreDc5, view.nombreDc6, view.nombreDc7, view.nombreDc8)
-        if (cedula != ""){
-            cursosEstudiante(cedula, listaIds, listaNoms, false)
-        }else {
-            cursosProfesor(correo, listaIds, listaNoms, false)
-        }
+        cursosEstudiante(cedula, listaIds, listaNoms, false)
+        cursosProfesor(correo, listaIds, listaNoms, false)
+
+
         avanzarDocCursos.setOnClickListener{
             if (cedula != "")
                 cursosProfesor(correo, listaIds, listaNoms, true)
@@ -130,7 +128,7 @@ class DocenteListaCursos : Fragment() {
                         llenarTabla(ids, noms, listaIds, listaNoms, avanzar)
                     }
                 } else {
-                    controller.notificacion("Error! Conexion con el Adm_proyectos.approyecto.API Fallida", activity!!)
+//                    controller.notificacion("Error! Conexion con el Adm_proyectos.approyecto.API Fallida", activity!!)
                 }
             }
         }
