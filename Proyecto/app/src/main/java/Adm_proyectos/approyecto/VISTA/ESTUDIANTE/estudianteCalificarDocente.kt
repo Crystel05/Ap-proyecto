@@ -34,7 +34,7 @@ class estudianteCalificarDocente : DialogFragment() {
             if (call.isSuccessful) {
                 val notaProfesor = call.body()
                 if (notaProfesor != null) {
-                    val nota = notaProfesor?.get(0)-
+                    val nota = notaProfesor?.get(0)
                 }
             } else {
                 print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
