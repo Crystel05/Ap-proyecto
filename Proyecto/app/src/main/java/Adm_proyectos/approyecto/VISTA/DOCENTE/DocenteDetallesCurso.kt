@@ -1,12 +1,16 @@
 package Adm_proyectos.approyecto.VISTA.DOCENTE
 
+import Adm_proyectos.approyecto.API.RetroInstance
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
+import Adm_proyectos.approyecto.VISTA.ADMIN.GestionDocentes.AdminGdDetalles
 import Adm_proyectos.approyecto.VISTA.CHAT.Chat
+import Adm_proyectos.approyecto.VISTA.ESTUDIANTE.estudianteCalificarDocente
+import Adm_proyectos.approyecto.VISTA.ESTUDIANTE.estudianteDetallesDocente
 import Adm_proyectos.approyecto.VISTA.ESTUDIANTE.estudianteNoticias
 import Adm_proyectos.approyecto.VISTA.ESTUDIANTE.estudianteTareas
 import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosDocente
@@ -17,6 +21,9 @@ import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.admin_ge_crear.*
 import kotlinx.android.synthetic.main.admin_ge_modificar.*
 import kotlinx.android.synthetic.main.docente_detalles_curso.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class DocenteDetallesCurso : Fragment() {
 
@@ -43,13 +50,13 @@ class DocenteDetallesCurso : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val array = arguments?.getStringArray("datosCursoGrande")
-        controller.notificacion(array.toString(), activity!!)
         val array2 = arguments?.getStringArray("datosCurso")
         var usar = array
         var grande = true
         var correo = array?.get(4).toString()
-        var cambio = ""
+        var cambio = array?.get(7).toString()
         var cor = ""
+
         if (array?.size == 9){
             cambio = usar?.get(8).toString()
             cor = array?.get(7).toString()
@@ -80,13 +87,11 @@ class DocenteDetallesCurso : Fragment() {
 
             enviarTarea.setOnClickListener{
                 val tarea = estudianteTareas()
-                comunicador.enviarDatosCurso(idCurso, grado, correo, tarea)
+                comunicador.enviarDatosCurso(idCurso, grado, tarea, cor, nombreP, apellidoP)
             }
 
             verEstudiantes.setOnClickListener{
-//                val profesor = adminGdDetalles() // cambiar por el nuevo
-//                controller.cambiarFragment(profesor, R.id.contenedorEstudiante, activity!!)
-//                comunicador.enviarDatosDocente(true)
+                infoProfesor("")
             }
 
             volverDetalles.setOnClickListener {
@@ -142,5 +147,30 @@ class DocenteDetallesCurso : Fragment() {
         nombreCursoDocente.text = nomCurso
         gradoCursoDocente.text = grado
         horarioCursoDocente.text = horario
+    }
+
+    private fun infoProfesor(cedula: String){
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetroInstance.api.getInfoProfesor(cedula)
+            activity!!.runOnUiThread {
+                if (call.isSuccessful) {
+                    val profes = call.body()
+                    if (profes != null) {
+                        for (profe in profes) {
+                            val ced = profe.get("cedula").toString().replace("\"", "")
+                            val nombre = profe.get("nombre").toString().replace("\"", "")
+                            val apellidos = profe.get("apellido").toString().replace("\"", "")
+                            val correo = profe.get("correo").toString().replace("\"", "")
+                            val calificacionPromedio = profe.get("calificacion").toString().replace("\"", "")
+                            val contra = profe.get("contrasenna").toString().replace("\"", "")
+                            val detalles = AdminGdDetalles()
+                            comunicador2.enviarDatosDocente(ced, "$nombre $apellidos", correo, calificacionPromedio, contra, detalles)
+                        }
+                    }
+                } else {
+                    print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
+                }
+            }
+        }
     }
 }

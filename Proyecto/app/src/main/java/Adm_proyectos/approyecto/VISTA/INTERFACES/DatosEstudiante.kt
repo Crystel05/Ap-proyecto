@@ -7,4 +7,5 @@ interface DatosEstudiante {
     fun enviarDatosNoticias(noticia:Noticia)
     fun enviarCedula(cedula: String, fragment: Fragment)
     fun tareaNoticia(esTarea: Boolean)
+    fun enviarDatosDocente(ced: String, nombre:String, correo: String, calificacion: String, contra:String, fragment: Fragment)
 }

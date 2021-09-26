@@ -150,6 +150,7 @@ class DocentePrincipal : AppCompatActivity(), DatosDocente, DatosEstudiante {
         popUp.show(this.supportFragmentManager, "CursosPopUp")
     }
 
+    //*******************************************************************************
     override fun cosas(string: String) {
         TODO("Not yet implemented")
     }
@@ -163,6 +164,17 @@ class DocentePrincipal : AppCompatActivity(), DatosDocente, DatosEstudiante {
     }
 
     override fun tareaNoticia(esTarea: Boolean) {
+        TODO("Not yet implemented")
+    }
+
+    override fun enviarDatosDocente(
+        ced: String,
+        nombre: String,
+        correo: String,
+        calificacion: String,
+        contra: String,
+        fragment: Fragment
+    ) {
         TODO("Not yet implemented")
     }
 

@@ -25,6 +25,8 @@ class estudianteTareas : Fragment() {
     private var controller = ControladorComponentesVista()
     private lateinit var idCurso: String
     private lateinit var grado: String
+    private lateinit var nombreE: String
+    private lateinit var apellidoE: String
     private lateinit var comunicador: DatosEstudiante
     private lateinit var comunicador2: DatosDocente
     private lateinit var cedula: String
@@ -35,10 +37,12 @@ class estudianteTareas : Fragment() {
         val view = inflater.inflate(R.layout.estudiante_noticias, container, false)
         comunicador = activity as DatosEstudiante
         comunicador2 = activity as DatosDocente
-        val datos = arguments?.getStringArray("datosCursoPequeno")
+        val datos = arguments?.getStringArray("datosCursoMed")
         idCurso = datos?.get(0).toString()
         grado = datos?.get(1).toString()
         val correo = datos?.get(2).toString()
+        nombreE = datos?.get(3).toString()
+        apellidoE = datos?.get(4).toString()
         cedula = correo
         view.idCursoEstudiantes.text = idCurso
         view.etiqueta.setText("Tareas del curso")
@@ -90,8 +94,7 @@ class estudianteTareas : Fragment() {
                                     " de " + curso.get("horaInicio").toString().replace("\"", "") + " a " +
                                     curso.get("horaFin").toString().replace("\"", "")
                             val detalles = DocenteDetallesCurso()
-                            comunicador2.enviarDatosCurso(id, nombre, grado, horario, detalles, cedula)
-
+                            comunicador2.enviarDatosCurso(id, nombre, grado, horario, detalles, cedula, nombreE, apellidoE)
                         }
                     }
                 } else {
@@ -106,7 +109,6 @@ class estudianteTareas : Fragment() {
             val call = RetroInstance.api.getTareas(codigo, grado)
             activity!!.runOnUiThread {
                 if (call.isSuccessful) {
-                    controller.notificacion("aqui", activity!!)
                     val tareas = call.body()
                     val tareasCont = ArrayList<Noticia>()
                     if (tareas != null) {
@@ -121,7 +123,7 @@ class estudianteTareas : Fragment() {
                         when (buscar) {
                             0 -> llenarTablaAux(tareasCont, titulos, fechas, avanzar)
                             1 -> comunicador.enviarDatosNoticias(tareasCont[0])
-                            2 -> comunicador.enviarDatosNoticias(tareasCont[2])
+                            2 -> comunicador.enviarDatosNoticias(tareasCont[1])
                             3 -> comunicador.enviarDatosNoticias(tareasCont[2])
                         }
                     }

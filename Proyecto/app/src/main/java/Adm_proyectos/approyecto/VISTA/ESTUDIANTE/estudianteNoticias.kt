@@ -26,6 +26,8 @@ class estudianteNoticias : Fragment() {
     private var controller = ControladorComponentesVista()
     private lateinit var idCurso: String
     private lateinit var grado: String
+    private lateinit var nombreE: String
+    private lateinit var apellidoE: String
     private lateinit var comunicador: DatosEstudiante
     private lateinit var comunicador2: DatosDocente
     private lateinit var cedula: String
@@ -36,10 +38,12 @@ class estudianteNoticias : Fragment() {
         val view = inflater.inflate(R.layout.estudiante_noticias, container, false)
         comunicador = activity as DatosEstudiante
         comunicador2 = activity as DatosDocente
-        val datos = arguments?.getStringArray("datosCursoPequeno")
+        val datos = arguments?.getStringArray("datosCursoPequeno2")
         idCurso = datos?.get(0).toString()
         grado = datos?.get(1).toString()
         val correo = datos?.get(2).toString()
+        nombreE = datos?.get(3).toString()
+        apellidoE = datos?.get(4).toString()
         cedula = correo
         view.idCursoEstudiantes.text = idCurso
         return view
@@ -92,8 +96,7 @@ class estudianteNoticias : Fragment() {
                                     " de " + curso.get("horaInicio").toString().replace("\"", "") + " a " +
                                     curso.get("horaFin").toString().replace("\"", "")
                             val detalles = DocenteDetallesCurso()
-                            comunicador2.enviarDatosCurso(id, nombre, grado, horario, detalles, cedula)
-
+                            comunicador2.enviarDatosCurso(id, nombre, grado, horario, detalles, cedula, nombreE, apellidoE)
                         }
                     }
                 } else {
@@ -124,7 +127,7 @@ class estudianteNoticias : Fragment() {
                         when (buscar) {
                             0 -> llenarTablaAux(noticiasCont, titulos, fechas, avanzar)
                             1 -> comunicador.enviarDatosNoticias(noticiasCont[0])
-                            2 -> comunicador.enviarDatosNoticias(noticiasCont[2])
+                            2 -> comunicador.enviarDatosNoticias(noticiasCont[1])
                             3 -> comunicador.enviarDatosNoticias(noticiasCont[2])
                         }
                     }
