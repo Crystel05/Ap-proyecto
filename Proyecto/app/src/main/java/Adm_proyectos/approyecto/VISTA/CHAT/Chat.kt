@@ -75,7 +75,7 @@ class Chat : Fragment() {
     private fun cargarMensajes(mensajes: ArrayList<MensajeM>, recibidos: List<EditText>, enviados: List<EditText>, viejos: Boolean) {
         if (!viejos){
             if (mensajes.size >= 5) {
-                for (ind in recibidos.indices) {
+                for (ind in recibidos.indices-1) {
                     val nombre = mensajes[ind].remitente.nombre
                     val apellido = mensajes[ind].remitente.apellidos
                     if (("$nombre $apellido") == ("$nombreP $apellidoP")) {
@@ -254,7 +254,7 @@ class Chat : Fragment() {
                                     " de " + curso.get("horaInicio").toString().replace("\"", "") + " a " +
                                     curso.get("horaFin").toString().replace("\"", "")
                             val detalles = DocenteDetallesCurso()
-                            comunicador.enviarDatosCurso(id, nombre, grado, horario, detalles, correo)
+                            comunicador.enviarDatosCurso(id, nombre, grado, horario, detalles, correo, nombreP, apellidoP)
 
                         }
                     }

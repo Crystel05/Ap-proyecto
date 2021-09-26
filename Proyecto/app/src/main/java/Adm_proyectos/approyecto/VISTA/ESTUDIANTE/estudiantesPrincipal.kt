@@ -75,7 +75,9 @@ class estudiantesPrincipal : AppCompatActivity(), DatosDocente, DatosEstudiante 
         grado: String,
         curso: String,
         correoProfe: String,
-        correo: String
+        correo: String,
+        nombreP: String,
+        apellido: String
     ) {
         TODO("Not yet implemented")
     }
@@ -90,6 +92,17 @@ class estudiantesPrincipal : AppCompatActivity(), DatosDocente, DatosEstudiante 
 
         transaccion.replace(R.id.contenedorEstudiante, fragment)
         transaccion.commit()
+    }
+
+    override fun enviarDatosCurso(
+        id: String,
+        grado: String,
+        correo: String,
+        fragment: Fragment,
+        nombre: String,
+        apellido: String
+    ) {
+        TODO("Not yet implemented")
     }
 
     override fun enviarDatosCurso(

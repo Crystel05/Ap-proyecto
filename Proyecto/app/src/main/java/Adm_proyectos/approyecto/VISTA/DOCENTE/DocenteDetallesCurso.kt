@@ -43,16 +43,21 @@ class DocenteDetallesCurso : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val array = arguments?.getStringArray("datosCursoGrande")
+        controller.notificacion(array.toString(), activity!!)
         val array2 = arguments?.getStringArray("datosCurso")
         var usar = array
         var grande = true
-        var cambio = usar?.get(8)
         var correo = array?.get(4).toString()
-        val cor = array?.get(7).toString()
+        var cambio = ""
+        var cor = ""
+        if (array?.size == 9){
+            cambio = usar?.get(8).toString()
+            cor = array?.get(7).toString()
+        }
 
         if(array?.get(0) == null) {
             usar = array2
-            cambio = array2?.get(5)
+            cambio = array2?.get(5).toString()
             grande = false
             correo = array2?.get(4).toString()
         }
@@ -65,7 +70,7 @@ class DocenteDetallesCurso : Fragment() {
             val noticia = estudianteNoticias()
 
             asignarNoticia.setOnClickListener{
-                comunicador.enviarDatosCurso(idCurso, grado, correo, noticia)
+                comunicador.enviarDatosCurso(idCurso, grado, correo, noticia, nombreP, apellidoP)
             }
 
             chatGrupo.setOnClickListener{
@@ -93,7 +98,7 @@ class DocenteDetallesCurso : Fragment() {
         else{
             asignarNoticia.setOnClickListener{
                 val noticia = DocenteEnviarNoticia()
-                comunicador.enviarDatosCurso(idCurso, grado, correo, noticia)
+                comunicador.enviarDatosCurso(idCurso, grado, correo, noticia, nombreP, apellidoP)
             }
 
             chatGrupo.setOnClickListener{
@@ -103,12 +108,12 @@ class DocenteDetallesCurso : Fragment() {
 
             enviarTarea.setOnClickListener(){
                 val tarea = DocentesAsignarTarea()
-                comunicador.enviarDatosCurso(idCurso, grado, correo, tarea)
+                comunicador.enviarDatosCurso(idCurso, grado, correo, tarea, nombreP, apellidoP)
             }
 
             verEstudiantes.setOnClickListener{
                 val estudiantes = docentesListaEstudiantes()
-                comunicador.enviarDatosCurso(idCurso, grado, correo, estudiantes)
+                comunicador.enviarDatosCurso(idCurso, grado, correo, estudiantes, nombreP, apellidoP)
             }
 
             volverDetalles.setOnClickListener{
@@ -127,6 +132,7 @@ class DocenteDetallesCurso : Fragment() {
         val nomCurso = array?.get(1).toString()
         grado = array?.get(2).toString()
         val horario = array?.get(3)
+
         if (grande) {
             nombreP = array?.get(5).toString()
             apellidoP = array?.get(6).toString()

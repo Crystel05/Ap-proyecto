@@ -22,6 +22,8 @@ class DocenteDetallesEstudiante : Fragment() {
     private lateinit var grado: String
     private lateinit var correo: String
     private lateinit var correoEst: String
+    private lateinit var nombreP: String
+    private lateinit var apellido: String
     private lateinit var comunicador: DatosDocente
     private val controller = ControladorComponentesVista()
     override fun onCreateView(
@@ -37,6 +39,8 @@ class DocenteDetallesEstudiante : Fragment() {
         idCurso = datos?.get(3).toString()
         correo = datos?.get(4).toString()
         correoEst = datos?.get(5).toString()
+        nombreP = datos?.get(6).toString()
+        apellido = datos?.get(7).toString()
         llenarDatos(nombre, cedula, grado, idCurso, view)
         return view
     }
@@ -45,7 +49,7 @@ class DocenteDetallesEstudiante : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         atrasDocEstDet.setOnClickListener {
             val estudiantes = docentesListaEstudiantes()
-            comunicador.enviarDatosCurso(idCurso, grado, correo, estudiantes)
+            comunicador.enviarDatosCurso(idCurso, grado, correo, estudiantes, nombreP, apellido)
         }
         verListaEstdiante.setOnClickListener{
             cursosEstudiante(correoEst)

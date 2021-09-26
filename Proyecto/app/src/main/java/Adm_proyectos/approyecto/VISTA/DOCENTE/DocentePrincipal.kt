@@ -72,6 +72,18 @@ class DocentePrincipal : AppCompatActivity(), DatosDocente, DatosEstudiante {
         transaccion.commit()
     }
 
+    override fun enviarDatosCurso(id: String, grado: String, correo: String, fragment: Fragment, nombre: String, apellido: String) {
+        val bundle = Bundle()
+        val datos = arrayOf(id, grado, correo, nombre, apellido)
+        bundle.putStringArray("datosCursoPequeno2", datos)
+
+        val transaccion = this.supportFragmentManager.beginTransaction()
+        fragment.arguments = bundle
+
+        transaccion.replace(R.id.contenedorDocente, fragment)
+        transaccion.commit()
+    }
+
 
     override fun enviarDatosCurso(id: String, nombre: String, grado: String, horario: String, fragment: Fragment, correo: String, nombreP: String, apellido: String) {
         val bundle = Bundle()
@@ -84,20 +96,6 @@ class DocentePrincipal : AppCompatActivity(), DatosDocente, DatosEstudiante {
 
         transaccion.replace(R.id.contenedorDocente, detalles)
         transaccion.commit()
-    }
-
-    override fun enviarDatosCurso(
-        id: String,
-        nombre: String,
-        grado: String,
-        horario: String,
-        fragment: Fragment,
-        cedula: String,
-        nombreP: String,
-        apellido: String,
-        correo: String
-    ) {
-        TODO("Not yet implemented")
     }
 
     override fun enviarDatosCurso(id: String, grado: String, fragment: Fragment, correo: String, nombreP: String, apellido: String) {
@@ -131,11 +129,9 @@ class DocentePrincipal : AppCompatActivity(), DatosDocente, DatosEstudiante {
         fragment.arguments = bundle
     }
 
-
-
-    override fun enviarDatosEstudiante(ced: String, nombre: String, grado: String, cursoId:String, correoProfe:String, correoEst:String) {
+    override fun enviarDatosEstudiante(ced: String, nombre: String, grado: String, cursoId:String, correoProfe:String, correoEst:String, nombreP: String, apellido: String) {
         val bundle = Bundle()
-        val datos = arrayOf(ced, nombre, grado, cursoId, correoProfe, correoEst, "1")
+        val datos = arrayOf(ced, nombre, grado, cursoId, correoProfe, correoEst, nombreP, apellido, "1")
         bundle.putStringArray("datosEstudiante", datos)
 
         val transaccion = this.supportFragmentManager.beginTransaction()
@@ -167,6 +163,10 @@ class DocentePrincipal : AppCompatActivity(), DatosDocente, DatosEstudiante {
     }
 
     override fun tareaNoticia(esTarea: Boolean) {
+        TODO("Not yet implemented")
+    }
+
+    override fun enviarDatosCurso(id: String, nombre: String, grado: String, horario: String, fragment: Fragment, cedula: String, nombreP: String, apellido: String, correo: String) {
         TODO("Not yet implemented")
     }
 }

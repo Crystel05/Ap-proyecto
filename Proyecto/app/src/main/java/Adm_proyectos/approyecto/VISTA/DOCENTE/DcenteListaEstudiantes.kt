@@ -22,6 +22,8 @@ class docentesListaEstudiantes : Fragment() {
     private lateinit var idCurso: String
     private lateinit var grado: String
     private lateinit var correo: String
+    private lateinit var nombre: String
+    private lateinit var apellido: String
     private lateinit var comunicador: DatosDocente
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,10 +31,12 @@ class docentesListaEstudiantes : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.docentes_lista_estudiantes, container, false)
         comunicador = activity as DatosDocente
-        val datos = arguments?.getStringArray("datosCursoPequeno")
+        val datos = arguments?.getStringArray("datosCursoPequeno2")
         idCurso = datos?.get(0).toString()
         grado = datos?.get(1).toString()
         correo = datos?.get(2).toString()
+        nombre = datos?.get(3).toString()
+        apellido = datos?.get(4).toString()
         view.idCursoDocentes.text = idCurso
 
         val listagradoDcs = listOf<TextView>(view.gradoDcE1, view.gradoDcE2, view.gradoDcE3, view.gradoDcE4,
@@ -194,13 +198,13 @@ class docentesListaEstudiantes : Fragment() {
                     if (cursos != null) {
                         for (curso in cursos) {
                             val id = curso.get("codigo").toString().replace("\"", "")
-                            val nombre = curso.get("nombre").toString().replace("\"", "")
+                            val nombreC = curso.get("nombre").toString().replace("\"", "")
                             val grado = curso.get("clase").toString().replace("\"", "")
                             val horario = curso.get("diaSemana").toString().replace("\"", "")+
                                     " de " + curso.get("horaInicio").toString().replace("\"", "") + " a " +
                                     curso.get("horaFin").toString().replace("\"", "")
                             val detalles = DocenteDetallesCurso()
-                            comunicador.enviarDatosCurso(id, nombre, grado, horario, detalles, correo)
+                            comunicador.enviarDatosCurso(id, nombreC, grado, horario, detalles, correo, nombre, apellido)
 
                         }
                     }
@@ -221,9 +225,9 @@ class docentesListaEstudiantes : Fragment() {
         infoEstudiante(nombre, apellido)
     }
 
-    fun infoEstudiante(nombre: String, apellido: String){
+    fun infoEstudiante(nombreE: String, apellidoE: String){
         CoroutineScope(Dispatchers.IO).launch {
-            val call = RetroInstance.api.getInfoEstudiante(nombre, apellido)
+            val call = RetroInstance.api.getInfoEstudiante(nombreE, apellidoE)
             activity!!.runOnUiThread {
                 if (call.isSuccessful) {
                     val estudiantes = call.body()
@@ -233,7 +237,7 @@ class docentesListaEstudiantes : Fragment() {
                                     estudiante.get("apellido").toString().replace("\"", "")
                             val ced = estudiante.get("cedula").toString().replace("\"", "")
                             val correoEst = estudiante.get("correo").toString().replace("\"", "")
-                            comunicador.enviarDatosEstudiante(nomb, ced, grado, idCurso, correo, correoEst)
+                            comunicador.enviarDatosEstudiante(nomb, ced, grado, idCurso, correo, correoEst, nombre, apellido)
                         }
 
                     }
