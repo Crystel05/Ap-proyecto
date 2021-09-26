@@ -1,7 +1,6 @@
 package Adm_proyectos.approyecto.VISTA.ADMIN.AsignarCursos
 
-import API.RetroInstance
-import Adm_proyectos.approyecto.CONTROLADOR.ControladorAdmin
+import Adm_proyectos.approyecto.API.RetroInstance
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,15 +10,12 @@ import Adm_proyectos.approyecto.R
 import android.graphics.Color
 import android.widget.TableRow
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.admin_ac_lista_docentes.*
 import kotlinx.android.synthetic.main.admin_ac_lista_docentes.view.*
-import kotlinx.android.synthetic.main.admin_ge_crear.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.w3c.dom.Text
 
 class AdminAcListaDocentes : Fragment() {
 

@@ -1,6 +1,6 @@
 package Adm_proyectos.approyecto.VISTA.ADMIN.GestionEstudiantes
 
-import API.RetroInstance
+import Adm_proyectos.approyecto.API.RetroInstance
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.admin_ge_crear.*
 import kotlinx.android.synthetic.main.admin_ge_modificar.*
 import kotlinx.android.synthetic.main.admin_ge_modificar.view.*
 import kotlinx.coroutines.CoroutineScope
@@ -48,12 +47,8 @@ class AdminGeModificar : Fragment() {
             if(segundoApModificarEst.text.isNotEmpty()){
                 apes = primerApModificarEst.text.toString() + " " + segundoApModificarEst.text.toString()
             }
-            controller.notificacion(nombre + " " + apellidos, activity!!)
-//            updateEstudiante(nombre, apellidos, cedulaModificarEstudiante.text.toString(), nombreModificarEstudiante.text.toString(), correoEstMod.text.toString(),
-//                contraEstMod.text.toString(), apes, gradosGeM.selectedItem.toString())
-//            updateEstudiante("Paola", "Turquez", "11111111", "Pao", "velvet@gmail.com",
-//                "magikChimichanga", "Turquez", "1")
-
+            updateEstudiante(nombre, apellidos, cedulaModificarEstudiante.text.toString(), nombreModificarEstudiante.text.toString(), correoEstMod.text.toString(),
+                contraEstMod.text.toString(), apes, gradosGeM.selectedItem.toString())
         }
 
     }

@@ -1,6 +1,6 @@
 package Adm_proyectos.approyecto.VISTA.DOCENTE
 
-import API.RetroInstance
+import Adm_proyectos.approyecto.API.RetroInstance
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosDocente
@@ -109,7 +109,7 @@ class docentesListaEstudiantes : Fragment() {
                         llenarTabla(noms, ceds, cedsI, nomsI, avanzar)
                     }
                 } else {
-                    print("Error! Conexion con el API Fallida")
+                    print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
                 }
             }
         }

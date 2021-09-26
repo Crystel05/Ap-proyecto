@@ -1,6 +1,6 @@
 package Adm_proyectos.approyecto.VISTA.ADMIN.GestionEstudiantes
 
-import API.RetroInstance
+import Adm_proyectos.approyecto.API.RetroInstance
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -59,13 +59,13 @@ class AdminGeCrear : Fragment() {
                     nombreCrearEst.text.toString(),
                     correoCrearEst.text.toString().lowercase().replace(" ", ""),
                     contrEstCrear.text.toString(),
-                    apellidos, gradosGeA.selectedItem.toString()
-            )
+                    apellidos,
+                    gradosGeA.selectedItem.toString()
+                )
         } else {
             notificacions("Existen campos sin llenar")
         }
     }
-
 
     fun insertarEstudiante(cedula: String, nombre: String, correo: String, contra: String, apellido: String, grado: String){
         CoroutineScope(Dispatchers.IO).launch {

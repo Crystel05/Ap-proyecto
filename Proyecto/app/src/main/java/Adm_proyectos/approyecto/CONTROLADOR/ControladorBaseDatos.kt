@@ -1,6 +1,6 @@
 package Adm_proyectos.approyecto.CONTROLADOR
 //
-//import API.RetroInstance
+//import Adm_proyectos.approyecto.API.RetroInstance
 //import androidx.appcompat.app.AppCompatActivity
 //import androidx.fragment.app.FragmentActivity
 //
@@ -25,7 +25,7 @@ package Adm_proyectos.approyecto.CONTROLADOR
 //                        tipoUsuario = 1
 //                    }
 //                } else {
-//                    print("Error! Conexion con el API Fallida")
+//                    print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
 //                }
 //            }
 //        }

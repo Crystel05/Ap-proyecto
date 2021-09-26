@@ -1,6 +1,6 @@
 package Adm_proyectos.approyecto.VISTA.DOCENTE
 
-import API.RetroInstance
+import Adm_proyectos.approyecto.API.RetroInstance
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,11 +12,8 @@ import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosEstudiante
 import android.widget.TableRow
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.admin_ge_crear.*
-import kotlinx.android.synthetic.main.admin_ge_modificar.*
 import kotlinx.android.synthetic.main.docente_lista_cursos.*
 import kotlinx.android.synthetic.main.docente_lista_cursos.view.*
-import kotlinx.android.synthetic.main.estudiante_noticias.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -133,7 +130,7 @@ class DocenteListaCursos : Fragment() {
                         llenarTabla(ids, noms, listaIds, listaNoms, avanzar)
                     }
                 } else {
-                    controller.notificacion("Error! Conexion con el API Fallida", activity!!)
+                    controller.notificacion("Error! Conexion con el Adm_proyectos.approyecto.API Fallida", activity!!)
                 }
             }
         }

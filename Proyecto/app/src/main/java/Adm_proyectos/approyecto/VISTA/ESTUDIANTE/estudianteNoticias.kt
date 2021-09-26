@@ -1,6 +1,6 @@
 package Adm_proyectos.approyecto.VISTA.ESTUDIANTE
 
-import API.RetroInstance
+import Adm_proyectos.approyecto.API.RetroInstance
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import Adm_proyectos.approyecto.MODELO.Noticia
 import android.os.Bundle
@@ -14,7 +14,6 @@ import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosEstudiante
 import android.annotation.SuppressLint
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.admin_ge_crear.*
 import kotlinx.android.synthetic.main.estudiante_noticias.*
 import kotlinx.android.synthetic.main.estudiante_noticias.view.*
 import kotlinx.coroutines.CoroutineScope

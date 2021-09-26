@@ -1,6 +1,6 @@
 package Adm_proyectos.approyecto.VISTA.CHAT
 
-import API.RetroInstance
+import Adm_proyectos.approyecto.API.RetroInstance
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import Adm_proyectos.approyecto.MODELO.MensajeM
 import Adm_proyectos.approyecto.MODELO.Usuario
@@ -221,7 +221,7 @@ class Chat : Fragment() {
                         cargarMensajes(mensajes, recibidos, enviados, viejos)
                     }
                 } else {
-                    print("Error! Conexion con el API Fallida")
+                    print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
                 }
             }
         }

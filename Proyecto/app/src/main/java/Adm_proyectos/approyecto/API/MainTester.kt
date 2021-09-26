@@ -1,4 +1,4 @@
-package API
+package Adm_proyectos.approyecto.API
 
 import Adm_proyectos.approyecto.MODELO.Usuario
 import android.annotation.SuppressLint
@@ -20,7 +20,7 @@ class MainTester {
                         print(miUsuario)
                         print( "\n" + miUsuario?.get("nombre"))
                     } else {
-                        print("Error! Conexion con el API Fallida")
+                        print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
                     }
 //                } end runOnUi
             }
@@ -50,7 +50,7 @@ class MainTester {
                         }
                     }
                 } else {
-                    print("Error! Conexion con el API Fallida")
+                    print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
                 }
 //            } end runOnUi
         }
@@ -67,7 +67,7 @@ class MainTester {
                     val miContrasenna = call.body()?.get(0)?.get("contrasenna")
                     print(miContrasenna)
                 } else {
-                    print("Error! Conexion con el API Fallida")
+                    print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
                 }
 //            } end runOnUi
         }
@@ -88,7 +88,7 @@ class MainTester {
                     }
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
 //            } end runOnUi
         }
@@ -109,7 +109,7 @@ class MainTester {
                     }
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
 //            } end runOnUi
         }
@@ -130,7 +130,7 @@ class MainTester {
                     }
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
 //            } end runOnUi
         }
@@ -151,7 +151,7 @@ class MainTester {
                     }
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
 //            } end runOnUi
         }
@@ -173,7 +173,7 @@ class MainTester {
                     }
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
 //            } end runOnUi
         }
@@ -193,7 +193,7 @@ class MainTester {
                     }
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
 //            } end runOnUi
         }
@@ -213,7 +213,7 @@ class MainTester {
                     }
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
 //            } end runOnUi
         }
@@ -237,7 +237,7 @@ class MainTester {
                     }
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
 //            } end runOnUi
         }
@@ -257,7 +257,7 @@ class MainTester {
                     }
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
 //            } end runOnUi
         }
@@ -283,7 +283,7 @@ class MainTester {
                     print("Error al insertar el elemento")
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
 //            } end runOnUi
         }
@@ -313,7 +313,7 @@ class MainTester {
                     print("Error al insertar el elemento")
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
 //            } end runOnUi
         } // done
@@ -342,7 +342,7 @@ class MainTester {
                     print("Error al insertar el elemento")
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
 //            } end runOnUi
         }
@@ -370,7 +370,7 @@ class MainTester {
                     print("Error al insertar el elemento")
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
 //            } end runOnUi
         }
@@ -398,7 +398,7 @@ class MainTester {
                     print("Error al insertar el elemento")
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
 //            } end runOnUi
         }
@@ -426,7 +426,7 @@ class MainTester {
                     print("Error al insertar el elemento")
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
 //            } end runOnUi
         }
@@ -454,7 +454,7 @@ class MainTester {
                     print("Error al insertar el elemento")
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
 //            } end runOnUi
         }
@@ -482,7 +482,7 @@ class MainTester {
                     print("Error al insertar el elemento")
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
 //            } end runOnUi
         }
@@ -502,7 +502,7 @@ class MainTester {
                     }
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
 //            } end runOnUi
         }
@@ -530,7 +530,7 @@ class MainTester {
                     print("Error al insertar el elemento")
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
 //            } end runOnUi
         }
@@ -558,7 +558,7 @@ class MainTester {
                     print("Error al insertar el elemento")
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
 //            } end runOnUi
         }
@@ -579,7 +579,7 @@ class MainTester {
                     }
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
 //            } end runOnUi
         }
@@ -602,7 +602,7 @@ class MainTester {
                     }
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
 //            } end runOnUi
         }
@@ -622,7 +622,7 @@ class MainTester {
                     }
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
         }
     }
@@ -649,7 +649,7 @@ class MainTester {
                     print("Error al insertar el elemento")
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
 //            } end runOnUi
         }
@@ -677,7 +677,7 @@ class MainTester {
                     print("Error al eliminar el elemento")
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
 //            } end runOnUi
         }
@@ -705,7 +705,7 @@ class MainTester {
                     print("Error al eliminar el elemento")
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
 //            } end runOnUi
         }
@@ -733,7 +733,7 @@ class MainTester {
                     print("Error al eliminar el elemento")
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
 //            } end runOnUi
         }
@@ -769,7 +769,7 @@ class MainTester {
                     }
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
         }
     }
@@ -799,7 +799,7 @@ class MainTester {
                     }
                 }
             } else {
-                print("Error! Conexion con el API Fallida")
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
             }
         }
     }
@@ -825,7 +825,7 @@ fun main() {
 //            tester.cursosEstudiante("hector@gmail.com")
 
 //            VACÍO
-//            tester.cursosProfesor("shoebill@gmail.com")
+            tester.cursosProfesor("shoebill@gmail.com")
 //            tester.cursoInfo("soc", "5")
 //            tester.buscarProfesores()
            // tester.gradoId("5")
@@ -848,7 +848,7 @@ fun main() {
 //            tester.insertarTarea("mat", "prepa", "prueba", "prueba", "Tarea de prueba", "2021-09-11")
 //            tester.insertarNoticia("mat", "prepa", "noticiaPrueba", "probando insertar noticia", "2021-09-14")
 //            tester.noticias("mate", "6")
-            tester.tareas("bio", "5") //REVISAR, NO SIRVE :(
+//            tester.tareas("bio", "5") //REVISAR, NO SIRVE :(
 //            tester.mensajesChat("bio", "5") //REVISAR, TAMPOCO SIRVE :(
 //            tester.insertarMensajeChat("bio","5", "shoebill@gmail.com","tarea") // REVISAR ( NO HAY CHAT PARA PROBAR).
 

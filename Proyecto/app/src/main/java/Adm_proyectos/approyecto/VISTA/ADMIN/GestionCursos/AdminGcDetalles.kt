@@ -1,6 +1,6 @@
 package Adm_proyectos.approyecto.VISTA.ADMIN.ADMIN
 
-import API.RetroInstance
+import Adm_proyectos.approyecto.API.RetroInstance
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,11 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosAdmin
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.admin_gc_detalles.*
 import kotlinx.android.synthetic.main.admin_gc_detalles.view.*
-import kotlinx.android.synthetic.main.estudiante_noticias.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

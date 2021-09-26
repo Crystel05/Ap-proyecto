@@ -1,6 +1,6 @@
 package Adm_proyectos.approyecto.VISTA.ADMIN.ADMIN
 
-import API.RetroInstance
+import Adm_proyectos.approyecto.API.RetroInstance
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
 import android.view.LayoutInflater

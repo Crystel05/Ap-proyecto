@@ -1,6 +1,6 @@
 package Adm_proyectos.approyecto.CONTROLADOR
 //
-//import API.RetroInstance
+//import Adm_proyectos.approyecto.API.RetroInstance
 //import android.widget.TextView
 //import android.widget.Toast
 //import androidx.appcompat.app.AppCompatActivity

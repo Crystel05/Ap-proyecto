@@ -1,6 +1,6 @@
 package Adm_proyectos.approyecto.VISTA.ADMIN.GestionDocentes
 
-import API.RetroInstance
+import Adm_proyectos.approyecto.API.RetroInstance
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -198,7 +198,7 @@ class AdminGdListaDocentes : Fragment() {
                         }
                     }
                 } else {
-                    print("Error! Conexion con el API Fallida")
+                    print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
                 }
             }
         }

@@ -1,6 +1,6 @@
 package Adm_proyectos.approyecto.VISTA.ADMIN.ADMIN
 
-import API.RetroInstance
+import Adm_proyectos.approyecto.API.RetroInstance
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -66,7 +66,7 @@ class AdminGcCrear : Fragment() {
             if (matcher.find() && matcher2.find()) {
                 insertarCurso(
                     idCrearCurso.text.toString().replace(" ", ""),
-                    nombreCrearCurso.text.toString().replace(" ", ""),
+                    nombreCrearCurso.text.toString(),
                     gradoCrearCurso.selectedItem.toString().replace(" ", ""),
                     diaCrearCurso.selectedItem.toString().replace(" ", ""),
                     horaInicioCrearCurso.text.toString().replace(" ", ""),

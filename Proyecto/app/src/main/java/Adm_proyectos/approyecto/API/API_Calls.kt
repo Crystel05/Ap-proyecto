@@ -1,12 +1,8 @@
-package API
+package Adm_proyectos.approyecto.API
 
-import Adm_proyectos.approyecto.MODELO.Curso
-import Adm_proyectos.approyecto.MODELO.Usuario
 import com.google.gson.JsonObject
-import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.http.*
-import java.sql.Time
 
 
 interface API_Calls {

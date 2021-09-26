@@ -1,6 +1,6 @@
 package Adm_proyectos.approyecto.VISTA.ADMIN.AsignarCursos
 
-import API.RetroInstance
+import Adm_proyectos.approyecto.API.RetroInstance
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,6 @@ import Adm_proyectos.approyecto.R
 import android.graphics.Color
 import android.widget.TableRow
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.admin_ac_lista_estudiantes.*
 import kotlinx.android.synthetic.main.admin_ac_lista_estudiantes.view.*
@@ -93,17 +92,13 @@ class AdminAcListaEstudiantes : Fragment() {
                     if (nombreCom.size == 3){
                         apellido = nombreCom[1] + " " + nombreCom[2]
                     }
-                    controller.notificacion(codigo + " " + grado, activity!!)
-//                    asignarEstudiante(nombre, apellido, codigo, grado)
+                    asignarEstudiante(nombre, apellido, codigo, grado)
                     i +=1
                 }
                 else
                     i+=1
             }
 
-//            val detalles = AdminAcListaCursos()
-//            controller.cambiarFragment(detalles, R.id.contenedor, activity!!)
-//            Toast.makeText(activity!!, "Los estudiantes fueron agregados al curso con éxito", Toast.LENGTH_LONG).show()
         }
     }
 

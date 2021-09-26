@@ -1,6 +1,6 @@
 package Adm_proyectos.approyecto.VISTA.DOCENTE
 
-import API.RetroInstance
+import Adm_proyectos.approyecto.API.RetroInstance
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -75,7 +75,7 @@ class DocenteDetallesEstudiante : Fragment() {
                     }
                     comunicador.cursosPopUp(cursosDatos)
                 } else {
-                    controller.notificacion("Error! Conexion con el API Fallida", activity!!)
+                    controller.notificacion("Error! Conexion con el Adm_proyectos.approyecto.API Fallida", activity!!)
                 }
             }
         }

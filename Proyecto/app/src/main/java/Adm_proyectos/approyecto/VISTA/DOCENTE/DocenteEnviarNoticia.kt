@@ -1,6 +1,6 @@
 package Adm_proyectos.approyecto.VISTA.DOCENTE
 
-import API.RetroInstance
+import Adm_proyectos.approyecto.API.RetroInstance
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosDocente
 import android.annotation.SuppressLint
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.docente_enviar_noticia.*
 import kotlinx.android.synthetic.main.docente_enviar_noticia.view.*

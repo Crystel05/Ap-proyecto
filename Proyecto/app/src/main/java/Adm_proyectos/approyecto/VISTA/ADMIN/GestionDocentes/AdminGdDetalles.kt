@@ -1,6 +1,6 @@
 package Adm_proyectos.approyecto.VISTA.ADMIN.GestionDocentes
 
-import API.RetroInstance
+import Adm_proyectos.approyecto.API.RetroInstance
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,12 +9,10 @@ import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.ESTUDIANTE.estudianteCalificarDocente
 import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosAdmin
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.admin_gd_detalles.*
 import kotlinx.android.synthetic.main.admin_gd_detalles.listCursos
 import kotlinx.android.synthetic.main.admin_gd_detalles.view.*
-import kotlinx.android.synthetic.main.admin_ge_crear.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -52,7 +50,8 @@ class AdminGdDetalles : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val esEst = arguments?.getBoolean("datosDocente")
 
-        view.verListaDocente.setOnClickListener(){
+        view.verListaDocente.setOnClickListener{
+//            controller.notificacion(correo, activity!!)
             cursosProfesor(correo)
         }
 
@@ -85,7 +84,6 @@ class AdminGdDetalles : Fragment() {
                 if (call.isSuccessful) {
                     val cursos = call.body()
                     val cursosDatos = ArrayList<String>()
-                    print(cursos)
                     if (cursos != null) {
                         for (curso in cursos) {
                             cursosDatos.add(curso.get("nombre").toString().replace("\"", "")+
@@ -94,7 +92,7 @@ class AdminGdDetalles : Fragment() {
                         comunicador.cursosPopUp(cursosDatos)
                     }
                 } else {
-                    print("Error! Conexion con el API Fallida")
+                    print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
                 }
             }
         }

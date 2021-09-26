@@ -1,6 +1,6 @@
 package Adm_proyectos.approyecto.VISTA.ADMIN.GestionEstudiantes
 
-import API.RetroInstance
+import Adm_proyectos.approyecto.API.RetroInstance
 import Adm_proyectos.approyecto.CONTROLADOR.ControladorComponentesVista
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import Adm_proyectos.approyecto.R
 import Adm_proyectos.approyecto.VISTA.INTERFACES.DatosAdmin
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.admin_ge_detalles.*
 import kotlinx.android.synthetic.main.admin_ge_detalles.view.*
@@ -84,7 +83,7 @@ class AdminGeDetalles : Fragment() {
                     }
                     comunicador.cursosPopUp(cursosDatos)
                 } else {
-                    controller.notificacion("Error! Conexion con el API Fallida", activity!!)
+                    controller.notificacion("Error! Conexion con el Adm_proyectos.approyecto.API Fallida", activity!!)
                 }
             }
         }
@@ -98,7 +97,7 @@ class AdminGeDetalles : Fragment() {
                     val resultados = call.body()
                     if (resultados != null) {
                         print(resultados)
-                        val resultado = resultados?.get(0)?.get("eliminaralumno")
+                        val resultado = resultados[0].get("eliminaralumno")
                         if (resultado.asInt == 0) {
                             eliminarExitoso()
                         }else{
