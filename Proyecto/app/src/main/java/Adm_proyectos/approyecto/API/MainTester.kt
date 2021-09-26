@@ -804,6 +804,45 @@ class MainTester {
         }
     }
 
+
+
+
+
+    fun actualizarNotaProfesor(cedula: String, nuevaNota: String){
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetroInstance.api.actualizarNotaProfesor(cedula, nuevaNota)
+            if (call.isSuccessful) {
+                val notaProfesor = call.body()
+                if (notaProfesor != null) {
+                    val nota = notaProfesor?.get(0)
+                    print(nota)
+                }
+            } else {
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
+            }
+        }
+    }
+
+    fun cedulaProfesorPorCurso(codigo: String, grado: String){
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = RetroInstance.api.cedulaProfesorPorCurso(codigo, grado)
+            if (call.isSuccessful) {
+                val cedulaProfesor = call.body()
+                if (cedulaProfesor != null) {
+                    val cedula = cedulaProfesor?.get(0).get("obtenercedprof")
+                    print(cedula)
+                }
+            } else {
+                print("Error! Conexion con el Adm_proyectos.approyecto.API Fallida")
+            }
+        }
+    }
+
+
+
+
+
+
 }
 
 @SuppressLint("SimpleDateFormat")
@@ -825,7 +864,7 @@ fun main() {
 //            tester.cursosEstudiante("hector@gmail.com")
 
 //            VACÍO
-            tester.cursosProfesor("shoebill@gmail.com")
+//            tester.cursosProfesor("shoebill@gmail.com")
 //            tester.cursoInfo("soc", "5")
 //            tester.buscarProfesores()
            // tester.gradoId("5")
@@ -868,6 +907,16 @@ fun main() {
 //            tester.updateEstudiante("Hector","Barrantes", "4684184318", "Hector", "hector@gmail.com", "123456", "Barrantes", "4")
 //            tester.mensajesChat("qui", "7")
 //            tester.asignarEstudiante("Martha", "Stewart", "qui", "7")
+
+
+//
+
+
+//            Actualizar nota del profesor.
+//            tester.actualizarNotaProfesor("115674562", "5")
+
+//            Cedula profesor por curso
+            tester.cedulaProfesorPorCurso("bio", "5")
             x = 1
 
         }
