@@ -33,7 +33,7 @@ class DocenteEnviarNoticia : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.docente_enviar_noticia, container, false)
-        val datos = arguments?.getStringArray("datosCursoMed")
+        val datos = arguments?.getStringArray("datosCursoPequeno2")
         id = datos?.get(0).toString()
         grado = datos?.get(1).toString()
         correo = datos?.get(2).toString()

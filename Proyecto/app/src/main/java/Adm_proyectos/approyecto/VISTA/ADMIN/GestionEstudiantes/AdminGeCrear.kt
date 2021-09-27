@@ -38,7 +38,7 @@ class AdminGeCrear : Fragment() {
             gradosGeA.adapter = adapter
         }
 
-        agregarEstudiante.setOnClickListener(){
+        agregarEstudiante.setOnClickListener{
             agregar()
         }
 
@@ -67,7 +67,7 @@ class AdminGeCrear : Fragment() {
         }
     }
 
-    fun insertarEstudiante(cedula: String, nombre: String, correo: String, contra: String, apellido: String, grado: String){
+    private fun insertarEstudiante(cedula: String, nombre: String, correo: String, contra: String, apellido: String, grado: String){
         CoroutineScope(Dispatchers.IO).launch {
             val call = RetroInstance.api.insertarEstudiante(cedula, nombre, correo, contra, apellido, grado)
             activity!!.runOnUiThread {

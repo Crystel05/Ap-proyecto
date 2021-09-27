@@ -38,10 +38,12 @@ class AdminGeListaEstudiantes : Fragment() {
             view.nomE5, view.nomE6, view.nomE7, view.nomE8)
 
         obtenerListaEstudiantes(listaNombres, listaGrados, false)
-        view.agregarNuevoEstudiante.setOnClickListener() {
+
+        view.agregarNuevoEstudiante.setOnClickListener{
             val crearEstudiante = AdminGeCrear()
             controller.cambiarFragment(crearEstudiante, R.id.contenedor, activity!!)
         }
+
         flechaAd.setOnClickListener{
             obtenerListaEstudiantes(listaNombres, listaGrados,true)
         }
